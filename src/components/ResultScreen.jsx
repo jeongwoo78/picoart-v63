@@ -593,20 +593,13 @@ const ResultScreen = ({
         '원숭이와 자화상': 'frida-monkeys',
 
         
-        // 바스키아
-        'Untitled': 'basquiat-skull',
-        'Untitled (Skull)': 'basquiat-skull',
-        '무제': 'basquiat-skull',
-        '무제 (해골)': 'basquiat-skull',
-        'Skull': 'basquiat-skull',
-        'Warrior': 'basquiat-warrior',
-        '전사': 'basquiat-warrior',
-        'Boy and Dog in a Johnnypump': 'basquiat-boy',
-        '소년과 개': 'basquiat-boy',
-        'Boy and Dog': 'basquiat-boy',
-        'Hollywood Africans': 'basquiat-hollywood',
-        '할리우드 아프리칸스': 'basquiat-hollywood',
-        'Hollywood': 'basquiat-hollywood'
+        // 워홀
+        'Marilyn Monroe': 'warhol-marilyn',
+        '마릴린 먼로': 'warhol-marilyn',
+        'Marilyn': 'warhol-marilyn',
+        'Campbell\'s Soup Cans': 'warhol-soup',
+        '캠벨 수프 캔': 'warhol-soup',
+        'Soup Cans': 'warhol-soup'
       };
       
       // 직접 매칭 시도
@@ -663,10 +656,10 @@ const ResultScreen = ({
       '프리다': 'frida-master',
       'frida': 'frida-master',
       'frida kahlo': 'frida-master',
-      '장 미셸 바스키아': 'basquiat-master',
-      '바스키아': 'basquiat-master',
-      'basquiat': 'basquiat-master',
-      'jean-michel basquiat': 'basquiat-master'
+      '앤디 워홀': 'warhol-master',
+      '워홀': 'warhol-master',
+      'warhol': 'warhol-master',
+      'andy warhol': 'warhol-master'
     };
     
     // 키 매칭 시도
@@ -735,11 +728,11 @@ const ResultScreen = ({
       'frida': { fullName: '프리다 칼로(Frida Kahlo)', movement: '초현실주의' },
       'frida kahlo': { fullName: '프리다 칼로(Frida Kahlo)', movement: '초현실주의' },
       
-      // 바스키아
-      '바스키아': { fullName: '장 미셸 바스키아(Jean-Michel Basquiat)', movement: '네오표현주의' },
-      '장 미셸 바스키아': { fullName: '장 미셸 바스키아(Jean-Michel Basquiat)', movement: '네오표현주의' },
-      'basquiat': { fullName: '장 미셸 바스키아(Jean-Michel Basquiat)', movement: '네오표현주의' },
-      'jean-michel basquiat': { fullName: '장 미셸 바스키아(Jean-Michel Basquiat)', movement: '네오표현주의' }
+      // 워홀
+      '워홀': { fullName: '앤디 워홀(Andy Warhol)', movement: '팝아트' },
+      '앤디 워홀': { fullName: '앤디 워홀(Andy Warhol)', movement: '팝아트' },
+      'warhol': { fullName: '앤디 워홀(Andy Warhol)', movement: '팝아트' },
+      'andy warhol': { fullName: '앤디 워홀(Andy Warhol)', movement: '팝아트' }
     };
     
     if (!artistName) return { fullName: '거장', movement: '' };
@@ -790,10 +783,10 @@ const ResultScreen = ({
         'frida kahlo': { name: '프리다', years: '1907~1954', movement: '초현실주의' },
         '프리다': { name: '프리다', years: '1907~1954', movement: '초현실주의' },
         '프리다 칼로': { name: '프리다', years: '1907~1954', movement: '초현실주의' },
-        'basquiat': { name: '바스키아', years: '1960~1988', movement: '네오표현주의' },
-        'jean-michel basquiat': { name: '바스키아', years: '1960~1988', movement: '네오표현주의' },
-        '바스키아': { name: '바스키아', years: '1960~1988', movement: '네오표현주의' },
-        '장 미셸 바스키아': { name: '바스키아', years: '1960~1988', movement: '네오표현주의' },
+        'warhol': { name: '워홀', years: '1928~1987', movement: '팝아트' },
+        'andy warhol': { name: '워홀', years: '1928~1987', movement: '팝아트' },
+        '워홀': { name: '워홀', years: '1928~1987', movement: '팝아트' },
+        '앤디 워홀': { name: '워홀', years: '1928~1987', movement: '팝아트' },
       };
       
       const info = mastersInfo[normalized] || mastersInfo[artistName];
@@ -1014,15 +1007,11 @@ const ResultScreen = ({
       'self-portrait with thorn necklace': '가시 목걸이 자화상(Self-Portrait with Thorn Necklace)',
       'self-portrait with monkeys': '원숭이와 자화상(Self-Portrait with Monkeys)',
       
-      // 바스키아
-      'untitled': '무제(Untitled)',
-      'untitled (skull)': '무제(Untitled)',
-      'skull': '무제(Skull)',
-      'warrior': '전사(Warrior)',
-      'boy and dog in a johnnypump': '소년과 개(Boy and Dog)',
-      'boy and dog': '소년과 개(Boy and Dog)',
-      'hollywood africans': '할리우드 아프리칸스(Hollywood Africans)',
-      'hollywood': '할리우드 아프리칸스(Hollywood Africans)'
+      // 워홀
+      'marilyn monroe': '마릴린 먼로(Marilyn Monroe)',
+      'marilyn': '마릴린 먼로(Marilyn Monroe)',
+      'campbell\'s soup cans': '캠벨 수프 캔(Campbell\'s Soup Cans)',
+      'soup cans': '캠벨 수프 캔(Campbell\'s Soup Cans)'
     };
     
     // 영문(한글) 형식이면 영문 부분만 추출해서 매핑
@@ -1109,21 +1098,16 @@ const ResultScreen = ({
     '앵무새와 자화상': 1941,
     '가시 목걸이 자화상': 1940,
     '가시 목걸이와 벌새': 1940,
-    // 바스키아
-    'Untitled (Skull)': 1981,
-    'untitled (skull)': 1981,
-    'Untitled': 1982,
-    'untitled': 1982,
-    'Skull': 1981,
-    'skull': 1981,
-    'Warrior': 1982,
-    'warrior': 1982,
-    'Boy and Dog in a Johnnypump': 1982,
-    'Hollywood Africans': 1983,
-    '무제': 1981,
-    '전사': 1982,
-    '소년과 개': 1982,
-    '할리우드 아프리칸스': 1983
+    // 워홀
+    'Marilyn Monroe': 1962,
+    'marilyn monroe': 1962,
+    'Marilyn': 1962,
+    'marilyn': 1962,
+    'Campbell\'s Soup Cans': 1962,
+    'campbell\'s soup cans': 1962,
+    'Soup Cans': 1962,
+    '마릴린 먼로': 1962,
+    '캠벨 수프 캔': 1962
   };
 
   // 작품 연도 가져오기
@@ -1420,8 +1404,8 @@ const ResultScreen = ({
       '뭉크': '에드바르 뭉크(Edvard Munch)',
       '반 고흐': '빈센트 반 고흐(Vincent van Gogh)',
       '클림트': '구스타프 클림트(Gustav Klimt)',
-      '바스키아': '장 미셸 바스키아(Jean-Michel Basquiat)',
-      '장 미셸 바스키아': '장 미셸 바스키아(Jean-Michel Basquiat)',
+      '워홀': '앤디 워홀(Andy Warhol)',
+      '앤디 워홀': '앤디 워홀(Andy Warhol)',
       '프리다': '프리다 칼로(Frida Kahlo)',
       '프리다 칼로': '프리다 칼로(Frida Kahlo)',
       

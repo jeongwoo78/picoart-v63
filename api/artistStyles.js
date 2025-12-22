@@ -151,9 +151,7 @@ export const ARTIST_STYLES = {
   // ========================================
   'klimt': GENDER_RULE + 'painting by Gustav Klimt: ELABORATE GOLDEN PATTERNS with REAL GOLD LEAF texture throughout, Byzantine mosaic decorative elements, flat ornamental backgrounds covered with geometric spirals circles and rectangular motifs in shimmering gold leaf, sensuous organic forms emerging from abstract decorative fields, Art Nouveau flowing curves combined with geometric precision, rich textures of gold silver and precious jewel-like colors (deep ruby red, sapphire blue, emerald green), The Kiss style intimate embrace aesthetic, Judith style powerful female portraiture, erotic intimate mood within sacred ornamental splendor, Vienna Secession masterpiece quality' + PAINT_TEXTURE,
   
-  'frida': GENDER_RULE + 'painting by Frida Kahlo: INTENSE DIRECT GAZE portrait with unflinching emotional honesty, vibrant MEXICAN FOLK ART colors (bright red, yellow, green, blue, pink), lush TROPICAL JUNGLE FOLIAGE background with exotic plants and flowers, symbolic personal imagery (THORNS, RIBBONS, HEARTS, VEINS), distinctive facial features with PROMINENT CONNECTED EYEBROWS, traditional Mexican TEHUANA DRESS with floral headpiece and elaborate jewelry, symbolic animals surrounding figure (monkeys, hummingbirds, black cats, deer, parrots), autobiographical narrative elements, raw vulnerability combined with fierce strength, exposed anatomical elements if emotional, surreal juxtaposition of pain and beauty, VISIBLE BRUSHWORK with oil paint texture, Frida Kahlo Mexican Surrealist masterpiece quality' + PAINT_TEXTURE,
-  
-  'basquiat': GENDER_RULE + 'Neo-Expressionist painting by Jean-Michel Basquiat: EXPLOSIVE AGGRESSIVE VIOLENT street art energy with UNCONTROLLED FURY, THREE-POINTED CROWN symbol floating above head, SKULL FACE with exposed teeth and bone structure and X-ed out eyes or hollow eye sockets, SCRAWLED WORDS and ARROWS scattered throughout with CROSSED-OUT text and cancel lines, ROUGH TREMBLING THICK BLACK LINES deliberately CROOKED and UNEVEN like child drawing, CLASHING INTENSE PRIMARY COLORS (red/yellow/blue) + black + white + NEON ACCENTS (hot pink/fluorescent orange), MULTIPLE LAYERED OVERPAINT with underlayers showing through, SCRATCHES STAINS and DRIP marks, OIL STICK + ACRYLIC + SPRAY PAINT mixed texture, thick impasto areas next to scraped raw areas, anatomical diagrams and skeletal references, African tribal mask influence, rebellious raw primitive energy, NOT refined NOT polished NOT clean'
+  'frida': GENDER_RULE + 'painting by Frida Kahlo: INTENSE DIRECT GAZE portrait with unflinching emotional honesty, vibrant MEXICAN FOLK ART colors (bright red, yellow, green, blue, pink), lush TROPICAL JUNGLE FOLIAGE background with exotic plants and flowers, symbolic personal imagery (THORNS, RIBBONS, HEARTS, VEINS), distinctive facial features with PROMINENT CONNECTED EYEBROWS, traditional Mexican TEHUANA DRESS with floral headpiece and elaborate jewelry, symbolic animals surrounding figure (monkeys, hummingbirds, black cats, deer, parrots), autobiographical narrative elements, raw vulnerability combined with fierce strength, exposed anatomical elements if emotional, surreal juxtaposition of pain and beauty, VISIBLE BRUSHWORK with oil paint texture, Frida Kahlo Mexican Surrealist masterpiece quality' + PAINT_TEXTURE
 };
 
 // ========================================
@@ -255,8 +253,7 @@ export function getArtistStyleByName(artistName) {
     
     // 거장 전용
     'KLIMT': 'klimt', '클림트': 'klimt',
-    'FRIDA': 'frida', 'KAHLO': 'frida', '프리다': 'frida', '칼로': 'frida',
-    'BASQUIAT': 'basquiat', '바스키아': 'basquiat'
+    'FRIDA': 'frida', 'KAHLO': 'frida', '프리다': 'frida', '칼로': 'frida'
   };
   
   // 직접 매칭

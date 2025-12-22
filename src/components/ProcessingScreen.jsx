@@ -280,8 +280,8 @@ const ProcessingScreen = ({ photo, selectedStyle, onComplete }) => {
       '피카소': '파블로 피카소(Pablo Picasso)',
       '프리다 칼로': '프리다 칼로(Frida Kahlo)',
       '프리다': '프리다 칼로(Frida Kahlo)',
-      '바스키아': '장 미셸 바스키아(Jean-Michel Basquiat)',
-      '장 미셸 바스키아': '장 미셸 바스키아(Jean-Michel Basquiat)'
+      '워홀': '앤디 워홀(Andy Warhol)',
+      '앤디 워홀': '앤디 워홀(Andy Warhol)'
     };
     
     const normalized = artistName.toLowerCase().trim();
@@ -320,14 +320,11 @@ const ProcessingScreen = ({ photo, selectedStyle, onComplete }) => {
       'The Broken Column': '부러진 기둥(The Broken Column)',
       'Self-Portrait with Thorn Necklace': '가시 목걸이 자화상(Self-Portrait with Thorn Necklace)',
       'Self-Portrait with Monkeys': '원숭이와 자화상(Self-Portrait with Monkeys)',
-      // 바스키아
-      'Untitled': '무제(Untitled)',
-      'Untitled (Skull)': '무제(Untitled)',
-      'Skull': '무제(Skull)',
-      'Warrior': '전사(Warrior)',
-      'Boy and Dog in a Johnnypump': '소년과 개(Boy and Dog)',
-      'Boy and Dog': '소년과 개(Boy and Dog)',
-      'Hollywood Africans': '할리우드 아프리칸스(Hollywood Africans)'
+      // 워홀
+      'Marilyn Monroe': '마릴린 먼로(Marilyn Monroe)',
+      'Marilyn': '마릴린 먼로(Marilyn Monroe)',
+      'Campbell\'s Soup Cans': '캠벨 수프 캔(Campbell\'s Soup Cans)',
+      'Soup Cans': '캠벨 수프 캔(Campbell\'s Soup Cans)'
     };
     
     return workMap[workName] || workName;
@@ -385,17 +382,13 @@ const ProcessingScreen = ({ photo, selectedStyle, onComplete }) => {
     '앵무새와 자화상': 1941,
     '가시 목걸이 자화상': 1940,
     '가시 목걸이와 벌새': 1940,
-    // 바스키아
-    'Untitled (Skull)': 1981,
-    'Untitled': 1982,
-    'Skull': 1981,
-    'Warrior': 1982,
-    'Boy and Dog in a Johnnypump': 1982,
-    'Hollywood Africans': 1983,
-    '무제': 1981,
-    '전사': 1982,
-    '소년과 개': 1982,
-    '할리우드 아프리칸스': 1983
+    // 워홀
+    'Marilyn Monroe': 1962,
+    'Marilyn': 1962,
+    'Campbell\'s Soup Cans': 1962,
+    'Soup Cans': 1962,
+    '마릴린 먼로': 1962,
+    '캠벨 수프 캔': 1962
   };
 
   // 작품 연도 가져오기
@@ -484,10 +477,10 @@ const ProcessingScreen = ({ photo, selectedStyle, onComplete }) => {
       '프리다 칼로': { fullName: '프리다 칼로(Frida Kahlo)', movement: '초현실주의' },
       'frida': { fullName: '프리다 칼로(Frida Kahlo)', movement: '초현실주의' },
       'frida kahlo': { fullName: '프리다 칼로(Frida Kahlo)', movement: '초현실주의' },
-      '바스키아': { fullName: '장 미셸 바스키아(Jean-Michel Basquiat)', movement: '네오표현주의' },
-      '장 미셸 바스키아': { fullName: '장 미셸 바스키아(Jean-Michel Basquiat)', movement: '네오표현주의' },
-      'basquiat': { fullName: '장 미셸 바스키아(Jean-Michel Basquiat)', movement: '네오표현주의' },
-      'jean-michel basquiat': { fullName: '장 미셸 바스키아(Jean-Michel Basquiat)', movement: '네오표현주의' }
+      '워홀': { fullName: '앤디 워홀(Andy Warhol)', movement: '팝아트' },
+      '앤디 워홀': { fullName: '앤디 워홀(Andy Warhol)', movement: '팝아트' },
+      'warhol': { fullName: '앤디 워홀(Andy Warhol)', movement: '팝아트' },
+      'andy warhol': { fullName: '앤디 워홀(Andy Warhol)', movement: '팝아트' }
     };
     
     if (!artistName) return { fullName: '거장', movement: '' };

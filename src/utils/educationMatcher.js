@@ -87,23 +87,13 @@ const MASTERS_WORK_MAP = {
   '원숭이와 자화상': 'frida-monkeys',
   'Monkeys': 'frida-monkeys',
   
-  // 바스키아 (4작품)
-  'Untitled (Skull)': 'basquiat-skull',
-  '무제 (해골)': 'basquiat-skull',
-  '무제': 'basquiat-skull',
-  'Skull': 'basquiat-skull',
-  'Untitled Skull': 'basquiat-skull',
-  'Warrior': 'basquiat-warrior',
-  '전사': 'basquiat-warrior',
-  'Untitled (Warrior)': 'basquiat-warrior',
-  'Boxer': 'basquiat-warrior',
-  'Boy and Dog in a Johnnypump': 'basquiat-boy',
-  '소년과 개': 'basquiat-boy',
-  'Boy and Dog': 'basquiat-boy',
-  'Johnnypump': 'basquiat-boy',
-  'Hollywood Africans': 'basquiat-hollywood',
-  '할리우드 아프리칸스': 'basquiat-hollywood',
-  'Hollywood': 'basquiat-hollywood',
+  // 워홀 (2작품)
+  'Marilyn Monroe': 'warhol-marilyn',
+  '마릴린 먼로': 'warhol-marilyn',
+  'Marilyn': 'warhol-marilyn',
+  'Campbell\'s Soup Cans': 'warhol-soup',
+  '캠벨 수프 캔': 'warhol-soup',
+  'Soup Cans': 'warhol-soup',
 };
 
 // 화가 이름으로 화가 ID fallback (v62 - 화가별 키로 변경)
@@ -141,11 +131,11 @@ const MASTERS_ARTIST_FALLBACK = {
   'frida kahlo': 'frida',
   '프리다 칼로': 'frida',
   
-  'basquiat': 'basquiat',
-  '바스키아': 'basquiat',
-  'jean-michel': 'basquiat',
-  'jean-michel basquiat': 'basquiat',
-  '장 미셸 바스키아': 'basquiat',
+  'warhol': 'warhol',
+  '워홀': 'warhol',
+  'andy': 'warhol',
+  'andy warhol': 'warhol',
+  '앤디 워홀': 'warhol',
 };
 
 
@@ -575,7 +565,7 @@ export const testEducationMatcher = () => {
     { category: 'masters', artist: 'Gustav Klimt', work: null, expected: 'klimt' },
     { category: 'masters', artist: '피카소', work: null, expected: 'picasso' },
     { category: 'masters', artist: 'Frida Kahlo', work: null, expected: 'frida' },
-    { category: 'masters', artist: '바스키아', work: null, expected: 'basquiat' },
+    { category: 'masters', artist: '워홀', work: null, expected: 'warhol' },
     
     // 미술사조 테스트
     { category: 'movements', artist: 'Claude Monet', work: null, expected: 'monet' },
