@@ -3024,9 +3024,7 @@ export default async function handler(req, res) {
     const startTime = Date.now();
     const { image, selectedStyle } = req.body;
 
-    // ========================================
-    // v66: 구조화된 콘솔 로그 시스템
-    // ========================================
+    // v66: 구조화된 로그 수집 객체
     const logData = {
       vision: { count: 0, gender: '', age: '', subjectType: '' },
       selection: { category: '', movement: '', artist: '', masterwork: '', reason: '' },
@@ -3040,8 +3038,8 @@ export default async function handler(req, res) {
       flux: { model: 'flux-depth-dev', control: 0 }
     };
 
-    // 디버깅 로그 (주석 처리됨)
-    // // console.log('=== FLUX Transfer v33 Debug ===');
+    // 디버깅 로그 (v66: 주석처리)
+    // console.log('=== FLUX Transfer v33 Debug ===');
     // console.log('Has REPLICATE_API_KEY:', !!process.env.REPLICATE_API_KEY);
     // console.log('Has ANTHROPIC_API_KEY:', !!process.env.ANTHROPIC_API_KEY);
     // console.log('Has image:', !!image);
@@ -3167,6 +3165,8 @@ export default async function handler(req, res) {
       if (aiResult.success && aiResult.visionData) {
         visionAnalysis = aiResult.visionData;
         identityPrompt = buildIdentityPrompt(visionAnalysis);
+        // console.log('📸 Vision data (integrated):', visionAnalysis);
+        // console.log('📸 Identity prompt:', identityPrompt);
         
         // v66: Vision 로그 수집
         logData.vision.count = visionAnalysis.person_count || 0;
@@ -3219,8 +3219,10 @@ export default async function handler(req, res) {
           analysis: aiResult.analysis,
           reason: aiResult.reason
         };
+        // console.log('✅✅✅ [V41-TEST-SUCCESS] AI selected:', selectedArtist);
+        // console.log('✅✅✅ [V48] Selected work:', selectedWork);
         
-        // v66: 선택 결과 로그 수집
+        // v66: AI 선택 결과 로그 수집
         logData.selection.category = selectedStyle.category || '';
         logData.selection.artist = selectedArtist || '';
         logData.selection.masterwork = selectedWork || '';
@@ -3392,7 +3394,7 @@ export default async function handler(req, res) {
                 .replace(/\s{2,}/g, ' ')
                 .trim();
               
-              // console.log(`🎨 [FILTER] Removed human-related expressions: ${originalPromptLength} → ${finalPrompt.length} chars`);
+              // console.log(`🎨 [LANDSCAPE-FILTER] Removed human-related expressions: ${originalPromptLength} → ${finalPrompt.length} chars`);
             } else if (identityPrompt && identityPrompt.length > 0) {
               // Vision 분석 결과 사용 (더 상세함)
               genderPrefix = `ABSOLUTE REQUIREMENT: ${identityPrompt}. `;
@@ -3409,6 +3411,7 @@ export default async function handler(req, res) {
             } else {
               // 성별 미감지 시에도 강력한 보존 규칙 적용
               genderPrefix = 'ABSOLUTE REQUIREMENT: STRICTLY PRESERVE ORIGINAL GENDER from photo - if subject appears MALE keep MASCULINE features with strong jaw and male bone structure DO NOT feminize DO NOT soften DO NOT add feminine traits, if subject appears FEMALE keep FEMININE features. ';
+              // console.log('🚨 Gender unknown - Added STRONG preservation rule');
             }
             finalPrompt = genderPrefix + finalPrompt;
             logData.prompt.applied.gender = true;
@@ -3493,6 +3496,7 @@ export default async function handler(req, res) {
         
         finalPrompt = coreRulesPrefix + finalPrompt;
         logData.prompt.applied.coreRules = true;
+        // console.log(`🎯 v62: Applied CORE RULES PREFIX (${isPicassoCubist ? '피카소: 분해 강제' : '일반'})`);
         
         // ===== 디버그 시작 =====
         // console.log('DEBUG: selectedArtist raw value:', selectedArtist);
@@ -3536,15 +3540,18 @@ export default async function handler(req, res) {
                 if (artistStylePrompt1) {
                   finalPrompt = finalPrompt + ', ' + artistStylePrompt1;
                   logData.prompt.applied.artist = true;
+                  // console.log('🎨 [v66] 화가 프롬프트 적용:', artistKey);
                 }
                 
                 // 대표작 프롬프트 (우선)
                 finalPrompt = finalPrompt + ', ' + movementMasterwork.prompt;
                 logData.prompt.applied.masterwork = true;
+                // console.log('🖼️ [v65] 대표작 프롬프트 적용:', movementMasterwork.nameEn);
                 
                 // expressionRule 적용 (뭉크 등)
                 if (movementMasterwork.expressionRule) {
                   finalPrompt = finalPrompt + ', ' + movementMasterwork.expressionRule;
+                  // console.log('🎭 [v65] Applied expressionRule:', movementMasterwork.expressionRule);
                 }
               } else {
                 // console.log('ℹ️ [v66] movementMasterwork not found for:', workKey);
@@ -3661,11 +3668,13 @@ export default async function handler(req, res) {
                 if (artistStylePrompt2) {
                   finalPrompt = finalPrompt + ', ' + artistStylePrompt2;
                   logData.prompt.applied.artist = true;
+                  // console.log('🎨 [v66] 화가 프롬프트 적용:', artistKey);
                 }
                 
                 // 대표작 프롬프트 (우선)
                 finalPrompt = finalPrompt + ', ' + masterwork.prompt;
                 logData.prompt.applied.masterwork = true;
+                // console.log('🖼️ [v67] 대표작 프롬프트 적용:', masterwork.nameEn);
               }
             }
           }
@@ -4326,6 +4335,17 @@ export default async function handler(req, res) {
         if (selectedStyle.category === 'movements') {
           // 미술사조: id를 사용 (renaissance, baroque, impressionism 등)
           fallbackKey = selectedStyle.id;
+          
+          // v66: 누락된 fallback 키 매핑
+          const fallbackKeyMap = {
+            'neoclassicism': 'neoclassicism_vs_romanticism_vs_realism',
+            'romanticism': 'neoclassicism_vs_romanticism_vs_realism',
+            'realism': 'neoclassicism_vs_romanticism_vs_realism',
+            'artNouveau': 'fauvism'  // 아르누보 → 야수파로 매핑 (유사한 장식적 스타일)
+          };
+          if (fallbackKeyMap[fallbackKey]) {
+            fallbackKey = fallbackKeyMap[fallbackKey];
+          }
         } else if (selectedStyle.category === 'masters') {
           fallbackKey = selectedStyle.id.replace('-master', '');
         } else if (selectedStyle.category === 'oriental') {
@@ -4364,6 +4384,17 @@ export default async function handler(req, res) {
       if (selectedStyle.category === 'movements') {
         // 미술사조: id를 사용 (renaissance, baroque, impressionism 등)
         fallbackKey = selectedStyle.id;
+        
+        // v66: 누락된 fallback 키 매핑
+        const fallbackKeyMap = {
+          'neoclassicism': 'neoclassicism_vs_romanticism_vs_realism',
+          'romanticism': 'neoclassicism_vs_romanticism_vs_realism',
+          'realism': 'neoclassicism_vs_romanticism_vs_realism',
+          'artNouveau': 'fauvism'  // 아르누보 → 야수파로 매핑 (유사한 장식적 스타일)
+        };
+        if (fallbackKeyMap[fallbackKey]) {
+          fallbackKey = fallbackKeyMap[fallbackKey];
+        }
       } else if (selectedStyle.category === 'masters') {
         fallbackKey = selectedStyle.id.replace('-master', '');
       } else if (selectedStyle.category === 'oriental') {
@@ -4478,16 +4509,21 @@ export default async function handler(req, res) {
       const identityPreservation = ', Absolutely preserve the original subject face identity, age, gender and ethnicity exactly. Asian faces must remain Asian, Western faces must remain Western, children must remain children, adults must remain adults. For gender preservation, male subjects MUST remain male with masculine features, strong jaw and male bone structure without being feminized, softened or made delicate. Female subjects must remain female with feminine features. Do not change hair color or skin tone. Do not Westernize Asian faces or Asianize Western faces. Keep the original facial features and bone structure intact.';
       finalPrompt = finalPrompt + identityPreservation;
       logData.prompt.applied.identity = true;
+      // console.log('🎯 Applied identity preservation rule (자연어 문장형)');
     }
     
     if (shouldApplyAttractive) {
       const attractiveEnhancement = ', Render all people attractively, beautifully and with appealing refined features. While strictly preserving the original gender, make male subjects look handsome, masculine and dignified, and make female subjects look pretty, feminine and elegant. Create an idealized flattering portrayal that enhances visual appeal.';
       finalPrompt = finalPrompt + attractiveEnhancement;
       logData.prompt.applied.attractive = true;
+      // console.log('✨ Applied attractive enhancement (자연어 문장형)');
+    } else {
+      // console.log('🎭 Skipped attractive enhancement (expressive distortion allowed):', workKey || selectedWork);
     }
     
     if (categoryType === 'modernism') {
-      // 모더니즘은 paintingEnforcement 스킵
+      // console.log('🎨 Modernism: Skipping paintingEnforcement (allows face distortion/fragmentation/multiplication)');
+      // 대전제 적용 안 함 - 모더니즘은 프롬프트에서 직접 제어
     }
     // 이미 회화 강조가 없는 경우에만 추가 (소문자도 체크)
     else if (!finalPrompt.toLowerCase().includes('preserve facial') && 
@@ -4495,6 +4531,9 @@ export default async function handler(req, res) {
         !finalPrompt.toLowerCase().includes('not photographic')) {
       finalPrompt = finalPrompt + paintingEnforcement;
       logData.prompt.applied.painting = true;
+      // console.log('✅ Added Level 3+ painting enforcement (re-drawn with brush) + facial preservation');
+    } else {
+      // console.log('ℹ️ Skipped paintingEnforcement (already in fallback prompt)');
     }
     
     // ========================================
@@ -4517,6 +4556,9 @@ export default async function handler(req, res) {
       const brushworkRule = ', Apply very thick bold brushstrokes throughout the subject including face, skin, hair and clothing. Use chunky wide brush marks of 20mm or thicker that are clearly visible even without zooming in. The brushwork should have impasto paint texture with visible brush direction, not fine lines, not subtle texture, not smooth digital rendering, not airbrushed, not photo-like skin. This thick brushwork on the subject is essential and required.';
       finalPrompt = finalPrompt + brushworkRule;
       logData.prompt.applied.brushwork = true;
+      // console.log('🖌️ Applied brushwork rule (자연어 문장형)');
+    } else {
+      // console.log('🎨 Skipped brushwork rule (제외 대상)');
     }
     
     // ========================================
@@ -4527,6 +4569,9 @@ export default async function handler(req, res) {
       const sandwichCore = 'This painting MUST preserve the original face identity, age, gender and ethnicity exactly while rendering the subject attractively. Very thick visible brushstrokes of 20mm or thicker MUST be clearly visible on the subject face, skin and clothing even without zooming in. This must look like a real hand-painted artwork, NOT a photograph, NOT 3D, NOT digital. ';
       finalPrompt = sandwichCore + finalPrompt + ' ' + sandwichCore.trim();
       logData.prompt.applied.sandwich = true;
+      // console.log('🥪 Applied SANDWICH rule (자연어 문장형)');
+    } else {
+      // console.log('🥪 Skipped SANDWICH rule (제외 대상)');
     }
     
     // ========================================
@@ -4538,7 +4583,7 @@ export default async function handler(req, res) {
     // 사조 정보 추출 (movements 카테고리인 경우)
     if (selectedStyle.category === 'movements' && selectedStyle.id) {
       const movementMap = {
-        'ancient': '고대 그리스-로마', 'medieval': '중세', 'renaissance': '르네상스', 'baroque': '바로크',
+        'ancient': '고대', 'medieval': '중세', 'renaissance': '르네상스', 'baroque': '바로크',
         'rococo': '로코코', 'neoclassicism': '신고전주의', 'romanticism': '낭만주의', 'realism': '사실주의',
         'impressionism': '인상주의', 'postImpressionism': '후기인상주의', 'fauvism': '야수파',
         'expressionism': '표현주의', 'artNouveau': '아르누보'
@@ -4575,6 +4620,9 @@ export default async function handler(req, res) {
     console.log(`   ⚙️ Control: ${logData.flux.control}`);
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
     console.log('');
+    
+    // FLUX Depth Dev 변환 (v63: Pro 테스트 포기, Dev 유지)
+    // console.log('📦 [v63] black-forest-labs/flux-depth-dev');
     
     const response = await fetch(
       'https://api.replicate.com/v1/models/black-forest-labs/flux-depth-dev/predictions',
