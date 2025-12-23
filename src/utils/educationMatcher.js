@@ -346,14 +346,14 @@ const ORIENTAL_STYLE_MAP = {
  * @returns {string|null} 교육자료 키
  */
 export const getEducationKey = (category, artist, work) => {
-  console.log('');
-  console.log('🔑 getEducationKey called:');
-  console.log('   - category:', category);
-  console.log('   - artist:', artist);
-  console.log('   - work:', work);
+  // console.log('');
+  // console.log('🔑 getEducationKey called:');
+  // console.log('   - category:', category);
+  // console.log('   - artist:', artist);
+  // console.log('   - work:', work);
   
   if (!category) {
-    console.log('❌ No category provided');
+    // console.log('❌ No category provided');
     return null;
   }
   
@@ -366,7 +366,7 @@ export const getEducationKey = (category, artist, work) => {
       // 직접 매칭
       key = MASTERS_WORK_MAP[work];
       if (key) {
-        console.log('✅ Masters matched by work (direct):', key);
+        // console.log('✅ Masters matched by work (direct):', key);
         return key;
       }
       
@@ -374,7 +374,7 @@ export const getEducationKey = (category, artist, work) => {
       const cleanWork = work.split('(')[0].trim();
       key = MASTERS_WORK_MAP[cleanWork];
       if (key) {
-        console.log('✅ Masters matched by work (cleaned):', key);
+        // console.log('✅ Masters matched by work (cleaned):', key);
         return key;
       }
       
@@ -383,7 +383,7 @@ export const getEducationKey = (category, artist, work) => {
       if (koreanMatch) {
         key = MASTERS_WORK_MAP[koreanMatch[1].trim()];
         if (key) {
-          console.log('✅ Masters matched by work (korean):', key);
+          // console.log('✅ Masters matched by work (korean):', key);
           return key;
         }
       }
@@ -393,7 +393,7 @@ export const getEducationKey = (category, artist, work) => {
       for (const [mapWork, mapKey] of Object.entries(MASTERS_WORK_MAP)) {
         if (mapWork.toLowerCase().includes(workLower) || 
             workLower.includes(mapWork.toLowerCase())) {
-          console.log('✅ Masters matched by work (partial):', mapKey);
+          // console.log('✅ Masters matched by work (partial):', mapKey);
           return mapKey;
         }
       }
@@ -406,34 +406,34 @@ export const getEducationKey = (category, artist, work) => {
       // 직접 매칭
       key = MASTERS_ARTIST_FALLBACK[artistLower];
       if (key) {
-        console.log('✅ Masters fallback by artist (direct):', key);
+        // console.log('✅ Masters fallback by artist (direct):', key);
         return key;
       }
       
       // 부분 매칭
       for (const [mapArtist, mapKey] of Object.entries(MASTERS_ARTIST_FALLBACK)) {
         if (artistLower.includes(mapArtist) || mapArtist.includes(artistLower)) {
-          console.log('✅ Masters fallback by artist (partial):', mapKey);
+          // console.log('✅ Masters fallback by artist (partial):', mapKey);
           return mapKey;
         }
       }
     }
     
-    console.log('❌ Masters: No match found');
+    // console.log('❌ Masters: No match found');
     return null;
   }
   
   // ========== 미술사조 ==========
   if (category === 'movements') {
     if (!artist) {
-      console.log('❌ Movements: No artist provided');
+      // console.log('❌ Movements: No artist provided');
       return null;
     }
     
     // 직접 매칭
     key = MOVEMENTS_ARTIST_MAP[artist];
     if (key) {
-      console.log('✅ Movements matched (direct):', key);
+      // console.log('✅ Movements matched (direct):', key);
       return key;
     }
     
@@ -441,7 +441,7 @@ export const getEducationKey = (category, artist, work) => {
     const artistLower = artist.toLowerCase();
     for (const [mapArtist, mapKey] of Object.entries(MOVEMENTS_ARTIST_MAP)) {
       if (mapArtist.toLowerCase() === artistLower) {
-        console.log('✅ Movements matched (case-insensitive):', mapKey);
+        // console.log('✅ Movements matched (case-insensitive):', mapKey);
         return mapKey;
       }
     }
@@ -450,7 +450,7 @@ export const getEducationKey = (category, artist, work) => {
     for (const [mapArtist, mapKey] of Object.entries(MOVEMENTS_ARTIST_MAP)) {
       const mapArtistLower = mapArtist.toLowerCase();
       if (artistLower.includes(mapArtistLower) || mapArtistLower.includes(artistLower)) {
-        console.log('✅ Movements matched (partial):', mapKey);
+        // console.log('✅ Movements matched (partial):', mapKey);
         return mapKey;
       }
     }
@@ -460,26 +460,26 @@ export const getEducationKey = (category, artist, work) => {
     if (lastName) {
       key = MOVEMENTS_ARTIST_MAP[lastName];
       if (key) {
-        console.log('✅ Movements matched (last name):', key);
+        // console.log('✅ Movements matched (last name):', key);
         return key;
       }
     }
     
-    console.log('❌ Movements: No match found for:', artist);
+    // console.log('❌ Movements: No match found for:', artist);
     return null;
   }
   
   // ========== 동양화 ==========
   if (category === 'oriental') {
     if (!artist) {
-      console.log('❌ Oriental: No artist provided');
+      // console.log('❌ Oriental: No artist provided');
       return null;
     }
     
     // 직접 매칭
     key = ORIENTAL_STYLE_MAP[artist];
     if (key) {
-      console.log('✅ Oriental matched (direct):', key);
+      // console.log('✅ Oriental matched (direct):', key);
       return key;
     }
     
@@ -487,7 +487,7 @@ export const getEducationKey = (category, artist, work) => {
     const artistLower = artist.toLowerCase();
     for (const [mapArtist, mapKey] of Object.entries(ORIENTAL_STYLE_MAP)) {
       if (mapArtist.toLowerCase() === artistLower) {
-        console.log('✅ Oriental matched (case-insensitive):', mapKey);
+        // console.log('✅ Oriental matched (case-insensitive):', mapKey);
         return mapKey;
       }
     }
@@ -496,16 +496,16 @@ export const getEducationKey = (category, artist, work) => {
     for (const [mapArtist, mapKey] of Object.entries(ORIENTAL_STYLE_MAP)) {
       const mapArtistLower = mapArtist.toLowerCase();
       if (artistLower.includes(mapArtistLower) || mapArtistLower.includes(artistLower)) {
-        console.log('✅ Oriental matched (partial):', mapKey);
+        // console.log('✅ Oriental matched (partial):', mapKey);
         return mapKey;
       }
     }
     
-    console.log('❌ Oriental: No match found for:', artist);
+    // console.log('❌ Oriental: No match found for:', artist);
     return null;
   }
   
-  console.log('❌ Unknown category:', category);
+  // console.log('❌ Unknown category:', category);
   return null;
 };
 
@@ -519,13 +519,13 @@ export const getEducationKey = (category, artist, work) => {
  * @returns {string|null} 교육자료 내용
  */
 export const getEducationContent = (category, key, educationData) => {
-  console.log('');
-  console.log('📚 getEducationContent called:');
-  console.log('   - category:', category);
-  console.log('   - key:', key);
+  // console.log('');
+  // console.log('📚 getEducationContent called:');
+  // console.log('   - category:', category);
+  // console.log('   - key:', key);
   
   if (!key || !educationData) {
-    console.log('❌ Missing key or educationData');
+    // console.log('❌ Missing key or educationData');
     return null;
   }
   
@@ -540,22 +540,22 @@ export const getEducationContent = (category, key, educationData) => {
   }
   
   if (data?.content) {
-    console.log('✅ Education content found!');
-    console.log('   - preview:', data.content.substring(0, 50) + '...');
+    // console.log('✅ Education content found!');
+    // console.log('   - preview:', data.content.substring(0, 50) + '...');
     return data.content;
   }
   
-  console.log('❌ No content found for key:', key);
+  // console.log('❌ No content found for key:', key);
   return null;
 };
 
 
 // ========== 테스트용 함수 ==========
 export const testEducationMatcher = () => {
-  console.log('');
-  console.log('========================================');
-  console.log('🧪 Testing Education Matcher');
-  console.log('========================================');
+  // console.log('');
+  // console.log('========================================');
+  // console.log('🧪 Testing Education Matcher');
+  // console.log('========================================');
   
   const testCases = [
     // 거장 테스트 (v62 - 화가별 키)
@@ -587,16 +587,16 @@ export const testEducationMatcher = () => {
     
     if (success) {
       passed++;
-      console.log(`✅ PASS: ${tc.category}/${tc.artist} → ${result}`);
+      // console.log(`✅ PASS: ${tc.category}/${tc.artist} → ${result}`);
     } else {
       failed++;
-      console.log(`❌ FAIL: ${tc.category}/${tc.artist} → ${result} (expected: ${tc.expected})`);
+      // console.log(`❌ FAIL: ${tc.category}/${tc.artist} → ${result} (expected: ${tc.expected})`);
     }
   }
   
-  console.log('');
-  console.log(`Result: ${passed}/${testCases.length} passed, ${failed} failed`);
-  console.log('========================================');
+  // console.log('');
+  // console.log(`Result: ${passed}/${testCases.length} passed, ${failed} failed`);
+  // console.log('========================================');
   
   return { passed, failed, total: testCases.length };
 };

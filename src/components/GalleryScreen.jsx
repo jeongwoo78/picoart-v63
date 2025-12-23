@@ -135,7 +135,7 @@ export const saveToGallery = async (imageUrl, styleName, categoryName = '') => {
     const existingItems = await getAllImages();
     const alreadyExists = existingItems.some(item => item.imageData === base64Image);
     if (alreadyExists) {
-      console.log('⏭️ 이미 갤러리에 있음, 스킵:', styleName);
+      // console.log('⏭️ 이미 갤러리에 있음, 스킵:', styleName);
       return true; // 이미 저장됨으로 처리
     }
     
@@ -149,7 +149,7 @@ export const saveToGallery = async (imageUrl, styleName, categoryName = '') => {
     
     const saved = await saveImage(imageData);
     if (saved) {
-      console.log('✅ 갤러리에 저장됨 (IndexedDB):', styleName);
+      // console.log('✅ 갤러리에 저장됨 (IndexedDB):', styleName);
     }
     return saved;
   } catch (error) {

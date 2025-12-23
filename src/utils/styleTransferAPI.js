@@ -142,16 +142,37 @@ export const processStyleTransfer = async (photoFile, selectedStyle, apiKey, onP
     }
 
     // ========== v30: 첫 응답에서 AI 선택 정보 저장 ==========
-    console.log('');
-    console.log('========================================');
-    console.log('🎯 FIRST RESPONSE (AI SELECTION INFO)');
-    console.log('========================================');
-    console.log('📦 prediction:', prediction);
-    console.log('🎨 selected_artist:', prediction.selected_artist);
-    console.log('🎨 selected_work:', prediction.selected_work);
-    console.log('🎨 selection_method:', prediction.selection_method);
-    console.log('========================================');
-    console.log('');
+    // v66: 서버 디버그 로그 출력
+    if (prediction._debug) {
+      const d = prediction._debug;
+      console.log('');
+      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+      console.log(`📍 FLUX Transfer ${d.version}`);
+      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+      console.log('');
+      console.log('1️⃣ Vision 분석');
+      console.log(`   👤 인물: ${d.vision.count}명 (${d.vision.gender || '?'}, ${d.vision.age || '?'})`);
+      console.log(`   📷 피사체: ${d.vision.subjectType || 'unknown'}`);
+      console.log('');
+      console.log('2️⃣ AI 화가 선택');
+      console.log(`   📂 카테고리: ${d.selection.category}`);
+      if (d.selection.movement) console.log(`   🎨 사조: ${d.selection.movement}`);
+      console.log(`   👨‍🎨 화가: ${d.selection.artist}`);
+      if (d.selection.masterwork) console.log(`   🖼️ 대표작: ${d.selection.masterwork}`);
+      if (d.selection.reason) console.log(`   💬 선택 이유: ${d.selection.reason}`);
+      console.log('');
+      console.log('3️⃣ 프롬프트 조립');
+      console.log(`   📝 최종 길이: ${d.prompt.wordCount} 단어`);
+      console.log(`   ${d.prompt.applied}`);
+      console.log('');
+      console.log('4️⃣ FLUX API 호출');
+      console.log(`   🔄 모델: ${d.flux.model}`);
+      console.log(`   ⚙️ Control: ${d.flux.control}`);
+      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+      console.log(`✅ 완료 (${d.elapsed}초)`);
+      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+      console.log('');
+    }
 
     const aiSelectionInfo = {
       artist: prediction.selected_artist || null,
@@ -162,25 +183,25 @@ export const processStyleTransfer = async (photoFile, selectedStyle, apiKey, onP
 
     // ========== 이미 완료된 응답인 경우 polling 건너뛰기 ==========
     let result;
-    console.log('🔍 Checking prediction status:', prediction.status);
-    console.log('🔍 Has output:', !!prediction.output);
+    // console.log('🔍 Checking prediction status:', prediction.status);
+    // console.log('🔍 Has output:', !!prediction.output);
     if (prediction.status === 'succeeded' && prediction.output) {
-      console.log('✅ Already completed (Prefer: wait mode)');
+      // console.log('✅ Already completed (Prefer: wait mode)');
       result = prediction;
     } else {
-      console.log('⏳ Status not succeeded or no output, polling...');
-      console.log('   prediction.id:', prediction.id);
+      // console.log('⏳ Status not succeeded or no output, polling...');
+      // console.log('   prediction.id:', prediction.id);
       result = await pollPrediction(prediction.id, modelConfig, onProgress);
     }
 
-    console.log('');
-    console.log('========================================');
-    console.log('🔍 POLLING RESPONSE (for comparison)');
-    console.log('========================================');
-    console.log('📦 result keys:', Object.keys(result));
-    console.log('🎨 selected_artist:', result.selected_artist);
-    console.log('========================================');
-    console.log('');
+    // console.log('');
+    // console.log('========================================');
+    // console.log('🔍 POLLING RESPONSE (for comparison)');
+    // console.log('========================================');
+    // console.log('📦 result keys:', Object.keys(result));
+    // console.log('🎨 selected_artist:', result.selected_artist);
+    // console.log('========================================');
+    // console.log('');
 
     if (result.status !== 'succeeded') {
       throw new Error('Processing did not succeed');
@@ -198,7 +219,7 @@ export const processStyleTransfer = async (photoFile, selectedStyle, apiKey, onP
     const blob = await imageResponse.blob();
     const localUrl = URL.createObjectURL(blob);
 
-    console.log('✅ Using AI info from FIRST response:', aiSelectionInfo.artist, aiSelectionInfo.work);
+    // console.log('✅ Using AI info from FIRST response:', aiSelectionInfo.artist, aiSelectionInfo.work);
 
     return {
       success: true,

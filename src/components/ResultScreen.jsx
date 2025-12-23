@@ -93,7 +93,7 @@ const ResultScreen = ({
             await saveToGallery(result.resultUrl, styleName, categoryName);
           }
         }
-        console.log('✅ 원클릭 결과 모두 갤러리에 저장됨');
+        // console.log('✅ 원클릭 결과 모두 갤러리에 저장됨');
       };
       if (!hasSavedRef.current) {
         hasSavedRef.current = true;
@@ -123,7 +123,7 @@ const ResultScreen = ({
       if (saved) {
         hasSavedRef.current = true;
         setSavedToGallery(true);
-        console.log('✅ 갤러리에 자동 저장 완료 (IndexedDB):', styleName);
+        // console.log('✅ 갤러리에 자동 저장 완료 (IndexedDB):', styleName);
       }
     };
     
@@ -139,7 +139,7 @@ const ResultScreen = ({
     if (failedResults.length === 0) return;
     
     setIsRetrying(true);
-    console.log(`🔄 다시 시도 시작: ${failedResults.length}개 실패한 변환`);
+    // console.log(`🔄 다시 시도 시작: ${failedResults.length}개 실패한 변환`);
     
     let successCount = 0;
     
@@ -171,7 +171,7 @@ const ResultScreen = ({
             return newResults;
           });
           successCount++;
-          console.log(`✅ 다시 시도 성공: ${failed.style?.name}`);
+          // console.log(`✅ 다시 시도 성공: ${failed.style?.name}`);
           
           // 갤러리에 저장 - <카테고리> 세부정보 형식
           const category = failed.style?.category;
@@ -184,7 +184,7 @@ const ResultScreen = ({
             : '';
           await saveToGallery(result.resultUrl, styleName, categoryName);
         } else {
-          console.log(`❌ 다시 시도 실패: ${failed.style?.name} - ${result.error}`);
+          // console.log(`❌ 다시 시도 실패: ${failed.style?.name} - ${result.error}`);
         }
       } catch (error) {
         console.error(`❌ 다시 시도 에러: ${failed.style?.name}`, error);
@@ -206,7 +206,7 @@ const ResultScreen = ({
     
     setIsRetrying(true);
     setRetryProgress(`${selectedStyle.name} 다시 시도 중...`);
-    console.log(`🔄 단독변환 다시 시도: ${selectedStyle.name}`);
+    // console.log(`🔄 단독변환 다시 시도: ${selectedStyle.name}`);
     
     try {
       const result = await processStyleTransfer(
@@ -217,7 +217,7 @@ const ResultScreen = ({
       );
       
       if (result.success) {
-        console.log(`✅ 단독변환 다시 시도 성공: ${selectedStyle.name}`);
+        // console.log(`✅ 단독변환 다시 시도 성공: ${selectedStyle.name}`);
         setSingleRetryResultState(result);
         
         // 갤러리에 저장 - <카테고리> 세부정보 형식
@@ -233,7 +233,7 @@ const ResultScreen = ({
         
         alert('다시 시도 성공!');
       } else {
-        console.log(`❌ 단독변환 다시 시도 실패: ${selectedStyle.name} - ${result.error}`);
+        // console.log(`❌ 단독변환 다시 시도 실패: ${selectedStyle.name} - ${result.error}`);
         // 실패 시 alert 없이 자연스럽게 UI로 복귀
       }
     } catch (error) {
@@ -250,23 +250,23 @@ const ResultScreen = ({
   // aiSelectedArtist가 변경될 때마다 2차 교육 재생성
   // 원클릭: currentIndex 변경 또는 currentResult 업데이트 시 재생성
   useEffect(() => {
-    console.log('🎨 ResultScreen mounted or aiSelectedArtist changed');
+    // console.log('🎨 ResultScreen mounted or aiSelectedArtist changed');
     generate2ndEducation();
   }, [aiSelectedArtist, currentIndex, currentResult?.aiSelectedArtist, currentResult?.selected_work]);
 
   // 원클릭: 화면 이동 시 현재 결과 로그
   useEffect(() => {
     if (isFullTransform && currentResult) {
-      console.log('========================================');
-      console.log(`📍 현재 화면: ${currentIndex + 1}/${results.length}`);
-      console.log(`   - 스타일: ${currentResult.style?.name}`);
-      console.log(`   - 성공 여부: ${currentResult.success ? '✅ 성공' : '❌ 실패'}`);
-      console.log(`   - aiSelectedArtist: ${currentResult.aiSelectedArtist}`);
-      console.log(`   - selected_work: ${currentResult.selected_work}`);
+      // console.log('========================================');
+      // console.log(`📍 현재 화면: ${currentIndex + 1}/${results.length}`);
+      // console.log(`   - 스타일: ${currentResult.style?.name}`);
+      // console.log(`   - 성공 여부: ${currentResult.success ? '✅ 성공' : '❌ 실패'}`);
+      // console.log(`   - aiSelectedArtist: ${currentResult.aiSelectedArtist}`);
+      // console.log(`   - selected_work: ${currentResult.selected_work}`);
       if (!currentResult.success) {
-        console.log(`   - 에러: ${currentResult.error}`);
+        // console.log(`   - 에러: ${currentResult.error}`);
       }
-      console.log('========================================');
+      // console.log('========================================');
     }
   }, [currentIndex, isFullTransform, currentResult, results.length]);
 
@@ -277,13 +277,13 @@ const ResultScreen = ({
 
   // ========== 2차 교육 로드 (v51: 새로운 매칭 로직) ==========
   const generate2ndEducation = () => {
-    console.log('');
-    console.log('🔥🔥🔥 LOAD EDUCATION START (v51) 🔥🔥🔥');
-    console.log('   - category:', selectedStyle?.category);
-    console.log('   - isFullTransform:', isFullTransform);
-    console.log('   - displayArtist:', displayArtist);
-    console.log('   - displayWork:', displayWork);
-    console.log('');
+    // console.log('');
+    // console.log('🔥🔥🔥 LOAD EDUCATION START (v51) 🔥🔥🔥');
+    // console.log('   - category:', selectedStyle?.category);
+    // console.log('   - isFullTransform:', isFullTransform);
+    // console.log('   - displayArtist:', displayArtist);
+    // console.log('   - displayWork:', displayWork);
+    // console.log('');
     
     setIsLoadingEducation(true);
     
@@ -291,20 +291,20 @@ const ResultScreen = ({
     
     // ========== 원클릭: 새로운 매칭 로직 사용 ==========
     if (isFullTransform) {
-      console.log('📜 ONECLICK MODE - using educationMatcher.js');
+      // console.log('📜 ONECLICK MODE - using educationMatcher.js');
       
       // currentResult에서 정보 추출
       const category = currentResult?.style?.category || displayCategory;
       const artist = currentResult?.aiSelectedArtist || displayArtist;
       const work = currentResult?.selected_work || displayWork;
       
-      console.log('   - category:', category);
-      console.log('   - artist:', artist);
-      console.log('   - work:', work);
+      // console.log('   - category:', category);
+      // console.log('   - artist:', artist);
+      // console.log('   - work:', work);
       
       // 새로운 매칭 함수 사용
       const key = getEducationKey(category, artist, work);
-      console.log('   - matched key:', key);
+      // console.log('   - matched key:', key);
       
       if (key) {
         // 교육자료 데이터 객체 구성
@@ -318,13 +318,13 @@ const ResultScreen = ({
         content = getEducationContent(category, key, educationData);
         
         if (content) {
-          console.log('✅ Found oneclick education for:', key);
-          console.log('   - content preview:', content.substring(0, 50) + '...');
+          // console.log('✅ Found oneclick education for:', key);
+          // console.log('   - content preview:', content.substring(0, 50) + '...');
         } else {
-          console.log('❌ No education data found for key:', key);
+          // console.log('❌ No education data found for key:', key);
         }
       } else {
-        console.log('❌ No key matched');
+        // console.log('❌ No key matched');
       }
     }
     
@@ -334,43 +334,43 @@ const ResultScreen = ({
       
       // 1. 동양화 (oriental)
       if (category === 'oriental') {
-        console.log('📜 Loading oriental education...');
+        // console.log('📜 Loading oriental education...');
         content = getOrientalEducation();
       }
       
       // 2. 미술사조 (movements)
       else if (category !== 'masters') {
-        console.log('📜 Loading movements education...');
+        // console.log('📜 Loading movements education...');
         content = getMovementsEducation();
       }
       
       // 3. 거장 (masters)
       else {
-        console.log('📜 Loading masters education...');
+        // console.log('📜 Loading masters education...');
         content = getMastersEducation();
       }
     }
     
     // 결과 설정
     if (content) {
-      console.log('✅ Education loaded successfully!');
-      console.log('   Content type:', typeof content);
-      console.log('   Content length:', content.length);
-      console.log('   Preview:', content.substring(0, 80) + '...');
-      console.log('   Setting educationText to:', content);
+      // console.log('✅ Education loaded successfully!');
+      // console.log('   Content type:', typeof content);
+      // console.log('   Content length:', content.length);
+      // console.log('   Preview:', content.substring(0, 80) + '...');
+      // console.log('   Setting educationText to:', content);
       setEducationText(content);
-      console.log('   ✅ setEducationText called');
+      // console.log('   ✅ setEducationText called');
     } else {
       console.error('❌ No education content found!');
       const fallback = getFallbackMessage();
-      console.log('   Using fallback:', fallback);
+      // console.log('   Using fallback:', fallback);
       setEducationText(fallback);
     }
     
-    console.log('   Setting isLoadingEducation to false');
+    // console.log('   Setting isLoadingEducation to false');
     setIsLoadingEducation(false);
-    console.log('🏁 Loading complete');
-    console.log('');
+    // console.log('🏁 Loading complete');
+    // console.log('');
   };
 
 
@@ -379,14 +379,14 @@ const ResultScreen = ({
     const category = selectedStyle.category;
     const artistSource = overrideArtist || aiSelectedArtist;
     
-    console.log('');
-    console.log('========================================');
-    console.log('🎨 MOVEMENTS EDUCATION (v52):');
-    console.log('========================================');
-    console.log('   - category:', category);
-    console.log('   - artistSource:', artistSource);
-    console.log('========================================');
-    console.log('');
+    // console.log('');
+    // console.log('========================================');
+    // console.log('🎨 MOVEMENTS EDUCATION (v52):');
+    // console.log('========================================');
+    // console.log('   - category:', category);
+    // console.log('   - artistSource:', artistSource);
+    // console.log('========================================');
+    // console.log('');
     
     // 화가 이름 정규화
     let artistName = (artistSource || '')
@@ -394,7 +394,7 @@ const ResultScreen = ({
       .trim();
     
     if (!artistName) {
-      console.log('⚠️ No artist name provided');
+      // console.log('⚠️ No artist name provided');
       return null;
     }
     
@@ -431,8 +431,8 @@ const ResultScreen = ({
     patterns.push(normalize(words[0].toLowerCase()));
     patterns.push(normalize(artistName.toLowerCase()));
     
-    console.log('   - trying patterns:', patterns);
-    console.log('');
+    // console.log('   - trying patterns:', patterns);
+    // console.log('');
     
     // 각 패턴으로 매칭 시도
     let education = null;
@@ -447,24 +447,24 @@ const ResultScreen = ({
     }
     
     if (education && education.description) {
-      console.log('✅ Found artist education with pattern:', matchedPattern);
-      console.log('✅ Original name:', artistName);
-      console.log('✅ Matched key:', matchedPattern);
-      console.log('✅ description length:', education.description.length);
-      console.log('========================================');
-      console.log('');
+      // console.log('✅ Found artist education with pattern:', matchedPattern);
+      // console.log('✅ Original name:', artistName);
+      // console.log('✅ Matched key:', matchedPattern);
+      // console.log('✅ description length:', education.description.length);
+      // console.log('========================================');
+      // console.log('');
       return education.description;
     }
     
-    console.log('⚠️ No artist education found for:', artistName);
-    console.log('⚠️ Tried patterns:', patterns);
-    console.log('⚠️ Available keys (first 15):', Object.keys(movementsEducation).slice(0, 15));
-    console.log('========================================');
-    console.log('');
+    // console.log('⚠️ No artist education found for:', artistName);
+    // console.log('⚠️ Tried patterns:', patterns);
+    // console.log('⚠️ Available keys (first 15):', Object.keys(movementsEducation).slice(0, 15));
+    // console.log('========================================');
+    // console.log('');
     
     // Fallback: 1차 교육 사용
     if (movementsOverview && movementsOverview[category]) {
-      console.log('📚 Using 1st education as fallback for category:', category);
+      // console.log('📚 Using 1st education as fallback for category:', category);
       return movementsOverview[category].desc;
     }
     
@@ -477,35 +477,35 @@ const ResultScreen = ({
     const artistSource = overrideArtist || aiSelectedArtist || selectedStyle.name || '';
     const artist = artistSource.replace(/\s*\([^)]*\)/g, '').trim();
     
-    console.log('');
-    console.log('========================================');
-    console.log('🎨 MASTERS EDUCATION (v62 화풍별):');
-    console.log('========================================');
-    console.log('   - artistSource:', artistSource);
-    console.log('   - normalized artist:', artist);
-    console.log('   - selectedStyle.id:', selectedStyle?.id);
-    console.log('========================================');
-    console.log('');
+    // console.log('');
+    // console.log('========================================');
+    // console.log('🎨 MASTERS EDUCATION (v62 화풍별):');
+    // console.log('========================================');
+    // console.log('   - artistSource:', artistSource);
+    // console.log('   - normalized artist:', artist);
+    // console.log('   - selectedStyle.id:', selectedStyle?.id);
+    // console.log('========================================');
+    // console.log('');
     
     // ========== 2차 교육자료 (화풍 설명) ==========
     // selectedStyle.id에서 masterId 추출하여 검색 (v62 신규)
     const styleId = selectedStyle?.id || '';
     const masterId = styleId.replace('-master', ''); // 'vangogh-master' → 'vangogh'
     
-    console.log('🎯 Trying 2nd education with masterId:', masterId);
+    // console.log('🎯 Trying 2nd education with masterId:', masterId);
     
     if (masterId && mastersEducation[masterId]) {
       const education = mastersEducation[masterId];
-      console.log('✅ Found 2nd education (화풍 설명)!');
-      console.log('   - title:', education.title);
-      console.log('   - desc length:', education.desc?.length);
+      // console.log('✅ Found 2nd education (화풍 설명)!');
+      // console.log('   - title:', education.title);
+      // console.log('   - desc length:', education.desc?.length);
       return education.desc;
     }
     
     // ========== 2차 교육자료 (개별 작품) - 레거시 지원 ==========
     // aiSelectedWork가 있으면 해당 작품 키로 검색 (기존 로직 유지)
     if (aiSelectedWork) {
-      console.log('🎯 Trying 2nd education with selected_work:', aiSelectedWork);
+      // console.log('🎯 Trying 2nd education with selected_work:', aiSelectedWork);
       
       // 작품명 → mastersEducation 키 매핑
       const workKeyMap = {
@@ -616,17 +616,17 @@ const ResultScreen = ({
         }
       }
       
-      console.log('   - workKey:', workKey);
+      // console.log('   - workKey:', workKey);
       
       if (workKey && mastersEducation[workKey]) {
         const education = mastersEducation[workKey];
-        console.log('✅ Found 2nd education (개별 작품)!');
-        console.log('   - title:', education.title);
-        console.log('   - desc length:', education.desc?.length);
+        // console.log('✅ Found 2nd education (개별 작품)!');
+        // console.log('   - title:', education.title);
+        // console.log('   - desc length:', education.desc?.length);
         return education.desc;
       }
       
-      console.log('⚠️ 2nd education not found, falling back to 1st');
+      // console.log('⚠️ 2nd education not found, falling back to 1st');
     }
     
     // ========== 1차 교육자료 (거장 개요) ==========
@@ -676,18 +676,18 @@ const ResultScreen = ({
       }
     }
     
-    console.log('   - masterKey:', masterKey);
+    // console.log('   - masterKey:', masterKey);
     
     if (masterKey && mastersEducation[masterKey]) {
       const education = mastersEducation[masterKey];
-      console.log('✅ Found 1st education (거장 개요)!');
-      console.log('   - title:', education.title);
-      console.log('   - desc length:', education.desc?.length);
+      // console.log('✅ Found 1st education (거장 개요)!');
+      // console.log('   - title:', education.title);
+      // console.log('   - desc length:', education.desc?.length);
       return education.desc;
     }
     
-    console.log('⚠️ Masters education not found for:', artist);
-    console.log('');
+    // console.log('⚠️ Masters education not found for:', artist);
+    // console.log('');
     
     return null;
   };
@@ -1206,8 +1206,8 @@ const ResultScreen = ({
     if (!artistName) return '예술 스타일';
     
     const normalized = artistName.toLowerCase().trim();
-    console.log('🎨 formatArtistName input:', artistName);
-    console.log('🎨 formatArtistName normalized:', normalized);
+    // console.log('🎨 formatArtistName input:', artistName);
+    // console.log('🎨 formatArtistName normalized:', normalized);
     
     // 영문 이름 → 한글 풀네임(Full Name) 매핑
     const nameMap = {
@@ -1417,20 +1417,20 @@ const ResultScreen = ({
     
     // 매핑에서 찾기
     if (nameMap[normalized]) {
-      console.log('🎨 formatArtistName found:', nameMap[normalized]);
+      // console.log('🎨 formatArtistName found:', nameMap[normalized]);
       return nameMap[normalized];
     }
     
     // 부분 매칭 시도 (대문자/공백 변형 대응)
     for (const [key, value] of Object.entries(nameMap)) {
       if (normalized.replace(/[\s-_]/g, '') === key.replace(/[\s-_]/g, '')) {
-        console.log('🎨 formatArtistName partial match:', value);
+        // console.log('🎨 formatArtistName partial match:', value);
         return value;
       }
     }
     
     // 매핑에 없으면 원본 반환
-    console.log('🎨 formatArtistName NOT FOUND, returning original:', artistName);
+    // console.log('🎨 formatArtistName NOT FOUND, returning original:', artistName);
     return artistName;
   };
 
@@ -1500,55 +1500,55 @@ const ResultScreen = ({
     const styleId = selectedStyle.id;
     const artistSource = overrideArtist || aiSelectedArtist;
     
-    console.log('');
-    console.log('========================================');
-    console.log('🔍 ORIENTAL EDUCATION DEBUG (v30)');
-    console.log('========================================');
-    console.log('📌 selectedStyle.id:', styleId);
-    console.log('📌 artistSource:', artistSource);
-    console.log('========================================');
-    console.log('');
+    // console.log('');
+    // console.log('========================================');
+    // console.log('🔍 ORIENTAL EDUCATION DEBUG (v30)');
+    // console.log('========================================');
+    // console.log('📌 selectedStyle.id:', styleId);
+    // console.log('📌 artistSource:', artistSource);
+    // console.log('========================================');
+    // console.log('');
     
     
     // ========== 한국 전통회화 (3가지) ==========
     if (styleId === 'korean') {
       const genre = artistSource?.toLowerCase() || '';
-      console.log('🇰🇷 KOREAN ART DETECTION:');
-      console.log('   - genre string:', genre);
-      console.log('');
+      // console.log('🇰🇷 KOREAN ART DETECTION:');
+      // console.log('   - genre string:', genre);
+      // console.log('');
       
       // 민화
       if (genre.includes('minhwa') || genre.includes('민화')) {
-        console.log('✅ MATCH: Korean Minhwa (민화)');
-        console.log('========================================');
-        console.log('');
+        // console.log('✅ MATCH: Korean Minhwa (민화)');
+        // console.log('========================================');
+        // console.log('');
         return orientalEducation.korean_minhwa?.description 
             || orientalEducation.korean?.description;
       } 
       
       // 풍속화
       else if (genre.includes('genre') || genre.includes('풍속') || genre.includes('pungsokdo') || genre.includes('풍속도')) {
-        console.log('✅ MATCH: Korean Genre Painting (풍속화)');
-        console.log('========================================');
-        console.log('');
+        // console.log('✅ MATCH: Korean Genre Painting (풍속화)');
+        // console.log('========================================');
+        // console.log('');
         return orientalEducation.korean_genre?.description 
             || orientalEducation.korean?.description;
       } 
       
       // 진경산수화
       else if (genre.includes('jingyeong') || genre.includes('진경') || genre.includes('landscape')) {
-        console.log('✅ MATCH: Korean True-View Landscape (진경산수화)');
-        console.log('========================================');
-        console.log('');
+        // console.log('✅ MATCH: Korean True-View Landscape (진경산수화)');
+        // console.log('========================================');
+        // console.log('');
         return orientalEducation.korean_jingyeong?.description 
             || orientalEducation.korean_default?.description;
       }
       
       // 기본값 (매칭 실패시)
       else {
-        console.log('⚠️ DEFAULT: Korean Traditional Painting (한국 전통회화)');
-        console.log('========================================');
-        console.log('');
+        // console.log('⚠️ DEFAULT: Korean Traditional Painting (한국 전통회화)');
+        // console.log('========================================');
+        // console.log('');
         return orientalEducation.korean_default?.description;
       }
     }
@@ -1557,42 +1557,42 @@ const ResultScreen = ({
     // ========== 중국 전통회화 (3가지) ==========
     if (styleId === 'chinese') {
       const artist = aiSelectedArtist?.toLowerCase() || '';
-      console.log('🇨🇳 CHINESE ART DETECTION:');
-      console.log('   - artist string:', artist);
-      console.log('');
+      // console.log('🇨🇳 CHINESE ART DETECTION:');
+      // console.log('   - artist string:', artist);
+      // console.log('');
       
       // 공필화
       if (artist.includes('gongbi') || artist.includes('공필')) {
-        console.log('✅ MATCH: Chinese Gongbi (工筆畫)');
-        console.log('========================================');
-        console.log('');
+        // console.log('✅ MATCH: Chinese Gongbi (工筆畫)');
+        // console.log('========================================');
+        // console.log('');
         return orientalEducation.chinese_gongbi?.description 
             || orientalEducation.chinese_ink?.description;
       } 
       
       // 화조화
       else if (artist.includes('huaniao') || artist.includes('화조') || artist.includes('flower') || artist.includes('bird')) {
-        console.log('✅ MATCH: Chinese Huaniao (花鳥畫)');
-        console.log('========================================');
-        console.log('');
+        // console.log('✅ MATCH: Chinese Huaniao (花鳥畫)');
+        // console.log('========================================');
+        // console.log('');
         return orientalEducation.chinese_huaniao?.description 
             || orientalEducation.chinese_default?.description;
       }
       
       // 수묵화
       else if (artist.includes('ink') || artist.includes('수묵') || artist.includes('wash')) {
-        console.log('✅ MATCH: Chinese Ink Wash (水墨畫)');
-        console.log('========================================');
-        console.log('');
+        // console.log('✅ MATCH: Chinese Ink Wash (水墨畫)');
+        // console.log('========================================');
+        // console.log('');
         return orientalEducation.chinese_ink?.description 
             || orientalEducation.chinese_default?.description;
       }
       
       // 기본값 (매칭 실패시)
       else {
-        console.log('⚠️ DEFAULT: Chinese Traditional Painting (중국 전통회화)');
-        console.log('========================================');
-        console.log('');
+        // console.log('⚠️ DEFAULT: Chinese Traditional Painting (중국 전통회화)');
+        // console.log('========================================');
+        // console.log('');
         return orientalEducation.chinese_default?.description;
       }
     }
@@ -1600,18 +1600,18 @@ const ResultScreen = ({
     
     // ========== 일본 전통회화 (1가지) ==========
     if (styleId === 'japanese') {
-      console.log('🇯🇵 JAPANESE ART DETECTION:');
-      console.log('✅ MATCH: Japanese Ukiyo-e (浮世繪)');
-      console.log('========================================');
-      console.log('');
+      // console.log('🇯🇵 JAPANESE ART DETECTION:');
+      // console.log('✅ MATCH: Japanese Ukiyo-e (浮世繪)');
+      // console.log('========================================');
+      // console.log('');
       return orientalEducation.japanese_ukiyoe?.description 
           || orientalEducation.japanese_default?.description;
     }
     
     
-    console.log('⚠️ NO MATCH - Returning null');
-    console.log('========================================');
-    console.log('');
+    // console.log('⚠️ NO MATCH - Returning null');
+    // console.log('========================================');
+    // console.log('');
     return null;
   };
 
@@ -1690,7 +1690,7 @@ const ResultScreen = ({
       }
     } catch (error) {
       if (error.name !== 'AbortError') {
-        console.log('Share failed:', error);
+        // console.log('Share failed:', error);
       }
     }
   };
@@ -1860,12 +1860,12 @@ const ResultScreen = ({
             {/* Card Content */}
             <div className="card-content">
               {(() => {
-                console.log('');
-                console.log('🖼️ RENDERING EDUCATION CONTENT:');
-                console.log('   - isLoadingEducation:', isLoadingEducation);
-                console.log('   - educationText:', educationText);
-                console.log('   - educationText length:', educationText?.length);
-                console.log('');
+                // console.log('');
+                // console.log('🖼️ RENDERING EDUCATION CONTENT:');
+                // console.log('   - isLoadingEducation:', isLoadingEducation);
+                // console.log('   - educationText:', educationText);
+                // console.log('   - educationText length:', educationText?.length);
+                // console.log('');
                 return null;
               })()}
               {isLoadingEducation ? (

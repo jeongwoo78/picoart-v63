@@ -138,16 +138,16 @@ const ProcessingScreen = ({ photo, selectedStyle, onComplete }) => {
 
   // 원클릭 1차 교육 (분리된 파일에서 가져오기)
   const getPrimaryEducation = () => {
-    console.log('🎓 getPrimaryEducation called, category:', category);
+    // console.log('🎓 getPrimaryEducation called, category:', category);
     
     if (category === 'movements') {
-      console.log('🎓 Using oneclickMovementsPrimary');
+      // console.log('🎓 Using oneclickMovementsPrimary');
       return { ...oneclickMovementsPrimary, title: '2,500년 서양미술사 관통' };
     } else if (category === 'masters') {
-      console.log('🎓 Using oneclickMastersPrimary');
+      // console.log('🎓 Using oneclickMastersPrimary');
       return oneclickMastersPrimary;
     } else if (category === 'oriental') {
-      console.log('🎓 Using oneclickOrientalPrimary');
+      // console.log('🎓 Using oneclickOrientalPrimary');
       return oneclickOrientalPrimary;
     }
     return null;
@@ -559,14 +559,14 @@ const ProcessingScreen = ({ photo, selectedStyle, onComplete }) => {
     const workName = result.selected_work || '';
     const resultCategory = result.style?.category;
     
-    console.log('🎓 getSecondaryEducation (ProcessingScreen v51):');
-    console.log('   - artistName:', artistName);
-    console.log('   - workName:', workName);
-    console.log('   - category:', resultCategory);
+    // console.log('🎓 getSecondaryEducation (ProcessingScreen v51):');
+    // console.log('   - artistName:', artistName);
+    // console.log('   - workName:', workName);
+    // console.log('   - category:', resultCategory);
     
     // v51: educationMatcher.js 사용 (ResultScreen과 동일)
     const key = getEducationKey(resultCategory, artistName, workName);
-    console.log('   - matched key:', key);
+    // console.log('   - matched key:', key);
     
     if (key) {
       // 교육자료 데이터 객체 구성
@@ -576,20 +576,20 @@ const ProcessingScreen = ({ photo, selectedStyle, onComplete }) => {
         oriental: oneclickOrientalSecondary
       };
       
-      console.log('📦 educationData constructed:');
-      console.log('   - masters keys:', Object.keys(oneclickMastersSecondary || {}).slice(0, 5));
-      console.log('   - checking key:', key, 'in category:', resultCategory);
+      // console.log('📦 educationData constructed:');
+      // console.log('   - masters keys:', Object.keys(oneclickMastersSecondary || {}).slice(0, 5));
+      // console.log('   - checking key:', key, 'in category:', resultCategory);
       
       // 직접 확인
       if (resultCategory === 'masters') {
-        console.log('   - direct check:', oneclickMastersSecondary?.[key] ? 'EXISTS' : 'NOT FOUND');
+        // console.log('   - direct check:', oneclickMastersSecondary?.[key] ? 'EXISTS' : 'NOT FOUND');
       }
       
       const content = getEducationContent(resultCategory, key, educationData);
-      console.log('   - getEducationContent returned:', content ? 'HAS CONTENT' : 'NULL');
+      // console.log('   - getEducationContent returned:', content ? 'HAS CONTENT' : 'NULL');
       
       if (content) {
-        console.log('✅ Found education content for:', key);
+        // console.log('✅ Found education content for:', key);
         // 교육자료 파일에서 name 가져오기
         let eduName = artistName;
         if (resultCategory === 'masters' && oneclickMastersSecondary[key]) {
@@ -603,7 +603,7 @@ const ProcessingScreen = ({ photo, selectedStyle, onComplete }) => {
       }
     }
     
-    console.log('❌ No education found');
+    // console.log('❌ No education found');
     return null;
   };
 

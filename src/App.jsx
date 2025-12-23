@@ -44,10 +44,10 @@ const App = () => {
       setResultImage(null);
       setAiSelectedArtist(null);
       setAiSelectedWork(null);
-      console.log('✅ App.jsx received fullTransform results:', result.results.length);
+      // console.log('✅ App.jsx received fullTransform results:', result.results.length);
       // 디버그: 각 결과의 aiSelectedArtist 확인
       result.results.forEach((r, i) => {
-        console.log(`📦 Result[${i}]:`, {
+        // console.log(`📦 Result[${i}]:`, {
           style: r.style?.name,
           success: r.success,
           aiSelectedArtist: r.aiSelectedArtist,
@@ -62,15 +62,15 @@ const App = () => {
       
       if (result && result.aiSelectedArtist) {
         setAiSelectedArtist(result.aiSelectedArtist);
-        console.log('✅ App.jsx received aiSelectedArtist:', result.aiSelectedArtist);
+        // console.log('✅ App.jsx received aiSelectedArtist:', result.aiSelectedArtist);
       } else {
         setAiSelectedArtist(null);
-        console.log('⚠️ No aiSelectedArtist in result:', result);
+        // console.log('⚠️ No aiSelectedArtist in result:', result);
       }
       
       if (result && result.selected_work) {
         setAiSelectedWork(result.selected_work);
-        console.log('✅ App.jsx received selected_work:', result.selected_work);
+        // console.log('✅ App.jsx received selected_work:', result.selected_work);
       } else {
         setAiSelectedWork(null);
       }
