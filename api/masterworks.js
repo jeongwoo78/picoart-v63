@@ -640,60 +640,60 @@ export const klimtMasterworks = {
 };
 
 // ========================================
-// 9. 표현주의 (4명)
+// 9. 표현주의 (3명) - 칸딘스키/쉴레 제외
 // 뭉크 4개 (거장 겸용)
 // ========================================
 
-// 뭉크 - 감정적 초상 (30%) - 4개 대표작
+// 뭉크 - 감정적 초상 (40%) - 4개 대표작
 export const munchMasterworks = {
   'munch-scream': {
     name: '절규',
     nameEn: 'The Scream',
-    prompt: ', Apply The Scream style by Edvard Munch with a skull-like figure holding hands on face. Create wavy distorted swirling lines throughout the entire scene including sky and water. Use a blood red and orange dramatic sunset with a bridge or railing setting showing extreme existential terror. Apply wavy distortion to the background with no smiling where expressions of fear are allowed. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply The Scream style by Edvard Munch with SKULL-LIKE figure holding hands on face. Create WAVY DISTORTED SWIRLING lines throughout sky and water with BLOOD RED ORANGE sunset on bridge. Show extreme existential terror with THICK BRUSHSTROKES 20mm+. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
     feature: '불안',
     expressionRule: 'fear/anxiety allowed, NO bright, NO smiling'
   },
   'munch-madonna': {
     name: '마돈나',
     nameEn: 'Madonna',
-    prompt: ', Apply Madonna style by Edvard Munch with a sensual female figure whose flowing dark hair spreads like a halo. Create a red aura glowing around the nude body with pale luminous skin showing a mysterious ecstatic expression with half-closed eyes. Use wavy flowing lines conveying mystical seduction with no bright smile and femme fatale power. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Madonna style by Edvard Munch with SENSUAL female figure whose FLOWING DARK HAIR spreads like halo. Create RED AURA glowing around pale luminous skin with mysterious ecstatic half-closed eyes. Use WAVY FLOWING LINES with THICK BRUSHSTROKES 20mm+. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
     feature: '신비/관능',
     expressionRule: 'ecstatic/mysterious allowed, NO bright, NO smiling'
   },
   'munch-jealousy': {
     name: '질투',
     nameEn: 'Jealousy',
-    prompt: ', Apply Jealousy style by Edvard Munch with a pale green sickly face in the foreground showing an intense haunted stare. Create psychological tension with a couple in the background where green symbolizes jealousy. Use wavy distorted lines showing emotional turmoil with visible thick Expressionist brushstrokes. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Jealousy style by Edvard Munch with PALE GREEN SICKLY face in foreground showing intense haunted stare. Create psychological tension with couple in background where GREEN symbolizes jealousy. Use WAVY DISTORTED LINES showing emotional turmoil with THICK BRUSHSTROKES 20mm+. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
     feature: '심리'
   },
   'munch-anxiety': {
     name: '불안',
     nameEn: 'Anxiety',
-    prompt: ', Apply Anxiety style by Edvard Munch with a group of figures showing pale anxious faces staring forward. Create wavy undulating lines in the sky and landscape with a blood red sunset sky like The Scream. Show a crowd walking on a path or bridge with collective existential dread using Expressionist thick brushwork and no smiling. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Anxiety style by Edvard Munch with GROUP of figures showing PALE ANXIOUS faces staring forward. Create WAVY UNDULATING lines in sky and landscape with BLOOD RED sunset. Show collective existential dread on path with THICK BRUSHSTROKES 20mm+. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
     feature: '군중/불안',
     expressionRule: 'anxiety/worry allowed, NO bright, NO smiling'
   }
 };
 
-// 코코슈카 - 심리적 초상 (30%)
+// 코코슈카 - 심리적 초상 (35%)
 export const kokoschkaMasterworks = {
   'kokoschka-bride': {
     name: '바람의 신부',
     nameEn: 'Bride of the Wind',
-    prompt: ', Apply Bride of the Wind style by Oskar Kokoschka with a couple in a turbulent cosmic landscape of swirling clouds and waves. Create intense psychological portraiture with violent thick brushstrokes of 30mm or thicker making inner emotional turmoil visible as lovers in a stormy universe. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '격정'
+    prompt: ', Apply Bride of the Wind style by Oskar Kokoschka with two lovers embracing in TURBULENT COSMIC SWIRLING clouds and waves. Create VIOLENT THICK BRUSHSTROKES 30mm+ with AGITATED NERVOUS energy. Show intense psychological portraiture with emotional turmoil visible in paint texture. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    feature: '격정, 폭풍'
   },
-  'kokoschka-alma': {
-    name: '알마 말러 초상',
-    nameEn: 'Portrait of Alma Mahler',
-    prompt: ', Apply Portrait style by Kokoschka with an intense psychological portrait showing penetrating inner vision. Use agitated nervous brushwork with turbulent emotional energy and very thick visible brushstrokes revealing the psyche with soul-revealing depth in Expressionist intensity. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '심리'
+  'kokoschka-degenerate': {
+    name: '퇴폐 미술가의 자화상',
+    nameEn: 'Self-Portrait of a Degenerate Artist',
+    prompt: ', Apply Self-Portrait of a Degenerate Artist style by Oskar Kokoschka (1937) with INTENSE DEFIANT self-portrait. Create TURBULENT THICK BRUSHSTROKES 30mm+ revealing inner resistance with BLUE GREEN OCHRE flesh tones. Show psychological vulnerability and artistic pride. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    feature: '저항, 자화상'
   },
-  'kokoschka-self': {
-    name: '자화상',
-    nameEn: 'Self-Portrait',
-    prompt: ', Apply Self-Portrait style by Kokoschka with haunted intense self-examination and violent thick brushwork revealing inner turmoil. Show psychological vulnerability exposed with visible agitated brushstrokes of 30mm or thicker in Expressionist raw honesty. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '내면'
+  'kokoschka-double': {
+    name: '2인 초상',
+    nameEn: 'Double Portrait',
+    prompt: ', Apply Double Portrait style by Oskar Kokoschka with TWO FIGURES in intimate psychological portrait. Create TURBULENT VISIBLE BRUSHSTROKES 30mm+ with WARM EARTH TONES and blue accents. Show AGITATED NERVOUS brushwork revealing inner connection between subjects. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    feature: '2인, 심리'
   }
 };
 
@@ -702,42 +702,20 @@ export const kirchnerMasterworks = {
   'kirchner-berlin': {
     name: '베를린 거리 풍경',
     nameEn: 'Berlin Street Scene',
-    prompt: ', Apply Berlin Street Scene style by Ernst Ludwig Kirchner with angular jagged urban figures in acid green and hot pink palette. Use harsh geometric forms showing city prostitutes in feathered hats with anxious urban tension. Create sharp angular outlines with electric blue accents using aggressive Expressionist brushwork. This must look like a real Expressionist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Berlin Street Scene style by Ernst Ludwig Kirchner with ANGULAR JAGGED urban figures. Use ACID GREEN HOT PINK ELECTRIC BLUE palette with MASK-LIKE SIMPLIFIED faces. Create city prostitutes in feathered hats with HARSH ANGULAR BRUSHSTROKES and urban tension. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
     feature: '도시'
   },
-  'kirchner-potsdamer': {
-    name: '포츠담 광장',
-    nameEn: 'Potsdamer Platz',
-    prompt: ', Apply Potsdamer Platz style by Kirchner with angular figures in an urban square showing jagged geometric forms. Use harsh Expressionist palette of acid green, hot pink and electric blue conveying city alienation. Create sharp outlines fragmenting forms with visible aggressive brushstrokes. This must look like a real Expressionist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '도시 광장'
+  'kirchner-soldier': {
+    name: '군인으로서의 자화상',
+    nameEn: 'Self-Portrait as a Soldier',
+    prompt: ', Apply Self-Portrait as a Soldier style by Ernst Ludwig Kirchner with ANGULAR figure in military uniform. Create SEVERED BLOODY STUMP where hand should be holding cigarette. Use ACID GREEN HOT PINK ELECTRIC BLUE palette with MASK-LIKE face showing psychological trauma. Show nude figure in background with war horror atmosphere. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    feature: '군복, 트라우마'
   },
-  'kirchner-mirror': {
-    name: '거울 앞 자화상',
-    nameEn: 'Self-Portrait in Front of Mirror',
-    prompt: ', Apply Self-Portrait style by Kirchner with an angular self-portrait showing harsh geometric forms. Use bold Expressionist colors with jagged outlines and psychological intensity. Create mirror doubling with visible aggressive brushwork in Die Brücke aesthetic. This must look like a real Expressionist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '각진 자화상'
-  }
-};
-
-// 칸딘스키 - 추상 (15%)
-export const kandinskyMasterworks = {
-  'kandinsky-composition8': {
-    name: '구성 VIII',
-    nameEn: 'Composition VIII',
-    prompt: ', Apply Composition VIII style by Wassily Kandinsky with abstract geometric forms floating on a light background. Create circles, triangles and lines in dynamic arrangement using primary colors plus black. Capture musical visual rhythm with spiritual abstract expression and visible paint texture. This must look like a real abstract hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '추상'
-  },
-  'kandinsky-yellow-red-blue': {
-    name: '노랑-빨강-파랑',
-    nameEn: 'Yellow-Red-Blue',
-    prompt: ', Apply Yellow-Red-Blue style by Kandinsky with an abstract color composition divided into warm yellow and cool blue zones. Create geometric and biomorphic forms interacting with pure emotional color expression. Capture musical harmony in paint with visible brushwork. This must look like a real abstract hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '추상 색채'
-  },
-  'kandinsky-circles': {
-    name: '여러 개의 원',
-    nameEn: 'Several Circles',
-    prompt: ', Apply Several Circles style by Kandinsky with floating circles of various sizes on a dark background. Create a cosmic abstract composition with overlapping transparent color circles in spiritual geometric harmony and meditative abstract expression. This must look like a real abstract hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '추상 원'
+  'kirchner-oldwomen': {
+    name: '세 명의 노부인들',
+    nameEn: 'Three Old Women',
+    prompt: ', Apply Three Old Women style by Ernst Ludwig Kirchner with THREE ANGULAR figures in BLACK CLOTHING. Create green mountainous landscape with dark cypress trees. Use MASK-LIKE SIMPLIFIED faces in BLUE PINK flesh tones with HARSH ANGULAR BRUSHSTROKES. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    feature: '검은 옷, 풍경'
   }
 };
 
@@ -974,28 +952,6 @@ export const friedrichMasterworks = {
     nameEn: 'Abbey in the Oakwood',
     prompt: ', Apply Abbey in the Oakwood style by Friedrich with a ruined Gothic abbey in winter surrounded by bare twisted oak trees and a funeral procession of monks. Create misty melancholic atmosphere evoking death and spiritual transcendence. Use a pale cold palette showing Romantic sublime decay with haunting desolate beauty. This must look like a real Romantic hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
     feature: '폐허, 죽음'
-  }
-};
-
-// 쉴레
-export const schieleMasterworks = {
-  'schiele-selfportrait': {
-    name: '자화상',
-    nameEn: 'Self-Portrait',
-    prompt: ', Apply Self-Portrait style by Egon Schiele with a contorted angular pose and twisted limbs using sharp wiry contour lines. Create raw psychological intensity with exposed vulnerable body in earthy muted colors with areas of bare canvas. Use expressive distortion with confrontational direct gaze showing Expressionist anguish. This must look like a real Expressionist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '자화상, 왜곡'
-  },
-  'schiele-embrace': {
-    name: '포옹',
-    nameEn: 'The Embrace',
-    prompt: ', Apply The Embrace style by Egon Schiele with intertwined angular bodies of lovers in desperate embrace. Create sharp contour lines defining twisted forms with raw erotic tension. Use pale flesh with red accents showing psychological intensity with visible bare canvas and Expressionist passion and vulnerability. This must look like a real Expressionist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '포옹, 에로틱'
-  },
-  'schiele-deathandmaiden': {
-    name: '죽음과 소녀',
-    nameEn: 'Death and the Maiden',
-    prompt: ', Apply Death and the Maiden style by Schiele with a couple embracing including a death figure with angular distorted bodies. Create existential terror and desire with dark earth tones and pale flesh. Use sharp expressive contours showing psychological drama with Expressionist confrontation with mortality and raw emotional power. This must look like a real Expressionist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '죽음, 비극'
   }
 };
 
@@ -1239,8 +1195,6 @@ export const allMovementMasterworks = {
   ...munchMasterworks,
   ...kokoschkaMasterworks,
   ...kirchnerMasterworks,
-  ...kandinskyMasterworks,
-  ...schieleMasterworks,
   // 모더니즘 피카소/프리다 워홀 포함
   ...picassoMasterworks,
   ...fridaMasterworks,
@@ -1317,10 +1271,8 @@ export function getArtistMasterworkList(artistKey) {
     'klimt': ['klimt-kiss', 'klimt-judith', 'klimt-treeoflife'],
     // 표현주의
     'munch': ['munch-scream', 'munch-madonna', 'munch-jealousy', 'munch-anxiety'],
-    'kokoschka': ['kokoschka-bride', 'kokoschka-alma', 'kokoschka-self'],
-    'kirchner': ['kirchner-berlin', 'kirchner-potsdamer', 'kirchner-mirror'],
-    'kandinsky': ['kandinsky-composition8', 'kandinsky-yellow-red-blue', 'kandinsky-circles'],
-    'schiele': ['schiele-selfportrait', 'schiele-embrace', 'schiele-deathandmaiden'],
+    'kokoschka': ['kokoschka-bride', 'kokoschka-degenerate', 'kokoschka-double'],
+    'kirchner': ['kirchner-berlin', 'kirchner-soldier', 'kirchner-oldwomen'],
     // 모더니즘 피카소/프리다 워홀 포함
     'picasso': ['picasso-demoiselles', 'picasso-guernica'],
     'frida': ['frida-parrots', 'frida-thornnecklace', 'frida-monkeys', 'frida-diegoandi'],
@@ -1370,7 +1322,7 @@ const MOVEMENT_ARTISTS = {
   'impressionism': ['renoir', 'degas', 'monet', 'caillebotte'],
   'postImpressionism': ['vangogh', 'gauguin', 'cezanne', 'signac'],
   'fauvism': ['matisse', 'derain', 'vlaminck'],
-  'expressionism': ['munch', 'kokoschka', 'kirchner', 'kandinsky', 'schiele'],
+  'expressionism': ['munch', 'kokoschka', 'kirchner'],
   'modernism': ['picasso', 'frida', 'warhol', 'magritte', 'miro', 'chagall', 'lichtenstein', 'haring'],
   'renaissance': ['botticelli', 'leonardo', 'titian', 'michelangelo', 'raphael'],
   'baroque': ['caravaggio', 'rubens', 'rembrandt', 'velazquez'],
@@ -1452,8 +1404,6 @@ console.log(`   ── 표현주의 ──`);
 console.log(`   - Munch, ${Object.keys(munchMasterworks).length} works ⭐`);
 console.log(`   - Kokoschka, ${Object.keys(kokoschkaMasterworks).length} works`);
 console.log(`   - Kirchner, ${Object.keys(kirchnerMasterworks).length} works`);
-console.log(`   - Kandinsky, ${Object.keys(kandinskyMasterworks).length} works`);
-console.log(`   - Schiele, ${Object.keys(schieleMasterworks).length} works 🆕`);
 console.log(`   ── 모더니즘 (거장 포함) ──`);
 console.log(`   - Picasso, ${Object.keys(picassoMasterworks).length} works ⭐🆕`);
 console.log(`   - Frida, ${Object.keys(fridaMasterworks).length} works ⭐🆕`);

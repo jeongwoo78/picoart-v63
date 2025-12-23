@@ -129,9 +129,7 @@ export const ARTIST_STYLES = {
   
   'kokoschka': GENDER_RULE + 'Transform this into an oil painting by Oskar Kokoschka, Kokoschka Expressionist art style, with violent psychological portraits and turbulent visible brushwork revealing inner turmoil. Capture intense probing character study with thick expressive paint application and agitated nervous energy showing deep emotional excavation. Include very thick visible brushstrokes of 20mm or thicker.' + PAINT_TEXTURE,
   
-  'kandinsky': GENDER_RULE + 'Transform this into an oil painting by Wassily Kandinsky, Kandinsky Expressionist art style, with abstract spiritual forms and floating geometric shapes. Capture Composition series style non-representational expression with pure emotional color and form. Create musical visual harmonies with dynamic abstract energy and visible paint texture. Include visible brushstrokes.' + PAINT_TEXTURE,
   
-  'schiele': GENDER_RULE + 'Transform this into an oil painting by Egon Schiele, Schiele Expressionist art style, with contorted angular figures and raw expressive line work. Capture exposed vulnerability and psychological intensity with pale sickly flesh and sharp angular poses. Apply bold outlines defining twisted forms with unflinching self-examination and Expressionist eroticism and death themes. Use visible brushwork. Include very thick visible brushstrokes of 20mm or thicker.' + PAINT_TEXTURE,
 
   // ========================================
   // 🎪 모더니즘 (Modernism)
@@ -243,8 +241,6 @@ export function getArtistStyleByName(artistName) {
     'MUNCH': 'munch', '뭉크': 'munch',
     'KIRCHNER': 'kirchner', '키르히너': 'kirchner',
     'KOKOSCHKA': 'kokoschka', '코코슈카': 'kokoschka',
-    'KANDINSKY': 'kandinsky', '칸딘스키': 'kandinsky',
-    'SCHIELE': 'schiele', '쉴레': 'schiele',
     
     // 모더니즘
     'PICASSO': 'picasso', '피카소': 'picasso',

@@ -657,31 +657,22 @@ const ARTIST_WEIGHTS = {
     ]
   },
   
-  // 표현주의 (4명)
+  // 표현주의 (3명) - 칸딘스키 제외
   expressionism: {
     portrait: [
-      { name: 'MUNCH', weight: 30 },
-      { name: 'KOKOSCHKA', weight: 30 },
-      { name: 'KIRCHNER', weight: 25 },
-      { name: 'KANDINSKY', weight: 15 }
+      { name: 'MUNCH', weight: 40 },
+      { name: 'KOKOSCHKA', weight: 35 },
+      { name: 'KIRCHNER', weight: 25 }
     ],
     urban: [
-      { name: 'KIRCHNER', weight: 45 },
-      { name: 'KOKOSCHKA', weight: 25 },
-      { name: 'MUNCH', weight: 20 },
-      { name: 'KANDINSKY', weight: 10 }
-    ],
-    abstract: [
-      { name: 'KANDINSKY', weight: 60 },
-      { name: 'KIRCHNER', weight: 20 },
-      { name: 'MUNCH', weight: 10 },
-      { name: 'KOKOSCHKA', weight: 10 }
+      { name: 'KIRCHNER', weight: 50 },
+      { name: 'KOKOSCHKA', weight: 30 },
+      { name: 'MUNCH', weight: 20 }
     ],
     default: [
-      { name: 'MUNCH', weight: 30 },
-      { name: 'KOKOSCHKA', weight: 30 },
-      { name: 'KIRCHNER', weight: 25 },
-      { name: 'KANDINSKY', weight: 15 }
+      { name: 'MUNCH', weight: 40 },
+      { name: 'KOKOSCHKA', weight: 35 },
+      { name: 'KIRCHNER', weight: 25 }
     ]
   }
 };
@@ -814,10 +805,6 @@ function selectArtistByWeight(category, photoAnalysis) {
     // 도시/도심 → 키르히너
     if (background.includes('city') || background.includes('urban') || background.includes('street')) {
       return weightedRandomSelect(weights.urban);
-    }
-    // 추상적 → 칸딘스키
-    if (subject.includes('abstract') || subject.includes('spiritual')) {
-      return weightedRandomSelect(weights.abstract);
     }
   }
   
@@ -1831,7 +1818,6 @@ Available Expressionism Artists (4명):
    - Signature: "Street Scenes" - angular urban life
    - When to prioritize: Urban/city backgrounds or angular aesthetic (25%)
 
-4. KANDINSKY (칸딘스키) ⭐⭐ (15%)
    - Specialty: Abstract expressionism, spiritual compositions, pure color emotion
    - Best for: Abstract interpretation, spiritual atmosphere, emotional abstraction
    - Signature: "Compositions" - non-representational emotional color
@@ -1879,7 +1865,6 @@ Street scenes and angular expressionism specialty.
 `;
   }
   
-  // 추상적 → 칸딘스키 (15%)
   if (subject === 'abstract' || subject === 'unclear' || mood === 'spiritual') {
     return `
 🎯 RECOMMENDATION: KANDINSKY (15%)
@@ -1906,7 +1891,7 @@ function getModernismGuidelines() {
 YOU MUST ONLY SELECT FROM THE 7 ARTISTS LISTED BELOW!
 DO NOT select artists from other movements (Expressionism, Fauvism, Impressionism, etc.)
 ONLY these 7 artists: PICASSO, MAGRITTE, MIRÓ, CHAGALL, WARHOL, LICHTENSTEIN, HARING!
-⚠️ FORBIDDEN: Boccioni, Kandinsky, Mondrian, Man Ray, Dalí, Frida Kahlo, Braque, Munch, Matisse, etc.
+⚠️ FORBIDDEN: Boccioni, Mondrian, Man Ray, Dalí, Frida Kahlo, Braque, Munch, Matisse, etc.
 
 Available 20th Century Modernism Artists (7명):
 
@@ -3630,8 +3615,6 @@ export default async function handler(req, res) {
             'munch': 'munch', 'edvard munch': 'munch',
             'kokoschka': 'kokoschka', 'oskar kokoschka': 'kokoschka',
             'kirchner': 'kirchner', 'ernst ludwig kirchner': 'kirchner',
-            'kandinsky': 'kandinsky', 'wassily kandinsky': 'kandinsky',
-            'schiele': 'schiele', 'egon schiele': 'schiele',
             // 모더니즘 (피카소/프리다/워홀 포함)
             'picasso': 'picasso', 'pablo picasso': 'picasso',
             'frida': 'frida', 'frida kahlo': 'frida',
@@ -3773,14 +3756,16 @@ export default async function handler(req, res) {
           }
         }
         
-        // 카라바조 선택시 키아로스쿠로 강화
-        if (selectedArtist.toUpperCase().trim().includes('CARAVAGGIO')) {
+        // 카라바조 선택시 테네브리즘 강화
+        if (selectedArtist.toUpperCase().trim().includes('CARAVAGGIO') ||
+            selectedArtist.includes('카라바조')) {
           // console.log('🎯 Caravaggio detected');
-          if (!finalPrompt.includes('DRAMATIC chiaroscuro')) {
-            finalPrompt = finalPrompt + ', DRAMATIC chiaroscuro with extreme light-dark contrast, theatrical spotlight effect, deep black shadows, tenebrism technique';
-            // console.log('✅ Enhanced Caravaggio chiaroscuro added');
+          if (!finalPrompt.includes('TENEBRISM')) {
+            finalPrompt = finalPrompt + ', Apply Caravaggio style with CRITICAL TENEBRISM technique. Create 70% of canvas in PURE BLACK darkness with DRAMATIC SPOTLIGHT from single source. Show figure emerging from void with EXTREME light-dark contrast on face. Use deep rich blacks NOT grey, theatrical stage lighting against pitch black background. This must look like a real Baroque hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.';
+            controlStrength = 0.60;
+            // console.log('✅ Enhanced Caravaggio TENEBRISM (control_strength 0.60)');
           } else {
-            // console.log('ℹ️ Caravaggio chiaroscuro already in prompt');
+            // console.log('ℹ️ Caravaggio tenebrism already in prompt');
           }
         }
         
@@ -3789,19 +3774,22 @@ export default async function handler(req, res) {
             selectedArtist.includes('루벤스')) {
           // console.log('🎯 Rubens detected');
           if (!finalPrompt.includes('sensual flesh')) {
-            finalPrompt = finalPrompt + ', painting by Rubens: warm sensual flesh tones, dynamic swirling composition, rich warm palette, romantic intimate atmosphere';
-            // console.log('✅ Enhanced Rubens warmth added');
+            finalPrompt = finalPrompt + ', Apply Rubens style with WARM SENSUAL FLESH tones and luminous glowing skin. Create dynamic swirling composition full of movement with rich warm palette of reds golds and creams. Show voluptuous graceful forms with romantic intimate atmosphere and VISIBLE THICK BRUSHSTROKES. This must look like a real Baroque hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.';
+            controlStrength = 0.65;
+            // console.log('✅ Enhanced Rubens warmth added (control_strength 0.65)');
           } else {
             // console.log('ℹ️ Rubens warmth already in prompt');
           }
         }
         
         // 렘브란트 선택시 빛 강화
-        if (selectedArtist.toUpperCase().trim().includes('REMBRANDT')) {
+        if (selectedArtist.toUpperCase().trim().includes('REMBRANDT') ||
+            selectedArtist.includes('렘브란트')) {
           // console.log('🎯 Rembrandt detected');
           if (!finalPrompt.includes('golden luminous light')) {
-            finalPrompt = finalPrompt + ', MASTERFUL use of golden luminous light, warm glowing illumination, subtle light gradations, Rembrandt lighting';
-            // console.log('✅ Enhanced Rembrandt lighting added');
+            finalPrompt = finalPrompt + ', Apply Rembrandt style with MASTERFUL golden luminous light emerging from darkness. Create warm glowing illumination with subtle gradations and psychological depth revealing inner soul. Use rich impasto texture with VISIBLE THICK BRUSHSTROKES against dark background. This must look like a real Baroque hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.';
+            controlStrength = 0.60;
+            // console.log('✅ Enhanced Rembrandt lighting added (control_strength 0.60)');
           } else {
             // console.log('ℹ️ Rembrandt lighting already in prompt');
           }
@@ -3811,7 +3799,7 @@ export default async function handler(req, res) {
         if (selectedArtist.toUpperCase().trim().includes('TITIAN')) {
           // console.log('🎯 Titian detected');
           if (!finalPrompt.includes('Titian red')) {
-            finalPrompt = finalPrompt + ', painting by Titian: Venetian style with rich luminous colors, signature Titian red, warm golden atmosphere, glowing flesh tones';
+            finalPrompt = finalPrompt + ', Apply Titian style with Venetian rich luminous colors and signature Titian red. Create warm golden atmosphere with glowing flesh tones. This must look like a real Renaissance hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.';
             // console.log('✅ Enhanced Titian colors added');
           } else {
             // console.log('ℹ️ Titian colors already in prompt');
@@ -3822,7 +3810,7 @@ export default async function handler(req, res) {
         if (selectedArtist.toUpperCase().trim().includes('BOTTICELLI')) {
           // console.log('🎯 Botticelli detected');
           if (!finalPrompt.includes('Birth of Venus')) {
-            finalPrompt = finalPrompt + ', painting by Botticelli: Birth of Venus style with flowing graceful lines, wind-blown hair, soft pastel colors, ethereal lyrical beauty';
+            finalPrompt = finalPrompt + ', Apply Botticelli Birth of Venus style with flowing graceful lines and wind-blown hair. Use soft pastel colors with ethereal lyrical beauty. This must look like a real Renaissance hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.';
             // console.log('✅ Enhanced Botticelli grace added');
           } else {
             // console.log('ℹ️ Botticelli grace already in prompt');
@@ -3918,30 +3906,6 @@ export default async function handler(req, res) {
             // console.log('✅ Enhanced Signac pointillism added (control_strength 0.55)');
           } else {
             // console.log('ℹ️ Signac pointillism already in prompt (AI included it)');
-          }
-        }
-        
-        // 칸딘스키 선택시 추상 색채 강화
-        if (selectedArtist.toUpperCase().trim().includes('KANDINSKY')) {
-          // console.log('🎯 Kandinsky detected');
-          if (!finalPrompt.includes('abstract color explosion')) {
-            finalPrompt = finalPrompt + ', painting by Wassily Kandinsky, Composition VII-style pure abstract color explosion, SIMPLIFIED GEOMETRIC AND ORGANIC FORMS, NO fine realistic details, vibrant spiritual color harmonies of intense reds blues yellows and greens, dynamic geometric and organic shapes flowing like visual music, bold lines circles and triangles in rhythmic composition, FLAT COLOR AREAS, NOT photorealistic, completely non-representational pure color form and movement';
-            controlStrength = 0.50;
-            // console.log('✅ Enhanced Kandinsky abstract added (control_strength 0.50)');
-          } else {
-            // console.log('ℹ️ Kandinsky abstract already in prompt (AI included it)');
-          }
-        }
-        
-        // 실레 선택시 왜곡된 신체 강화
-        if (selectedArtist.toUpperCase().trim().includes('SCHIELE')) {
-          // console.log('🎯 Schiele detected');
-          if (!finalPrompt.includes('distorted angular')) {
-            finalPrompt = finalPrompt + ', painting by Egon Schiele, SIMPLIFIED ANGULAR FORMS with REDUCED FINE DETAILS, expressive figure-style distorted angular body forms with twisted contorted poses, sharp angular lines and exaggerated elongated limbs, raw psychological tension and erotic stark linearity, thin wiry contour lines with intense expressive distortion, earthy muted colors with areas of bare canvas showing, MASK-LIKE simplified facial features, NOT photorealistic NOT smooth, body feeling tortured and psychologically intense with extreme angular distortion';
-            controlStrength = 0.55;
-            // console.log('✅ Enhanced Schiele distortion added (control_strength 0.55)');
-          } else {
-            // console.log('ℹ️ Schiele distortion already in prompt (AI included it)');
           }
         }
         
@@ -4126,34 +4090,6 @@ export default async function handler(req, res) {
           }
         }
         
-        // 키르히너 선택시 도시 표현주의 강화
-        if (selectedArtist.toUpperCase().trim().includes('KIRCHNER') || 
-            selectedArtist.toUpperCase().trim().includes('ERNST LUDWIG')) {
-          // console.log('🎯 Kirchner detected');
-          if (!finalPrompt.includes('Street Scene')) {
-            finalPrompt = finalPrompt + ', painting by Ernst Ludwig Kirchner, Street Scene-style with ANGULAR JAGGED SIMPLIFIED FORMS and sharp splintered shapes, MASK-LIKE simplified facial features, harsh acidic colors of strident greens poisonous pinks and electric blues, elongated distorted figures, REDUCED FINE DETAILS, urban anxiety and metropolitan alienation, aggressive slashing brushstrokes with nervous energy, NOT photorealistic NOT smooth, psychological tension and modern neurosis, fragmented space with Cubist influence, raw primitive power meets city chaos';
-            controlStrength = 0.55;
-            // console.log('✅ Enhanced Kirchner urban angst added (control_strength 0.55)');
-          } else {
-            // console.log('ℹ️ Kirchner angst already in prompt (AI included it)');
-          }
-        }
-        
-        // 코코슈카 선택시 심리적 초상화 강화 (표현주의)
-        if (selectedArtist.toUpperCase().trim().includes('KOKOSCHKA') || 
-            selectedArtist.toUpperCase().trim().includes('OSKAR') ||
-            selectedArtist.includes('코코슈카') ||
-            selectedArtist.includes('오스카')) {
-          // console.log('🎯 Kokoschka detected');
-          if (!finalPrompt.includes('psychological')) {
-            finalPrompt = finalPrompt + ', painting by Oskar Kokoschka, VIOLENT PSYCHOLOGICAL PORTRAIT with SIMPLIFIED ANGULAR FORMS and MASK-LIKE distorted features, REDUCED FINE DETAILS, turbulent visible thick brushwork revealing inner turmoil, intense probing character study with agitated nervous energy, NOT photorealistic NOT smooth, deep emotional excavation with raw expressive paint application, earthy muted colors with flashes of intense hues, hands and face particularly expressive and distorted';
-            controlStrength = 0.55;
-            // console.log('✅ Enhanced Kokoschka psychological portrait (control_strength 0.55)');
-          } else {
-            // console.log('ℹ️ Kokoschka style already in prompt (AI included it)');
-          }
-        }
-        
         // 반 고흐 선택시 소용돌이 강화 (거장 + 후기인상주의)
         if (selectedArtist.toUpperCase().trim().includes('VAN GOGH') || 
             selectedArtist.toUpperCase().trim().includes('VINCENT') ||
@@ -4172,25 +4108,36 @@ export default async function handler(req, res) {
         }
         
         // 뭉크 선택시 실존적 불안 강화 (거장 + 표현주의)
-        // 단, Madonna 작품은 부드러운 스타일이므로 The Scream 추가 안 함
         if (selectedArtist.toUpperCase().trim().includes('MUNCH') || 
             selectedArtist.toUpperCase().trim().includes('EDVARD') ||
             selectedArtist.includes('뭉크') ||
             selectedArtist.includes('에드바르')) {
-          // console.log('🎯 Munch detected');
-          // v67: 뭉크 표현주의 스타일 강화 - control_strength 낮춤
           controlStrength = 0.55;
           
           // Madonna는 부드러운 관능적 스타일
           if (selectedWork && selectedWork.toLowerCase().includes('madonna')) {
-            finalPrompt = finalPrompt + ', painting by Edvard Munch: Madonna style with SIMPLIFIED FORMS and MASK-LIKE facial features, WAVY FLOWING LINES throughout background and figure, VISIBLE THICK EXPRESSIONIST BRUSHSTROKES, pale luminous skin with RED AURA glowing, REDUCED FINE DETAILS, mysterious sensual atmosphere, flowing dark hair spreading like halo, symbolic colors of sickly greens reds and blacks, psychological depth and raw emotion, NOT photorealistic NOT realistic NOT smooth, EXPRESSIONIST hand-painted masterpiece quality';
-            // console.log('✅ Enhanced Munch Madonna with WAVY LINES (control_strength 0.55)');
-          } else if (!finalPrompt.includes('The Scream')) {
-            finalPrompt = finalPrompt + ', painting by Edvard Munch: The Scream style with SIMPLIFIED DISTORTED FORMS and MASK-LIKE anguished features, wavy undulating backgrounds, REDUCED FINE DETAILS, lurid colors of blood reds and sickly yellows, existential dread atmosphere, NOT photorealistic NOT smooth, VISIBLE THICK EXPRESSIONIST BRUSHSTROKES';
-            // console.log('✅ Enhanced Munch anguish added (control_strength 0.55)');
+            finalPrompt = finalPrompt + ', Apply Edvard Munch style with SIMPLIFIED MASK-LIKE features and WAVY FLOWING LINES. Create pale luminous skin with RED AURA in SICKLY GREENS and BLACKS. Use THICK BRUSHSTROKES 20mm+. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.';
           } else {
-            // console.log('ℹ️ Munch anguish already in prompt');
+            finalPrompt = finalPrompt + ', Apply Edvard Munch The Scream style with SIMPLIFIED DISTORTED FORMS and MASK-LIKE anguished features. Create WAVY UNDULATING backgrounds in BLOOD REDS and SICKLY YELLOWS. Show existential dread with THICK BRUSHSTROKES 20mm+. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.';
           }
+        }
+        
+        // 키르히너 선택시 도시 표현주의 강화 (표현주의)
+        if (selectedArtist.toUpperCase().trim().includes('KIRCHNER') || 
+            selectedArtist.toUpperCase().trim().includes('ERNST') ||
+            selectedArtist.includes('키르히너') ||
+            selectedArtist.includes('에른스트')) {
+          controlStrength = 0.50;
+          finalPrompt = finalPrompt + ', Apply Ernst Ludwig Kirchner Die Brücke style with ANGULAR JAGGED DISTORTED forms and ELONGATED SHARP MASK-LIKE faces. Use ACID GREEN HOT PINK ELECTRIC BLUE HARSH ORANGE palette with HARSH ANGULAR BRUSHSTROKES. Create urban tension and psychological alienation. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.';
+        }
+        
+        // 코코슈카 선택시 심리적 초상 강화 (표현주의)
+        if (selectedArtist.toUpperCase().trim().includes('KOKOSCHKA') || 
+            selectedArtist.toUpperCase().trim().includes('OSKAR') ||
+            selectedArtist.includes('코코슈카') ||
+            selectedArtist.includes('오스카')) {
+          controlStrength = 0.55;
+          finalPrompt = finalPrompt + ', Apply Oskar Kokoschka style with TURBULENT VISIBLE BRUSHSTROKES 30mm+ revealing VIOLENT psychological portrait. Create AGITATED NERVOUS energy with inner turmoil in WARM EARTH TONES and blue accents. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.';
         }
         
         // 마티스 선택시 순수 색채 강화 (거장 + 야수파)
@@ -4272,7 +4219,7 @@ export default async function handler(req, res) {
             selectedArtist.includes('앤디')) {
           // console.log('🎯 Warhol detected');
           // 항상 강화 프롬프트로 교체 (4분할 보장)
-          const warholEnhancement = 'ABSOLUTE REQUIREMENT: CREATE EXACTLY 4 SEPARATE IMAGES arranged in 2x2 GRID with VISIBLE DIVIDING LINES between panels, TOP-LEFT panel + TOP-RIGHT panel + BOTTOM-LEFT panel + BOTTOM-RIGHT panel, the EXACT SAME FACE from the ORIGINAL PHOTO must appear in ALL 4 panels, EACH panel must have COMPLETELY DIFFERENT bold color scheme (panel 1: hot pink, panel 2: cyan blue, panel 3: yellow, panel 4: orange), Andy Warhol silkscreen style, FLAT GRAPHIC SIMPLIFIED shapes NO gradients NO fine details, REDUCED TO ESSENTIAL FORMS, NOT photorealistic, DO NOT draw Marilyn Monroe, MUST be 4 SEPARATE PANELS not single image, ';
+          const warholEnhancement = 'ABSOLUTE REQUIREMENT: CREATE EXACTLY 4 SEPARATE IMAGES arranged in 2x2 GRID with VISIBLE DIVIDING LINES between panels, TOP-LEFT panel + TOP-RIGHT panel + BOTTOM-LEFT panel + BOTTOM-RIGHT panel, the EXACT SAME FACE from the ORIGINAL PHOTO must appear in ALL 4 panels, EACH panel must have COMPLETELY DIFFERENT bold color scheme (panel 1: hot pink, panel 2: cyan blue, panel 3: yellow, panel 4: orange), Andy Warhol silkscreen style, FLAT graphic colors NO gradients, DO NOT draw Marilyn Monroe, MUST be 4 SEPARATE PANELS not single image, ';
           finalPrompt = warholEnhancement + finalPrompt;
           controlStrength = 0.30;
           // console.log('✅ Enhanced Warhol 4-panel grid (FRONT position, control_strength 0.30)');
