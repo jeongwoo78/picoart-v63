@@ -770,66 +770,66 @@ export const leonardoMasterworks = {
 // 티치아노
 export const titianMasterworks = {
   'titian-venusurbino': {
-    name, '우르비노의 비너스',
-    nameEn, 'Venus of Urbino',
+    name: '우르비노의 비너스',
+    nameEn: 'Venus of Urbino',
     prompt: ', Apply Venus of Urbino style by Titian with a reclining figure gazing directly and sensually at the viewer from a bed. Create warm glowing Venetian flesh tones with rich red and gold fabrics in a domestic interior background. Use loose expressive brushwork showing colorito mastery with intimate boudoir atmosphere. This must look like a real Venetian Renaissance hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '누드, 관능'
+    feature: '누드, 관능'
   },
   'titian-bacchus': {
-    name, '바쿠스와 아리아드네',
-    nameEn, 'Bacchus and Ariadne',
+    name: '바쿠스와 아리아드네',
+    nameEn: 'Bacchus and Ariadne',
     prompt: ', Apply Bacchus and Ariadne style by Titian with a dynamic mythological scene of Bacchus leaping from his chariot toward Ariadne. Create swirling drapery and a wild procession with leopards and satyrs under a brilliant ultramarine blue sky. Use rich warm Venetian colors with energetic diagonal composition. This must look like a real Venetian Renaissance hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '역동, 신화'
+    feature: '역동, 신화'
   },
   'titian-assumption': {
-    name, '성모 승천',
-    nameEn, 'Assumption of the Virgin',
+    name: '성모 승천',
+    nameEn: 'Assumption of the Virgin',
     prompt: ', Apply Assumption of the Virgin style by Titian with Madonna ascending in a brilliant red robe into heavenly golden light. Create apostles below gesturing in amazement with monumental altarpiece composition. Use warm Venetian palette with dynamic upward movement and divine radiance. This must look like a real Venetian Renaissance hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '종교, 상승'
+    feature: '종교, 상승'
   }
 };
 
 // 미켈란젤로
 export const michelangeloMasterworks = {
   'michelangelo-adam': {
-    name, '아담의 창조',
-    nameEn, 'Creation of Adam',
+    name: '아담의 창조',
+    nameEn: 'Creation of Adam',
     prompt: ', Apply Creation of Adam style by Michelangelo with the iconic reaching hands nearly touching between God and Adam. Create God floating in a billowing cloak surrounded by angels while Adam reclines on earth. Use Sistine Chapel ceiling fresco style with heroic muscular anatomy and monumental sculptural figures capturing the divine spark between fingers. This must look like a real Renaissance fresco masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '손, 창조'
+    feature: '손, 창조'
   },
   'michelangelo-lastjudgment': {
-    name, '최후의 심판',
-    nameEn, 'The Last Judgment',
+    name: '최후의 심판',
+    nameEn: 'The Last Judgment',
     prompt: ', Apply The Last Judgment style by Michelangelo with a monumental apocalyptic scene showing Christ central in judgment. Create swirling masses of ascending and descending souls with powerful muscular bodies in dynamic poses. Use dramatic foreshortening in Sistine Chapel wall fresco style with intense saturated colors and terribilità grandeur. This must look like a real Renaissance fresco masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '심판, 군중'
+    feature: '심판, 군중'
   },
   'michelangelo-pieta': {
-    name, '피에타',
-    nameEn, 'Pietà',
+    name: '피에타',
+    nameEn: 'Pietà',
     prompt: ', Apply Pietà style by Michelangelo with Madonna holding dead Christ across her lap in a pyramidal composition. Create serene sorrowful beauty with marble sculpture aesthetic showing smooth idealized forms and graceful drapery folds. Capture Renaissance religious pathos with quiet grief and sculptural monumentality. This must look like a real Renaissance masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '비애, 조각적'
+    feature: '비애, 조각적'
   }
 };
 
 // 라파엘로
 export const raphaelMasterworks = {
   'raphael-athens': {
-    name, '아테네 학당',
-    nameEn, 'School of Athens',
+    name: '아테네 학당',
+    nameEn: 'School of Athens',
     prompt: ', Apply School of Athens style by Raphael with grand architectural perspective featuring vaulted Roman arches. Create philosophers gathered in animated discussion with Plato and Aristotle at the center. Use balanced harmonious composition with classical Renaissance ideal showing clear luminous colors, intellectual grandeur and perfect symmetry. This must look like a real Renaissance fresco masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '건축, 철학'
+    feature: '건축, 철학'
   },
   'raphael-sistinamadonna': {
-    name, '시스티나 마돈나',
-    nameEn, 'Sistine Madonna',
+    name: '시스티나 마돈나',
+    nameEn: 'Sistine Madonna',
     prompt: ', Apply Sistine Madonna style by Raphael with Madonna descending from clouds while holding the infant Christ. Create dramatically parted green curtains with saints kneeling below and the famous cherubs at the bottom. Use divine ethereal light with sweet graceful expressions in harmonious Renaissance beauty. This must look like a real Renaissance masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '성모, 천상'
+    feature: '성모, 천상'
   },
   'raphael-galatea': {
-    name, '갈라테아의 승리',
-    nameEn, 'Triumph of Galatea',
+    name: '갈라테아의 승리',
+    nameEn: 'Triumph of Galatea',
     prompt: ', Apply Triumph of Galatea style by Raphael with a sea nymph riding a shell chariot pulled by dolphins. Create swirling cupids above with tritons and nereids around in a dynamic spiraling composition. Use joyful mythological celebration with clear bright Mediterranean colors and graceful idealized figures. This must look like a real Renaissance fresco masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '신화, 바다'
+    feature: '신화, 바다'
   }
 };
 
@@ -840,66 +840,66 @@ export const raphaelMasterworks = {
 // 루벤스
 export const rubensMasterworks = {
   'rubens-threegraces': {
-    name, '삼미신',
-    nameEn, 'The Three Graces',
+    name: '삼미신',
+    nameEn: 'The Three Graces',
     prompt: ', Apply The Three Graces style by Rubens with three voluptuous figures dancing in a circle in a garden setting. Create warm luminous pearly flesh tones with soft sensual curves and flowing golden hair. Use a rich warm palette of pinks and golds with visible fluid brushwork showing Baroque exuberance. This must look like a real Baroque hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '누드, 삼미신'
+    feature: '누드, 삼미신'
   },
   'rubens-descent': {
-    name, '십자가에서 내려지심',
-    nameEn, 'Descent from the Cross',
+    name: '십자가에서 내려지심',
+    nameEn: 'Descent from the Cross',
     prompt: ', Apply Descent from the Cross style by Rubens with a dramatic diagonal composition showing Christ\'s pale body being lowered by multiple figures. Create rich red and white drapery contrast with emotional religious drama. Use warm flesh against dark background with dynamic Baroque movement and theatrical lighting. This must look like a real Baroque hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '종교, 드라마'
+    feature: '종교, 드라마'
   },
   'rubens-leucippus': {
-    name, '레우키포스 딸들의 납치',
-    nameEn, 'Rape of the Daughters of Leucippus',
+    name: '레우키포스 딸들의 납치',
+    nameEn: 'Rape of the Daughters of Leucippus',
     prompt: ', Apply Rape of the Daughters of Leucippus style by Rubens with a dynamic swirling composition of muscular men on rearing horses. Create voluptuous struggling figures with dramatic diagonal energy. Use a rich warm Baroque palette with powerful movement frozen in time, sensual flesh tones and theatrical drama. This must look like a real Baroque hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '역동, 납치'
+    feature: '역동, 납치'
   }
 };
 
 // 렘브란트
 export const rembrandtMasterworks = {
   'rembrandt-nightwatch': {
-    name, '야경',
-    nameEn, 'The Night Watch',
+    name: '야경',
+    nameEn: 'The Night Watch',
     prompt: ', Apply The Night Watch style by Rembrandt with a dramatic group portrait emerging from darkness showing a militia company in dynamic motion. Create a golden spotlight illuminating central figures with deep chiaroscuro and rich blacks. Use military costumes with gleaming weapons in theatrical Baroque drama with visible impasto brushwork. This must look like a real Baroque hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '그룹, 빛'
+    feature: '그룹, 빛'
   },
   'rembrandt-selfportrait': {
-    name, '자화상',
-    nameEn, 'Self-Portrait',
+    name: '자화상',
+    nameEn: 'Self-Portrait',
     prompt: ', Apply Self-Portrait style by Rembrandt with a penetrating psychological gaze and warm golden light on face emerging from darkness. Create thick impasto visible in highlights with honest unflinching self-examination. Use a rich brown and gold palette showing emotional depth, intimate introspection and masterful chiaroscuro. This must look like a real Baroque hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '자화상, 심리'
+    feature: '자화상, 심리'
   },
   'rembrandt-prodigal': {
-    name, '돌아온 탕자',
-    nameEn, 'Return of the Prodigal Son',
+    name: '돌아온 탕자',
+    nameEn: 'Return of the Prodigal Son',
     prompt: ', Apply Return of the Prodigal Son style by Rembrandt with a kneeling son embraced by his elderly father in warm golden light against deep darkness. Create a tender emotional reunion with rich impasto in lit areas. Use profound spiritual compassion in intimate Baroque drama with glowing reds and golds. This must look like a real Baroque hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '용서, 감동'
+    feature: '용서, 감동'
   }
 };
 
 // 벨라스케스
 export const velazquezMasterworks = {
   'velazquez-meninas': {
-    name, '시녀들',
-    nameEn, 'Las Meninas',
+    name: '시녀들',
+    nameEn: 'Las Meninas',
     prompt: ', Apply Las Meninas style by Velázquez with a complex spatial arrangement featuring Infanta Margarita at center with maids of honor attending. Create the artist\'s self-portrait at an easel with mirror reflection of the king and queen visible. Use a sophisticated silver-grey palette with loose confident brushwork showing aristocratic Spanish court elegance. This must look like a real Spanish Golden Age hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '궁정, 공간'
+    feature: '궁정, 공간'
   },
   'velazquez-pope': {
-    name, '교황 인노켄티우스 10세',
-    nameEn, 'Portrait of Pope Innocent X',
+    name: '교황 인노켄티우스 10세',
+    nameEn: 'Portrait of Pope Innocent X',
     prompt: ', Apply Portrait of Pope Innocent X style by Velázquez with an intense penetrating gaze from a figure in crimson papal robes and cap. Create loose bravura brushwork visible up close with psychological intensity. Use rich reds against a muted background showing powerful authoritative presence and masterful fabric rendering. This must look like a real Spanish Golden Age hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '초상, 위엄'
+    feature: '초상, 위엄'
   },
   'velazquez-breda': {
-    name, '브레다의 항복',
-    nameEn, 'Surrender of Breda',
+    name: '브레다의 항복',
+    nameEn: 'Surrender of Breda',
     prompt: ', Apply Surrender of Breda style by Velázquez with a gracious surrender scene showing the victor receiving keys with magnanimity. Create a forest of lances behind troops with a dignified defeated general. Use an atmospheric landscape background with subtle silver-grey palette capturing this noble historical moment with Spanish Golden Age grandeur. This must look like a real Spanish Golden Age hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '역사, 항복'
+    feature: '역사, 항복'
   }
 };
 
@@ -910,44 +910,44 @@ export const velazquezMasterworks = {
 // 와토
 export const watteauMasterworks = {
   'watteau-cythera': {
-    name, '키테라 섬으로의 순례',
-    nameEn, 'Pilgrimage to Cythera',
+    name: '키테라 섬으로의 순례',
+    nameEn: 'Pilgrimage to Cythera',
     prompt: ', Apply Pilgrimage to Cythera style by Watteau with a fête galante scene of aristocratic couples departing for the island of love. Create a dreamy pastoral landscape with soft feathery brushwork and melancholic romantic atmosphere. Use shimmering silk costumes in pale pastel colors with rose and gold showing poetic theatrical grace. This must look like a real Rococo hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '연인, 출발'
+    feature: '연인, 출발'
   },
   'watteau-pierrot': {
-    name, '피에로 (질)',
-    nameEn, 'Pierrot (Gilles)',
+    name: '피에로 (질)',
+    nameEn: 'Pierrot (Gilles)',
     prompt: ', Apply Pierrot style by Watteau with a solitary clown in white satin costume standing frontally with a melancholic dreamy expression. Create commedia dell\'arte figures behind with soft silvery light and wistful poetic mood. Use delicate feathery brushwork showing theatrical isolation with Rococo grace and an undertone of sadness. This must look like a real Rococo hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '광대, 고독'
+    feature: '광대, 고독'
   },
   'watteau-fete': {
-    name, '사랑의 축제',
-    nameEn, 'The Pleasures of the Ball',
+    name: '사랑의 축제',
+    nameEn: 'The Pleasures of the Ball',
     prompt: ', Apply Fête Galante style by Watteau with an elegant outdoor gathering of aristocrats in shimmering silk with musicians and dancers. Create a dreamy parkland setting with soft dappled light in pale pastel palette. Use delicate feathery brushwork with romantic melancholic atmosphere showing theatrical Rococo elegance. This must look like a real Rococo hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '축제, 우아'
+    feature: '축제, 우아'
   }
 };
 
 // 부셰
 export const boucherMasterworks = {
   'boucher-diana': {
-    name, '목욕하는 디아나',
-    nameEn, 'Diana Leaving the Bath',
+    name: '목욕하는 디아나',
+    nameEn: 'Diana Leaving the Bath',
     prompt: ', Apply Diana Leaving the Bath style by Boucher with a goddess figure showing rosy porcelain skin with hunting dogs and quiver nearby. Create a soft pastel palette of pink blue and cream with fluffy clouds and foliage. Use idealized decorative beauty in a playful mythological scene with visible soft Rococo brushwork. This must look like a real Rococo hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '누드, 신화'
+    feature: '누드, 신화'
   },
   'boucher-pompadour': {
-    name, '퐁파두르 부인',
-    nameEn, 'Madame de Pompadour',
+    name: '퐁파두르 부인',
+    nameEn: 'Madame de Pompadour',
     prompt: ', Apply Madame de Pompadour style by Boucher with an aristocratic portrait in a luxurious setting featuring an elaborate silk gown with roses surrounded by books and artistic objects. Create soft rosy flesh tones with ornate Rococo decoration in powder blue and pink palette. Capture refined French court elegance with delicate decorative beauty. This must look like a real Rococo hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '초상, 귀족'
+    feature: '초상, 귀족'
   },
   'boucher-odalisque': {
-    name, '금발의 오달리스크',
-    nameEn, 'Blonde Odalisque',
+    name: '금발의 오달리스크',
+    nameEn: 'Blonde Odalisque',
     prompt: ', Apply Blonde Odalisque style by Boucher with a reclining figure from behind showing soft rosy peach skin with blue ribbon in blonde hair. Create luxurious cushions and drapery in an intimate boudoir setting. Use playful sensual atmosphere in pastel Rococo palette with decorative charm. This must look like a real Rococo hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '누드, 관능'
+    feature: '누드, 관능'
   }
 };
 
@@ -958,44 +958,44 @@ export const boucherMasterworks = {
 // 프리드리히
 export const friedrichMasterworks = {
   'friedrich-wanderer': {
-    name, '안개 바다 위의 방랑자',
-    nameEn, 'Wanderer Above the Sea of Fog',
+    name: '안개 바다 위의 방랑자',
+    nameEn: 'Wanderer Above the Sea of Fog',
     prompt: ', Apply Wanderer Above the Sea of Fog style by Caspar David Friedrich with a solitary figure seen from behind standing on a rocky peak gazing over a swirling sea of mist. Create a sublime Romantic landscape with contemplative isolation and dramatic mountainous vista. Use a cool blue-grey atmospheric palette capturing spiritual transcendence with man dwarfed by nature. This must look like a real Romantic hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '뒷모습, 숭고'
+    feature: '뒷모습, 숭고'
   },
   'friedrich-seaice': {
-    name, '빙해',
-    nameEn, 'The Sea of Ice',
+    name: '빙해',
+    nameEn: 'The Sea of Ice',
     prompt: ', Apply The Sea of Ice style by Friedrich with jagged ice slabs crushing a shipwreck in frozen arctic desolation. Create terrifying sublime power of nature with a cold blue-white palette and sharp angular ice formations. Capture Romantic catastrophe showing a tiny human vessel destroyed by elemental force with existential terror. This must look like a real Romantic hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '빙하, 파멸'
+    feature: '빙하, 파멸'
   },
   'friedrich-abbey': {
-    name, '떡갈나무 숲의 수도원',
-    nameEn, 'Abbey in the Oakwood',
+    name: '떡갈나무 숲의 수도원',
+    nameEn: 'Abbey in the Oakwood',
     prompt: ', Apply Abbey in the Oakwood style by Friedrich with a ruined Gothic abbey in winter surrounded by bare twisted oak trees and a funeral procession of monks. Create misty melancholic atmosphere evoking death and spiritual transcendence. Use a pale cold palette showing Romantic sublime decay with haunting desolate beauty. This must look like a real Romantic hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '폐허, 죽음'
+    feature: '폐허, 죽음'
   }
 };
 
 // 쉴레
 export const schieleMasterworks = {
   'schiele-selfportrait': {
-    name, '자화상',
-    nameEn, 'Self-Portrait',
+    name: '자화상',
+    nameEn: 'Self-Portrait',
     prompt: ', Apply Self-Portrait style by Egon Schiele with a contorted angular pose and twisted limbs using sharp wiry contour lines. Create raw psychological intensity with exposed vulnerable body in earthy muted colors with areas of bare canvas. Use expressive distortion with confrontational direct gaze showing Expressionist anguish. This must look like a real Expressionist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '자화상, 왜곡'
+    feature: '자화상, 왜곡'
   },
   'schiele-embrace': {
-    name, '포옹',
-    nameEn, 'The Embrace',
+    name: '포옹',
+    nameEn: 'The Embrace',
     prompt: ', Apply The Embrace style by Egon Schiele with intertwined angular bodies of lovers in desperate embrace. Create sharp contour lines defining twisted forms with raw erotic tension. Use pale flesh with red accents showing psychological intensity with visible bare canvas and Expressionist passion and vulnerability. This must look like a real Expressionist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '포옹, 에로틱'
+    feature: '포옹, 에로틱'
   },
   'schiele-deathandmaiden': {
-    name, '죽음과 소녀',
-    nameEn, 'Death and the Maiden',
+    name: '죽음과 소녀',
+    nameEn: 'Death and the Maiden',
     prompt: ', Apply Death and the Maiden style by Schiele with a couple embracing including a death figure with angular distorted bodies. Create existential terror and desire with dark earth tones and pale flesh. Use sharp expressive contours showing psychological drama with Expressionist confrontation with mortality and raw emotional power. This must look like a real Expressionist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '죽음, 비극'
+    feature: '죽음, 비극'
   }
 };
 
@@ -1006,194 +1006,194 @@ export const schieleMasterworks = {
 // 피카소 (4개 대표작) - 우는 여인 제외 고통 왜곡
 export const picassoMasterworks = {
   'picasso-demoiselles': {
-    name, '아비뇽의 처녀들',
-    nameEn, 'Les Demoiselles d\'Avignon',
+    name: '아비뇽의 처녀들',
+    nameEn: 'Les Demoiselles d\'Avignon',
     prompt: ', Apply Les Demoiselles d\'Avignon style by Pablo Picasso (1907) with five angular fragmented figures showing faces with African mask influence using geometric planes and sharp angles. Create fractured geometric body shapes in Cubist deconstruction with revolutionary angular brushwork breaking traditional perspective. Use pink flesh tones with ochre and blue for this proto-Cubist masterpiece. This must look like a real Cubist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '그룹, 마스크'
+    feature: '그룹, 마스크'
   },
   'picasso-guernica': {
-    name, '게르니카',
-    nameEn, 'Guernica',
+    name: '게르니카',
+    nameEn: 'Guernica',
     prompt: ', Apply Guernica style by Pablo Picasso (1937) using CRITICAL BLACK WHITE AND GREY ONLY monochrome palette. Create a dramatic war scene with anguished fragmented figures featuring a screaming horse at center, bull figure, broken sword and light bulb as sun. Show dismembered bodies and chaos with powerful anti-war imagery using Cubist distortion expressing horror. This must look like a real monochrome Cubist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '흑백, 전쟁'
+    feature: '흑백, 전쟁'
   },
   'picasso-oldguitarist': {
-    name, '늙은 기타리스트',
-    nameEn, 'The Old Guitarist',
+    name: '늙은 기타리스트',
+    nameEn: 'The Old Guitarist',
     prompt: ', Apply The Old Guitarist style by Pablo Picasso Blue Period (1903-04) using a monochrome blue palette with subtle blue-green tones. Create a thin elongated elderly figure hunched over a brown guitar with emaciated angular form and closed eyes. Use El Greco-inspired elongation with visible brushwork in blue tones capturing melancholic introspective mood. This must look like a real Blue Period hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '청색, 기타'
+    feature: '청색, 기타'
   },
   'picasso-dream': {
-    name, '꿈',
-    nameEn, 'The Dream (Le Rêve)',
+    name: '꿈',
+    nameEn: 'The Dream (Le Rêve)',
     prompt: ', Apply The Dream style by Pablo Picasso (1932) with a sensual curved figure sleeping in an armchair using soft rounded forms unlike angular Cubism. Create a warm palette of reds pinks and yellows with peaceful dreaming expression. Use bold simplified curves with decorative patterned background for this tender portrayal. This must look like a real hand-painted Picasso artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '곡선, 수면'
+    feature: '곡선, 수면'
   }
 };
 
 // 프리다 (4개 대표작) - 부러진 기둥/두 명의 프리다 제외 고통 금지
 export const fridaMasterworks = {
   'frida-parrots': {
-    name, '나와 앵무새들',
-    nameEn, 'Me and My Parrots',
+    name: '나와 앵무새들',
+    nameEn: 'Me and My Parrots',
     prompt: ', Apply Me and My Parrots style by Frida Kahlo (1941) with colorful parrots perched on shoulders and around the figure against lush green tropical foliage background. Create a direct confident gaze with vibrant jewel-tone colors including emerald green, parrot red and tropical blue. Use traditional Mexican clothing and jewelry in detailed realistic style with symbolic elements. This must look like a real Mexican hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '앵무새, 정글'
+    feature: '앵무새, 정글'
   },
   'frida-thornnecklace': {
-    name, '가시 목걸이 자화상',
-    nameEn, 'Self-Portrait with Thorn Necklace and Hummingbird',
+    name: '가시 목걸이 자화상',
+    nameEn: 'Self-Portrait with Thorn Necklace and Hummingbird',
     prompt: ', Apply Self-Portrait with Thorn Necklace style by Frida Kahlo (1940) with a thorny vine necklace around the neck featuring a dead hummingbird pendant. Create a black cat on one shoulder and monkey on the other with large tropical leaves as background. Use symbolic butterflies in hair with intense direct gaze in detailed surrealist Mexican folk art style. This must look like a real Mexican hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '벌새, 고양이'
+    feature: '벌새, 고양이'
   },
   'frida-monkeys': {
-    name, '원숭이와 자화상',
-    nameEn, 'Self-Portrait with Monkeys',
+    name: '원숭이와 자화상',
+    nameEn: 'Self-Portrait with Monkeys',
     prompt: ', Apply Self-Portrait with Monkeys style by Frida Kahlo (1943) with monkeys embracing from behind the shoulders in warm protective intimate atmosphere. Create dense green tropical leaves filling the background with braided hair and traditional Mexican dress. Use tender loving expression in earthy warm palette with detailed realistic portraiture in symbolic jungle setting. This must look like a real Mexican hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '원숭이, 포옹'
+    feature: '원숭이, 포옹'
   },
   'frida-diegoandi': {
-    name, '디에고와 나',
-    nameEn, 'Diego and I',
+    name: '디에고와 나',
+    nameEn: 'Diego and I',
     prompt: ', Apply Diego and I style by Frida Kahlo (1949) with Diego Rivera painted on the forehead as a third eye with loose flowing dark hair framing the face. Create tears streaming from eyes with intense emotional gaze showing psychological intimacy. Use muted earth-tone background for this raw emotional self-portrait showing deep love. This must look like a real Mexican hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '이마, 눈물'
+    feature: '이마, 눈물'
   }
 };
 
 // 워홀 (2개 대표작)
 export const warholMasterworks = {
   'warhol-marilyn': {
-    name, '마릴린 시리즈',
-    nameEn, 'Marilyn Series',
+    name: '마릴린 시리즈',
+    nameEn: 'Marilyn Series',
     prompt: ', Apply Andy Warhol Marilyn Series style (1962) creating a 2x2 four-panel grid layout with the subject face repeated 4 times once in each quadrant while preserving subject identity in all panels. Each panel must have different bold neon color scheme including hot pink, cyan, yellow and orange. Use high contrast silkscreen printing effect with flat graphic colors and no gradients showing visible ink texture and slight misregistration. This is a Pop Art masterpiece using the ORIGINAL SUBJECT face, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '4분할, 네온'
+    feature: '4분할, 네온'
   },
   'warhol-soup': {
-    name, '캠벨 수프 캔',
-    nameEn, 'Campbell\'s Soup Cans',
+    name: '캠벨 수프 캔',
+    nameEn: 'Campbell\'s Soup Cans',
     prompt: ', Apply Campbell\'s Soup Cans style by Andy Warhol (1962) with grid repetition of the same image in rows and columns. Each panel should have different bold Pop color variations including red, blue, green, orange and pink. Create commercial product aesthetic with flat graphic silkscreen style and visible print texture. Use mechanical reproduction aesthetic showing everyday object as fine art. This must look like a Pop Art silkscreen, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '반복, 상업'
+    feature: '반복, 상업'
   }
 };
 
 // 마그리트 (5개 대표작)
 export const magritteMasterworks = {
   'magritte-sonofman': {
-    name, '사람의 아들',
-    nameEn, 'The Son of Man',
+    name: '사람의 아들',
+    nameEn: 'The Son of Man',
     prompt: ', Apply The Son of Man style by René Magritte (1964) by placing ONE small green apple floating at nose level covering only 25-30% of face. The eyes must be clearly visible above the apple and mouth and chin clearly visible below. Dress the subject in dark formal suit with white collar and black bowler hat against overcast cloudy grey sky with low stone wall. Create hyperrealistic precise Belgian surrealist oil painting showing mysterious hidden identity. This must look like a real Surrealist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '정장, 사과'
+    feature: '정장, 사과'
   },
   'magritte-golconda': {
-    name, '골콩드',
-    nameEn, 'Golconda',
+    name: '골콩드',
+    nameEn: 'Golconda',
     prompt: ', Apply Golconda style by René Magritte (1953) by transforming the main subject into formal stiff rigid pose wearing dark suit with black bowler hat. Convert the background into a painted Belgian townscape with buildings and cloudy sky. Fill the entire background with dozens of small identical copies of the same formally-dressed figure floating or falling in rigid stiff upright posture like mannequins creating the raining men effect. This must look like a real Belgian surrealist oil painting, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '반복, 부유'
+    feature: '반복, 부유'
   },
   'magritte-bowlerhat': {
-    name, '중절모를 쓴 남자',
-    nameEn, 'Man in a Bowler Hat',
+    name: '중절모를 쓴 남자',
+    nameEn: 'Man in a Bowler Hat',
     prompt: ', Apply Man in a Bowler Hat style by René Magritte (1964) by placing one white dove bird flying in front of the face with wings spread covering most of the face. Dress the subject in dark formal suit with black bowler hat against overcast cloudy grey sky background. Create hyperrealistic precise Belgian surrealist oil painting showing mysterious concealment by innocent creature. This must look like a real Surrealist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '비둘기, 은폐'
+    feature: '비둘기, 은폐'
   },
   'magritte-humancondition': {
-    name, '인간의 조건',
-    nameEn, 'The Human Condition',
+    name: '인간의 조건',
+    nameEn: 'The Human Condition',
     prompt: ', Apply The Human Condition style by René Magritte (1933) showing an easel with canvas in the foreground where the painting on canvas shows the exact same view as the scene behind it creating a seamless illusion where the canvas edge is invisible. Include window frame or curtains on sides with landscape continuing perfectly from canvas to reality. Create this philosophical painting-within-painting paradox in hyperrealistic Belgian surrealist oil painting style. This must look like a real Surrealist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '캔버스, 착시'
+    feature: '캔버스, 착시'
   },
   'magritte-empireoflight': {
-    name, '빛의 제국',
-    nameEn, 'The Empire of Light',
+    name: '빛의 제국',
+    nameEn: 'The Empire of Light',
     prompt: ', Apply The Empire of Light style by René Magritte (1954) creating the critical paradox of bright blue daytime sky with white fluffy clouds above combined with dark nighttime street scene below. Show glowing yellow lamplight from street lamps with dark silhouetted trees and buildings creating the impossible coexistence of day and night in the same image. Capture mysterious twilight atmosphere in hyperrealistic Belgian surrealist oil painting style. This must look like a real Surrealist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '낮밤 공존'
+    feature: '낮밤 공존'
   }
 };
 
 // 미로 (3개 대표작)
 export const miroMasterworks = {
   'miro-catalan': {
-    name, '카탈루냐 풍경',
-    nameEn, 'The Catalan Landscape (The Hunter)',
+    name: '카탈루냐 풍경',
+    nameEn: 'The Catalan Landscape (The Hunter)',
     prompt: ', Apply The Catalan Landscape style by Joan Miró with playful biomorphic shapes floating on bright yellow and orange background. Create an abstract hunter figure with geometric head and stick body using primary colors red blue yellow and black with childlike spontaneity. Add whimsical floating symbols like sun, eye and heart connected by thin black calligraphic lines in joyful cosmic abstraction. This must look like a real Catalan Surrealist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '풍경, 사냥꾼'
+    feature: '풍경, 사냥꾼'
   },
   'miro-constellation': {
-    name, '별자리 시리즈',
-    nameEn, 'Constellations Series',
+    name: '별자리 시리즈',
+    nameEn: 'Constellations Series',
     prompt: ', Apply Constellations style by Joan Miró with a dense network of biomorphic shapes against a muted background. Create a constellation of stars, moons, eyes and organic forms connected by thin black lines. Use primary colors red blue and yellow as accents with automatic drawing and spontaneous symbols creating cosmic poetry as a nocturnal dreamscape with celestial bodies. This must look like a real Surrealist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '별, 우주'
+    feature: '별, 우주'
   },
   'miro-bluestar': {
-    name, '푸른 별 앞의 여인',
-    nameEn, 'Woman in Front of the Sun',
+    name: '푸른 별 앞의 여인',
+    nameEn: 'Woman in Front of the Sun',
     prompt: ', Apply Woman Before the Sun style by Joan Miró with a simplified biomorphic figure with exaggerated curves. Create a large radiating sun or star shape in the background using bold primary colors red blue yellow and black on light ground. Use spontaneous gestural brushwork with primal feminine energy and childlike cosmic joy with thick black outlines defining organic shapes. This must look like a real Surrealist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '여인, 태양'
+    feature: '여인, 태양'
   }
 };
 
 // 샤갈 (3개 대표작)
 export const chagallMasterworks = {
   'chagall-birthday': {
-    name, '생일',
-    nameEn, 'Birthday',
+    name: '생일',
+    nameEn: 'Birthday',
     prompt: ', Apply Birthday style by Marc Chagall (1915) with floating lovers defying gravity where a man bends impossibly backward to kiss a woman. Create soft muted pastel colors including dusty rose, pale blue and sage green with a tilted room interior and flower bouquet. Use dreamlike weightlessness with poetic romantic atmosphere and nostalgic warmth with visible soft feathery brushstrokes. This must look like a real hand-painted Chagall artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '부유, 키스'
+    feature: '부유, 키스'
   },
   'chagall-overtown': {
-    name, '마을 위에서',
-    nameEn, 'Over the Town',
+    name: '마을 위에서',
+    nameEn: 'Over the Town',
     prompt: ', Apply Over the Town style by Marc Chagall with a couple floating high above a village as embracing lovers soar over tilted colorful houses. Create muted dreamy pastels including lavender, pale blue, rose and green with nostalgic rooftops below. Capture poetic gravity-defying romance as a folklore dreamscape with soft atmospheric brushwork. This must look like a real hand-painted Chagall artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '마을, 비행'
+    feature: '마을, 비행'
   },
   'chagall-iandvillage': {
-    name, '나와 마을',
-    nameEn, 'I and the Village',
+    name: '나와 마을',
+    nameEn: 'I and the Village',
     prompt: ', Apply I and the Village style by Marc Chagall (1911) with overlapping dreamlike images of a green-faced man and cow gazing at each other. Create circular composition with transparent overlays and tiny village scenes within larger forms. Use jewel-tone colors including emerald green, ruby red and deep blue in Cubist-influenced fragmented space with mystical symbolism and nostalgic village memories. This must look like a real hand-painted Chagall artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '동물, 얼굴'
+    feature: '동물, 얼굴'
   }
 };
 
 // 리히텐슈타인 (3개 대표작)
 export const lichtensteinMasterworks = {
   'lichtenstein-drowninggirl': {
-    name, '익사하는 소녀',
-    nameEn, 'Drowning Girl',
+    name: '익사하는 소녀',
+    nameEn: 'Drowning Girl',
     prompt: ', Apply Drowning Girl style by Roy Lichtenstein (1963) with a dramatic close-up of a woman face with a tear. Create visible Ben-Day dots pattern throughout the entire image with thick bold black outlines around all forms. Use primary colors only including red yellow blue and white with a thought bubble in comic book emotional melodrama style. This halftone printing effect must look like a real Pop Art masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '눈물, 클로즈업'
+    feature: '눈물, 클로즈업'
   },
   'lichtenstein-whaam': {
-    name, '휩!',
-    nameEn, 'Whaam!',
+    name: '휩!',
+    nameEn: 'Whaam!',
     prompt: ', Apply Whaam! style by Roy Lichtenstein (1963) with a two-panel comic book composition showing a fighter jet shooting a missile on the left panel and a dramatic explosion on the right panel. Create visible Ben-Day dots throughout with thick black outlines using primary colors red yellow and blue. Capture comic book action onomatopoeia in war comic aesthetic as a Pop Art diptych. This must look like a real Pop Art artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '전투기, 폭발'
+    feature: '전투기, 폭발'
   },
   'lichtenstein-hopeless': {
-    name, '절망적',
-    nameEn, 'Hopeless',
+    name: '절망적',
+    nameEn: 'Hopeless',
     prompt: ', Apply Hopeless style by Roy Lichtenstein with a blonde woman crying with hands near face. Create visible Ben-Day dots pattern forming skin tone and shadows with thick bold black outlines defining hair and features. Use primary colors with yellow hair, blue eyes and red lips in dramatic comic book emotion with speech bubble in romance comic aesthetic. This must look like a real Pop Art artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '금발, 울음'
+    feature: '금발, 울음'
   }
 };
 
 // 키스 해링 (3개 대표작)
 export const haringMasterworks = {
   'haring-radiantbaby': {
-    name, '빛나는 아기',
-    nameEn, 'Radiant Baby',
+    name: '빛나는 아기',
+    nameEn: 'Radiant Baby',
     prompt: ', Apply Radiant Baby style by Keith Haring with a crawling baby figure in profile defined by bold thick black outline as a simple silhouette. Create radiant lines emanating from the body showing energy and light with flat bright primary color fill in red or yellow. Use minimal iconic street art style with dynamic movement implied in subway graffiti aesthetic. This must look like a real street art artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '아기, 빛'
+    feature: '아기, 빛'
   },
   'haring-barkingdog': {
-    name, '짖는 개',
-    nameEn, 'Barking Dog',
+    name: '짖는 개',
+    nameEn: 'Barking Dog',
     prompt: ', Apply Barking Dog style by Keith Haring with a simplified dog silhouette with open barking mouth and bold thick black outline. Create radiant lines emanating from the dog showing sound and energy with flat bright primary color background in red yellow or blue. Use aggressive angular pose as iconic street art symbol with dynamic movement lines in subway graffiti energy. This must look like a real street art artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '개, 에너지'
+    feature: '개, 에너지'
   },
   'haring-dancing': {
-    name, '춤추는 사람들',
-    nameEn, 'Untitled (Dancing Figures)',
+    name: '춤추는 사람들',
+    nameEn: 'Untitled (Dancing Figures)',
     prompt: ', Apply Dancing Figures style by Keith Haring with multiple simplified human figures dancing in dynamic poses using bold continuous black outlines connecting the figures. Create radiant energy lines emanating from bodies with flat bright primary colors filling shapes in red yellow blue and green. Capture rhythmic interlocking movement with joyful kinetic energy in subway graffiti street art aesthetic. This must look like a real street art artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature, '그룹, 춤'
+    feature: '그룹, 춤'
   }
 };
 
@@ -1270,7 +1270,7 @@ export const allMovementMasterworks = {
  * @returns {object|null} 대표작 프롬프트 객체
  */
 export function getMovementMasterwork(workKey) {
-  const normalized = workKey.toLowerCase().trim().replace/\s+ g, '-';
+  const normalized = workKey.toLowerCase().trim().replace(/\s+/g, '-');
   return allMovementMasterworks[normalized] || null;
 }
 
