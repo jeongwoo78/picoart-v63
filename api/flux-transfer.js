@@ -100,10 +100,16 @@ function convertToWorkKey(artistName, workTitle) {
     // 반 고흐
     'the starry night': 'starrynight',
     '별이 빛나는 밤': 'starrynight',
+    'starry night': 'starrynight',
     'sunflowers': 'sunflowers',
     '해바라기': 'sunflowers',
     'self-portrait': 'selfportrait',
     '자화상': 'selfportrait',
+    'café terrace at night': 'cafe',
+    'cafe terrace at night': 'cafe',
+    'cafe terrace': 'cafe',
+    '밤의 카페 테라스': 'cafe',
+    '카페 테라스': 'cafe',
     // 클림트
     'the kiss': 'kiss',
     '키스': 'kiss',
@@ -117,14 +123,25 @@ function convertToWorkKey(artistName, workTitle) {
     '절규': 'scream',
     'madonna': 'madonna',
     '마돈나': 'madonna',
+    'jealousy': 'jealousy',
+    '질투': 'jealousy',
+    'anxiety': 'anxiety',
+    '불안': 'anxiety',
     // 마티스
     'the dance': 'dance',
     '춤': 'dance',
     '댄스': 'dance',
     'the red room': 'redroom',
+    'red room': 'redroom',
     '붉은 방': 'redroom',
-    'woman with a hat': 'womanhat',
-    '모자를 쓴 여인': 'womanhat',
+    'the green stripe': 'greenstripe',
+    'green stripe': 'greenstripe',
+    'portrait of madame matisse': 'greenstripe',
+    '초록 줄무늬': 'greenstripe',
+    '마담 마티스': 'greenstripe',
+    'woman in a purple coat': 'purplecoat',
+    'purple coat': 'purplecoat',
+    '보라색 코트를 입은 여인': 'purplecoat',
     // 피카소
     'les demoiselles d\'avignon': 'demoiselles',
     '아비뇽의 처녀들': 'demoiselles',
@@ -133,13 +150,13 @@ function convertToWorkKey(artistName, workTitle) {
     // 프리다
     'me and my parrots': 'parrots',
     '나와 앵무새들': 'parrots',
-    'the broken column': 'brokencolumn',
-    '부러진 기둥': 'brokencolumn',
     'self-portrait with thorn necklace': 'thornnecklace',
     '가시 목걸이와 벌새': 'thornnecklace',
     '가시 목걸이 자화상': 'thornnecklace',
     'self-portrait with monkeys': 'monkeys',
     '원숭이와 자화상': 'monkeys',
+    'diego and i': 'diegoandi',
+    '디에고와 나': 'diegoandi',
     // 워홀
     'marilyn monroe': 'marilyn',
     '마릴린 먼로': 'marilyn',
@@ -3883,7 +3900,7 @@ export default async function handler(req, res) {
         if (selectedArtist.toUpperCase().trim().includes('GAUGUIN')) {
           // console.log('🎯 Gauguin detected');
           if (!finalPrompt.includes('Gauguin')) {
-            finalPrompt = finalPrompt + ', painting by Paul Gauguin Tahitian period: CLOISONNISM style with BOLD BLACK OUTLINES separating FLAT COLOR AREAS, PRIMITIVISM raw primitive power, pure unmixed saturated colors in simplified shapes, exotic tropical palette (deep orange, ochre yellow, turquoise, rich purple, vibrant green), warm golden-brown skin tones, Tahitian Women on the Beach style, lush tropical background with palm trees, decorative simplified forms, VISIBLE THICK BRUSHSTROKES with oil paint texture, symbolic mysterious atmosphere, NOT mosaic NOT stained glass NOT geometric tiles, PRESERVE original subject face identity age and ethnicity, Gauguin Tahitian masterpiece quality';
+            finalPrompt = finalPrompt + ', painting by Paul Gauguin Tahitian period: CLOISONNISM style with BOLD BLACK OUTLINES separating FLAT COLOR AREAS, SIMPLIFIED FORMS with REDUCED FINE DETAILS, PRIMITIVISM raw primitive power, pure unmixed saturated colors in simplified shapes, exotic tropical palette (deep orange, ochre yellow, turquoise, rich purple, vibrant green), warm golden-brown skin tones, Tahitian Women on the Beach style, lush tropical background with palm trees, decorative simplified forms, NOT photorealistic NOT hyper-detailed, VISIBLE THICK BRUSHSTROKES with oil paint texture, symbolic mysterious atmosphere, NOT mosaic NOT stained glass NOT geometric tiles, PRESERVE original subject face identity age and ethnicity, Gauguin Tahitian masterpiece quality';
             controlStrength = 0.60;
             // console.log('✅ Enhanced Gauguin cloisonnism + primitivism (control_strength 0.60)');
           } else {
@@ -3908,8 +3925,9 @@ export default async function handler(req, res) {
         if (selectedArtist.toUpperCase().trim().includes('KANDINSKY')) {
           // console.log('🎯 Kandinsky detected');
           if (!finalPrompt.includes('abstract color explosion')) {
-            finalPrompt = finalPrompt + ', painting by Wassily Kandinsky, Composition VII-style pure abstract color explosion with NO recognizable objects, vibrant spiritual color harmonies of intense reds blues yellows and greens, dynamic geometric and organic shapes flowing like visual music, bold lines circles and triangles in rhythmic composition, completely non-representational pure color form and movement';
-            // console.log('✅ Enhanced Kandinsky abstract added');
+            finalPrompt = finalPrompt + ', painting by Wassily Kandinsky, Composition VII-style pure abstract color explosion, SIMPLIFIED GEOMETRIC AND ORGANIC FORMS, NO fine realistic details, vibrant spiritual color harmonies of intense reds blues yellows and greens, dynamic geometric and organic shapes flowing like visual music, bold lines circles and triangles in rhythmic composition, FLAT COLOR AREAS, NOT photorealistic, completely non-representational pure color form and movement';
+            controlStrength = 0.50;
+            // console.log('✅ Enhanced Kandinsky abstract added (control_strength 0.50)');
           } else {
             // console.log('ℹ️ Kandinsky abstract already in prompt (AI included it)');
           }
@@ -3919,8 +3937,9 @@ export default async function handler(req, res) {
         if (selectedArtist.toUpperCase().trim().includes('SCHIELE')) {
           // console.log('🎯 Schiele detected');
           if (!finalPrompt.includes('distorted angular')) {
-            finalPrompt = finalPrompt + ', painting by Egon Schiele, expressive figure-style distorted angular body forms with twisted contorted poses, sharp angular lines and exaggerated elongated limbs, raw psychological tension and erotic stark linearity, thin wiry contour lines with intense expressive distortion, earthy muted colors with areas of bare canvas showing, body feeling tortured and psychologically intense with extreme angular distortion';
-            // console.log('✅ Enhanced Schiele distortion added');
+            finalPrompt = finalPrompt + ', painting by Egon Schiele, SIMPLIFIED ANGULAR FORMS with REDUCED FINE DETAILS, expressive figure-style distorted angular body forms with twisted contorted poses, sharp angular lines and exaggerated elongated limbs, raw psychological tension and erotic stark linearity, thin wiry contour lines with intense expressive distortion, earthy muted colors with areas of bare canvas showing, MASK-LIKE simplified facial features, NOT photorealistic NOT smooth, body feeling tortured and psychologically intense with extreme angular distortion';
+            controlStrength = 0.55;
+            // console.log('✅ Enhanced Schiele distortion added (control_strength 0.55)');
           } else {
             // console.log('ℹ️ Schiele distortion already in prompt (AI included it)');
           }
@@ -4086,8 +4105,9 @@ export default async function handler(req, res) {
             selectedArtist.toUpperCase().trim().includes('ANDRE')) {
           // console.log('🎯 Derain detected');
           if (!finalPrompt.includes('Fauvist intensity')) {
-            finalPrompt = finalPrompt + ', painting by André Derain, FAUVIST INTENSITY with vivid unmixed pure colors at maximum saturation, bold arbitrary color choices liberated from reality with reds greens blues oranges, flat decorative areas of color with simplified forms, strong graphic contours outlining color zones, elimination of subtle modeling for pure chromatic impact, vibrant energetic brushwork with spontaneous directness, landscape transformed into explosive color symphony';
-            // console.log('✅ Enhanced Derain Fauvist intensity added');
+            finalPrompt = finalPrompt + ', painting by André Derain, FAUVIST INTENSITY with vivid unmixed pure colors at maximum saturation, SIMPLIFIED FORMS with FLAT COLOR PLANES, bold arbitrary color choices liberated from reality with reds greens blues oranges, strong graphic contours outlining color zones, REDUCED FINE DETAILS, elimination of subtle modeling for pure chromatic impact, NOT photorealistic NOT smooth, vibrant energetic brushwork with spontaneous directness, landscape transformed into explosive color symphony';
+            controlStrength = 0.55;
+            // console.log('✅ Enhanced Derain Fauvist intensity added (control_strength 0.55)');
           } else {
             // console.log('ℹ️ Derain intensity already in prompt (AI included it)');
           }
@@ -4098,8 +4118,9 @@ export default async function handler(req, res) {
             selectedArtist.toUpperCase().trim().includes('MAURICE')) {
           // console.log('🎯 Vlaminck detected');
           if (!finalPrompt.includes('explosive colors')) {
-            finalPrompt = finalPrompt + ', painting by Maurice de Vlaminck, EXPLOSIVE VIOLENT COLORS with most intense Fauvist palette, thick aggressive brushstrokes applied with passionate fury, pure unmixed pigments squeezed directly from tube, turbulent swirling compositions with dramatic movement, raw primitive energy and instinctive expression, volcanic eruption of reds blues greens yellows, landscape convulsed with emotional intensity';
-            // console.log('✅ Enhanced Vlaminck explosive colors added');
+            finalPrompt = finalPrompt + ', painting by Maurice de Vlaminck, EXPLOSIVE VIOLENT COLORS with most intense Fauvist palette, SIMPLIFIED BOLD FORMS with REDUCED FINE DETAILS, thick aggressive brushstrokes applied with passionate fury, pure unmixed pigments squeezed directly from tube, FLAT COLOR AREAS, turbulent swirling compositions with dramatic movement, raw primitive energy and instinctive expression, NOT photorealistic NOT smooth, volcanic eruption of reds blues greens yellows, landscape convulsed with emotional intensity';
+            controlStrength = 0.55;
+            // console.log('✅ Enhanced Vlaminck explosive colors added (control_strength 0.55)');
           } else {
             // console.log('ℹ️ Vlaminck colors already in prompt (AI included it)');
           }
@@ -4110,10 +4131,26 @@ export default async function handler(req, res) {
             selectedArtist.toUpperCase().trim().includes('ERNST LUDWIG')) {
           // console.log('🎯 Kirchner detected');
           if (!finalPrompt.includes('Street Scene')) {
-            finalPrompt = finalPrompt + ', painting by Ernst Ludwig Kirchner, Street Scene-style with ANGULAR JAGGED FORMS and sharp splintered shapes, harsh acidic colors of strident greens poisonous pinks and electric blues, elongated distorted figures with mask-like faces, urban anxiety and metropolitan alienation, aggressive slashing brushstrokes with nervous energy, psychological tension and modern neurosis, fragmented space with Cubist influence, raw primitive power meets city chaos';
-            // console.log('✅ Enhanced Kirchner urban angst added');
+            finalPrompt = finalPrompt + ', painting by Ernst Ludwig Kirchner, Street Scene-style with ANGULAR JAGGED SIMPLIFIED FORMS and sharp splintered shapes, MASK-LIKE simplified facial features, harsh acidic colors of strident greens poisonous pinks and electric blues, elongated distorted figures, REDUCED FINE DETAILS, urban anxiety and metropolitan alienation, aggressive slashing brushstrokes with nervous energy, NOT photorealistic NOT smooth, psychological tension and modern neurosis, fragmented space with Cubist influence, raw primitive power meets city chaos';
+            controlStrength = 0.55;
+            // console.log('✅ Enhanced Kirchner urban angst added (control_strength 0.55)');
           } else {
             // console.log('ℹ️ Kirchner angst already in prompt (AI included it)');
+          }
+        }
+        
+        // 코코슈카 선택시 심리적 초상화 강화 (표현주의)
+        if (selectedArtist.toUpperCase().trim().includes('KOKOSCHKA') || 
+            selectedArtist.toUpperCase().trim().includes('OSKAR') ||
+            selectedArtist.includes('코코슈카') ||
+            selectedArtist.includes('오스카')) {
+          // console.log('🎯 Kokoschka detected');
+          if (!finalPrompt.includes('psychological')) {
+            finalPrompt = finalPrompt + ', painting by Oskar Kokoschka, VIOLENT PSYCHOLOGICAL PORTRAIT with SIMPLIFIED ANGULAR FORMS and MASK-LIKE distorted features, REDUCED FINE DETAILS, turbulent visible thick brushwork revealing inner turmoil, intense probing character study with agitated nervous energy, NOT photorealistic NOT smooth, deep emotional excavation with raw expressive paint application, earthy muted colors with flashes of intense hues, hands and face particularly expressive and distorted';
+            controlStrength = 0.55;
+            // console.log('✅ Enhanced Kokoschka psychological portrait (control_strength 0.55)');
+          } else {
+            // console.log('ℹ️ Kokoschka style already in prompt (AI included it)');
           }
         }
         
@@ -4141,12 +4178,16 @@ export default async function handler(req, res) {
             selectedArtist.includes('뭉크') ||
             selectedArtist.includes('에드바르')) {
           // console.log('🎯 Munch detected');
-          // Madonna는 부드러운 관능적 스타일이므로 The Scream 추가하지 않음
+          // v67: 뭉크 표현주의 스타일 강화 - control_strength 낮춤
+          controlStrength = 0.55;
+          
+          // Madonna는 부드러운 관능적 스타일
           if (selectedWork && selectedWork.toLowerCase().includes('madonna')) {
-            // console.log('ℹ️ Munch Madonna - skipping The Scream style (different mood)');
+            finalPrompt = finalPrompt + ', painting by Edvard Munch: Madonna style with SIMPLIFIED FORMS and MASK-LIKE facial features, WAVY FLOWING LINES throughout background and figure, VISIBLE THICK EXPRESSIONIST BRUSHSTROKES, pale luminous skin with RED AURA glowing, REDUCED FINE DETAILS, mysterious sensual atmosphere, flowing dark hair spreading like halo, symbolic colors of sickly greens reds and blacks, psychological depth and raw emotion, NOT photorealistic NOT realistic NOT smooth, EXPRESSIONIST hand-painted masterpiece quality';
+            // console.log('✅ Enhanced Munch Madonna with WAVY LINES (control_strength 0.55)');
           } else if (!finalPrompt.includes('The Scream')) {
-            finalPrompt = finalPrompt + ', painting by Edvard Munch: The Scream style with distorted anguished forms, wavy undulating backgrounds, lurid colors of blood reds and sickly yellows, existential dread atmosphere';
-            // console.log('✅ Enhanced Munch anguish added');
+            finalPrompt = finalPrompt + ', painting by Edvard Munch: The Scream style with SIMPLIFIED DISTORTED FORMS and MASK-LIKE anguished features, wavy undulating backgrounds, REDUCED FINE DETAILS, lurid colors of blood reds and sickly yellows, existential dread atmosphere, NOT photorealistic NOT smooth, VISIBLE THICK EXPRESSIONIST BRUSHSTROKES';
+            // console.log('✅ Enhanced Munch anguish added (control_strength 0.55)');
           } else {
             // console.log('ℹ️ Munch anguish already in prompt');
           }
@@ -4157,8 +4198,9 @@ export default async function handler(req, res) {
             selectedArtist.includes('마티스')) {
           // console.log('🎯 Matisse detected');
           if (!finalPrompt.includes('The Dance')) {
-            finalPrompt = finalPrompt + ', painting by Henri Matisse, The Dance-style with PURE UNMIXED VIBRANT COLORS at maximum intensity and saturation, flat decorative patterns with bold arabesques and flowing curves, elimination of all modeling and shading for pure color planes, joyful rhythmic compositions celebrating life movement and vitality, daring color combinations of brilliant reds blues greens, complete liberation of color from reality, every area a pure saturated hue singing with chromatic joy';
-            // console.log('✅ Enhanced Matisse pure color added');
+            finalPrompt = finalPrompt + ', painting by Henri Matisse, The Dance-style with PURE UNMIXED VIBRANT COLORS at maximum intensity and saturation, SIMPLIFIED FLAT FORMS with REDUCED FINE DETAILS, flat decorative patterns with bold arabesques and flowing curves, elimination of all modeling and shading for FLAT COLOR PLANES, NOT photorealistic NOT smooth gradients, joyful rhythmic compositions celebrating life movement and vitality, daring color combinations of brilliant reds blues greens, complete liberation of color from reality, every area a pure saturated flat hue';
+            controlStrength = 0.50;
+            // console.log('✅ Enhanced Matisse pure color added (control_strength 0.50)');
           } else {
             // console.log('ℹ️ Matisse color already in prompt (AI included it)');
           }
@@ -4230,7 +4272,7 @@ export default async function handler(req, res) {
             selectedArtist.includes('앤디')) {
           // console.log('🎯 Warhol detected');
           // 항상 강화 프롬프트로 교체 (4분할 보장)
-          const warholEnhancement = 'ABSOLUTE REQUIREMENT: CREATE EXACTLY 4 SEPARATE IMAGES arranged in 2x2 GRID with VISIBLE DIVIDING LINES between panels, TOP-LEFT panel + TOP-RIGHT panel + BOTTOM-LEFT panel + BOTTOM-RIGHT panel, the EXACT SAME FACE from the ORIGINAL PHOTO must appear in ALL 4 panels, EACH panel must have COMPLETELY DIFFERENT bold color scheme (panel 1: hot pink, panel 2: cyan blue, panel 3: yellow, panel 4: orange), Andy Warhol silkscreen style, FLAT graphic colors NO gradients, DO NOT draw Marilyn Monroe, MUST be 4 SEPARATE PANELS not single image, ';
+          const warholEnhancement = 'ABSOLUTE REQUIREMENT: CREATE EXACTLY 4 SEPARATE IMAGES arranged in 2x2 GRID with VISIBLE DIVIDING LINES between panels, TOP-LEFT panel + TOP-RIGHT panel + BOTTOM-LEFT panel + BOTTOM-RIGHT panel, the EXACT SAME FACE from the ORIGINAL PHOTO must appear in ALL 4 panels, EACH panel must have COMPLETELY DIFFERENT bold color scheme (panel 1: hot pink, panel 2: cyan blue, panel 3: yellow, panel 4: orange), Andy Warhol silkscreen style, FLAT GRAPHIC SIMPLIFIED shapes NO gradients NO fine details, REDUCED TO ESSENTIAL FORMS, NOT photorealistic, DO NOT draw Marilyn Monroe, MUST be 4 SEPARATE PANELS not single image, ';
           finalPrompt = warholEnhancement + finalPrompt;
           controlStrength = 0.30;
           // console.log('✅ Enhanced Warhol 4-panel grid (FRONT position, control_strength 0.30)');
@@ -4243,7 +4285,7 @@ export default async function handler(req, res) {
             selectedArtist.includes('파블로')) {
           // console.log('🎯 Picasso detected');
           if (!finalPrompt.includes('Cubist')) {
-            finalPrompt = finalPrompt + ', Cubist painting by Pablo Picasso: MANDATORY CUBIST FRAGMENTATION ON FACE AND SUBJECT - face AND body/clothing MUST be broken into GEOMETRIC ANGULAR PLANES, this fragmentation on face and subject is REQUIRED and NON-NEGOTIABLE for Picasso style, MULTI-PERSPECTIVE showing NOSE from SIDE while BOTH EYES from FRONT in same face, face and clothing divided into flat colored angular sections like faceted crystal, SINGLE UNIFIED IMAGE not panels, VISIBLE BRUSHSTROKES with thick oil paint, earth tone palette (ochre sienna brown olive grey), Analytical Cubism intersecting shapes, painterly NOT smooth NOT realistic, PRESERVE subject identity while applying Cubist fragmentation, render subject ATTRACTIVELY';
+            finalPrompt = finalPrompt + ', Cubist painting by Pablo Picasso: MANDATORY CUBIST FRAGMENTATION with GEOMETRIC SIMPLIFIED PLANES, face AND body MUST be broken into ANGULAR GEOMETRIC SHAPES, REDUCED TO ESSENTIAL FORMS, this fragmentation is REQUIRED and NON-NEGOTIABLE for Picasso style, MULTI-PERSPECTIVE showing NOSE from SIDE while BOTH EYES from FRONT in same face, face and clothing divided into FLAT colored angular sections like faceted crystal, NOT photorealistic NOT smooth NOT detailed, SINGLE UNIFIED IMAGE not panels, VISIBLE BRUSHSTROKES with thick oil paint, earth tone palette (ochre sienna brown olive grey), Analytical Cubism intersecting shapes, PRESERVE subject identity while applying Cubist fragmentation';
             controlStrength = 0.45;
             // console.log('✅ Enhanced Picasso MANDATORY CUBIST FACE+SUBJECT (control_strength 0.45)');
           } else {
@@ -4286,9 +4328,9 @@ export default async function handler(req, res) {
             selectedArtist.includes('호안')) {
           // console.log('🎯 Miró detected');
           if (!finalPrompt.includes('biomorphic')) {
-            finalPrompt = finalPrompt + ', painting by Joan Miró, BIOMORPHIC PLAYFUL FORMS floating in space, automatic drawing spontaneous symbols, bright primary colors (red yellow blue black) on light background, constellation of stars eyes crescents and organic shapes surrounding subject, childlike joyful energy, calligraphic black lines, poetic surrealist abstraction with whimsical floating elements';
-            controlStrength = 0.60;
-            // console.log('✅ Enhanced Miró biomorphic symbols added (control_strength 0.60)');
+            finalPrompt = finalPrompt + ', painting by Joan Miró, BIOMORPHIC PLAYFUL SIMPLIFIED FORMS floating in space, REDUCED TO ESSENTIAL SHAPES, automatic drawing spontaneous symbols, bright primary colors (red yellow blue black) on light background, constellation of stars eyes crescents and organic shapes surrounding subject, FLAT COLOR AREAS NO gradients, childlike joyful energy, calligraphic black lines, NOT photorealistic NOT detailed, poetic surrealist abstraction with whimsical floating elements';
+            controlStrength = 0.55;
+            // console.log('✅ Enhanced Miró biomorphic symbols added (control_strength 0.55)');
           } else {
             // console.log('ℹ️ Miró symbolism already in prompt (AI included it)');
           }
@@ -4301,7 +4343,7 @@ export default async function handler(req, res) {
             selectedArtist.includes('해링')) {
           // console.log('🎯 Keith Haring detected');
           if (!finalPrompt.includes('radiant')) {
-            finalPrompt = finalPrompt + ', Transform like Keith Haring street art - CRITICAL: BOLD THICK BLACK OUTLINES around all figures, figures SIMPLIFIED into iconic dancing silhouettes, bright PRIMARY COLORS filling shapes (red, yellow, blue, green, orange, pink), RADIANT LINES emanating from bodies showing energy and movement, flat graphic subway graffiti style, figures in DYNAMIC DANCING POSES with movement lines, barking dogs and crawling babies as motifs, NO shading NO gradients just flat bold colors, joyful energetic street art aesthetic';
+            finalPrompt = finalPrompt + ', Transform like Keith Haring street art - CRITICAL: BOLD THICK BLACK OUTLINES around all figures, figures MAXIMALLY SIMPLIFIED into iconic dancing silhouettes, REDUCED TO ESSENTIAL SHAPES ONLY, bright PRIMARY COLORS filling shapes (red, yellow, blue, green, orange, pink), RADIANT LINES emanating from bodies showing energy and movement, FLAT GRAPHIC shapes NO gradients NO shading NO fine details, flat graphic subway graffiti style, NOT photorealistic NOT detailed, figures in DYNAMIC DANCING POSES with movement lines, barking dogs and crawling babies as motifs, joyful energetic street art aesthetic';
             controlStrength = 0.40;
             // console.log('✅ Enhanced Keith Haring with bold outlines and radiant lines (control_strength 0.40)');
           } else {
@@ -4316,9 +4358,9 @@ export default async function handler(req, res) {
             selectedArtist.includes('로이')) {
           // console.log('🎯 Lichtenstein detected');
           if (!finalPrompt.includes('Ben-Day dots')) {
-            finalPrompt = finalPrompt + ', Transform like Roy Lichtenstein "Drowning Girl" and "Whaam!" - CRITICAL: cover ENTIRE image with visible BEN-DAY DOTS pattern (small colored circles), THICK BOLD BLACK OUTLINES around ALL forms, LIMITED flat colors ONLY (primary red yellow blue plus black white), comic book dramatic emotional style, optional speech bubble or thought balloon with text, halftone printing aesthetic blown up to fine art scale, NOT realistic NOT photographic';
-            controlStrength = 0.60;
-            // console.log('✅ Enhanced Lichtenstein with Drowning Girl reference (control_strength 0.60)');
+            finalPrompt = finalPrompt + ', Transform like Roy Lichtenstein "Drowning Girl" and "Whaam!" - CRITICAL: cover ENTIRE image with visible BEN-DAY DOTS pattern (small colored circles), THICK BOLD BLACK OUTLINES around ALL forms, SIMPLIFIED GRAPHIC SHAPES with REDUCED FINE DETAILS, LIMITED flat colors ONLY (primary red yellow blue plus black white), FLAT COLOR AREAS NO gradients NO shading, comic book dramatic emotional style, NOT photorealistic NOT detailed, halftone printing aesthetic blown up to fine art scale';
+            controlStrength = 0.55;
+            // console.log('✅ Enhanced Lichtenstein with Drowning Girl reference (control_strength 0.55)');
           } else {
             // console.log('ℹ️ Lichtenstein dots already in prompt (AI included it)');
           }

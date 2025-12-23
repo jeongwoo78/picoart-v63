@@ -257,16 +257,13 @@ const ResultScreen = ({
   // 원클릭: 화면 이동 시 현재 결과 로그
   useEffect(() => {
     if (isFullTransform && currentResult) {
-      // console.log('========================================');
-      // console.log(`📍 현재 화면: ${currentIndex + 1}/${results.length}`);
-      // console.log(`   - 스타일: ${currentResult.style?.name}`);
-      // console.log(`   - 성공 여부: ${currentResult.success ? '✅ 성공' : '❌ 실패'}`);
-      // console.log(`   - aiSelectedArtist: ${currentResult.aiSelectedArtist}`);
-      // console.log(`   - selected_work: ${currentResult.selected_work}`);
+      // v67: 화면 전환 시 간단한 로그 (콘솔 자동 스크롤)
+      console.log('');
+      console.log(`📍 [${currentIndex + 1}/${results.length}] ${currentResult.style?.name}`);
+      console.log(`   👨‍🎨 ${currentResult.aiSelectedArtist || '?'} - ${currentResult.selected_work || '?'}`);
       if (!currentResult.success) {
-        // console.log(`   - 에러: ${currentResult.error}`);
+        console.log(`   ❌ 에러: ${currentResult.error}`);
       }
-      // console.log('========================================');
     }
   }, [currentIndex, isFullTransform, currentResult, results.length]);
 
