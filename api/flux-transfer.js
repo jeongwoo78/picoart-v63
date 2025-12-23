@@ -2287,9 +2287,7 @@ HENRI MATISSE - SELECT ONE:
           'picasso': `
 PABLO PICASSO - SELECT ONE:
 1. "Les Demoiselles d'Avignon" (아비뇽의 처녀들) → GROUP of figures, women, multiple people | Style: ANGULAR FRAGMENTED faces with AFRICAN MASK influence, geometric planes, nude figures in proto-Cubist deconstruction, pink flesh with ochre and blue
-2. "Guernica" (게르니카) → dramatic scene, chaos, turmoil, emotional intensity | Style: BLACK WHITE GREY ONLY monochrome, anguished fragmented figures, screaming horse, bull figure, dismembered bodies, powerful anti-war imagery
-3. "The Old Guitarist" (늙은 기타리스트) → MALE portrait, melancholy, solitude, single person | Style: BLUE PERIOD monochrome blue palette, thin elongated elderly figure, emaciated angular form with closed eyes, El Greco-inspired elongation, profound solitude
-4. "The Dream" (꿈) → FEMALE portrait, peaceful, sensual, sleeping | Style: SOFT ROUNDED CURVES unlike angular Cubism, warm reds pinks yellows, Marie-Thérèse style, peaceful sleeping expression, bold simplified curves, erotic yet tender`,
+2. "Guernica" (게르니카) → dramatic scene, chaos, turmoil, emotional intensity | Style: BLACK WHITE GREY ONLY monochrome, anguished fragmented figures, screaming horse, bull figure, dismembered bodies, powerful anti-war imagery`,
 
           'frida': `
 FRIDA KAHLO - SELECT ONE:
@@ -4671,7 +4669,19 @@ export default async function handler(req, res) {
       selected_artist: selectedArtist,
       selected_work: selectedWork,  // 거장 모드: 선택된 대표작
       selection_method: selectionMethod,
-      selection_details: selectionDetails
+      selection_details: selectionDetails,
+      // v66: 프론트엔드 로그용 데이터
+      _debug: {
+        version: 'v66',
+        elapsed: elapsedTime,
+        vision: logData.vision,
+        selection: logData.selection,
+        prompt: {
+          wordCount: logData.prompt.wordCount,
+          applied: appliedList
+        },
+        flux: logData.flux
+      }
     });
     
   } catch (error) {

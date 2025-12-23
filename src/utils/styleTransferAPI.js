@@ -172,6 +172,17 @@ export const processStyleTransfer = async (photoFile, selectedStyle, apiKey, onP
       console.log(`✅ 완료 (${d.elapsed}초)`);
       console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
       console.log('');
+    } else {
+      // _debug가 없으면 기본 정보라도 출력
+      console.log('');
+      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+      console.log('📍 FLUX Transfer 응답');
+      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+      console.log('   👨‍🎨 화가:', prediction.selected_artist || '?');
+      console.log('   🖼️ 대표작:', prediction.selected_work || '?');
+      console.log('   📊 방식:', prediction.selection_method || '?');
+      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+      console.log('');
     }
 
     const aiSelectionInfo = {

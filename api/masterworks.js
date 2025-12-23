@@ -1016,18 +1016,6 @@ export const picassoMasterworks = {
     nameEn: 'Guernica',
     prompt: ', Apply Guernica style by Pablo Picasso (1937) using CRITICAL BLACK WHITE AND GREY ONLY monochrome palette. Create a dramatic war scene with anguished fragmented figures featuring a screaming horse at center, bull figure, broken sword and light bulb as sun. Show dismembered bodies and chaos with powerful anti-war imagery using Cubist distortion expressing horror. This must look like a real monochrome Cubist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
     feature: '흑백, 전쟁'
-  },
-  'picasso-oldguitarist': {
-    name: '늙은 기타리스트',
-    nameEn: 'The Old Guitarist',
-    prompt: ', Apply The Old Guitarist style by Pablo Picasso Blue Period (1903-04) using a monochrome blue palette with subtle blue-green tones. Create a thin elongated elderly figure hunched over a brown guitar with emaciated angular form and closed eyes. Use El Greco-inspired elongation with visible brushwork in blue tones capturing melancholic introspective mood. This must look like a real Blue Period hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '청색, 기타'
-  },
-  'picasso-dream': {
-    name: '꿈',
-    nameEn: 'The Dream (Le Rêve)',
-    prompt: ', Apply The Dream style by Pablo Picasso (1932) with a sensual curved figure sleeping in an armchair using soft rounded forms unlike angular Cubism. Create a warm palette of reds pinks and yellows with peaceful dreaming expression. Use bold simplified curves with decorative patterned background for this tender portrayal. This must look like a real hand-painted Picasso artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '곡선, 수면'
   }
 };
 
@@ -1334,7 +1322,7 @@ export function getArtistMasterworkList(artistKey) {
     'kandinsky': ['kandinsky-composition8', 'kandinsky-yellow-red-blue', 'kandinsky-circles'],
     'schiele': ['schiele-selfportrait', 'schiele-embrace', 'schiele-deathandmaiden'],
     // 모더니즘 피카소/프리다 워홀 포함
-    'picasso': ['picasso-demoiselles', 'picasso-guernica', 'picasso-oldguitarist', 'picasso-dream'],
+    'picasso': ['picasso-demoiselles', 'picasso-guernica'],
     'frida': ['frida-parrots', 'frida-thornnecklace', 'frida-monkeys', 'frida-diegoandi'],
     'warhol': ['warhol-marilyn', 'warhol-soup'],
     'magritte': ['magritte-sonofman', 'magritte-golconda', 'magritte-bowlerhat', 'magritte-humancondition', 'magritte-empireoflight'],

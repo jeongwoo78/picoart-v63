@@ -559,14 +559,11 @@ const ProcessingScreen = ({ photo, selectedStyle, onComplete }) => {
     const workName = result.selected_work || '';
     const resultCategory = result.style?.category;
     
-    // console.log('🎓 getSecondaryEducation (ProcessingScreen v51):');
-    // console.log('   - artistName:', artistName);
-    // console.log('   - workName:', workName);
-    // console.log('   - category:', resultCategory);
-    
     // v51: educationMatcher.js 사용 (ResultScreen과 동일)
     const key = getEducationKey(resultCategory, artistName, workName);
-    // console.log('   - matched key:', key);
+    
+    // v66: 간단한 매칭 로그
+    console.log(`📚 교육자료 매칭: ${resultCategory} → ${key || '없음'} (${artistName}, ${workName || '-'})`);
     
     if (key) {
       // 교육자료 데이터 객체 구성
