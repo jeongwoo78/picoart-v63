@@ -51,7 +51,7 @@ const MASTERS_WORK_MAP = {
   '질투': 'munch-jealousy',
   'The Jealousy': 'munch-jealousy',
   
-  // 마티스 (3작품)
+  // 마티스 (4작품)
   'The Dance': 'matisse-dance',
   '춤': 'matisse-dance',
   'Dance': 'matisse-dance',
@@ -63,6 +63,10 @@ const MASTERS_WORK_MAP = {
   'Woman with a Hat': 'matisse-womanhat',
   '모자를 쓴 여인': 'matisse-womanhat',
   'Femme au Chapeau': 'matisse-womanhat',
+  'The Green Stripe': 'matisse-greenstripe',
+  '녹색 줄무늬': 'matisse-greenstripe',
+  'Green Stripe': 'matisse-greenstripe',
+  'Portrait of Madame Matisse': 'matisse-greenstripe',
   
   // 피카소 (2작품)
   'Les Demoiselles d\'Avignon': 'picasso-demoiselles',
@@ -72,7 +76,7 @@ const MASTERS_WORK_MAP = {
   'Guernica': 'picasso-guernica',
   '게르니카': 'picasso-guernica',
   
-  // 프리다 칼로 (4작품)
+  // 프리다 칼로 (5작품)
   'Me and My Parrots': 'frida-parrots',
   '나와 내 앵무새들': 'frida-parrots',
   'Self-Portrait with Parrots': 'frida-parrots',
@@ -86,6 +90,8 @@ const MASTERS_WORK_MAP = {
   'Self-Portrait with Monkeys': 'frida-monkeys',
   '원숭이와 자화상': 'frida-monkeys',
   'Monkeys': 'frida-monkeys',
+  'Diego and I': 'frida-diegoandi',
+  '디에고와 나': 'frida-diegoandi',
   
   // 워홀 (2작품)
   'Marilyn Monroe': 'warhol-marilyn',
@@ -510,6 +516,34 @@ export const getEducationKey = (category, artist, work) => {
 };
 
 
+// ========== 작품키 → 화가키 변환 (거장 원클릭용) ==========
+// 거장 원클릭 교육자료는 화가별로 구성되어 있으므로
+// "vangogh-starrynight" → "vangogh" 변환 필요
+const WORK_TO_ARTIST_KEY = {
+  'vangogh-starrynight': 'vangogh',
+  'vangogh-sunflowers': 'vangogh',
+  'vangogh-selfportrait': 'vangogh',
+  'klimt-kiss': 'klimt',
+  'klimt-treeoflife': 'klimt',
+  'klimt-judith': 'klimt',
+  'munch-scream': 'munch',
+  'munch-madonna': 'munch',
+  'munch-jealousy': 'munch',
+  'matisse-dance': 'matisse',
+  'matisse-redroom': 'matisse',
+  'matisse-womanhat': 'matisse',
+  'matisse-greenstripe': 'matisse',
+  'picasso-demoiselles': 'picasso',
+  'picasso-guernica': 'picasso',
+  'frida-parrots': 'frida',
+  'frida-brokencolumn': 'frida',
+  'frida-thornnecklace': 'frida',
+  'frida-monkeys': 'frida',
+  'frida-diegoandi': 'frida',
+  'warhol-marilyn': 'warhol',
+  'warhol-soup': 'warhol',
+};
+
 // ========== 교육자료 내용 가져오기 ==========
 /**
  * 교육자료 키로 실제 내용 가져오기
@@ -532,7 +566,10 @@ export const getEducationContent = (category, key, educationData) => {
   let data = null;
   
   if (category === 'masters') {
-    data = educationData.masters?.[key];
+    // 거장: 작품키 → 화가키 변환 (원클릭 교육자료는 화가별로 구성)
+    let lookupKey = WORK_TO_ARTIST_KEY[key] || key;
+    // console.log('   - masters lookupKey:', lookupKey);
+    data = educationData.masters?.[lookupKey];
   } else if (category === 'movements') {
     data = educationData.movements?.[key];
   } else if (category === 'oriental') {
