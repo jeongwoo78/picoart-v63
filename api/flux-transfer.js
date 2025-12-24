@@ -4486,10 +4486,21 @@ export default async function handler(req, res) {
     // 사조 정보 추출 (movements 카테고리인 경우)
     if (selectedStyle.category === 'movements' && selectedStyle.id) {
       const movementMap = {
-        'ancient': '고대', 'medieval': '중세', 'renaissance': '르네상스', 'baroque': '바로크',
-        'rococo': '로코코', 'neoclassicism': '신고전주의', 'romanticism': '낭만주의', 'realism': '사실주의',
-        'impressionism': '인상주의', 'postImpressionism': '후기인상주의', 'fauvism': '야수파',
-        'expressionism': '표현주의', 'artNouveau': '아르누보'
+        'ancient': '고대', 
+        'medieval': '중세', 
+        'renaissance': '르네상스', 
+        'baroque': '바로크',
+        'rococo': '로코코', 
+        'neoclassicism': '신고전주의', 
+        'romanticism': '낭만주의', 
+        'realism': '사실주의',
+        'neoclassicism_vs_romanticism_vs_realism': '신고전주의 vs 낭만주의 vs 사실주의',
+        'impressionism': '인상주의', 
+        'postImpressionism': '후기인상주의', 
+        'fauvism': '야수파',
+        'expressionism': '표현주의', 
+        'artNouveau': '아르누보',
+        'modernism': '20세기 모더니즘'
       };
       logData.selection.movement = movementMap[selectedStyle.id] || selectedStyle.name || '';
     }

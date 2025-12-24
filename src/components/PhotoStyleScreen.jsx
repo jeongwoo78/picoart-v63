@@ -27,12 +27,12 @@ const PhotoStyleScreen = ({ mainCategory, onBack, onSelect }) => {
         { id: 'renaissance', name: '르네상스', icon: '🎭', period: '14-16세기' },
         { id: 'baroque', name: '바로크', icon: '👑', period: '17세기' },
         { id: 'rococo', name: '로코코', icon: '🌸', period: '18세기' },
-        { id: 'neoclassicism_vs_romanticism_vs_realism', name: '신고전/낭만/사실주의', icon: '⚖️', period: '1770-1870' },
+        { id: 'neoclassicism_vs_romanticism_vs_realism', name: '신고전주의 vs 낭만주의 vs 사실주의', icon: '⚖️', period: '1770-1870' },
         { id: 'impressionism', name: '인상주의', icon: '🌅', period: '1860-1890' },
         { id: 'postImpressionism', name: '후기인상주의', icon: '🌻', period: '1880-1910' },
         { id: 'fauvism', name: '야수파', icon: '🎨', period: '1905-1908' },
         { id: 'expressionism', name: '표현주의', icon: '😱', period: '1905-1920' },
-        { id: 'modernism', name: '모더니즘', icon: '🔮', period: '1907-1970' }
+        { id: 'modernism', name: '20세기 모더니즘', icon: '🔮', period: '1907-1970' }
       ]
     },
     masters: {
