@@ -722,42 +722,42 @@ const ResultScreen = ({
   const getMasterInfo = (artistName) => {
     const masterMap = {
       // 반 고흐
-      '반 고흐': { fullName: '빈센트 반 고흐(Vincent van Gogh, 1853~1890)', movement: '후기인상주의(19세기 말)' },
-      'vangogh': { fullName: '빈센트 반 고흐(Vincent van Gogh, 1853~1890)', movement: '후기인상주의(19세기 말)' },
-      'van gogh': { fullName: '빈센트 반 고흐(Vincent van Gogh, 1853~1890)', movement: '후기인상주의(19세기 말)' },
-      'vincent van gogh': { fullName: '빈센트 반 고흐(Vincent van Gogh, 1853~1890)', movement: '후기인상주의(19세기 말)' },
+      '반 고흐': { fullName: '빈센트 반 고흐(Vincent van Gogh, 1853~1890)', movement: '후기인상주의' },
+      'vangogh': { fullName: '빈센트 반 고흐(Vincent van Gogh, 1853~1890)', movement: '후기인상주의' },
+      'van gogh': { fullName: '빈센트 반 고흐(Vincent van Gogh, 1853~1890)', movement: '후기인상주의' },
+      'vincent van gogh': { fullName: '빈센트 반 고흐(Vincent van Gogh, 1853~1890)', movement: '후기인상주의' },
       
       // 클림트
-      '클림트': { fullName: '구스타프 클림트(Gustav Klimt, 1862~1918)', movement: '아르누보(19세기 말)' },
-      'klimt': { fullName: '구스타프 클림트(Gustav Klimt, 1862~1918)', movement: '아르누보(19세기 말)' },
-      'gustav klimt': { fullName: '구스타프 클림트(Gustav Klimt, 1862~1918)', movement: '아르누보(19세기 말)' },
+      '클림트': { fullName: '구스타프 클림트(Gustav Klimt, 1862~1918)', movement: '아르누보' },
+      'klimt': { fullName: '구스타프 클림트(Gustav Klimt, 1862~1918)', movement: '아르누보' },
+      'gustav klimt': { fullName: '구스타프 클림트(Gustav Klimt, 1862~1918)', movement: '아르누보' },
       
       // 뭉크
-      '뭉크': { fullName: '에드바르 뭉크(Edvard Munch, 1863~1944)', movement: '표현주의(20세기 초)' },
-      'munch': { fullName: '에드바르 뭉크(Edvard Munch, 1863~1944)', movement: '표현주의(20세기 초)' },
-      'edvard munch': { fullName: '에드바르 뭉크(Edvard Munch, 1863~1944)', movement: '표현주의(20세기 초)' },
+      '뭉크': { fullName: '에드바르 뭉크(Edvard Munch, 1863~1944)', movement: '표현주의' },
+      'munch': { fullName: '에드바르 뭉크(Edvard Munch, 1863~1944)', movement: '표현주의' },
+      'edvard munch': { fullName: '에드바르 뭉크(Edvard Munch, 1863~1944)', movement: '표현주의' },
       
       // 마티스
-      '마티스': { fullName: '앙리 마티스(Henri Matisse, 1869~1954)', movement: '야수파(20세기 초)' },
-      'matisse': { fullName: '앙리 마티스(Henri Matisse, 1869~1954)', movement: '야수파(20세기 초)' },
-      'henri matisse': { fullName: '앙리 마티스(Henri Matisse, 1869~1954)', movement: '야수파(20세기 초)' },
+      '마티스': { fullName: '앙리 마티스(Henri Matisse, 1869~1954)', movement: '야수파' },
+      'matisse': { fullName: '앙리 마티스(Henri Matisse, 1869~1954)', movement: '야수파' },
+      'henri matisse': { fullName: '앙리 마티스(Henri Matisse, 1869~1954)', movement: '야수파' },
       
       // 피카소
-      '피카소': { fullName: '파블로 피카소(Pablo Picasso, 1881~1973)', movement: '입체주의(20세기 초)' },
-      'picasso': { fullName: '파블로 피카소(Pablo Picasso, 1881~1973)', movement: '입체주의(20세기 초)' },
-      'pablo picasso': { fullName: '파블로 피카소(Pablo Picasso, 1881~1973)', movement: '입체주의(20세기 초)' },
+      '피카소': { fullName: '파블로 피카소(Pablo Picasso, 1881~1973)', movement: '입체주의' },
+      'picasso': { fullName: '파블로 피카소(Pablo Picasso, 1881~1973)', movement: '입체주의' },
+      'pablo picasso': { fullName: '파블로 피카소(Pablo Picasso, 1881~1973)', movement: '입체주의' },
       
       // 프리다 칼로
-      '프리다': { fullName: '프리다 칼로(Frida Kahlo, 1907~1954)', movement: '초현실주의(20세기 중반)' },
-      '프리다 칼로': { fullName: '프리다 칼로(Frida Kahlo, 1907~1954)', movement: '초현실주의(20세기 중반)' },
-      'frida': { fullName: '프리다 칼로(Frida Kahlo, 1907~1954)', movement: '초현실주의(20세기 중반)' },
-      'frida kahlo': { fullName: '프리다 칼로(Frida Kahlo, 1907~1954)', movement: '초현실주의(20세기 중반)' },
+      '프리다': { fullName: '프리다 칼로(Frida Kahlo, 1907~1954)', movement: '초현실주의' },
+      '프리다 칼로': { fullName: '프리다 칼로(Frida Kahlo, 1907~1954)', movement: '초현실주의' },
+      'frida': { fullName: '프리다 칼로(Frida Kahlo, 1907~1954)', movement: '초현실주의' },
+      'frida kahlo': { fullName: '프리다 칼로(Frida Kahlo, 1907~1954)', movement: '초현실주의' },
       
       // 워홀
-      '워홀': { fullName: '앤디 워홀(Andy Warhol, 1928~1987)', movement: '팝아트(20세기 중반)' },
-      '앤디 워홀': { fullName: '앤디 워홀(Andy Warhol, 1928~1987)', movement: '팝아트(20세기 중반)' },
-      'warhol': { fullName: '앤디 워홀(Andy Warhol, 1928~1987)', movement: '팝아트(20세기 중반)' },
-      'andy warhol': { fullName: '앤디 워홀(Andy Warhol, 1928~1987)', movement: '팝아트(20세기 중반)' }
+      '워홀': { fullName: '앤디 워홀(Andy Warhol, 1928~1987)', movement: '팝아트' },
+      '앤디 워홀': { fullName: '앤디 워홀(Andy Warhol, 1928~1987)', movement: '팝아트' },
+      'warhol': { fullName: '앤디 워홀(Andy Warhol, 1928~1987)', movement: '팝아트' },
+      'andy warhol': { fullName: '앤디 워홀(Andy Warhol, 1928~1987)', movement: '팝아트' }
     };
     
     if (!artistName) return { fullName: '거장', movement: '' };
@@ -818,71 +818,74 @@ const ResultScreen = ({
       // 르네상스
       'leonardo': { name: '레오나르도 다 빈치', years: '1452~1519' },
       'leonardo da vinci': { name: '레오나르도 다 빈치', years: '1452~1519' },
-      'michelangelo': { name: '미켈란젤로', years: '1475~1564' },
-      'raphael': { name: '라파엘로', years: '1483~1520' },
-      'botticelli': { name: '보티첼리', years: '1445~1510' },
-      'titian': { name: '티치아노', years: '1488~1576' },
+      'michelangelo': { name: '미켈란젤로 부오나로티', years: '1475~1564' },
+      'raphael': { name: '라파엘로 산치오', years: '1483~1520' },
+      'botticelli': { name: '산드로 보티첼리', years: '1445~1510' },
+      'titian': { name: '티치아노 베첼리오', years: '1488~1576' },
       // 바로크
-      'caravaggio': { name: '카라바조', years: '1571~1610' },
-      'rembrandt': { name: '렘브란트', years: '1606~1669' },
-      'velazquez': { name: '벨라스케스', years: '1599~1660' },
-      'velázquez': { name: '벨라스케스', years: '1599~1660' },
-      'rubens': { name: '루벤스', years: '1577~1640' },
+      'caravaggio': { name: '미켈란젤로 메리시 다 카라바조', years: '1571~1610' },
+      'rembrandt': { name: '렘브란트 판 레인', years: '1606~1669' },
+      'velazquez': { name: '디에고 벨라스케스', years: '1599~1660' },
+      'velázquez': { name: '디에고 벨라스케스', years: '1599~1660' },
+      'rubens': { name: '피터 파울 루벤스', years: '1577~1640' },
       // 로코코
-      'watteau': { name: '와토', years: '1684~1721' },
-      'boucher': { name: '부셰', years: '1703~1770' },
-      'fragonard': { name: '프라고나르', years: '1732~1806' },
+      'watteau': { name: '장 앙투안 와토', years: '1684~1721' },
+      'boucher': { name: '프랑수아 부셰', years: '1703~1770' },
+      'françois boucher': { name: '프랑수아 부셰', years: '1703~1770' },
+      'fragonard': { name: '장 오노레 프라고나르', years: '1732~1806' },
       // 신고전주의
-      'david': { name: '다비드', years: '1748~1825' },
-      'jacques-louis david': { name: '다비드', years: '1748~1825' },
-      'ingres': { name: '앵그르', years: '1780~1867' },
+      'david': { name: '자크 루이 다비드', years: '1748~1825' },
+      'jacques-louis david': { name: '자크 루이 다비드', years: '1748~1825' },
+      'ingres': { name: '장 오귀스트 도미니크 앵그르', years: '1780~1867' },
       // 낭만주의
-      'delacroix': { name: '들라크루아', years: '1798~1863' },
-      'turner': { name: '터너', years: '1775~1851' },
-      'goya': { name: '고야', years: '1746~1828' },
+      'delacroix': { name: '외젠 들라크루아', years: '1798~1863' },
+      'turner': { name: '조지프 말러드 윌리엄 터너', years: '1775~1851' },
+      'goya': { name: '프란시스코 고야', years: '1746~1828' },
       // 사실주의
-      'courbet': { name: '쿠르베', years: '1819~1877' },
-      'millet': { name: '밀레', years: '1814~1875' },
+      'courbet': { name: '귀스타브 쿠르베', years: '1819~1877' },
+      'millet': { name: '장 프랑수아 밀레', years: '1814~1875' },
       // 인상주의
       'monet': { name: '클로드 모네', years: '1840~1926' },
       'claude monet': { name: '클로드 모네', years: '1840~1926' },
-      'renoir': { name: '르누아르', years: '1841~1919' },
-      'degas': { name: '드가', years: '1834~1917' },
-      'manet': { name: '마네', years: '1832~1883' },
-      'morisot': { name: '모리조', years: '1841~1895' },
-      'berthe morisot': { name: '모리조', years: '1841~1895' },
-      'caillebotte': { name: '카유보트', years: '1848~1894' },
-      'gustave caillebotte': { name: '카유보트', years: '1848~1894' },
+      'renoir': { name: '피에르 오귀스트 르누아르', years: '1841~1919' },
+      'pierre-auguste renoir': { name: '피에르 오귀스트 르누아르', years: '1841~1919' },
+      'degas': { name: '에드가 드가', years: '1834~1917' },
+      'manet': { name: '에두아르 마네', years: '1832~1883' },
+      'morisot': { name: '베르트 모리조', years: '1841~1895' },
+      'berthe morisot': { name: '베르트 모리조', years: '1841~1895' },
+      'caillebotte': { name: '귀스타브 카유보트', years: '1848~1894' },
+      'gustave caillebotte': { name: '귀스타브 카유보트', years: '1848~1894' },
       // 후기인상주의
       'van gogh': { name: '빈센트 반 고흐', years: '1853~1890' },
       'vincent van gogh': { name: '빈센트 반 고흐', years: '1853~1890' },
       'gauguin': { name: '폴 고갱', years: '1848~1903' },
+      'paul gauguin': { name: '폴 고갱', years: '1848~1903' },
       'cezanne': { name: '폴 세잔', years: '1839~1906' },
       'cézanne': { name: '폴 세잔', years: '1839~1906' },
-      'signac': { name: '시냐크', years: '1863~1935' },
-      'paul signac': { name: '시냐크', years: '1863~1935' },
+      'signac': { name: '폴 시냐크', years: '1863~1935' },
+      'paul signac': { name: '폴 시냐크', years: '1863~1935' },
       // 야수파
       'matisse': { name: '앙리 마티스', years: '1869~1954' },
       'henri matisse': { name: '앙리 마티스', years: '1869~1954' },
-      'derain': { name: '드랭', years: '1880~1954' },
-      'andré derain': { name: '드랭', years: '1880~1954' },
-      'andre derain': { name: '드랭', years: '1880~1954' },
-      'vlaminck': { name: '블라맹크', years: '1876~1958' },
-      'maurice de vlaminck': { name: '블라맹크', years: '1876~1958' },
+      'derain': { name: '앙드레 드랭', years: '1880~1954' },
+      'andré derain': { name: '앙드레 드랭', years: '1880~1954' },
+      'andre derain': { name: '앙드레 드랭', years: '1880~1954' },
+      'vlaminck': { name: '모리스 드 블라맹크', years: '1876~1958' },
+      'maurice de vlaminck': { name: '모리스 드 블라맹크', years: '1876~1958' },
       // 표현주의
       'munch': { name: '에드바르 뭉크', years: '1863~1944' },
       'edvard munch': { name: '에드바르 뭉크', years: '1863~1944' },
-      'kirchner': { name: '키르히너', years: '1880~1938' },
-      'ernst ludwig kirchner': { name: '키르히너', years: '1880~1938' },
-      'kokoschka': { name: '코코슈카', years: '1886~1980' },
-      'oskar kokoschka': { name: '코코슈카', years: '1886~1980' },
+      'kirchner': { name: '에른스트 루트비히 키르히너', years: '1880~1938' },
+      'ernst ludwig kirchner': { name: '에른스트 루트비히 키르히너', years: '1880~1938' },
+      'kokoschka': { name: '오스카 코코슈카', years: '1886~1980' },
+      'oskar kokoschka': { name: '오스카 코코슈카', years: '1886~1980' },
       // 20세기 모더니즘
       'picasso': { name: '파블로 피카소', years: '1881~1973' },
       'pablo picasso': { name: '파블로 피카소', years: '1881~1973' },
       'warhol': { name: '앤디 워홀', years: '1928~1987' },
       'andy warhol': { name: '앤디 워홀', years: '1928~1987' },
-      'lichtenstein': { name: '리히텐슈타인', years: '1923~1997' },
-      'roy lichtenstein': { name: '리히텐슈타인', years: '1923~1997' },
+      'lichtenstein': { name: '로이 리히텐슈타인', years: '1923~1997' },
+      'roy lichtenstein': { name: '로이 리히텐슈타인', years: '1923~1997' },
       'haring': { name: '키스 해링', years: '1958~1990' },
       'keith haring': { name: '키스 해링', years: '1958~1990' },
       'miro': { name: '호안 미로', years: '1893~1983' },
@@ -899,8 +902,8 @@ const ResultScreen = ({
     // 제목 생성: 사조(영문, 시기)
     let actualMovement = styleName;
     
-    // "신고전주의 vs 낭만주의 vs 사실주의"인 경우 화가에 따라 사조 결정
-    if (styleName === '신고전주의 vs 낭만주의 vs 사실주의' && artistName) {
+    // "신고전 vs 낭만 vs 사실주의"인 경우 화가에 따라 사조 결정
+    if (styleName === '신고전 vs 낭만 vs 사실주의' && artistName) {
       const normalized = artistName.toLowerCase().trim();
       // 신고전주의 화가
       if (['david', 'jacques-louis david', 'ingres'].includes(normalized)) {
@@ -936,10 +939,10 @@ const ResultScreen = ({
     const mvInfo = movementInfo[actualMovement] || { en: styleName, period: '' };
     const title = mvInfo.period ? `${actualMovement}(${mvInfo.en}, ${mvInfo.period})` : `${actualMovement}(${mvInfo.en})`;
     
-    // 부제 생성: 화가명(생몰연도)
+    // 부제 생성: 화가명만 (생몰연도 제거)
     const normalized = artistName ? artistName.toLowerCase().trim() : '';
     const artInfo = artistInfo[normalized] || { name: artistName, years: '' };
-    const subtitle = artInfo.years ? `${artInfo.name}(${artInfo.years})` : artInfo.name;
+    const subtitle = artInfo.name;
     
     return { title, subtitle };
   };

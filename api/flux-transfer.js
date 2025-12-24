@@ -171,7 +171,7 @@ function getAlternativeWork(artistName, avoidedWork) {
 //   3. 르네상스 (1400~1600) - 5명 화가 선택 ⭐ 남성 초상화 최적화
 //   4. 바로크 (1600~1750) - 5명 화가 선택
 //   5. 로코코 (1720~1780) - 2명 화가 선택
-//   6. 신고전주의 vs 낭만주의 vs 사실주의 (1770~1870) - 7명 화가 선택 (AI가 3개 중 선택)
+//   6. 신고전 vs 낭만 vs 사실주의 (1770~1870) - 7명 화가 선택 (AI가 3개 중 선택)
 //      → David, Ingres (신고전주의)
 //      → Turner, Goya, Delacroix (낭만주의)
 //      → Millet, Manet (사실주의)
@@ -424,7 +424,7 @@ const ARTIST_WEIGHTS = {
     ]
   },
   
-  // 신고전주의 vs 낭만주의 vs 사실주의 (프론트엔드 카테고리명)
+  // 신고전 vs 낭만 vs 사실주의 (프론트엔드 카테고리명)
   neoclassicism_vs_romanticism_vs_realism: {
     portrait: [
       { name: 'INGRES', weight: 30 },
@@ -695,7 +695,7 @@ function selectArtistByWeight(category, photoAnalysis) {
     }
   }
   
-  // 신고전주의 vs 낭만주의 vs 사실주의 특수 처리
+  // 신고전 vs 낭만 vs 사실주의 특수 처리
   if (category === 'neoclassicism_vs_romanticism_vs_realism') {
     const subject = (photoAnalysis.subject || '').toLowerCase();
     
@@ -1255,7 +1255,7 @@ function getMedievalHints(photoAnalysis) {
 `;
 }
 
-// 신고전주의 vs 낭만주의 vs 사실주의 (7명) ⭐ v42 통합
+// 신고전 vs 낭만 vs 사실주의 (7명) ⭐ v42 통합
 function getNeoclassicismVsRomanticismVsRealismGuidelines() {
   return `
 🚫🚫🚫 CRITICAL RESTRICTION 🚫🚫🚫
@@ -1996,7 +1996,7 @@ const fallbackPrompts = {
   },
   
   neoclassicism_vs_romanticism_vs_realism: {
-    name: '신고전주의 vs 낭만주의 vs 사실주의',
+    name: '신고전 vs 낭만 vs 사실주의',
     prompt: 'Choose best style based on photo: if static balanced formal use Neoclassical style by Jacques-Louis David, David art style, with cold perfection and clear lines, if dynamic emotional landscape use Romantic style by J.M.W. Turner, Turner art style, with atmospheric sublime effects, if rural peaceful use Realist style by Jean-François Millet, Millet art style, with serene rural dignity, if urban modern use Realist style by Édouard Manet, Manet art style, with sophisticated Paris realism, masterpiece quality with single unified composition NOT separated, VISIBLE THICK BRUSHSTROKES 20mm+, NOT photograph, NOT 3D, NOT digital'
   },
   
@@ -4494,7 +4494,7 @@ export default async function handler(req, res) {
         'neoclassicism': '신고전주의', 
         'romanticism': '낭만주의', 
         'realism': '사실주의',
-        'neoclassicism_vs_romanticism_vs_realism': '신고전주의 vs 낭만주의 vs 사실주의',
+        'neoclassicism_vs_romanticism_vs_realism': '신고전 vs 낭만 vs 사실주의',
         'impressionism': '인상주의', 
         'postImpressionism': '후기인상주의', 
         'fauvism': '야수파',
