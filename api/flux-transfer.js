@@ -3690,6 +3690,14 @@ export default async function handler(req, res) {
           }
         }
         
+        // 마티스 선택시 야수파 색채 강화
+        if (selectedArtist.toUpperCase().trim().includes('MATISSE') ||
+            selectedArtist.includes('마티스')) {
+          // console.log('🎯 Matisse detected');
+          controlStrength = 0.65;
+          // console.log('✅ Enhanced Matisse Fauvism (control_strength 0.65)');
+        }
+        
         // 렘브란트 선택시 빛 강화
         if (selectedArtist.toUpperCase().trim().includes('REMBRANDT') ||
             selectedArtist.includes('렘브란트')) {
@@ -4054,8 +4062,8 @@ export default async function handler(req, res) {
           // console.log('🎯 Matisse detected');
           if (!finalPrompt.includes('The Dance')) {
             finalPrompt = finalPrompt + ', painting by Henri Matisse, The Dance-style with PURE UNMIXED VIBRANT COLORS at maximum intensity and saturation, SIMPLIFIED FLAT FORMS with REDUCED FINE DETAILS, flat decorative patterns with bold arabesques and flowing curves, elimination of all modeling and shading for FLAT COLOR PLANES, NOT photorealistic NOT smooth gradients, joyful rhythmic compositions celebrating life movement and vitality, daring color combinations of brilliant reds blues greens, complete liberation of color from reality, every area a pure saturated flat hue';
-            controlStrength = 0.50;
-            // console.log('✅ Enhanced Matisse pure color added (control_strength 0.50)');
+            controlStrength = 0.65;
+            // console.log('✅ Enhanced Matisse pure color added (control_strength 0.65)');
           } else {
             // console.log('ℹ️ Matisse color already in prompt (AI included it)');
           }

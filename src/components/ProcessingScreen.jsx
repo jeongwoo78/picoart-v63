@@ -638,19 +638,37 @@ const ProcessingScreen = ({ photo, selectedStyle, onComplete }) => {
     }
     
     // "20세기 모더니즘"인 경우 화가에 따라 사조 결정
-    if (styleName === '20세기 모더니즘' && artistName) {
-      const normalized = artistName.toLowerCase().trim();
-      // 입체주의 화가
-      if (['picasso', 'pablo picasso'].includes(normalized)) {
-        actualMovement = '입체주의';
-      }
-      // 초현실주의 화가
-      else if (['magritte', 'rené magritte', 'rene magritte', 'miro', 'miró', 'joan miro', 'joan miró', 'chagall', 'marc chagall'].includes(normalized)) {
-        actualMovement = '초현실주의';
-      }
-      // 팝아트 화가
-      else if (['warhol', 'andy warhol', 'lichtenstein', 'roy lichtenstein', 'haring', 'keith haring'].includes(normalized)) {
-        actualMovement = '팝아트';
+    if (styleName === '20세기 모더니즘') {
+      console.log('🎨 [모더니즘 디버깅]', {
+        styleName,
+        artistName,
+        hasArtistName: !!artistName,
+        artistNameType: typeof artistName
+      });
+      
+      if (artistName) {
+        const normalized = artistName.toLowerCase().trim();
+        console.log('🔍 [normalized]:', normalized);
+        
+        // 입체주의 화가
+        if (['picasso', 'pablo picasso'].includes(normalized)) {
+          actualMovement = '입체주의';
+          console.log('✅ 입체주의 매칭');
+        }
+        // 초현실주의 화가
+        else if (['magritte', 'rené magritte', 'rene magritte', 'miro', 'miró', 'joan miro', 'joan miró', 'chagall', 'marc chagall'].includes(normalized)) {
+          actualMovement = '초현실주의';
+          console.log('✅ 초현실주의 매칭');
+        }
+        // 팝아트 화가
+        else if (['warhol', 'andy warhol', 'lichtenstein', 'roy lichtenstein', 'haring', 'keith haring'].includes(normalized)) {
+          actualMovement = '팝아트';
+          console.log('✅ 팝아트 매칭');
+        } else {
+          console.log('❌ 매칭 실패 - 화가명:', normalized);
+        }
+      } else {
+        console.log('❌ artistName 없음');
       }
     }
     

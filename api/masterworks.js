@@ -548,7 +548,7 @@ export const vangoghMasterworks = {
     name: '밤의 카페 테라스',
     nameEn: 'Café Terrace at Night',
     prompt: ', Apply Café Terrace at Night style by Van Gogh with yellow gaslight against deep blue starry sky. Create a cobblestone street in perspective with warm café glow using thick impasto swirling brushstrokes. Show yellow-blue complementary contrast in a night scene with visible stars. This must look like a real Post-Impressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '야경'
+    feature: '야경/인물'
   }
 };
 
@@ -627,25 +627,25 @@ export const matisseMasterworks = {
   'matisse-greenstripe': {
     name: '초록 줄무늬',
     nameEn: 'The Green Stripe',
-    prompt: ', Apply The Green Stripe (Portrait of Madame Matisse) style by Henri Matisse with a green stripe down the center of the face dividing it in half. Create the left side of the face with yellow-pink tones and the right side with green-purple tones. Use radical Fauvist color directly on the skin rather than realistic skin tones with bold dark outlines. Make the face completely flat with no shadows using rough visible brushstrokes with pure unmixed clashing colors. This must look like a real Fauvist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Transform this into The Green Stripe portrait by Henri Matisse from 1905 with Fauvist revolutionary color theory. Paint a bold vertical GREEN STRIPE running down the center of the face from forehead to chin dividing it exactly in half. The left side of face must show warm yellow-pink-orange tones while the right side displays cool green-purple-blue tones creating radical color division. Apply completely unrealistic Fauvist colors directly on skin with absolutely no realistic skin tones showing. Use bold dark black outlines separating each color area with face rendered completely flat having no shadows, no modeling, no depth whatsoever. Show rough visible Fauvist brushstrokes with pure unmixed colors that clash and vibrate against each other. This must look like a real Fauvist hand-painted masterpiece, absolutely NOT a photograph, NOT 3D render, NOT digital art.',
     feature: '인물/색상해방'
   },
   'matisse-purplecoat': {
     name: '보라 코트를 입은 여인',
     nameEn: 'Woman in a Purple Coat',
-    prompt: ', Apply Woman in a Purple Coat style by Henri Matisse with an elegant woman in a rich purple coat. Use bold black outlines around the figure and objects making them pop with a decorative patterned background in mature Matisse decorative style. Create strong contour lines separating color areas with flat color planes in luxurious and regal atmosphere. This must look like a real hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Transform this into Woman in a Purple Coat by Henri Matisse from 1937 showing elegant woman wearing rich deep purple coat. Use bold black outlines around the figure and all surrounding objects making forms pop against decorative patterned background in mature Matisse style. Create strong contour lines clearly separating each color area with completely flat color planes having no gradients or shading. Apply luxurious regal atmosphere through decorative patterns and bold color relationships with visible Fauvist brushwork throughout. This must look like a real Henri Matisse hand-painted masterpiece, absolutely NOT a photograph, NOT 3D render, NOT digital art.',
     feature: '인물/우아함'
   },
   'matisse-dance': {
     name: '춤',
     nameEn: 'The Dance',
-    prompt: ', Apply The Dance style by Henri Matisse with five dancing figures in a circle holding hands. Use a three-color only composition of red figures on blue sky and green ground with simplified nude forms showing joyful rhythmic energy. Create flat color areas with rough Fauvist brushstrokes visible. This must look like a real Fauvist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Transform this into The Dance by Henri Matisse from 1910 with radical Fauvist color reduction. Use only three pure colors throughout entire composition - brilliant RED-ORANGE figures dancing against pure COBALT BLUE sky above and vibrant EMERALD GREEN ground below with absolutely no other colors appearing anywhere. Show five nude dancing figures holding hands in circle formation expressing joyful rhythmic energy and primitive vitality. Render all forms with extreme simplification removing all fine details with completely flat color areas having no shading, no modeling, no depth. Apply rough visible Fauvist brushstrokes showing paint texture throughout. This must look like a real Fauvist hand-painted masterpiece, absolutely NOT a photograph, NOT 3D render, NOT digital art.',
     feature: '그룹'
   },
   'matisse-red-room': {
     name: '붉은 방',
     nameEn: 'The Red Room',
-    prompt: ', Apply The Red Room (Harmony in Red) style by Matisse with dominant red covering walls and table. Create decorative floral arabesque patterns with flat perspective showing a woman arranging fruit and a window revealing a green garden. Use pure color harmony with visible Fauvist brushwork. This must look like a real Fauvist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Transform this into The Red Room Harmony in Red by Henri Matisse from 1908 with dominant brilliant RED color flooding walls and table surface. Create decorative blue floral arabesque patterns curving across the red surface with flat compressed perspective showing woman arranging fruit on table. Include window revealing green garden landscape outside providing color contrast. Use pure saturated color harmony with completely flat decorative treatment having no realistic depth or shading. Apply visible Fauvist brushwork throughout with rough paint texture. This must look like a real Fauvist hand-painted masterpiece, absolutely NOT a photograph, NOT 3D render, NOT digital art.',
     feature: '실내'
   }
 };
@@ -729,27 +729,27 @@ export const munchMasterworks = {
   'munch-scream': {
     name: '절규',
     nameEn: 'The Scream',
-    prompt: ', Apply The Scream style by Edvard Munch with SKULL-LIKE figure holding hands on face. Create WAVY DISTORTED SWIRLING lines throughout sky and water with BLOOD RED ORANGE sunset on bridge. Show extreme existential terror with THICK BRUSHSTROKES 20mm+. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Transform this into The Scream by Edvard Munch from 1893 with skull-like anguished figure holding hands against face in existential terror. Create wavy distorted swirling lines flowing through entire sky and landscape with blood red and dark orange sunset creating oppressive atmosphere on wooden bridge. Show deep navy blue water below with dark churning waves and shadowy figures in background. Apply somber melancholic colors - dark burnt oranges, deep navy blues, muted blood reds, shadowy grays creating brooding nightmarish mood. Background must have undulating wavelike curves expressing cosmic anxiety and psychological anguish. Include very thick visible brushstrokes of 20mm or thicker with rough expressionist paint texture. This must look like a real Expressionist hand-painted masterpiece, absolutely NOT a photograph, NOT 3D render, NOT digital art.',
     feature: '불안',
     expressionRule: 'fear/anxiety allowed, NO bright, NO smiling'
   },
   'munch-madonna': {
     name: '마돈나',
     nameEn: 'Madonna',
-    prompt: ', Apply Madonna style by Edvard Munch with SENSUAL female figure whose FLOWING DARK HAIR spreads like halo. Create RED AURA glowing around pale luminous skin with mysterious ecstatic half-closed eyes. Use WAVY FLOWING LINES with THICK BRUSHSTROKES 20mm+. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Transform this into Madonna by Edvard Munch from 1894 showing sensual female figure with flowing dark hair spreading like halo around head against dark shadowy background. Create deep burgundy red aura glowing mysteriously around pale luminous skin with half-closed eyes expressing ecstatic trance. Apply dark somber colors - deep blacks, dark burgundy reds, muted flesh tones, shadowy grays creating mysterious brooding atmosphere. Show wavy flowing lines in hair and background with dark psychological intensity. Include very thick visible brushstrokes of 20mm or thicker with rough expressionist paint texture. This must look like a real Expressionist hand-painted masterpiece, absolutely NOT a photograph, NOT 3D render, NOT digital art.',
     feature: '신비/관능',
     expressionRule: 'ecstatic/mysterious allowed, NO bright, NO smiling'
   },
   'munch-jealousy': {
     name: '질투',
     nameEn: 'Jealousy',
-    prompt: ', Apply Jealousy style by Edvard Munch with PALE GREEN SICKLY face in foreground showing intense haunted stare. Create psychological tension with couple in background where GREEN symbolizes jealousy. Use WAVY DISTORTED LINES showing emotional turmoil with THICK BRUSHSTROKES 20mm+. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Transform this into Jealousy by Edvard Munch from 1895 with pale sickly green-tinted face in foreground showing intense haunted stare filled with psychological torment. Create dark brooding atmosphere with couple visible in shadowy background where muted greens symbolize jealousy and emotional pain. Apply somber melancholic colors - murky olive greens, dark grays, muted browns, shadowy blues creating oppressive psychological tension. Show wavy distorted lines throughout background expressing inner emotional turmoil and anguish. Include very thick visible brushstrokes of 20mm or thicker with rough expressionist paint texture. This must look like a real Expressionist hand-painted masterpiece, absolutely NOT a photograph, NOT 3D render, NOT digital art.',
     feature: '심리'
   },
   'munch-anxiety': {
     name: '불안',
     nameEn: 'Anxiety',
-    prompt: ', Apply Anxiety style by Edvard Munch with GROUP of figures showing PALE ANXIOUS faces staring forward. Create WAVY UNDULATING lines in sky and landscape with BLOOD RED sunset. Show collective existential dread on path with THICK BRUSHSTROKES 20mm+. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Transform this into Anxiety by Edvard Munch from 1894 showing group of figures with pale anxious faces staring directly forward in collective existential dread. Create wavy undulating lines flowing through dark sky and landscape with muted blood red sunset creating oppressive atmosphere. Apply dark somber melancholic colors - deep navy blues, dark burnt oranges, shadowy grays, muted reds creating brooding nightmarish mood on wooden bridge or path. Show psychological unease through distorted background curves expressing cosmic anxiety. Include very thick visible brushstrokes of 20mm or thicker with rough expressionist paint texture. This must look like a real Expressionist hand-painted masterpiece, absolutely NOT a photograph, NOT 3D render, NOT digital art.',
     feature: '군중/불안',
     expressionRule: 'anxiety/worry allowed, NO bright, NO smiling'
   }
@@ -1088,13 +1088,13 @@ export const warholMasterworks = {
   'warhol-marilyn': {
     name: '마릴린 시리즈',
     nameEn: 'Marilyn Series',
-    prompt: ', Apply Andy Warhol Marilyn Series style (1962) creating a 2x2 four-panel grid layout with the subject face repeated 4 times once in each quadrant while preserving subject identity in all panels. Each panel must have different bold neon color scheme including hot pink, cyan, yellow and orange. Use high contrast silkscreen printing effect with flat graphic colors and no gradients showing visible ink texture and slight misregistration. This is a Pop Art masterpiece using the ORIGINAL SUBJECT face, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Transform this into Andy Warhol Marilyn Series style from 1962 with a 2x2 four-panel grid layout. Each panel must display the exact same face from the original photo with crisp sharp details that are not blurred or smudged in any way. The four panels must each use different bold neon color combinations - hot pink with cyan shadows in first panel, yellow with orange shadows in second panel, electric blue with lime green shadows in third panel, turquoise with magenta shadows in fourth panel. Background in each panel must be solid flat color matching that panel color scheme with absolutely no patterns or textures. Apply high contrast silkscreen printing effect with completely flat graphic colors that have no gradients and no soft edges, showing visible ink texture with slight misregistration marks like authentic screen printing. This must look like a real Andy Warhol Pop Art silkscreen print using the original subject face, absolutely NOT a photograph, NOT 3D render, NOT digital art.',
     feature: '4분할, 네온'
   },
   'warhol-soup': {
     name: '캠벨 수프 캔',
     nameEn: 'Campbell\'s Soup Cans',
-    prompt: ', Apply Campbell\'s Soup Cans style by Andy Warhol (1962) with grid repetition of the same image in rows and columns. Each panel should have different bold Pop color variations including red, blue, green, orange and pink. Create commercial product aesthetic with flat graphic silkscreen style and visible print texture. Use mechanical reproduction aesthetic showing everyday object as fine art. This must look like a Pop Art silkscreen, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Transform this into Campbell Soup Cans style by Andy Warhol from 1962 with grid repetition pattern showing the same image repeated in rows and columns. Each repeated panel should display different bold Pop color variations including red, blue, green, orange and pink backgrounds. Create commercial product aesthetic with completely flat graphic silkscreen style showing visible print texture and mechanical reproduction marks. Transform everyday subject into fine art through repetition with authentic 1960s Pop Art silkscreen printing technique. This must look like a real Andy Warhol Pop Art silkscreen print, absolutely NOT a photograph, NOT 3D render, NOT digital art.',
     feature: '반복, 상업'
   }
 };
