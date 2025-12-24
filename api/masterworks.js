@@ -383,25 +383,25 @@ export const delacroixMasterworks = {
   }
 };
 
-// 밀레 - 시골/전원 (80%)
-export const milletMasterworks = {
-  'millet-gleaners': {
-    name: '이삭 줍는 사람들',
-    nameEn: 'The Gleaners',
-    prompt: ', Apply The Gleaners style by Jean-François Millet with three peasant women bent over gleaning wheat in humble dignified labor. Create a warm golden harvest field with an earth-tone palette of ochre, umber and sienna. Show monumental peasant figures with Realist rural nobility under soft natural light. This must look like a real Realist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
+// 쿠르베 - 사실주의 (80%)
+export const courbetMasterworks = {
+  'courbet-stonebreakers': {
+    name: '돌 깨는 사람들',
+    nameEn: 'The Stone Breakers',
+    prompt: ', Transform into The Stone Breakers by Gustave Courbet, Courbet art style. Working-class laborers breaking rocks with HONEST UNIDEALIZED portrayal and SOLID WEIGHTY figures. EARTHY palette of browns ochres and muted greens with THICK IMPASTO brushwork 20mm+. ANTI-ROMANTIC raw authentic reality showing dignified manual labor. NOT idealized, NOT romanticized, NOT soft. This must look like authentic Realist oil painting with VISIBLE BRUSHSTROKES.',
     feature: '노동/그룹'
   },
-  'millet-angelus': {
-    name: '만종',
-    nameEn: 'The Angelus',
-    prompt: ', Apply The Angelus style by Millet with a peasant couple standing in prayer at dusk with heads bowed in devotion. Create a potato field setting with warm sunset glow using an earth-tone Realist palette. Capture quiet spiritual dignity and humble rural piety. This must look like a real Realist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '커플/전원'
+  'courbet-burial': {
+    name: '오르낭의 매장',
+    nameEn: 'A Burial at Ornans',
+    prompt: ', Transform into A Burial at Ornans by Gustave Courbet, Courbet art style. Rural funeral procession with ORDINARY VILLAGERS in MONUMENTAL SCALE and democratic dignity. DARK SOMBER palette of blacks browns and flesh tones with HONEST UNIDEALIZED faces. THICK PAINTERLY brushwork 20mm+ showing common people with profound humanity. NOT heroic, NOT beautified, NOT sentimental. This must look like authentic Realist oil painting with VISIBLE BRUSHSTROKES.',
+    feature: '그룹/장례'
   },
-  'millet-sower': {
-    name: '씨 뿌리는 사람',
-    nameEn: 'The Sower',
-    prompt: ', Apply The Sower style by Millet with a single peasant striding across a hillside broadcasting seed in a dynamic diagonal pose. Create a monumental heroic worker as a dramatic twilight silhouette using an earth-tone Realist palette with dignified rural labor. This must look like a real Realist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '단독/노동'
+  'courbet-origin': {
+    name: '세계의 기원',
+    nameEn: 'The Origin of the World',
+    prompt: ', Transform into Courbet Realist style by Gustave Courbet, Courbet art style. FRANK HONEST portrayal with rich flesh tones and DARK CONTRASTING fabrics. INTIMATE close composition with BOLD UNAPOLOGETIC realism. THICK SENSUOUS brushwork 20mm+ showing unidealized human form with earthy warm palette. NOT idealized, NOT classical, NOT softened. This must look like authentic Realist oil painting with VISIBLE BRUSHSTROKES.',
+    feature: '여성 누드'
   }
 };
 
@@ -1253,7 +1253,7 @@ export const allMovementMasterworks = {
   ...friedrichMasterworks,
   ...goyaMasterworks,
   ...delacroixMasterworks,
-  ...milletMasterworks,
+  ...courbetMasterworks,
   ...manetMasterworks,
   // 인상주의
   ...renoirMasterworks,
@@ -1331,7 +1331,7 @@ export function getArtistMasterworkList(artistKey) {
     'friedrich': ['friedrich-wanderer', 'friedrich-seaice', 'friedrich-abbey'],
     'goya': ['goya-maja', 'goya-third-may', 'goya-charles-iv'],
     'delacroix': ['delacroix-liberty', 'delacroix-sardanapalus', 'delacroix-algiers'],
-    'millet': ['millet-gleaners', 'millet-angelus', 'millet-sower'],
+    'courbet': ['courbet-stonebreakers', 'courbet-burial', 'courbet-origin'],
     'manet': ['manet-olympia', 'manet-folies', 'manet-dejeuner'],
     // 인상주의
     'renoir': ['renoir-boating', 'renoir-moulin', 'renoir-piano'],
@@ -1407,7 +1407,7 @@ const MOVEMENT_ARTISTS = {
   'renaissance': ['botticelli', 'leonardo', 'titian', 'michelangelo', 'raphael'],
   'baroque': ['caravaggio', 'rubens', 'rembrandt', 'velazquez'],
   'rococo': ['watteau', 'boucher'],
-  'neoclassicism_vs_romanticism_vs_realism': ['david', 'ingres', 'turner', 'friedrich', 'goya', 'delacroix', 'millet', 'manet']
+  'neoclassicism_vs_romanticism_vs_realism': ['david', 'ingres', 'turner', 'friedrich', 'goya', 'delacroix', 'courbet', 'manet']
 };
 
 /**
@@ -1464,7 +1464,7 @@ console.log(`   - Turner, ${Object.keys(turnerMasterworks).length} works`);
 console.log(`   - Friedrich, ${Object.keys(friedrichMasterworks).length} works 🆕`);
 console.log(`   - Goya, ${Object.keys(goyaMasterworks).length} works`);
 console.log(`   - Delacroix, ${Object.keys(delacroixMasterworks).length} works`);
-console.log(`   - Millet, ${Object.keys(milletMasterworks).length} works`);
+console.log(`   - Courbet, ${Object.keys(courbetMasterworks).length} works`);
 console.log(`   - Manet, ${Object.keys(manetMasterworks).length} works`);
 console.log(`   ── 인상주의 ──`);
 console.log(`   - Renoir, ${Object.keys(renoirMasterworks).length} works`);

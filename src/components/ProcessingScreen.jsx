@@ -645,7 +645,7 @@ const ProcessingScreen = ({ photo, selectedStyle, onComplete }) => {
         actualMovement = '낭만주의';
       }
       // 사실주의 화가
-      else if (['courbet', 'millet'].includes(normalized)) {
+      else if (['courbet', 'manet'].includes(normalized)) {
         actualMovement = '사실주의';
       }
     }
@@ -673,7 +673,7 @@ const ProcessingScreen = ({ photo, selectedStyle, onComplete }) => {
           console.log('✅ 낭만주의 매칭');
         }
         // 사실주의 화가
-        else if (['courbet', 'gustave courbet', 'millet', 'jean-françois millet', 'jean-francois millet'].includes(normalized)) {
+        else if (['courbet', 'gustave courbet', 'manet', 'édouard manet', 'edouard manet'].includes(normalized)) {
           actualMovement = '사실주의';
           console.log('✅ 사실주의 매칭');
         } else {

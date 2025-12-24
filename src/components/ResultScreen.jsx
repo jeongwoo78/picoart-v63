@@ -925,7 +925,7 @@ const ResultScreen = ({
         actualMovement = '낭만주의';
       }
       // 사실주의 화가
-      else if (['courbet', 'gustave courbet', 'millet', 'jean-françois millet', 'jean-francois millet'].includes(normalized)) {
+      else if (['courbet', 'gustave courbet', 'manet', 'édouard manet', 'edouard manet'].includes(normalized)) {
         actualMovement = '사실주의';
       }
     }
@@ -1111,7 +1111,6 @@ const ResultScreen = ({
         'delacroix': { movement: '낭만주의', artist: '들라크루아' },
         'goya': { movement: '낭만주의', artist: '고야' },
         // 사실주의
-        'millet': { movement: '사실주의', artist: '밀레' },
         'courbet': { movement: '사실주의', artist: '쿠르베' },
         'manet': { movement: '사실주의', artist: '마네' },
         // 인상주의
@@ -1697,7 +1696,7 @@ const ResultScreen = ({
                       'delacroix', 'eugène delacroix', 'eugene delacroix'];
     
     // 사실주의
-    const realist = ['millet', 'jean-françois millet', 'jean-francois millet',
+    const realist = ['courbet', 'gustave courbet',
                      'manet', 'édouard manet', 'edouard manet'];
     
     if (neoclassical.some(name => artist.includes(name))) {

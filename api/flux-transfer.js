@@ -174,7 +174,7 @@ function getAlternativeWork(artistName, avoidedWork) {
 //   6. 신고전 vs 낭만 vs 사실주의 (1770~1870) - 7명 화가 선택 (AI가 3개 중 선택)
 //      → David, Ingres (신고전주의)
 //      → Turner, Goya, Delacroix (낭만주의)
-//      → Millet, Manet (사실주의)
+//      → Courbet, Manet (사실주의)
 //   7. 인상주의 (1860~1890) - 4명 화가 선택
 //   8. 후기인상주의 (1880~1910) - 4명 화가 선택
 //   9. 야수파 (1905~1908) - 3명 화가 선택
@@ -438,10 +438,10 @@ const ARTIST_WEIGHTS = {
       { name: 'JACQUES-LOUIS DAVID', weight: 15 }  // 영웅적 포즈
     ],
     landscape: [
-      { name: 'TURNER', weight: 50 },        // 낭만주의 풍경 대표
-      { name: 'DELACROIX', weight: 30 },     // 낭만주의
-      { name: 'MILLET', weight: 20 }         // 사실주의 농촌 풍경
-      // Claude Lorrain 제거 (바로크 시대 화가)
+      { name: 'TURNER', weight: 45 },        // 낭만주의 풍경 대표
+      { name: 'DELACROIX', weight: 25 },     // 낭만주의
+      { name: 'COURBET', weight: 20 },       // 사실주의 풍경
+      { name: 'MANET', weight: 10 }          // 사실주의
     ],
     dramatic: [
       { name: 'DELACROIX', weight: 40 },
@@ -449,12 +449,12 @@ const ARTIST_WEIGHTS = {
       { name: 'TURNER', weight: 25 }
     ],
     default: [
-      { name: 'JACQUES-LOUIS DAVID', weight: 25 },
+      { name: 'JACQUES-LOUIS DAVID', weight: 20 },
       { name: 'GOYA', weight: 20 },
       { name: 'DELACROIX', weight: 20 },
       { name: 'MANET', weight: 15 },
-      { name: 'INGRES', weight: 10 },
-      { name: 'MILLET', weight: 10 }
+      { name: 'COURBET', weight: 15 },
+      { name: 'INGRES', weight: 10 }
     ]
   },
   
@@ -1261,7 +1261,7 @@ function getNeoclassicismVsRomanticismVsRealismGuidelines() {
 🚫🚫🚫 CRITICAL RESTRICTION 🚫🚫🚫
 YOU MUST ONLY SELECT FROM THE ARTISTS LISTED BELOW!
 DO NOT select artists from other movements (Baroque, Impressionism, Expressionism, etc.)
-ONLY these 7 artists: DAVID, INGRES, TURNER, GOYA, DELACROIX, MILLET, MANET!
+ONLY these 7 artists: DAVID, INGRES, TURNER, GOYA, DELACROIX, COURBET, MANET!
 
 Available Artists (7명) - AI will choose BEST style (Neoclassicism vs Romanticism vs Realism):
 
@@ -1301,11 +1301,11 @@ Available Artists (7명) - AI will choose BEST style (Neoclassicism vs Romantici
 
 🎨 REALISM (사실주의) - Honest Truth:
 
-6. MILLET (밀레) ⭐ STRONGEST for rural/peaceful scenes
-   - Specialty: Peasant life, rural landscapes, dignified labor, poetic serenity
-   - Best for: Rural settings, peaceful countryside, farming/labor themes
-   - Signature: The Gleaners, The Angelus - serene rural dignity
-   - When to prioritize: Rural/peaceful/countryside settings (STRONG 80%)
+6. COURBET (쿠르베) ⭐ STRONGEST for rural/landscape realism
+   - Specialty: Honest rural reality, landscapes, everyday life, anti-idealized truth
+   - Best for: Rural settings, landscapes, working class subjects, realistic portrayal
+   - Signature: The Stone Breakers, Burial at Ornans - unvarnished reality
+   - When to prioritize: Rural/landscape/working class subjects (STRONG 80%)
 
 7. MANET (마네) - BEST for urban/modern scenes
    - Specialty: Modern Paris life, café scenes, urban sophistication
@@ -1316,7 +1316,7 @@ Available Artists (7명) - AI will choose BEST style (Neoclassicism vs Romantici
 🎯 CRITICAL DECISION LOGIC:
 - Photo is STATIC, BALANCED, FORMAL → Choose Neoclassicism (David or Ingres)
 - Photo is DYNAMIC, EMOTIONAL, DRAMATIC → Choose Romanticism (Turner/Friedrich/Delacroix)
-- Photo is RURAL, PEACEFUL → Choose Realism - Millet (80%)
+- Photo is RURAL, PEACEFUL → Choose Realism - Courbet (80%)
 - Photo is URBAN, MODERN → Choose Realism - Manet (70%)
 - Landscape → ALWAYS Romanticism (Turner 75% or Friedrich 70%)
 `;
@@ -1348,9 +1348,9 @@ Alternative: David (Neoclassicism) for formal/heroic, but Goya preferred.
   // 시골/농촌 → 사실주의 (밀레)
   if (subject.includes('rural') || subject.includes('countryside') || subject.includes('farm')) {
     return `
-🎯 STRONG: REALISM - MILLET (80%)
+🎯 STRONG: REALISM - COURBET (80%)
 Rural/countryside = Realism territory!
-Millet's serene rural dignity is supreme.
+Courbet's honest rural reality is supreme.
 NEVER use Neoclassicism or Romanticism for rural scenes.
 `;
   }
@@ -1416,7 +1416,7 @@ Ingres offers idealized classical beauty.
   
   return `
 🎯 DECISION GUIDE:
-- Rural/Countryside → REALISM (Millet 80%)
+- Rural/Countryside → REALISM (Courbet 80%)
 - Urban/Modern → REALISM (Manet 70%)
 - Static/Balanced/Formal → NEOCLASSICISM (David/Ingres)
 - Dynamic/Emotional/Dramatic → ROMANTICISM (Turner/Friedrich/Delacroix)
@@ -1997,7 +1997,7 @@ const fallbackPrompts = {
   
   neoclassicism_vs_romanticism_vs_realism: {
     name: '신고전 vs 낭만 vs 사실주의',
-    prompt: 'Choose best style based on photo: if static balanced formal use Neoclassical style by Jacques-Louis David, David art style, with cold perfection and clear lines, if dynamic emotional landscape use Romantic style by J.M.W. Turner, Turner art style, with atmospheric sublime effects, if rural peaceful use Realist style by Jean-François Millet, Millet art style, with serene rural dignity, if urban modern use Realist style by Édouard Manet, Manet art style, with sophisticated Paris realism, masterpiece quality with single unified composition NOT separated, VISIBLE THICK BRUSHSTROKES 20mm+, NOT photograph, NOT 3D, NOT digital'
+    prompt: 'Choose best style based on photo: if static balanced formal use Neoclassical style by Jacques-Louis David, David art style, with cold perfection and clear lines, if dynamic emotional landscape use Romantic style by J.M.W. Turner, Turner art style, with atmospheric sublime effects, if rural peaceful use Realist style by Gustave Courbet, Courbet art style, with honest rural reality, if urban modern use Realist style by Édouard Manet, Manet art style, with sophisticated Paris realism, masterpiece quality with single unified composition NOT separated, VISIBLE THICK BRUSHSTROKES 20mm+, NOT photograph, NOT 3D, NOT digital'
   },
   
   impressionism: {
@@ -2866,11 +2866,12 @@ const MALE_SUITABLE_ARTISTS_BY_CATEGORY = {
   ],
   'neoclassicism_vs_romanticism_vs_realism': [
     // neoclassicism과 동일 (별칭)
-    { name: 'JACQUES-LOUIS DAVID', weight: 35 },
-    { name: 'GOYA', weight: 25 },
+    { name: 'JACQUES-LOUIS DAVID', weight: 25 },
+    { name: 'GOYA', weight: 20 },
     { name: 'DELACROIX', weight: 20 },
+    { name: 'COURBET', weight: 15 },
     { name: 'MANET', weight: 10 },
-    { name: 'MILLET', weight: 10 }
+    { name: 'INGRES', weight: 10 }
   ]
 };
 
@@ -3503,7 +3504,7 @@ export default async function handler(req, res) {
             'friedrich': 'friedrich', 'caspar david friedrich': 'friedrich',
             'goya': 'goya', 'francisco goya': 'goya',
             'delacroix': 'delacroix', 'eugène delacroix': 'delacroix',
-            'millet': 'millet', 'jean-françois millet': 'millet',
+            'courbet': 'courbet', 'gustave courbet': 'courbet',
             'manet': 'manet', 'édouard manet': 'manet',
             // 인상주의
             'renoir': 'renoir', 'pierre-auguste renoir': 'renoir',
@@ -3864,16 +3865,15 @@ export default async function handler(req, res) {
           }
         }
         
-        // 밀레 선택시 전원의 존엄성 강화
-        if (selectedArtist.toUpperCase().trim().includes('MILLET') || 
-            selectedArtist.toUpperCase().trim().includes('JEAN-FRANCOIS') ||
-            selectedArtist.toUpperCase().trim().includes('JEAN-FRANÇOIS')) {
-          // console.log('🎯 Millet detected');
-          if (!finalPrompt.includes('The Angelus')) {
-            finalPrompt = finalPrompt + ', painting by Jean-François Millet, The Angelus-style depicting DIGNIFIED PEASANT LABOR in golden rural landscape, warm earthy palette of rich browns deep ochres and muted golden yellows, solid monumental figures bent in humble toil with sculptural weight, peaceful countryside bathed in soft evening light with horizontal calm, poetic serenity and quiet reverence for simple rural life, robust painterly brushwork with thick impasto, timeless pastoral dignity with profound humanity and spiritual grace';
-            // console.log('✅ Enhanced Millet pastoral dignity added');
+        // 쿠르베 선택시 사실주의 강화
+        if (selectedArtist.toUpperCase().trim().includes('COURBET') || 
+            selectedArtist.toUpperCase().trim().includes('GUSTAVE')) {
+          // console.log('🎯 Courbet detected');
+          if (!finalPrompt.includes('Stone Breakers')) {
+            finalPrompt = finalPrompt + ', painting by Gustave Courbet, Courbet art style. HONEST RURAL REALISM with UNVARNISHED TRUTH and ANTI-IDEALIZED portrayal. EARTHY palette of browns ochres and muted greens with SOLID WEIGHTY figures. THICK IMPASTO brushwork 20mm+ showing raw authentic reality. NOT romanticized, NOT idealized, NOT beautified';
+            // console.log('✅ Enhanced Courbet realism added');
           } else {
-            // console.log('ℹ️ Millet dignity already in prompt (AI included it)');
+            // console.log('ℹ️ Courbet realism already in prompt (AI included it)');
           }
         }
         
