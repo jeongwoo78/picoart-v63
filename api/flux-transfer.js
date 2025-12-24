@@ -44,7 +44,8 @@ import {
   getMasterworkGuideForAI,
   getArtistMasterworkList,
   getMovementMasterworkGuide,
-  allMovementMasterworks
+  allMovementMasterworks,
+  masterworkNameMapping
 } from './masterworks.js';
 
 // ========================================
@@ -59,115 +60,22 @@ import {
 } from './artistStyles.js';
 
 // ========================================
-// v62: 대표작 키 변환 함수
+// v67: 대표작 키 변환 함수 (간소화)
 // "The Kiss" → "klimt-kiss"
 // "The Starry Night" → "vangogh-starrynight"
+// masterworks.js의 masterworkNameMapping 사용
 // ========================================
 function convertToWorkKey(artistName, workTitle) {
   if (!artistName || !workTitle) return null;
   
-  // 화가명 정규화
-  const artistMap = {
-    'van gogh': 'vangogh',
-    'vincent van gogh': 'vangogh',
-    'vincent': 'vangogh',
-    '반 고흐': 'vangogh',
-    '고흐': 'vangogh',
-    'klimt': 'klimt',
-    'gustav klimt': 'klimt',
-    '클림트': 'klimt',
-    'munch': 'munch',
-    'edvard munch': 'munch',
-    '뭉크': 'munch',
-    'matisse': 'matisse',
-    'henri matisse': 'matisse',
-    '마티스': 'matisse',
-    'picasso': 'picasso',
-    'pablo picasso': 'picasso',
-    '피카소': 'picasso',
-    'frida': 'frida',
-    'frida kahlo': 'frida',
-    '프리다': 'frida',
-    '프리다 칼로': 'frida',
-    'warhol': 'warhol',
-    'andy warhol': 'warhol',
-    '워홀': 'warhol',
-    '앤디 워홀': 'warhol'
-  };
+  // 작품명으로 직접 조회 (masterworks.js에서 관리)
+  const normalized = workTitle.toLowerCase().trim();
+  const directKey = masterworkNameMapping[normalized];
   
-  // 대표작 정규화
-  const workMap = {
-    // 반 고흐
-    'the starry night': 'starrynight',
-    '별이 빛나는 밤': 'starrynight',
-    'starry night': 'starrynight',
-    'sunflowers': 'sunflowers',
-    '해바라기': 'sunflowers',
-    'self-portrait': 'selfportrait',
-    '자화상': 'selfportrait',
-    'café terrace at night': 'cafe',
-    'cafe terrace at night': 'cafe',
-    'cafe terrace': 'cafe',
-    '밤의 카페 테라스': 'cafe',
-    '카페 테라스': 'cafe',
-    // 클림트
-    'the kiss': 'kiss',
-    '키스': 'kiss',
-    'the tree of life': 'treeoflife',
-    '생명의 나무': 'treeoflife',
-    'judith i': 'judith',
-    'judith': 'judith',
-    '유디트': 'judith',
-    // 뭉크
-    'the scream': 'scream',
-    '절규': 'scream',
-    'madonna': 'madonna',
-    '마돈나': 'madonna',
-    'jealousy': 'jealousy',
-    '질투': 'jealousy',
-    'anxiety': 'anxiety',
-    '불안': 'anxiety',
-    // 마티스
-    'the dance': 'dance',
-    '춤': 'dance',
-    '댄스': 'dance',
-    'the red room': 'redroom',
-    'red room': 'redroom',
-    '붉은 방': 'redroom',
-    'the green stripe': 'greenstripe',
-    'green stripe': 'greenstripe',
-    'portrait of madame matisse': 'greenstripe',
-    '초록 줄무늬': 'greenstripe',
-    '마담 마티스': 'greenstripe',
-    'woman in a purple coat': 'purplecoat',
-    'purple coat': 'purplecoat',
-    '보라색 코트를 입은 여인': 'purplecoat',
-    // 피카소
-    'les demoiselles d\'avignon': 'demoiselles',
-    '아비뇽의 처녀들': 'demoiselles',
-    'guernica': 'guernica',
-    '게르니카': 'guernica',
-    // 프리다
-    'me and my parrots': 'parrots',
-    '나와 앵무새들': 'parrots',
-    'self-portrait with thorn necklace': 'thornnecklace',
-    '가시 목걸이와 벌새': 'thornnecklace',
-    '가시 목걸이 자화상': 'thornnecklace',
-    'self-portrait with monkeys': 'monkeys',
-    '원숭이와 자화상': 'monkeys',
-    'diego and i': 'diegoandi',
-    '디에고와 나': 'diegoandi',
-    // 워홀
-    'marilyn monroe': 'marilyn',
-    '마릴린 먼로': 'marilyn',
-    'campbell\'s soup cans': 'soup',
-    '캠벨 수프 캔': 'soup'
-  };
+  if (directKey) return directKey;
   
-  const normalizedArtist = artistMap[artistName.toLowerCase().trim()] || artistName.toLowerCase().trim();
-  const normalizedWork = workMap[workTitle.toLowerCase().trim()] || workTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
-  
-  return `${normalizedArtist}-${normalizedWork}`;
+  // 매핑에 없으면 null 반환 (fallback 처리는 호출하는 쪽에서)
+  return null;
 }
 
 // ========================================

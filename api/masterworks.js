@@ -8,6 +8,86 @@
 // ========================================
 
 // ========================================
+// 거장 대표작 작품명 매핑 (v67: 중앙 관리)
+// AI가 반환한 작품명 → masterworks 키 변환
+// ========================================
+export const masterworkNameMapping = {
+  // 반 고흐
+  'the starry night': 'vangogh-starrynight',
+  '별이 빛나는 밤': 'vangogh-starrynight',
+  'starry night': 'vangogh-starrynight',
+  'sunflowers': 'vangogh-sunflowers',
+  '해바라기': 'vangogh-sunflowers',
+  'self-portrait': 'vangogh-selfportrait',
+  '자화상': 'vangogh-selfportrait',
+  'café terrace at night': 'vangogh-cafe',
+  'cafe terrace at night': 'vangogh-cafe',
+  'cafe terrace': 'vangogh-cafe',
+  '밤의 카페 테라스': 'vangogh-cafe',
+  '카페 테라스': 'vangogh-cafe',
+  
+  // 클림트
+  'the kiss': 'klimt-kiss',
+  '키스': 'klimt-kiss',
+  'the tree of life': 'klimt-treeoflife',
+  '생명의 나무': 'klimt-treeoflife',
+  'judith i': 'klimt-judith',
+  'judith': 'klimt-judith',
+  '유디트': 'klimt-judith',
+  
+  // 뭉크
+  'the scream': 'munch-scream',
+  '절규': 'munch-scream',
+  'madonna': 'munch-madonna',
+  '마돈나': 'munch-madonna',
+  'jealousy': 'munch-jealousy',
+  '질투': 'munch-jealousy',
+  'anxiety': 'munch-anxiety',
+  '불안': 'munch-anxiety',
+  
+  // 마티스
+  'the dance': 'matisse-dance',
+  '춤': 'matisse-dance',
+  '댄스': 'matisse-dance',
+  'the red room': 'matisse-redroom',
+  'red room': 'matisse-redroom',
+  '붉은 방': 'matisse-redroom',
+  'the green stripe': 'matisse-greenstripe',
+  'green stripe': 'matisse-greenstripe',
+  'portrait of madame matisse': 'matisse-greenstripe',
+  '초록 줄무늬': 'matisse-greenstripe',
+  '마담 마티스': 'matisse-greenstripe',
+  'woman in a purple coat': 'matisse-purplecoat',
+  'purple coat': 'matisse-purplecoat',
+  '보라색 코트를 입은 여인': 'matisse-purplecoat',
+  
+  // 피카소
+  'les demoiselles d\'avignon': 'picasso-demoiselles',
+  '아비뇽의 처녀들': 'picasso-demoiselles',
+  'guernica': 'picasso-guernica',
+  '게르니카': 'picasso-guernica',
+  
+  // 프리다 칼로
+  'me and my parrots': 'frida-parrots',
+  '나와 앵무새들': 'frida-parrots',
+  'self-portrait with thorn necklace': 'frida-thornnecklace',
+  '가시 목걸이와 벌새': 'frida-thornnecklace',
+  '가시 목걸이 자화상': 'frida-thornnecklace',
+  'self-portrait with monkeys': 'frida-monkeys',
+  '원숭이와 자화상': 'frida-monkeys',
+  'diego and i': 'frida-diegoandi',
+  '디에고와 나': 'frida-diegoandi',
+  
+  // 앤디 워홀
+  'marilyn monroe': 'warhol-marilyn',
+  '마릴린 먼로': 'warhol-marilyn',
+  'marilyn': 'warhol-marilyn',
+  'campbell\'s soup cans': 'warhol-soup',
+  '캠벨 수프 캔': 'warhol-soup',
+  'soup cans': 'warhol-soup'
+};
+
+// ========================================
 // 1. 로마 모자이크 (6개 대표작)
 // ========================================
 export const romanMosaicMasterworks = {
@@ -175,11 +255,11 @@ export const caravaggioMasterworks = {
     prompt: ', Apply David with the Head of Goliath style by Caravaggio with single figure emerging from pure black darkness. Use extreme tenebrism with dramatic spotlight from upper left. Show young David holding severed head in an intense psychological moment with deep shadows engulfing 70 percent of scene. Apply visible thick oil impasto texture. This must look like a real Baroque hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
     feature: '단독, 극적 명암'
   },
-  'caravaggio-bacchus': {
-    name: '바쿠스',
-    nameEn: 'Bacchus',
-    prompt: ', Apply Bacchus style by Caravaggio with young figure wearing grape vine crown and direct frontal gaze at viewer. Use extreme tenebrism with figure emerging from darkness holding wine goblet in hand. Create sensual classical youth with rich fabric draped loosely against deep black background. Apply visible thick oil impasto brushwork. This must look like a real Baroque hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '단독, 정면 응시'
+  'caravaggio-judith': {
+    name: '홀로페르네스의 목을 베는 유디트',
+    nameEn: 'Judith Beheading Holofernes',
+    prompt: ', Apply Judith Beheading Holofernes style by Caravaggio with extreme tenebrism and 70 percent of canvas in pure black darkness. Use dramatic spotlight on violent action with intense psychological moment. Create blood-red fabric against pitch black background with figures emerging from absolute darkness. Deep rich blacks NOT grey NOT washed out. Apply visible thick oil impasto texture. This must look like a real Baroque hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    feature: '단독, 극적 명암, 드라마틱'
   },
   'caravaggio-matthew': {
     name: '성 마태의 소명',
@@ -1237,7 +1317,7 @@ export function getArtistMasterworkList(artistKey) {
     'michelangelo': ['michelangelo-adam', 'michelangelo-lastjudgment', 'michelangelo-pieta'],
     'raphael': ['raphael-athens', 'raphael-sistinamadonna', 'raphael-galatea'],
     // 바로크
-    'caravaggio': ['caravaggio-david', 'caravaggio-bacchus', 'caravaggio-matthew'],
+    'caravaggio': ['caravaggio-david', 'caravaggio-judith', 'caravaggio-matthew'],
     'rubens': ['rubens-threegraces', 'rubens-descent', 'rubens-leucippus'],
     'rembrandt': ['rembrandt-nightwatch', 'rembrandt-selfportrait', 'rembrandt-prodigal'],
     'velazquez': ['velazquez-meninas', 'velazquez-pope', 'velazquez-breda'],
