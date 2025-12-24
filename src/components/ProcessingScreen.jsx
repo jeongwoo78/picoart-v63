@@ -1113,7 +1113,7 @@ const ProcessingScreen = ({ photo, selectedStyle, onComplete }) => {
           border-bottom: 2px solid #e0e0e0;
         }
         .preview-style { 
-          font-size: 1.5rem; 
+          font-size: 1.35rem; 
           font-weight: 600; 
           color: #333; 
           margin-bottom: 6px;

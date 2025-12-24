@@ -2321,7 +2321,7 @@ const ResultScreen = ({
         .card-header h2 {
           margin: 0;
           color: #333;
-          font-size: 1.75rem;
+          font-size: 1.35rem;
           line-height: 1.2;
         }
 
@@ -2605,7 +2605,7 @@ const ResultScreen = ({
           }
 
           .card-header h2 {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
           }
 
           .action-buttons {
