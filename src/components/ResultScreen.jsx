@@ -794,6 +794,7 @@ const ResultScreen = ({
       '신고전주의': { en: 'Neoclassicism', period: '18~19세기' },
       '낭만주의': { en: 'Romanticism', period: '19세기' },
       '사실주의': { en: 'Realism', period: '19세기' },
+      '신고전 vs 낭만 vs 사실주의': { en: 'Neoclassicism·Romanticism·Realism', period: '18~19세기' },
       '인상주의': { en: 'Impressionism', period: '19세기 말' },
       '후기인상주의': { en: 'Post-Impressionism', period: '19세기 말' },
       '야수파': { en: 'Fauvism', period: '20세기 초' },
@@ -837,13 +838,23 @@ const ResultScreen = ({
       'david': { name: '자크 루이 다비드', years: '1748~1825' },
       'jacques-louis david': { name: '자크 루이 다비드', years: '1748~1825' },
       'ingres': { name: '장 오귀스트 도미니크 앵그르', years: '1780~1867' },
+      'jean-auguste-dominique ingres': { name: '장 오귀스트 도미니크 앵그르', years: '1780~1867' },
       // 낭만주의
       'delacroix': { name: '외젠 들라크루아', years: '1798~1863' },
+      'eugène delacroix': { name: '외젠 들라크루아', years: '1798~1863' },
+      'eugene delacroix': { name: '외젠 들라크루아', years: '1798~1863' },
       'turner': { name: '조지프 말러드 윌리엄 터너', years: '1775~1851' },
+      'j.m.w. turner': { name: '조지프 말러드 윌리엄 터너', years: '1775~1851' },
+      'joseph mallord william turner': { name: '조지프 말러드 윌리엄 터너', years: '1775~1851' },
       'goya': { name: '프란시스코 고야', years: '1746~1828' },
+      'francisco goya': { name: '프란시스코 고야', years: '1746~1828' },
+      'francisco de goya': { name: '프란시스코 고야', years: '1746~1828' },
       // 사실주의
       'courbet': { name: '귀스타브 쿠르베', years: '1819~1877' },
+      'gustave courbet': { name: '귀스타브 쿠르베', years: '1819~1877' },
       'millet': { name: '장 프랑수아 밀레', years: '1814~1875' },
+      'jean-françois millet': { name: '장 프랑수아 밀레', years: '1814~1875' },
+      'jean-francois millet': { name: '장 프랑수아 밀레', years: '1814~1875' },
       // 인상주의
       'monet': { name: '클로드 모네', years: '1840~1926' },
       'claude monet': { name: '클로드 모네', years: '1840~1926' },
@@ -906,15 +917,15 @@ const ResultScreen = ({
     if (styleName === '신고전 vs 낭만 vs 사실주의' && artistName) {
       const normalized = artistName.toLowerCase().trim();
       // 신고전주의 화가
-      if (['david', 'jacques-louis david', 'ingres'].includes(normalized)) {
+      if (['david', 'jacques-louis david', 'ingres', 'jean-auguste-dominique ingres'].includes(normalized)) {
         actualMovement = '신고전주의';
       }
       // 낭만주의 화가
-      else if (['delacroix', 'turner', 'goya'].includes(normalized)) {
+      else if (['delacroix', 'eugène delacroix', 'eugene delacroix', 'turner', 'j.m.w. turner', 'joseph mallord william turner', 'goya', 'francisco goya', 'francisco de goya'].includes(normalized)) {
         actualMovement = '낭만주의';
       }
       // 사실주의 화가
-      else if (['courbet', 'millet'].includes(normalized)) {
+      else if (['courbet', 'gustave courbet', 'millet', 'jean-françois millet', 'jean-francois millet'].includes(normalized)) {
         actualMovement = '사실주의';
       }
     }
