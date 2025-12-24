@@ -714,7 +714,7 @@ export const munchMasterworks = {
   'munch-madonna': {
     name: '마돈나',
     nameEn: 'Madonna',
-    prompt: ', Transform into Madonna by Edvard Munch, Munch art style. CRITICAL MUNCH STYLE: SWIRLING DARK background with wavy undulating lines. RED HALO glowing above head. FLOWING BLACK HAIR spreading outward like dark halo around face. PALE LUMINOUS skin with closed or half-closed eyes in ecstatic trance. Deep burgundy red and dark black dominating. Figure appears FLOATING in swirling darkness. Apply WAVY SINUOUS lines throughout background. Apply DARK OUTLINES around figure and hair. THICK VISIBLE BRUSHSTROKES of 25mm+. Must have MYSTERIOUS DARK atmosphere - NOT bright, NOT cheerful. Absolutely NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Transform into Madonna by Edvard Munch, Munch art style. CRITICAL - MUST USE MADONNA ORIGINAL PAINTING BACKGROUND: SWIRLING DARK NAVY AND BLACK background with WAVY UNDULATING CURVED LINES flowing around figure. RED HALO or AURA glowing above head. FLOWING BLACK HAIR spreading outward like dark halo frame around face. PALE LUMINOUS skin with closed or half-closed eyes in ecstatic trance. Deep BURGUNDY RED and DARK BLACK colors dominating - NOT bright, NOT colorful. Figure appears FLOATING in swirling darkness. Apply WAVY SINUOUS organic lines throughout background like original Madonna painting. Apply DARK OUTLINES around figure and hair. THICK VISIBLE BRUSHSTROKES of 25mm+. Must have MYSTERIOUS DARK SENSUAL atmosphere. Absolutely NOT a photograph, NOT 3D, NOT digital, NOT bright background.',
     feature: '신비/관능',
     expressionRule: 'ecstatic/mysterious allowed, NO bright, NO smiling, closed or half-closed eyes preferred'
   },

@@ -3360,40 +3360,20 @@ export default async function handler(req, res) {
         // 연구 결과: 자연어 문장 안에 핵심 키워드 포함이 가장 효과적
         // ========================================
         
-        // 스타일별 체크
-        const isPicassoCubist = finalPrompt.toLowerCase().includes('picasso') || finalPrompt.toLowerCase().includes('cubist');
-        
-        let coreRulesPrefix;
-        
-        if (isPicassoCubist) {
-          // 피카소/입체주의용: 기하학적 분해 강제 (자연어 통합)
-          coreRulesPrefix = 
-            'Transform this photo into an authentic CUBIST OIL PAINTING in the style of Pablo Picasso. ' +
-            'The face MUST be geometrically fragmented into angular planes, showing the nose from side profile while both eyes remain visible from the front view simultaneously. ' +
-            'The jaw and chin should be broken into sharp geometric segments with bold black outlines separating each section. ' +
-            'This geometric fragmentation is REQUIRED and NON-NEGOTIABLE. ' +
-            'CRITICAL RULES: Preserve the original subject identity, age, gender and ethnicity exactly. ' +
-            'Render people attractively unless expressive distortion is part of the style. ' +
-            'Do NOT add any people or elements not present in the original photo. ' +
-            'Do NOT add any text, signatures, letters, writing or watermarks. ' +
-            'Maintain correct anatomical proportions with no missing or extra limbs. ' +
-            'Apply only the painting TECHNIQUE, never the painter physical appearance - no Van Gogh beard, no Frida unibrow. ' +
-            'This must look like a real hand-painted Cubist artwork, absolutely NOT a photograph, NOT 3D render, NOT digital art. ';
-        } else {
-          // 일반: 붓터치 강제 (자연어 통합)
-          coreRulesPrefix = 
-            'Transform this photo into an authentic TRADITIONAL OIL PAINTING with thick impasto technique. ' +
-            'The entire image including the subject face, skin, hair and clothing MUST have very thick visible brushstrokes of 20mm or thicker that are clearly visible even without zooming in. ' +
-            'Use palette knife marks and heavy textured brushwork throughout the canvas. ' +
-            'This thick brushstroke texture on the subject is REQUIRED and NON-NEGOTIABLE - not fine lines, not subtle texture, not just on the background. ' +
-            'CRITICAL RULES: Preserve the original subject identity, age, gender and ethnicity exactly. ' +
-            'Render people attractively unless expressive distortion is part of the style. ' +
-            'Do NOT add any people or elements not present in the original photo. ' +
-            'Do NOT add any text, signatures, letters, writing or watermarks. ' +
-            'Maintain correct anatomical proportions with no missing or extra limbs. ' +
-            'Apply only the painting TECHNIQUE, never the painter physical appearance - no Van Gogh beard, no Frida unibrow, no Marilyn or Elvis face. ' +
-            'This must look like a real hand-painted oil painting, absolutely NOT a photograph, NOT photorealistic, NOT smooth, NOT 3D render, NOT digital art, NOT airbrushed. ';
-        }
+        // 일반: 붓터치 강제 + 나체 금지 (자연어 통합)
+        const coreRulesPrefix = 
+          'CRITICAL: NO nudity, NO naked bodies, NO exposed breasts - subjects must be FULLY CLOTHED. ' +
+          'Transform this photo into an authentic TRADITIONAL OIL PAINTING with thick impasto technique. ' +
+          'The entire image including the subject face, skin, hair and clothing MUST have very thick visible brushstrokes of 20mm or thicker that are clearly visible even without zooming in. ' +
+          'Use palette knife marks and heavy textured brushwork throughout the canvas. ' +
+          'This thick brushstroke texture on the subject is REQUIRED and NON-NEGOTIABLE - not fine lines, not subtle texture, not just on the background. ' +
+          'CRITICAL RULES: Preserve the original subject identity, age, gender and ethnicity exactly. ' +
+          'Render people attractively unless expressive distortion is part of the style. ' +
+          'Do NOT add any people or elements not present in the original photo. ' +
+          'Do NOT add any text, signatures, letters, writing or watermarks. ' +
+          'Maintain correct anatomical proportions with no missing or extra limbs. ' +
+          'Apply only the painting TECHNIQUE, never the painter physical appearance - no Van Gogh beard, no Frida unibrow, no Marilyn or Elvis face. ' +
+          'This must look like a real hand-painted oil painting, absolutely NOT a photograph, NOT photorealistic, NOT smooth, NOT 3D render, NOT digital art, NOT airbrushed. ';
         
         finalPrompt = coreRulesPrefix + finalPrompt;
         logData.prompt.applied.coreRules = true;
