@@ -707,27 +707,27 @@ export const munchMasterworks = {
   'munch-scream': {
     name: '절규',
     nameEn: 'The Scream',
-    prompt: ', Transform this into The Scream by Edvard Munch from 1893 with skull-like anguished figure holding hands against face in existential terror. Create wavy distorted swirling lines flowing through entire sky and landscape with blood red and dark orange sunset creating oppressive atmosphere on wooden bridge. Show deep navy blue water below with dark churning waves and shadowy figures in background. Apply somber melancholic colors - dark burnt oranges, deep navy blues, muted blood reds, shadowy grays creating brooding nightmarish mood. Background must have undulating wavelike curves expressing cosmic anxiety and psychological anguish. Include very thick visible brushstrokes of 20mm or thicker with rough expressionist paint texture. This must look like a real Expressionist hand-painted masterpiece, absolutely NOT a photograph, NOT 3D render, NOT digital art.',
+    prompt: ', Transform into The Scream by Edvard Munch, Munch art style. CRITICAL MUNCH STYLE REQUIREMENTS: Apply WAVY DISTORTED UNDULATING horizontal lines flowing through ENTIRE sky and background like liquid melting reality. Create PALE GHOSTLY SICKLY skin with greenish-yellow undertones. BLOOD RED and BURNT ORANGE sky with wavy horizontal bands. Deep navy blue water below with SINUOUS WAVELIKE curves. Wooden bridge with diagonal perspective. DISTORT and BLUR background with swirling wavy lines - background must NOT be sharp or realistic. Apply THICK VISIBLE BRUSHSTROKES of 25mm+. Absolutely NOT a photograph, NOT 3D, NOT digital, NOT smooth skin.',
     feature: '불안',
     expressionRule: 'fear/anxiety allowed, NO bright, NO smiling'
   },
   'munch-madonna': {
     name: '마돈나',
     nameEn: 'Madonna',
-    prompt: ', Transform this into Madonna by Edvard Munch from 1894 showing sensual female figure with flowing dark hair spreading like halo around head against dark shadowy background. Create deep burgundy red aura glowing mysteriously around pale luminous skin with half-closed eyes expressing ecstatic trance. Apply dark somber colors - deep blacks, dark burgundy reds, muted flesh tones, shadowy grays creating mysterious brooding atmosphere. Show wavy flowing lines in hair and background with dark psychological intensity. Include very thick visible brushstrokes of 20mm or thicker with rough expressionist paint texture. This must look like a real Expressionist hand-painted masterpiece, absolutely NOT a photograph, NOT 3D render, NOT digital art.',
+    prompt: ', Transform into Madonna by Edvard Munch, Munch art style. CRITICAL MUNCH STYLE: SWIRLING DARK background with wavy undulating lines. RED HALO glowing above head. FLOWING BLACK HAIR spreading outward like dark halo around face. PALE LUMINOUS skin with closed or half-closed eyes in ecstatic trance. Deep burgundy red and dark black dominating. Figure appears FLOATING in swirling darkness. Apply WAVY SINUOUS lines throughout background. THICK VISIBLE BRUSHSTROKES of 25mm+. Must have MYSTERIOUS DARK atmosphere - NOT bright, NOT cheerful. Absolutely NOT a photograph, NOT 3D, NOT digital.',
     feature: '신비/관능',
-    expressionRule: 'ecstatic/mysterious allowed, NO bright, NO smiling'
+    expressionRule: 'ecstatic/mysterious allowed, NO bright, NO smiling, closed or half-closed eyes preferred'
   },
   'munch-jealousy': {
     name: '질투',
     nameEn: 'Jealousy',
-    prompt: ', Transform this into Jealousy by Edvard Munch from 1895 with pale sickly green-tinted face in foreground showing intense haunted stare filled with psychological torment. Create dark brooding atmosphere with couple visible in shadowy background where muted greens symbolize jealousy and emotional pain. Apply somber melancholic colors - murky olive greens, dark grays, muted browns, shadowy blues creating oppressive psychological tension. Show wavy distorted lines throughout background expressing inner emotional turmoil and anguish. Include very thick visible brushstrokes of 20mm or thicker with rough expressionist paint texture. This must look like a real Expressionist hand-painted masterpiece, absolutely NOT a photograph, NOT 3D render, NOT digital art.',
+    prompt: ', Transform into Jealousy by Edvard Munch, Munch art style. CRITICAL: PALE SICKLY GREEN-TINTED face showing psychological torment. Intense haunted stare with DARK SHADOWS under eyes. SWIRLING DISTORTED background with wavy undulating lines. Murky olive greens, dark grays, shadowy blues creating oppressive tension. Apply WAVY DISTORTED lines throughout expressing emotional turmoil. THICK VISIBLE BRUSHSTROKES of 25mm+. Must look HAUNTED and TORMENTED - NOT healthy, NOT cheerful. Absolutely NOT a photograph, NOT 3D, NOT digital.',
     feature: '심리'
   },
   'munch-anxiety': {
     name: '불안',
     nameEn: 'Anxiety',
-    prompt: ', Transform this into Anxiety by Edvard Munch from 1894 showing group of figures with pale anxious faces staring directly forward in collective existential dread. Create wavy undulating lines flowing through dark sky and landscape with muted blood red sunset creating oppressive atmosphere. Apply dark somber melancholic colors - deep navy blues, dark burnt oranges, shadowy grays, muted reds creating brooding nightmarish mood on wooden bridge or path. Show psychological unease through distorted background curves expressing cosmic anxiety. Include very thick visible brushstrokes of 20mm or thicker with rough expressionist paint texture. This must look like a real Expressionist hand-painted masterpiece, absolutely NOT a photograph, NOT 3D render, NOT digital art.',
+    prompt: ', Transform into Anxiety by Edvard Munch, Munch art style. CRITICAL: Group of figures with PALE GHOSTLY ANXIOUS faces staring forward in collective dread. BLOOD ORANGE-RED sky with WAVY HORIZONTAL UNDULATING lines. Wooden bridge or path. PALE SICKLY skin tones on all faces. Dark navy blues, burnt oranges, shadowy grays creating nightmarish mood. DISTORTED WAVY background curves expressing cosmic anxiety. THICK VISIBLE BRUSHSTROKES of 25mm+. Absolutely NOT a photograph, NOT 3D, NOT digital.',
     feature: '군중/불안',
     expressionRule: 'anxiety/worry allowed, NO bright, NO smiling'
   }

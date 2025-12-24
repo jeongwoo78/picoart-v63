@@ -2157,17 +2157,21 @@ async function selectArtistWithAI(imageBase64, selectedStyle, timeoutMs = 15000)
         const masterWorksDB = {
           'vangogh': `
 VINCENT VAN GOGH - SELECT ONE:
-1. "The Starry Night" (별이 빛나는 밤) → night scene, sky, landscape, evening, OR FEMALE portrait (PREFERRED for women!) | Style: SWIRLING SPIRAL brushstrokes, COBALT BLUE and YELLOW, cypress trees
-2. "Sunflowers" (해바라기) → flowers, still life, bouquet | Style: THICK IMPASTO, CHROME YELLOW dominates, expressive petal strokes
-3. "Self-Portrait" (자화상, 1889 Saint-Rémy) → MALE portrait ONLY | Style: TURQUOISE SWIRLING BACKGROUND, intense gaze, directional brushstrokes, CRITICAL: PRESERVE SUBJECT GENDER - apply Van Gogh BRUSHSTROKE TECHNIQUE only, do NOT add Van Gogh's beard or male features to subject
-4. "Café Terrace at Night" (밤의 카페 테라스) → outdoor evening, cafe, restaurant, street scene, city night, warm artificial lighting | Style: BRIGHT YELLOW gas lamp glow against DEEP COBALT BLUE night sky, strong perspective depth, cobblestone street, starry sky with dotted strokes, warm inviting atmosphere`,
+1. "The Starry Night" (별이 빛나는 밤) → night scene, sky, landscape, evening, OR FEMALE portrait (50% chance) | Style: SWIRLING SPIRAL brushstrokes, COBALT BLUE and YELLOW, cypress trees
+2. "Café Terrace at Night" (밤의 카페 테라스) → outdoor evening, cafe, restaurant, street scene, city night, OR FEMALE portrait (50% chance) | Style: BRIGHT YELLOW gas lamp glow against DEEP COBALT BLUE night sky, strong perspective depth, cobblestone street, warm inviting atmosphere
+3. "Sunflowers" (해바라기) → flowers, still life, bouquet ONLY | Style: THICK IMPASTO, CHROME YELLOW dominates, expressive petal strokes
+4. "Self-Portrait" (자화상, 1889 Saint-Rémy) → MALE portrait ONLY | Style: TURQUOISE SWIRLING BACKGROUND, intense gaze, directional brushstrokes, CRITICAL: PRESERVE SUBJECT GENDER - do NOT add Van Gogh's beard or male features
+
+⚠️ For FEMALE portrait: RANDOMLY select between "The Starry Night" OR "Café Terrace at Night" with equal 50/50 probability. Do NOT always pick the same one.`,
 
           'munch': `
 EDVARD MUNCH - SELECT ONE:
-1. "The Scream" (절규) → SINGLE person ONLY (NOT for couples/groups), emotional, anxious, distressed expression | Style: WAVY DISTORTED lines, BLOOD RED sky, agonized figure, existential terror
-2. "Madonna" (마돈나) → FEMALE portrait, sensual, mysterious, dreamy | Style: FLOWING DARK HAIR like halo, closed eyes, red lips, soft curves
-3. "Jealousy" (질투) → MALE portrait, psychological, intense | Style: PALE GREEN face, intense stare, swirling background, emotional tension
-4. "Anxiety" (불안) → GROUP of people (2+), frontal pose, crowd, multiple figures walking | Style: BLOOD ORANGE-RED sky, PALE GHOSTLY FACES, wavy horizontal lines, figures walking toward viewer on bridge, collective existential dread`,
+1. "The Scream" (절규) → DEFAULT for SINGLE person (male or female), emotional scenes, landscapes | Style: WAVY DISTORTED UNDULATING lines throughout sky and background, BLOOD RED and ORANGE sky, PALE GHOSTLY skin, wooden bridge, existential terror
+2. "Madonna" (마돈나) → FEMALE portrait ONLY (50% chance when female - randomly choose between Scream or Madonna) | Style: SWIRLING DARK background, RED HALO above head, FLOWING BLACK HAIR spreading like dark halo, closed eyes, floating sensation
+3. "Jealousy" (질투) → MALE portrait (30% chance when male - 70% use Scream instead) | Style: PALE SICKLY GREEN face, intense haunted stare, swirling dark background, psychological torment
+4. "Anxiety" (불안) → GROUP of people (2+) ONLY | Style: BLOOD ORANGE-RED sky, PALE GHOSTLY FACES, wavy horizontal lines, wooden bridge, collective existential dread
+
+⚠️ PRIORITY: "The Scream" is the DEFAULT. Use it for most single subjects unless specifically choosing variety. For FEMALE: randomly 50/50 between Scream and Madonna. For MALE: 70% Scream, 30% Jealousy.`,
 
           'klimt': `
 GUSTAV KLIMT - SELECT ONE:
@@ -3424,12 +3428,12 @@ export default async function handler(req, res) {
             if (['vangogh', 'munch', 'klimt', 'matisse', 'picasso', 'frida', 'warhol'].includes(artistKey)) {
               const movementMasterwork = getMovementMasterwork(workKey);
               if (movementMasterwork) {
-                // console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-                // console.log('🎨 [v65] 거장 대표작 매칭 적용');
-                // console.log('   화가:', selectedArtist);
-                // console.log('   대표작:', movementMasterwork.name, `(${movementMasterwork.nameEn})`);
-                // console.log('   특징:', movementMasterwork.feature);
-                // console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+                console.log('');
+                console.log('🎨🎨🎨 거장 대표작 매칭 🎨🎨🎨');
+                console.log('   👤 화가:', selectedArtist);
+                console.log('   🖼️ 대표작:', movementMasterwork.name, `(${movementMasterwork.nameEn})`);
+                console.log('   📝 특징:', movementMasterwork.feature);
+                console.log('');
                 
                 // v66: 화가 프롬프트 먼저 (artistStyles.js)
                 const artistStylePrompt1 = getArtistStyle(artistKey);
@@ -3450,7 +3454,7 @@ export default async function handler(req, res) {
                   // console.log('🎭 [v65] Applied expressionRule:', movementMasterwork.expressionRule);
                 }
               } else {
-                // console.log('ℹ️ [v66] movementMasterwork not found for:', workKey);
+                console.log('⚠️ 대표작 매칭 실패:', workKey);
               }
             }
             
@@ -3543,17 +3547,17 @@ export default async function handler(req, res) {
                 const randomIndex = Math.floor(Math.random() * masterworkList.length);
                 selectedMasterworkKey = masterworkList[randomIndex];
                 masterwork = getMovementMasterwork(selectedMasterworkKey);
-                // console.log('⚠️ [v67] AI 대표작 선택 없음, 랜덤 fallback:', selectedMasterworkKey);
+                console.log('⚠️ AI 대표작 선택 없음, 랜덤 fallback:', selectedMasterworkKey);
               }
               
               if (masterwork) {
-                // console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-                // console.log('🎨 [v67] 사조 대표작 매칭 적용');
-                // console.log('   화가:', selectedArtist);
-                // console.log('   AI 선택 대표작:', selectedWork || '(없음 - 랜덤)');
-                // console.log('   적용 대표작:', masterwork.name, `(${masterwork.nameEn})`);
-                // console.log('   특징:', masterwork.feature);
-                // console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+                console.log('');
+                console.log('🎨🎨🎨 사조 대표작 매칭 🎨🎨🎨');
+                console.log('   👤 화가:', selectedArtist);
+                console.log('   🤖 AI 선택:', selectedWork || '(없음 - 랜덤)');
+                console.log('   🖼️ 적용 대표작:', masterwork.name, `(${masterwork.nameEn})`);
+                console.log('   📝 특징:', masterwork.feature);
+                console.log('');
                 
                 // v66: 화가 프롬프트 먼저 (artistStyles.js)
                 const artistStylePrompt2 = getArtistStyle(artistKey);
