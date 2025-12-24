@@ -3367,7 +3367,7 @@ export default async function handler(req, res) {
           'The entire image including the subject face, skin, hair and clothing MUST have very thick visible brushstrokes of 20mm or thicker that are clearly visible even without zooming in. ' +
           'Use palette knife marks and heavy textured brushwork throughout the canvas. ' +
           'This thick brushstroke texture on the subject is REQUIRED and NON-NEGOTIABLE - not fine lines, not subtle texture, not just on the background. ' +
-          'CRITICAL RULES: Preserve the original subject identity, age, gender and ethnicity exactly. ' +
+          'CRITICAL RULES: Preserve the original subject FACE and APPEARANCE exactly - same facial features, same face shape, same look. Preserve identity, age, gender and ethnicity exactly. ' +
           'Render people attractively unless expressive distortion is part of the style. ' +
           'Do NOT add any people or elements not present in the original photo. ' +
           'Do NOT add any text, signatures, letters, writing or watermarks. ' +
