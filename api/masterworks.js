@@ -707,27 +707,27 @@ export const munchMasterworks = {
   'munch-scream': {
     name: '절규',
     nameEn: 'The Scream',
-    prompt: ', Transform into The Scream by Edvard Munch, Munch art style. CRITICAL MUNCH STYLE REQUIREMENTS: Apply WAVY DISTORTED UNDULATING horizontal lines flowing through ENTIRE sky and background like liquid melting reality. Create PALE GHOSTLY SICKLY skin with greenish-yellow undertones. BLOOD RED and BURNT ORANGE sky with wavy horizontal bands. Deep navy blue water below with SINUOUS WAVELIKE curves. Wooden bridge with diagonal perspective. DISTORT and BLUR background with swirling wavy lines - background must NOT be sharp or realistic. Apply THICK VISIBLE BRUSHSTROKES of 25mm+. Absolutely NOT a photograph, NOT 3D, NOT digital, NOT smooth skin.',
+    prompt: ', Transform into The Scream by Edvard Munch, Munch art style. CRITICAL MUNCH STYLE REQUIREMENTS: Apply WAVY DISTORTED UNDULATING horizontal lines flowing through ENTIRE sky and background like liquid melting reality. Create PALE GHOSTLY SICKLY skin with greenish-yellow undertones. BLOOD RED and BURNT ORANGE sky with wavy horizontal bands. Deep navy blue water below with SINUOUS WAVELIKE curves. Wooden bridge with diagonal perspective. DISTORT and BLUR background with swirling wavy lines - background must NOT be sharp or realistic. Apply DARK OUTLINES around figure and hair. Apply THICK VISIBLE BRUSHSTROKES of 25mm+. Absolutely NOT a photograph, NOT 3D, NOT digital, NOT smooth skin.',
     feature: '불안',
     expressionRule: 'fear/anxiety allowed, NO bright, NO smiling'
   },
   'munch-madonna': {
     name: '마돈나',
     nameEn: 'Madonna',
-    prompt: ', Transform into Madonna by Edvard Munch, Munch art style. CRITICAL MUNCH STYLE: SWIRLING DARK background with wavy undulating lines. RED HALO glowing above head. FLOWING BLACK HAIR spreading outward like dark halo around face. PALE LUMINOUS skin with closed or half-closed eyes in ecstatic trance. Deep burgundy red and dark black dominating. Figure appears FLOATING in swirling darkness. Apply WAVY SINUOUS lines throughout background. THICK VISIBLE BRUSHSTROKES of 25mm+. Must have MYSTERIOUS DARK atmosphere - NOT bright, NOT cheerful. Absolutely NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Transform into Madonna by Edvard Munch, Munch art style. CRITICAL MUNCH STYLE: SWIRLING DARK background with wavy undulating lines. RED HALO glowing above head. FLOWING BLACK HAIR spreading outward like dark halo around face. PALE LUMINOUS skin with closed or half-closed eyes in ecstatic trance. Deep burgundy red and dark black dominating. Figure appears FLOATING in swirling darkness. Apply WAVY SINUOUS lines throughout background. Apply DARK OUTLINES around figure and hair. THICK VISIBLE BRUSHSTROKES of 25mm+. Must have MYSTERIOUS DARK atmosphere - NOT bright, NOT cheerful. Absolutely NOT a photograph, NOT 3D, NOT digital.',
     feature: '신비/관능',
     expressionRule: 'ecstatic/mysterious allowed, NO bright, NO smiling, closed or half-closed eyes preferred'
   },
   'munch-jealousy': {
     name: '질투',
     nameEn: 'Jealousy',
-    prompt: ', Transform into Jealousy by Edvard Munch, Munch art style. CRITICAL: PALE SICKLY GREEN-TINTED face showing psychological torment. Intense haunted stare with DARK SHADOWS under eyes. SWIRLING DISTORTED background with wavy undulating lines. Murky olive greens, dark grays, shadowy blues creating oppressive tension. Apply WAVY DISTORTED lines throughout expressing emotional turmoil. THICK VISIBLE BRUSHSTROKES of 25mm+. Must look HAUNTED and TORMENTED - NOT healthy, NOT cheerful. Absolutely NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Transform into Jealousy by Edvard Munch, Munch art style. CRITICAL: PALE SICKLY GREEN-TINTED face showing psychological torment. Intense haunted stare with DARK SHADOWS under eyes. SWIRLING DISTORTED background with wavy undulating lines. Murky olive greens, dark grays, shadowy blues creating oppressive tension. Apply WAVY DISTORTED lines throughout expressing emotional turmoil. Apply DARK OUTLINES around figure and features. THICK VISIBLE BRUSHSTROKES of 25mm+. Must look HAUNTED and TORMENTED - NOT healthy, NOT cheerful. Absolutely NOT a photograph, NOT 3D, NOT digital.',
     feature: '심리'
   },
   'munch-anxiety': {
     name: '불안',
     nameEn: 'Anxiety',
-    prompt: ', Transform into Anxiety by Edvard Munch, Munch art style. CRITICAL: Group of figures with PALE GHOSTLY ANXIOUS faces staring forward in collective dread. BLOOD ORANGE-RED sky with WAVY HORIZONTAL UNDULATING lines. Wooden bridge or path. PALE SICKLY skin tones on all faces. Dark navy blues, burnt oranges, shadowy grays creating nightmarish mood. DISTORTED WAVY background curves expressing cosmic anxiety. THICK VISIBLE BRUSHSTROKES of 25mm+. Absolutely NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Transform into Anxiety by Edvard Munch, Munch art style. CRITICAL: Group of figures with PALE GHOSTLY ANXIOUS faces staring forward in collective dread. BLOOD ORANGE-RED sky with WAVY HORIZONTAL UNDULATING lines. Wooden bridge or path. PALE SICKLY skin tones on all faces. Dark navy blues, burnt oranges, shadowy grays creating nightmarish mood. DISTORTED WAVY background curves expressing cosmic anxiety. Apply DARK OUTLINES around figures. THICK VISIBLE BRUSHSTROKES of 25mm+. Absolutely NOT a photograph, NOT 3D, NOT digital.',
     feature: '군중/불안',
     expressionRule: 'anxiety/worry allowed, NO bright, NO smiling'
   }

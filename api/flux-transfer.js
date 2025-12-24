@@ -1155,7 +1155,7 @@ Available Medieval Art Styles:
 
 📍 FOR PORTRAITS/PEOPLE (인물화) - 3 styles available:
 
-1. BYZANTINE (비잔틴) ⭐⭐⭐⭐ (35%)
+1. BYZANTINE (비잔틴) ⭐⭐⭐⭐ (40%)
    - Specialty: SACRED GOLDEN MOSAIC backgrounds, flat iconic forms, divine transcendence
    - Best for: Formal dignified portraits - Byzantine spirituality and eternal presence
    - Signature: GOLDEN HALO behind head, Gold leaf backgrounds, hieratic frontal poses
@@ -1166,7 +1166,19 @@ Available Medieval Art Styles:
    • Deesis (데이시스) → Gentle expression, compassionate, sacred presence
    • Christ Pantocrator (판토크라토르) → Intense gaze, monumental, divine judgment
 
-2. GOTHIC (고딕) ⭐⭐⭐⭐ (35%)
+2. ISLAMIC MINIATURE (이슬람 세밀화) ⭐⭐⭐⭐ (40%)
+   - Specialty: Persian/Ottoman COURT MINIATURE painting, intricate delicate details, vibrant jewel colors
+   - Best for: Courtly elegant portraits, delicate graceful figures, ornamental backgrounds
+   - Signature: Persian manuscript illumination style, flat decorative composition, rich jewel tones, intricate patterns
+   - Also good for: Animals (hunting scenes, garden scenes)
+   📚 ISLAMIC MINIATURE MASTERWORKS - Select one matching photo characteristics:
+   • Youth Holding a Flower (꽃을 든 귀족) → Single portrait, elegant S-curve posture
+   • Miraj Night Journey (미라지) → Mystical/fantasy, celestial atmosphere
+   • Simurgh (시무르그) → Animals, mythical phoenix with elaborate plumage
+   • Lovers in a Garden (정원의 연인) → Couples, romantic moonlit garden
+   • Rustam Slaying Dragon (루스탐과 용) → Action/battle, epic heroic scene
+
+3. GOTHIC (고딕) ⭐⭐ (20%)
    - Specialty: CATHEDRAL STAINED GLASS with thick BLACK LEAD LINES dividing colored glass sections
    - Reference: Chartres Cathedral stained glass windows style
    - Best for: Religious atmosphere with jewel-tone translucent colors
@@ -1180,29 +1192,18 @@ Available Medieval Art Styles:
    • Notre-Dame Rose Window (노트르담 장미창) → Radial circular, kaleidoscopic symmetry
    • Sainte-Chapelle (생트샤펠) → Tall vertical, dominant ruby red, biblical narrative
 
-3. ISLAMIC MINIATURE (이슬람 세밀화) ⭐⭐⭐ (30%)
-   - Specialty: Persian/Ottoman COURT MINIATURE painting, intricate delicate details, vibrant jewel colors
-   - Best for: Courtly elegant portraits, delicate graceful figures, ornamental backgrounds
-   - Signature: Persian manuscript illumination style, flat decorative composition, rich jewel tones, intricate patterns
-   - Also good for: Animals (hunting scenes, garden scenes)
-   📚 ISLAMIC MINIATURE MASTERWORKS - Select one matching photo characteristics:
-   • Youth Holding a Flower (꽃을 든 귀족) → Single portrait, elegant S-curve posture
-   • Miraj Night Journey (미라지) → Mystical/fantasy, celestial atmosphere
-   • Simurgh (시무르그) → Animals, mythical phoenix with elaborate plumage
-   • Lovers in a Garden (정원의 연인) → Couples, romantic moonlit garden
-   • Rustam Slaying Dragon (루스탐과 용) → Action/battle, epic heroic scene
-
 📍 FOR LANDSCAPES/NON-PORTRAITS (풍경/사물):
-Choose best style among: Byzantine, Gothic
-⚠️ Islamic Miniature can be used for animals but not pure landscapes
+Choose: Byzantine or Gothic
 
-🎯 CRITICAL DECISION LOGIC:
-IF photo has PEOPLE or ANIMALS:
-  → Choose from: Byzantine (35%), Gothic (35%), Islamic MINIATURE (30%)
+🎯 SELECTION:
+IF photo has PEOPLE:
+  → Byzantine (40%), Islamic Miniature (40%), Gothic (20%)
+  
+IF photo has ANIMALS:
+  → Islamic Miniature preferred
   
 IF photo has NO people AND NO animals (landscape only):
-  → Choose from: Byzantine, Gothic
-  → AI decides best fit based on scene characteristics
+  → Byzantine or Gothic
 `;
 }
 
@@ -1224,19 +1225,19 @@ function getMedievalHints(photoAnalysis) {
 - NO Christian religious imagery (avoids sacred context)
 - Secular courtly art aesthetic
 
-⚠️ NEVER Byzantine/Gothic/Romanesque for animals (religious context inappropriate!)
+⚠️ NEVER Byzantine/Gothic for animals (religious context inappropriate!)
 `;
   }
   
-  // 인물 있으면 → 비잔틴 35%, 고딕 35%, 이슬람 세밀화 30%
+  // 인물 있으면 → 비잔틴 40%, 이슬람 세밀화 40%, 고딕 20%
   if (count >= 1 || subject.includes('person') || subject.includes('people') || subject.includes('portrait')) {
     return `
 ⚠️ CRITICAL: This photo has PEOPLE
 
 🎯 Choose from 3 portrait styles:
-- Byzantine (35%) - Sacred golden mosaic, GOLDEN HALO, divine transcendence
-- Gothic (35%) - Cathedral stained glass, BLACK LEAD LINES, holy atmosphere
-- Islamic MINIATURE (30%) - Persian court elegance, ornamental beauty
+- Byzantine (40%) - Sacred golden mosaic, GOLDEN HALO, divine transcendence
+- Islamic MINIATURE (40%) - Persian court elegance, ornamental beauty
+- Gothic (20%) - Cathedral stained glass, BLACK LEAD LINES, holy atmosphere
 `;
   }
   
@@ -1245,7 +1246,7 @@ function getMedievalHints(photoAnalysis) {
 ⚠️ CRITICAL: This photo has NO people (landscape/objects)
 
 🎯 Choose from 2 landscape styles:
-- Byzantine - Golden mosaic atmosphere
+- Byzantine (preferred) - Golden mosaic atmosphere
 - Gothic - Cathedral heavenly light
 `;
 }
