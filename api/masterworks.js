@@ -339,28 +339,6 @@ export const turnerMasterworks = {
   }
 };
 
-// 고야 - 드라마/감정
-export const goyaMasterworks = {
-  'goya-maja': {
-    name: '옷 벗은 마하',
-    nameEn: 'Nude Maja',
-    prompt: ', Apply Nude Maja style by Francisco Goya with a reclining female on cushions and direct confrontational gaze at the viewer. Create luminous flesh tones against dark velvet with Romantic sensuality and bold composition. Use confident brushwork with visible texture. This must look like a real Romantic hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '여성 도발'
-  },
-  'goya-third-may': {
-    name: '1808년 5월 3일',
-    nameEn: 'Third of May 1808',
-    prompt: ', Apply Third of May 1808 style by Goya with a dramatic execution scene at night and a central figure with arms raised in a white shirt. Use a lantern casting harsh light on a firing squad in dark uniforms. Create Romantic political drama with intense emotion, a dark palette and a stark white focal point. This must look like a real Romantic hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '드라마 역사'
-  },
-  'goya-charles-iv': {
-    name: '카를로스 4세 가족',
-    nameEn: 'Charles IV Family',
-    prompt: ', Apply Charles IV Family style by Goya with a formal royal group portrait in elaborate court costumes with medals and sashes. Create unflattering honest realism despite grandeur with rich fabrics and jewels showing subtle psychological insight as a Romantic-era court painting. This must look like a real hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '그룹 격식'
-  }
-};
-
 // 들라크루아 - 역동/감정
 export const delacroixMasterworks = {
   'delacroix-liberty': {
@@ -397,11 +375,11 @@ export const courbetMasterworks = {
     prompt: ', Transform into A Burial at Ornans by Gustave Courbet, Courbet art style. Rural funeral procession with ORDINARY VILLAGERS in MONUMENTAL SCALE and democratic dignity. DARK SOMBER palette of blacks browns and flesh tones with HONEST UNIDEALIZED faces. THICK PAINTERLY brushwork 20mm+ showing common people with profound humanity. NOT heroic, NOT beautified, NOT sentimental. This must look like authentic Realist oil painting with VISIBLE BRUSHSTROKES.',
     feature: '그룹/장례'
   },
-  'courbet-origin': {
-    name: '세계의 기원',
-    nameEn: 'The Origin of the World',
-    prompt: ', Transform into Courbet Realist style by Gustave Courbet, Courbet art style. FRANK HONEST portrayal with rich flesh tones and DARK CONTRASTING fabrics. INTIMATE close composition with BOLD UNAPOLOGETIC realism. THICK SENSUOUS brushwork 20mm+ showing unidealized human form with earthy warm palette. NOT idealized, NOT classical, NOT softened. This must look like authentic Realist oil painting with VISIBLE BRUSHSTROKES.',
-    feature: '여성 누드'
+  'courbet-bonjour': {
+    name: '안녕하세요 쿠르베씨',
+    nameEn: 'Bonjour Monsieur Courbet',
+    prompt: ', Transform into Bonjour Monsieur Courbet by Gustave Courbet, Courbet art style. Artist meeting patron on country road with CONFIDENT SELF-PORTRAIT and outdoor sunlight. BRIGHT NATURAL palette with blue sky greens and earthy browns in plein-air setting. THICK IMPASTO brushwork 20mm+ showing honest encounter between equals with democratic dignity. NOT posed, NOT formal, NOT studio. This must look like authentic Realist oil painting with VISIBLE BRUSHSTROKES.',
+    feature: '야외/만남'
   }
 };
 
@@ -1013,28 +991,6 @@ export const boucherMasterworks = {
 // 13. 낭만주의/표현주의 추가 (2명, 각 3개)
 // ========================================
 
-// 프리드리히
-export const friedrichMasterworks = {
-  'friedrich-wanderer': {
-    name: '안개 바다 위의 방랑자',
-    nameEn: 'Wanderer Above the Sea of Fog',
-    prompt: ', Apply Wanderer Above the Sea of Fog style by Caspar David Friedrich with a solitary figure seen from behind standing on a rocky peak gazing over a swirling sea of mist. Create a sublime Romantic landscape with contemplative isolation and dramatic mountainous vista. Use a cool blue-grey atmospheric palette capturing spiritual transcendence with man dwarfed by nature. This must look like a real Romantic hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '뒷모습, 숭고'
-  },
-  'friedrich-seaice': {
-    name: '빙해',
-    nameEn: 'The Sea of Ice',
-    prompt: ', Apply The Sea of Ice style by Friedrich with jagged ice slabs crushing a shipwreck in frozen arctic desolation. Create terrifying sublime power of nature with a cold blue-white palette and sharp angular ice formations. Capture Romantic catastrophe showing a tiny human vessel destroyed by elemental force with existential terror. This must look like a real Romantic hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '빙하, 파멸'
-  },
-  'friedrich-abbey': {
-    name: '떡갈나무 숲의 수도원',
-    nameEn: 'Abbey in the Oakwood',
-    prompt: ', Apply Abbey in the Oakwood style by Friedrich with a ruined Gothic abbey in winter surrounded by bare twisted oak trees and a funeral procession of monks. Create misty melancholic atmosphere evoking death and spiritual transcendence. Use a pale cold palette showing Romantic sublime decay with haunting desolate beauty. This must look like a real Romantic hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
-    feature: '폐허, 죽음'
-  }
-};
-
 // ========================================
 // 20세기 모더니즘 (8명) - 피카소/프리다/워홀 포함
 // ========================================
@@ -1250,8 +1206,6 @@ export const allMovementMasterworks = {
   ...davidMasterworks,
   ...ingresMasterworks,
   ...turnerMasterworks,
-  ...friedrichMasterworks,
-  ...goyaMasterworks,
   ...delacroixMasterworks,
   ...courbetMasterworks,
   ...manetMasterworks,
@@ -1328,10 +1282,8 @@ export function getArtistMasterworkList(artistKey) {
     'david': ['david-marat', 'david-coronation', 'david-horatii'],
     'ingres': ['ingres-odalisque', 'ingres-bather', 'ingres-broglie'],
     'turner': ['turner-rain-steam', 'turner-temeraire', 'turner-slave-ship'],
-    'friedrich': ['friedrich-wanderer', 'friedrich-seaice', 'friedrich-abbey'],
-    'goya': ['goya-maja', 'goya-third-may', 'goya-charles-iv'],
     'delacroix': ['delacroix-liberty', 'delacroix-sardanapalus', 'delacroix-algiers'],
-    'courbet': ['courbet-stonebreakers', 'courbet-burial', 'courbet-origin'],
+    'courbet': ['courbet-stonebreakers', 'courbet-burial', 'courbet-bonjour'],
     'manet': ['manet-olympia', 'manet-folies', 'manet-dejeuner'],
     // 인상주의
     'renoir': ['renoir-boating', 'renoir-moulin', 'renoir-piano'],
@@ -1407,7 +1359,7 @@ const MOVEMENT_ARTISTS = {
   'renaissance': ['botticelli', 'leonardo', 'titian', 'michelangelo', 'raphael'],
   'baroque': ['caravaggio', 'rubens', 'rembrandt', 'velazquez'],
   'rococo': ['watteau', 'boucher'],
-  'neoclassicism_vs_romanticism_vs_realism': ['david', 'ingres', 'turner', 'friedrich', 'goya', 'delacroix', 'courbet', 'manet']
+  'neoclassicism_vs_romanticism_vs_realism': ['david', 'ingres', 'turner', 'delacroix', 'courbet', 'manet']
 };
 
 /**
@@ -1461,8 +1413,6 @@ console.log`   ── 신고전/낭만 사실 ──`;
 console.log(`   - David, ${Object.keys(davidMasterworks).length} works`);
 console.log(`   - Ingres, ${Object.keys(ingresMasterworks).length} works`);
 console.log(`   - Turner, ${Object.keys(turnerMasterworks).length} works`);
-console.log(`   - Friedrich, ${Object.keys(friedrichMasterworks).length} works 🆕`);
-console.log(`   - Goya, ${Object.keys(goyaMasterworks).length} works`);
 console.log(`   - Delacroix, ${Object.keys(delacroixMasterworks).length} works`);
 console.log(`   - Courbet, ${Object.keys(courbetMasterworks).length} works`);
 console.log(`   - Manet, ${Object.keys(manetMasterworks).length} works`);

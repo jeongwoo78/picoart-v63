@@ -921,7 +921,7 @@ const ResultScreen = ({
         actualMovement = '신고전주의';
       }
       // 낭만주의 화가
-      else if (['delacroix', 'eugène delacroix', 'eugene delacroix', 'turner', 'j.m.w. turner', 'joseph mallord william turner', 'goya', 'francisco goya', 'francisco de goya'].includes(normalized)) {
+      else if (['delacroix', 'eugène delacroix', 'eugene delacroix', 'turner', 'j.m.w. turner', 'joseph mallord william turner'].includes(normalized)) {
         actualMovement = '낭만주의';
       }
       // 사실주의 화가
@@ -1109,7 +1109,6 @@ const ResultScreen = ({
         'turner': { movement: '낭만주의', artist: '터너' },
         'friedrich': { movement: '낭만주의', artist: '프리드리히' },
         'delacroix': { movement: '낭만주의', artist: '들라크루아' },
-        'goya': { movement: '낭만주의', artist: '고야' },
         // 사실주의
         'courbet': { movement: '사실주의', artist: '쿠르베' },
         'manet': { movement: '사실주의', artist: '마네' },
@@ -2096,22 +2095,6 @@ const ResultScreen = ({
                       return formatArtistName(displayArtist);
                     })()}
                   </span>
-                  {selectedStyle.id === 'neoclassicism_vs_romanticism_vs_realism' && aiSelectedArtist && (() => {
-                    const movement = getSpecificMovement(aiSelectedArtist);
-                    return movement ? (
-                      <span className={`style-badge ${movement.color}`}>
-                        {movement.text}
-                      </span>
-                    ) : null;
-                  })()}
-                  {selectedStyle.id === 'modernism' && aiSelectedArtist && (() => {
-                    const movement = getModernismMovement(aiSelectedArtist);
-                    return movement ? (
-                      <span className={`style-badge ${movement.color}`}>
-                        {movement.text}
-                      </span>
-                    ) : null;
-                  })()}
                 </p>
               </div>
             </div>

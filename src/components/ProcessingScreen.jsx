@@ -641,7 +641,7 @@ const ProcessingScreen = ({ photo, selectedStyle, onComplete }) => {
         actualMovement = '신고전주의';
       }
       // 낭만주의 화가
-      else if (['delacroix', 'turner', 'goya'].includes(normalized)) {
+      else if (['delacroix', 'turner'].includes(normalized)) {
         actualMovement = '낭만주의';
       }
       // 사실주의 화가
@@ -668,7 +668,7 @@ const ProcessingScreen = ({ photo, selectedStyle, onComplete }) => {
           console.log('✅ 신고전주의 매칭');
         }
         // 낭만주의 화가
-        else if (['delacroix', 'eugène delacroix', 'eugene delacroix', 'turner', 'j.m.w. turner', 'joseph mallord william turner', 'goya', 'francisco goya', 'francisco de goya'].includes(normalized)) {
+        else if (['delacroix', 'eugène delacroix', 'eugene delacroix', 'turner', 'j.m.w. turner', 'joseph mallord william turner'].includes(normalized)) {
           actualMovement = '낭만주의';
           console.log('✅ 낭만주의 매칭');
         }
@@ -1105,11 +1105,25 @@ const ProcessingScreen = ({ photo, selectedStyle, onComplete }) => {
         .edu-card p { color: #333; line-height: 1.6; font-size: 13px; margin: 0; white-space: pre-line; }
         .hint { color: #999; font-size: 12px; text-align: center; margin-top: 12px !important; }
         
-        .preview { background: #e3f2fd; border-radius: 10px; overflow: hidden; margin: 16px 0; }
+        .preview { background: #f8f9fa; border-radius: 12px; overflow: hidden; margin: 16px 0; }
         .preview img { width: 100%; display: block; }
-        .preview-info { padding: 12px; text-align: left; }
-        .preview-style { font-size: 16px; font-weight: 600; color: #333; margin-bottom: 4px; }
-        .preview-subtitle { font-size: 13px; font-weight: 400; color: #666; }
+        .preview-info { 
+          padding: 16px; 
+          text-align: left;
+          border-bottom: 2px solid #e0e0e0;
+        }
+        .preview-style { 
+          font-size: 1.5rem; 
+          font-weight: 600; 
+          color: #333; 
+          margin-bottom: 6px;
+          line-height: 1.3;
+        }
+        .preview-subtitle { 
+          font-size: 1.05rem; 
+          font-weight: 600; 
+          color: #222;
+        }
         
         .dots-nav {
           display: flex;

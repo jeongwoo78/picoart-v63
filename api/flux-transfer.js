@@ -173,7 +173,7 @@ function getAlternativeWork(artistName, avoidedWork) {
 //   5. 로코코 (1720~1780) - 2명 화가 선택
 //   6. 신고전 vs 낭만 vs 사실주의 (1770~1870) - 7명 화가 선택 (AI가 3개 중 선택)
 //      → David, Ingres (신고전주의)
-//      → Turner, Goya, Delacroix (낭만주의)
+//      → Turner, Delacroix (낭만주의)
 //      → Courbet, Manet (사실주의)
 //   7. 인상주의 (1860~1890) - 4명 화가 선택
 //   8. 후기인상주의 (1880~1910) - 4명 화가 선택
@@ -411,47 +411,42 @@ const ARTIST_WEIGHTS = {
       { name: 'JACQUES-LOUIS DAVID', weight: 35 }
     ],
     landscape: [
-      { name: 'JACQUES-LOUIS DAVID', weight: 50 },
-      { name: 'INGRES', weight: 30 },
-      { name: 'GOYA', weight: 20 }
-      // Claude Lorrain 제거 (바로크 시대 화가)
+      { name: 'JACQUES-LOUIS DAVID', weight: 60 },
+      { name: 'INGRES', weight: 40 }
     ],
     default: [
-      { name: 'JACQUES-LOUIS DAVID', weight: 55 },
-      { name: 'INGRES', weight: 30 },
-      { name: 'GOYA', weight: 15 }
-      // Claude Lorrain 제거
+      { name: 'JACQUES-LOUIS DAVID', weight: 60 },
+      { name: 'INGRES', weight: 40 }
     ]
   },
   
   // 신고전 vs 낭만 vs 사실주의 (프론트엔드 카테고리명)
   neoclassicism_vs_romanticism_vs_realism: {
     portrait: [
-      { name: 'INGRES', weight: 30 },
-      { name: 'GOYA', weight: 25 },
-      { name: 'MANET', weight: 25 },
-      { name: 'JACQUES-LOUIS DAVID', weight: 20 }
+      { name: 'INGRES', weight: 35 },
+      { name: 'MANET', weight: 35 },
+      { name: 'JACQUES-LOUIS DAVID', weight: 30 }
     ],
     movement: [  // 스포츠/액션
-      { name: 'DELACROIX', weight: 50 },       // 역동적 군중, 격렬한 동작
-      { name: 'GOYA', weight: 35 },            // 투우, 격렬한 표현
-      { name: 'JACQUES-LOUIS DAVID', weight: 15 }  // 영웅적 포즈
+      { name: 'DELACROIX', weight: 60 },       // 역동적 군중, 격렬한 동작
+      { name: 'JACQUES-LOUIS DAVID', weight: 25 },  // 영웅적 포즈
+      { name: 'TURNER', weight: 15 }
     ],
     landscape: [
-      { name: 'TURNER', weight: 45 },        // 낭만주의 풍경 대표
-      { name: 'DELACROIX', weight: 25 },     // 낭만주의
+      { name: 'TURNER', weight: 50 },        // 낭만주의 풍경 대표
+      { name: 'DELACROIX', weight: 20 },     // 낭만주의
       { name: 'COURBET', weight: 20 },       // 사실주의 풍경
       { name: 'MANET', weight: 10 }          // 사실주의
     ],
     dramatic: [
-      { name: 'DELACROIX', weight: 40 },
-      { name: 'GOYA', weight: 35 },
-      { name: 'TURNER', weight: 25 }
+      { name: 'DELACROIX', weight: 50 },
+      { name: 'TURNER', weight: 30 },
+      { name: 'COURBET', weight: 20 }
     ],
     default: [
       { name: 'JACQUES-LOUIS DAVID', weight: 20 },
-      { name: 'GOYA', weight: 20 },
       { name: 'DELACROIX', weight: 20 },
+      { name: 'TURNER', weight: 20 },
       { name: 'MANET', weight: 15 },
       { name: 'COURBET', weight: 15 },
       { name: 'INGRES', weight: 10 }
@@ -1261,7 +1256,7 @@ function getNeoclassicismVsRomanticismVsRealismGuidelines() {
 🚫🚫🚫 CRITICAL RESTRICTION 🚫🚫🚫
 YOU MUST ONLY SELECT FROM THE ARTISTS LISTED BELOW!
 DO NOT select artists from other movements (Baroque, Impressionism, Expressionism, etc.)
-ONLY these 7 artists: DAVID, INGRES, TURNER, GOYA, DELACROIX, COURBET, MANET!
+ONLY these 6 artists: DAVID, INGRES, TURNER, DELACROIX, COURBET, MANET!
 
 Available Artists (7명) - AI will choose BEST style (Neoclassicism vs Romanticism vs Realism):
 
@@ -1285,67 +1280,61 @@ Available Artists (7명) - AI will choose BEST style (Neoclassicism vs Romantici
    - Specialty: Atmospheric light effects, misty dreamlike landscapes, sublime nature
    - Best for: Landscapes, fog/mist, atmospheric effects, natural scenery
    - Signature: Golden luminous atmosphere, dissolving forms in light
-   - When to prioritize: Landscape photos (STRONG 75%)
+   - When to prioritize: Landscape photos (STRONG 80%)
 
-4. GOYA (고야) - BEST for portraits, dark mood, war/conflict scenes
-   - Specialty: Dark psychological depth, dramatic contrasts, human truth
-   - Best for: Elegant portraits, dark/moody atmosphere, conflict/tension scenes
-   - Signature: "La Maja Vestida" elegance, "May 3, 1808" dramatic lighting
-   - When to prioritize: Portraits (especially female), war/conflict themes, night scenes (70%)
-
-5. DELACROIX (들라크루아) - BEST for dramatic action, intense emotions
+4. DELACROIX (들라크루아) - BEST for dramatic action, intense emotions
    - Specialty: Vivid passionate colors, dynamic movement, revolutionary energy
    - Best for: Action scenes, dramatic expressions, multiple people in motion
    - Signature: Liberty Leading the People - passionate drama
-   - When to prioritize: Action/drama/multiple people in motion (70%)
+   - When to prioritize: Action/drama/multiple people in motion (75%)
 
 🎨 REALISM (사실주의) - Honest Truth:
 
-6. COURBET (쿠르베) ⭐ STRONGEST for rural/landscape realism
+5. COURBET (쿠르베) ⭐ STRONGEST for rural/landscape realism
    - Specialty: Honest rural reality, landscapes, everyday life, anti-idealized truth
    - Best for: Rural settings, landscapes, working class subjects, realistic portrayal
    - Signature: The Stone Breakers, Burial at Ornans - unvarnished reality
    - When to prioritize: Rural/landscape/working class subjects (STRONG 80%)
 
-7. MANET (마네) - BEST for urban/modern scenes
+6. MANET (마네) - BEST for urban/modern scenes
    - Specialty: Modern Paris life, café scenes, urban sophistication
    - Best for: Urban settings, modern atmosphere, café/city backgrounds
    - Signature: Olympia, A Bar at the Folies-Bergère - modern realism
-   - When to prioritize: Clear urban/modern/city context (70%)
+   - When to prioritize: Clear urban/modern/city context (75%)
 
 🎯 CRITICAL DECISION LOGIC:
 - Photo is STATIC, BALANCED, FORMAL → Choose Neoclassicism (David or Ingres)
-- Photo is DYNAMIC, EMOTIONAL, DRAMATIC → Choose Romanticism (Turner/Friedrich/Delacroix)
+- Photo is DYNAMIC, EMOTIONAL, DRAMATIC → Choose Romanticism (Turner/Delacroix)
 - Photo is RURAL, PEACEFUL → Choose Realism - Courbet (80%)
 - Photo is URBAN, MODERN → Choose Realism - Manet (70%)
-- Landscape → ALWAYS Romanticism (Turner 75% or Friedrich 70%)
+- Landscape → ALWAYS Romanticism (Turner 80%)
 `;
 }
 
 function getNeoclassicismVsRomanticismVsRealismHints(photoAnalysis) {
   const { subject, count, mood, composition, shot_type, gender } = photoAnalysis;
   
-  // 초상화 → 고야 최우선 (낭만주의)
+  // 초상화 → 앵그르/마네 추천
   if (count === 1 && (shot_type === 'portrait' || shot_type === 'upper_body')) {
-    // 여성 초상화 → 고야 강력 추천
+    // 여성 초상화 → 앵그르 또는 마네
     if (gender === 'female') {
       return `
-🎯 STRONG RECOMMENDATION: ROMANTICISM - GOYA (75%)
-Female portrait - Goya's "La Maja Vestida" elegant style!
-Spanish romantic elegance with psychological depth.
-Alternative: Ingres (Neoclassicism) for pure beauty, but Goya preferred.
+🎯 STRONG RECOMMENDATION: NEOCLASSICISM - INGRES (75%)
+Female portrait - Ingres' idealized smooth perfection!
+Classical beauty with elegant contours.
+Alternative: Manet (Realism) for modern sophisticated style.
 `;
     }
-    // 남성 초상화도 고야 우선
+    // 남성 초상화 → 다비드 또는 마네
     return `
-🎯 STRONG RECOMMENDATION: ROMANTICISM - GOYA (70%)
-Portrait detected - Goya's psychological portrait mastery!
-Deep character study with dramatic Spanish lighting.
-Alternative: David (Neoclassicism) for formal/heroic, but Goya preferred.
+🎯 STRONG RECOMMENDATION: NEOCLASSICISM - DAVID (70%)
+Portrait detected - David's formal heroic style!
+Dignified formality with clear structure.
+Alternative: Manet (Realism) for modern approach.
 `;
   }
   
-  // 시골/농촌 → 사실주의 (밀레)
+  // 시골/농촌 → 사실주의 (쿠르베)
   if (subject.includes('rural') || subject.includes('countryside') || subject.includes('farm')) {
     return `
 🎯 STRONG: REALISM - COURBET (80%)
@@ -1358,7 +1347,7 @@ NEVER use Neoclassicism or Romanticism for rural scenes.
   // 도시/현대 → 사실주의 (마네)
   if (subject.includes('urban') || subject.includes('city') || subject.includes('café')) {
     return `
-🎯 STRONG: REALISM - MANET (70%)
+🎯 STRONG: REALISM - MANET (75%)
 Urban/modern = Realism!
 Manet's modern Paris sophistication perfect.
 `;
@@ -1367,27 +1356,26 @@ Manet's modern Paris sophistication perfect.
   // 풍경 → 낭만주의 (터너)
   if (subject === 'landscape') {
     return `
-🎯 STRONG: ROMANTICISM - TURNER (75%)
+🎯 STRONG: ROMANTICISM - TURNER (80%)
 Landscape = Romanticism territory!
 Turner's atmospheric sublime light is supreme.
 NEVER use Neoclassicism for landscapes.
 `;
   }
   
-  // 어둡고 심리적인 장면 → 낭만주의 (고야)
+  // 어둡고 드라마틱한 장면 → 낭만주의 (들라크루아)
   if (mood === 'dark' || mood === 'psychological' || subject.includes('night')) {
     return `
-🎯 STRONG: ROMANTICISM - GOYA (70%)
-Dark/psychological mood = Goya territory!
-Spanish romantic darkness and human truth.
-Perfect for portraits with psychological depth.
+🎯 STRONG: ROMANTICISM - DELACROIX (75%)
+Dark/dramatic mood = Romanticism territory!
+Passionate drama with intense emotions.
 `;
   }
   
   // 여러 명 + 역동적 → 낭만주의 (들라크루아)
   if (count >= 2 && (mood === 'dramatic' || mood === 'energetic')) {
     return `
-🎯 ROMANTICISM - DELACROIX (70%)
+🎯 ROMANTICISM - DELACROIX (75%)
 Dramatic multi-person action = Romanticism!
 Revolutionary energy and passion.
 `;
@@ -1397,30 +1385,30 @@ Revolutionary energy and passion.
   if ((shot_type === 'portrait' || shot_type === 'upper_body') && 
       (composition === 'balanced' || mood === 'formal')) {
     return `
-🎯 NEOCLASSICISM - DAVID (70%)
+🎯 NEOCLASSICISM - DAVID (75%)
 Formal balanced portrait = Neoclassicism!
 Cold perfection and heroic dignity.
 Unless dynamic/emotional → then Romanticism.
 `;
   }
   
-  // 우아한 여성 초상화 → 고야 우선, 앵그르 대안
+  // 우아한 여성 초상화 → 앵그르 또는 마네
   if (subject === 'female' && (mood === 'elegant' || mood === 'graceful')) {
     return `
-🎯 PRIMARY: ROMANTICISM - GOYA (La Maja style) OR
-ALTERNATIVE: NEOCLASSICISM - INGRES (smooth perfection)
-Goya offers Spanish romantic elegance with depth.
+🎯 PRIMARY: NEOCLASSICISM - INGRES (smooth perfection) OR
+ALTERNATIVE: REALISM - MANET (modern sophistication)
 Ingres offers idealized classical beauty.
+Manet offers Parisian modern elegance.
 `;
   }
   
   return `
 🎯 DECISION GUIDE:
 - Rural/Countryside → REALISM (Courbet 80%)
-- Urban/Modern → REALISM (Manet 70%)
+- Urban/Modern → REALISM (Manet 75%)
 - Static/Balanced/Formal → NEOCLASSICISM (David/Ingres)
-- Dynamic/Emotional/Dramatic → ROMANTICISM (Turner/Friedrich/Delacroix)
-- Landscape → ALWAYS Romanticism (Turner 75%)
+- Dynamic/Emotional/Dramatic → ROMANTICISM (Turner/Delacroix)
+- Landscape → ALWAYS Romanticism (Turner 80%)
 `;
 }
 
@@ -2861,14 +2849,13 @@ const MALE_SUITABLE_ARTISTS_BY_CATEGORY = {
     // 여성 편향 없음 (INGRES는 여성 인물 잘 그리지만 남성도 잘 그림)
     { name: 'JACQUES-LOUIS DAVID', weight: 45 },
     { name: 'INGRES', weight: 25 },
-    { name: 'GOYA', weight: 20 },
-    { name: 'DELACROIX', weight: 10 }
+    { name: 'DELACROIX', weight: 20 }
   ],
   'neoclassicism_vs_romanticism_vs_realism': [
     // neoclassicism과 동일 (별칭)
     { name: 'JACQUES-LOUIS DAVID', weight: 25 },
-    { name: 'GOYA', weight: 20 },
     { name: 'DELACROIX', weight: 20 },
+    { name: 'TURNER', weight: 20 },
     { name: 'COURBET', weight: 15 },
     { name: 'MANET', weight: 10 },
     { name: 'INGRES', weight: 10 }
@@ -3501,8 +3488,6 @@ export default async function handler(req, res) {
             'david': 'david', 'jacques-louis david': 'david',
             'ingres': 'ingres',
             'turner': 'turner', 'j.m.w. turner': 'turner',
-            'friedrich': 'friedrich', 'caspar david friedrich': 'friedrich',
-            'goya': 'goya', 'francisco goya': 'goya',
             'delacroix': 'delacroix', 'eugène delacroix': 'delacroix',
             'courbet': 'courbet', 'gustave courbet': 'courbet',
             'manet': 'manet', 'édouard manet': 'manet',
@@ -3745,17 +3730,6 @@ export default async function handler(req, res) {
           }
         }
         
-        // v59: 고야 선택시 심리적 깊이 강화
-        if (selectedArtist.toUpperCase().trim().includes('GOYA')) {
-          // console.log('🎯 Goya detected');
-          if (!finalPrompt.includes('La Maja')) {
-            finalPrompt = finalPrompt + ', painting by Francisco Goya, La Maja Vestida-style Spanish romantic elegance with psychological intensity and penetrating gaze, dramatic chiaroscuro with deep rich shadows and stark contrasts, dark romantic palette with sumptuous blacks warm flesh tones and muted earth colors, unflinching honesty capturing inner truth and human nature, court painter sophistication with underlying tension';
-            // console.log('✅ Enhanced Goya psychological depth added');
-          } else {
-            // console.log('ℹ️ Goya depth already in prompt (AI included it)');
-          }
-        }
-        
         // 들라크루아 선택시 혁명적 역동성 강화
         if (selectedArtist.toUpperCase().trim().includes('DELACROIX')) {
           // console.log('🎯 Delacroix detected');
@@ -3850,18 +3824,6 @@ export default async function handler(req, res) {
             // console.log('✅ Enhanced Ingres smooth perfection added');
           } else {
             // console.log('ℹ️ Ingres perfection already in prompt (AI included it)');
-          }
-        }
-        
-        // 프리드리히 선택시 숭고한 풍경 강화
-        if (selectedArtist.toUpperCase().trim().includes('FRIEDRICH') || 
-            selectedArtist.toUpperCase().trim().includes('CASPAR DAVID')) {
-          // console.log('🎯 Friedrich detected');
-          if (!finalPrompt.includes('Wanderer above')) {
-            finalPrompt = finalPrompt + ', painting by Caspar David Friedrich, Wanderer above the Sea of Fog-style with SUBLIME VAST LANDSCAPE stretching to infinite horizon, mysterious atmospheric mist enveloping mountains and valleys, solitary contemplative figure viewed from behind gazing into immensity with back to viewer, spiritual sense of awe and insignificance before nature, cool somber palette of grays blues and muted greens, dramatic lighting breaking through clouds creating transcendent atmosphere, profound melancholic loneliness and romantic yearning, metaphysical depth and eternal silence';
-            // console.log('✅ Enhanced Friedrich sublime landscape added');
-          } else {
-            // console.log('ℹ️ Friedrich sublime already in prompt (AI included it)');
           }
         }
         
