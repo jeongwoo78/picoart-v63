@@ -2177,9 +2177,9 @@ GUSTAV KLIMT - SELECT ONE:
 
           'matisse': `
 HENRI MATISSE - SELECT ONE:
-1. "The Green Stripe" (초록 줄무늬) → FEMALE portrait, bold color | Style: GREEN STRIPE down CENTER of face dividing it in half, LEFT side yellow-pink tones, RIGHT side green-purple tones, RADICAL FAUVIST COLOR directly on skin, rough visible brushstrokes
-2. "Woman in a Purple Coat" (보라 코트를 입은 여인) → FEMALE portrait, elegant | Style: RICH PURPLE COAT, BOLD BLACK OUTLINES around figure, decorative patterned background, mature elegant style, strong contour lines
-3. "The Dance" (춤) → GROUP of people, movement, joy | Style: THREE-COLOR ONLY (RED figures + BLUE sky + GREEN ground), simplified flattened dancing bodies, primitive rhythmic energy
+1. "Woman in a Purple Coat" (보라 코트를 입은 여인) → FEMALE portrait (⭐PREFERRED DEFAULT for single female) | Style: RICH PURPLE COAT, BOLD BLACK OUTLINES around figure, decorative patterned background, mature elegant style, strong contour lines
+2. "The Green Stripe" (초록 줄무늬) → FEMALE portrait ONLY when experimental/avant-garde/artistic mood | Style: GREEN STRIPE down CENTER of face dividing it in half, LEFT side yellow-pink tones, RIGHT side green-purple tones, RADICAL FAUVIST COLOR directly on skin
+3. "The Dance" (춤) → GROUP of people (2+), movement, joy | Style: THREE-COLOR ONLY (RED figures + BLUE sky + GREEN ground), simplified flattened dancing bodies, primitive rhythmic energy
 4. "The Red Room" (붉은 방) → interior, still life, single person in room | Style: RED DOMINATES 80% of scene, blue arabesque vine patterns on red, flattened space where wall and table merge`,
 
           'picasso': `
@@ -4096,11 +4096,11 @@ export default async function handler(req, res) {
             selectedArtist.includes('워홀') ||
             selectedArtist.includes('앤디')) {
           // console.log('🎯 Warhol detected');
-          // 항상 강화 프롬프트로 교체 (4분할 보장)
-          const warholEnhancement = 'ABSOLUTE REQUIREMENT: CREATE EXACTLY 4 SEPARATE IMAGES arranged in 2x2 GRID with VISIBLE DIVIDING LINES between panels, TOP-LEFT panel + TOP-RIGHT panel + BOTTOM-LEFT panel + BOTTOM-RIGHT panel, the EXACT SAME FACE from the ORIGINAL PHOTO must appear in ALL 4 panels, EACH panel must have COMPLETELY DIFFERENT bold color scheme (panel 1: hot pink, panel 2: cyan blue, panel 3: yellow, panel 4: orange), Andy Warhol silkscreen style, FLAT graphic colors NO gradients, DO NOT draw Marilyn Monroe, MUST be 4 SEPARATE PANELS not single image, ';
+          // 항상 강화 프롬프트로 교체 (4분할 보장 + 원본 얼굴 유지)
+          const warholEnhancement = 'ABSOLUTE REQUIREMENT: CREATE EXACTLY 4 SEPARATE IMAGES arranged in 2x2 GRID with VISIBLE DIVIDING LINES between panels, TOP-LEFT panel + TOP-RIGHT panel + BOTTOM-LEFT panel + BOTTOM-RIGHT panel, CRITICAL: USE THE ORIGINAL SUBJECT FACE from the photo in ALL 4 panels - do NOT replace with Marilyn Monroe face - KEEP the original person identity and facial features exactly, EACH panel must have COMPLETELY DIFFERENT bold color scheme (panel 1: hot pink, panel 2: cyan blue, panel 3: yellow, panel 4: orange), Andy Warhol silkscreen style, FLAT graphic colors NO gradients, absolutely NOT Marilyn Monroe face, MUST be 4 SEPARATE PANELS not single image, ';
           finalPrompt = warholEnhancement + finalPrompt;
-          controlStrength = 0.30;
-          // console.log('✅ Enhanced Warhol 4-panel grid (FRONT position, control_strength 0.30)');
+          controlStrength = 0.45;
+          // console.log('✅ Enhanced Warhol 4-panel grid (FRONT position, control_strength 0.45 for face preservation)');
         }
         
         // 피카소 선택시 입체주의 강화 (거장 + 모더니즘)
@@ -4110,16 +4110,17 @@ export default async function handler(req, res) {
             selectedArtist.includes('파블로')) {
           // console.log('🎯 Picasso detected');
           if (!finalPrompt.includes('Cubist')) {
-            finalPrompt = finalPrompt + ', Cubist painting by Pablo Picasso: MANDATORY CUBIST FRAGMENTATION with GEOMETRIC SIMPLIFIED PLANES, face AND body MUST be broken into ANGULAR GEOMETRIC SHAPES, REDUCED TO ESSENTIAL FORMS, this fragmentation is REQUIRED and NON-NEGOTIABLE for Picasso style, MULTI-PERSPECTIVE showing NOSE from SIDE while BOTH EYES from FRONT in same face, face and clothing divided into FLAT colored angular sections like faceted crystal, NOT photorealistic NOT smooth NOT detailed, SINGLE UNIFIED IMAGE not panels, VISIBLE BRUSHSTROKES with thick oil paint, earth tone palette (ochre sienna brown olive grey), Analytical Cubism intersecting shapes, PRESERVE subject identity while applying Cubist fragmentation';
-            controlStrength = 0.45;
-            // console.log('✅ Enhanced Picasso MANDATORY CUBIST FACE+SUBJECT (control_strength 0.45)');
+            finalPrompt = finalPrompt + ', Cubist painting by Pablo Picasso: MANDATORY CUBIST FRAGMENTATION with GEOMETRIC SIMPLIFIED PLANES, face AND body MUST be broken into ANGULAR GEOMETRIC SHAPES showing MULTIPLE VIEWPOINTS simultaneously, NOSE from SIDE while BOTH EYES from FRONT in same face like fractured mirror, face divided into FLAT colored angular sections like faceted crystal, REDUCED TO ESSENTIAL GEOMETRIC FORMS, this fragmentation is REQUIRED and NON-NEGOTIABLE for Picasso style, NOT photorealistic NOT smooth NOT normal face, SINGLE UNIFIED IMAGE not panels, VISIBLE BRUSHSTROKES with thick oil paint, earth tone palette (ochre sienna brown olive grey), Analytical Cubism intersecting shapes';
+            controlStrength = 0.40;
+            // console.log('✅ Enhanced Picasso MANDATORY CUBIST FACE+SUBJECT (control_strength 0.40)');
           } else {
             // console.log('ℹ️ Picasso Cubism already in prompt (AI included it)');
+            controlStrength = 0.40;
           }
-          // 20세기 모더니즘에서 피카소 선택시
+          // 20세기 모더니즘에서 피카소 선택시 더 강한 분해
           if (categoryType === 'modernism') {
-            controlStrength = 0.35;
-            // console.log('✅ Modernism Picasso: control_strength 0.35 (stronger Cubist fragmentation)');
+            controlStrength = 0.30;
+            // console.log('✅ Modernism Picasso: control_strength 0.30 (stronger Cubist fragmentation)');
           }
         }
         

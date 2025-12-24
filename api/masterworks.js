@@ -278,19 +278,19 @@ export const davidMasterworks = {
   'david-marat': {
     name: '마라의 죽음',
     nameEn: 'Death of Marat',
-    prompt: ', Apply Death of Marat style by Jacques-Louis David with a single figure in a bathtub against a plain dark background. Use Neoclassical clarity with smooth precise brushwork and dramatic martyrdom pose. Create stark simplicity with a cool restrained palette and clear crisp outlines showing heroic idealized form. This must look like a real Neoclassical hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Death of Marat style by Jacques-Louis David with a single figure in a bathtub against a plain dark background. Use Neoclassical clarity with dramatic martyrdom pose and clear crisp outlines showing heroic idealized form. CRITICAL: Apply VISIBLE THICK BRUSHSTROKES of 25mm+ on face, skin, and fabric - this must show oil paint texture NOT smooth photographic skin. Create stark simplicity with a cool restrained palette. This must look like a real Neoclassical hand-painted masterpiece with visible paint texture, NOT a photograph, NOT 3D, NOT digital.',
     feature: '단독 드라마'
   },
   'david-coronation': {
     name: '나폴레옹 대관식',
     nameEn: 'Coronation of Napoleon',
-    prompt: ', Apply Coronation of Napoleon style by Jacques-Louis David with a grand ceremonial group scene in Neoclassical monumental composition. Use rich imperial reds and golds with elaborate court costumes in a cathedral setting. Apply precise detailed brushwork with formal balanced arrangement. This must look like a real Neoclassical hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Coronation of Napoleon style by Jacques-Louis David with a grand ceremonial group scene in Neoclassical monumental composition. Use rich imperial reds and golds with elaborate court costumes in a cathedral setting. CRITICAL: Apply VISIBLE THICK BRUSHSTROKES of 25mm+ on all faces, skin, and costumes - must show oil paint texture throughout NOT smooth photographic surface. This must look like a real Neoclassical hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
     feature: '그룹 격식'
   },
   'david-horatii': {
     name: '호라티우스 형제의 맹세',
     nameEn: 'Oath of the Horatii',
-    prompt: ', Apply Oath of the Horatii style by Jacques-Louis David with three brothers raising their arms toward swords. Use Neoclassical Roman architecture with arches and stark geometric composition. Create a dramatic patriotic gesture with clear precise outlines, muted earth tones and heroic masculine determination. This must look like a real Neoclassical hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Oath of the Horatii style by Jacques-Louis David with three brothers raising their arms toward swords. Use Neoclassical Roman architecture with arches and stark geometric composition. CRITICAL: Apply VISIBLE THICK BRUSHSTROKES of 25mm+ on faces, skin, arms, and clothing - must show oil paint texture NOT smooth surface. Create a dramatic patriotic gesture with heroic masculine determination. This must look like a real Neoclassical hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
     feature: '그룹 맹세'
   }
 };
@@ -300,19 +300,19 @@ export const ingresMasterworks = {
   'ingres-odalisque': {
     name: '그랑드 오달리스크',
     nameEn: 'Grande Odalisque',
-    prompt: ', Apply Grande Odalisque style by Ingres with a reclining female nude viewed from behind showing impossibly elongated spine and arms. Create porcelain-smooth luminous skin in an exotic harem setting with peacock fan and silk. Use cool blue drapery with sinuous flowing contours and smooth precise brushwork. This must look like a real Neoclassical hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Grande Odalisque style by Ingres with a reclining female nude viewed from behind showing impossibly elongated spine and arms. Create luminous skin in an exotic harem setting with peacock fan and silk. Use cool blue drapery with sinuous flowing contours. CRITICAL: Despite smooth style, must show VISIBLE OIL PAINT TEXTURE with brushstrokes of 20mm+ especially in background and drapery - this is a painting NOT a photograph. This must look like a real Neoclassical hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
     feature: '여성 누드'
   },
   'ingres-bather': {
     name: '발팽송의 목욕하는 여인',
     nameEn: 'Valpinçon Bather',
-    prompt: ', Apply Valpinçon Bather style by Ingres with a seated female viewed from behind with turban-wrapped head. Create smooth ivory skin with perfect modeling in a simple composition against a plain background. Show an elegant curved spine with cool palette and invisible brushwork emphasizing purity of form. This must look like a real Neoclassical hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Valpinçon Bather style by Ingres with a seated female viewed from behind with turban-wrapped head. Create ivory skin with perfect modeling in a simple composition against a plain background. CRITICAL: Must show VISIBLE OIL PAINT TEXTURE with brushstrokes of 20mm+ in background, fabric, and turban - this is a painting NOT a photograph. Show an elegant curved spine with cool palette. This must look like a real Neoclassical hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
     feature: '여성 뒷모습'
   },
   'ingres-broglie': {
     name: '드 브로이 공주',
     nameEn: 'Princesse de Broglie',
-    prompt: ', Apply Princesse de Broglie style by Ingres with an aristocratic female portrait in a luxurious blue satin gown. Create porcelain-perfect skin with elaborate jewelry and lace in a formal three-quarter pose. Apply rich fabric textures precisely rendered with Neoclassical refinement and elegance. This must look like a real hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Princesse de Broglie style by Ingres with an aristocratic female portrait in a luxurious blue satin gown. Create elegant skin with elaborate jewelry and lace in a formal three-quarter pose. CRITICAL: Must show VISIBLE OIL PAINT TEXTURE with brushstrokes of 20mm+ on dress fabric, background, and jewelry - this is a painting NOT a photograph. Apply rich fabric textures with Neoclassical refinement. This must look like a real hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
     feature: '격식 초상'
   }
 };
@@ -322,19 +322,19 @@ export const turnerMasterworks = {
   'turner-rain-steam': {
     name: '비, 증기, 속도',
     nameEn: 'Rain, Steam and Speed',
-    prompt: ', Apply Rain Steam and Speed style by J.M.W. Turner with dissolving forms in atmospheric mist and a train emerging from golden haze. Create a Romantic sublime atmosphere with swirling mist and rain where luminous golden yellows dominate. Use impressionistic loose brushwork showing speed and modernity dissolving into nature. This must look like a real Romantic hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Rain Steam and Speed style by J.M.W. Turner with dissolving forms in atmospheric mist and a train emerging from golden haze. Create a Romantic sublime atmosphere with swirling mist and rain where luminous golden yellows dominate. CRITICAL: Apply THICK IMPASTO brushstrokes of 25mm+ throughout with heavy paint texture visible on ALL surfaces including any figures - NOT smooth or photographic. This must look like a real Romantic hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
     feature: '풍경 속도'
   },
   'turner-temeraire': {
     name: '전함 테메레르',
     nameEn: 'Fighting Temeraire',
-    prompt: ', Apply Fighting Temeraire style by Turner with a ghost ship being towed at sunset and luminous orange and gold sky reflected on water. Create a melancholic twilight atmosphere with Romantic sublime quality and the ship dissolving into ethereal mist. Use loose atmospheric brushwork. This must look like a real Romantic hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Fighting Temeraire style by Turner with a ghost ship being towed at sunset and luminous orange and gold sky reflected on water. Create a melancholic twilight atmosphere with Romantic sublime quality and the ship dissolving into ethereal mist. CRITICAL: Apply THICK IMPASTO brushstrokes of 25mm+ with visible paint texture throughout - NOT smooth or photographic. This must look like a real Romantic hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
     feature: '풍경 석양'
   },
   'turner-slave-ship': {
     name: '노예선',
     nameEn: 'Slave Ship',
-    prompt: ', Apply Slave Ship style by Turner with a turbulent dramatic seascape, blood-red sunset sky and churning waves. Create Romantic sublime terror with swirling atmospheric chaos and intense emotional color. Use loose expressive impasto brushwork with apocalyptic atmosphere. This must look like a real Romantic hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Slave Ship style by Turner with a turbulent dramatic seascape, blood-red sunset sky and churning waves. Create Romantic sublime terror with swirling atmospheric chaos and intense emotional color. CRITICAL: Apply THICK EXPRESSIVE IMPASTO brushstrokes of 25mm+ with heavy paint texture visible on ALL surfaces - NOT smooth or photographic. This must look like a real Romantic hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
     feature: '드라마틱 풍경'
   }
 };
@@ -344,19 +344,19 @@ export const delacroixMasterworks = {
   'delacroix-liberty': {
     name: '민중을 이끄는 자유의 여신',
     nameEn: 'Liberty Leading the People',
-    prompt: ', Apply Liberty Leading the People style by Delacroix with an allegorical female holding a French tricolor flag in a dynamic diagonal composition. Show a revolutionary crowd surging forward with Romantic passionate energy, rich saturated colors and dramatic smoke and chaos. Use visible energetic brushwork. This must look like a real Romantic hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Liberty Leading the People style by Delacroix with an allegorical female holding a French tricolor flag in a dynamic diagonal composition. Show a revolutionary crowd surging forward with Romantic passionate energy, rich saturated colors and dramatic smoke and chaos. CRITICAL: Apply THICK EXPRESSIVE BRUSHSTROKES of 25mm+ on all faces, skin, and figures with visible paint texture - NOT smooth or photographic. This must look like a real Romantic hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
     feature: '역동 그룹'
   },
   'delacroix-sardanapalus': {
     name: '사르다나팔루스의 죽음',
     nameEn: 'Death of Sardanapalus',
-    prompt: ', Apply Death of Sardanapalus style by Delacroix with a dramatic chaotic scene on a red bed with swirling figures and horses. Create Romantic excess and destruction with rich jewel colors and dynamic diagonal composition showing sensual bodies in turmoil. Use passionate brushwork. This must look like a real Romantic hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Death of Sardanapalus style by Delacroix with a dramatic chaotic scene on a red bed with swirling figures and horses. Create Romantic excess and destruction with rich jewel colors and dynamic diagonal composition showing sensual bodies in turmoil. CRITICAL: Apply THICK PASSIONATE BRUSHSTROKES of 25mm+ on all skin, faces, and bodies with heavy paint texture - NOT smooth or photographic. This must look like a real Romantic hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
     feature: '드라마 혼돈'
   },
   'delacroix-algiers': {
     name: '알제의 여인들',
     nameEn: 'Women of Algiers',
-    prompt: ', Apply Women of Algiers style by Delacroix with an exotic harem interior scene showing reclining women in colorful Oriental dress. Use rich patterns and textiles with warm intimate lighting capturing Romantic Orientalism. Apply jewel-tone colors with sensuous atmosphere. This must look like a real Romantic hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Women of Algiers style by Delacroix with an exotic harem interior scene showing reclining women in colorful Oriental dress. Use rich patterns and textiles with warm intimate lighting capturing Romantic Orientalism. CRITICAL: Apply VISIBLE BRUSHSTROKES of 25mm+ on faces, skin, and fabrics with paint texture throughout - NOT smooth or photographic. Apply jewel-tone colors with sensuous atmosphere. This must look like a real Romantic hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
     feature: '그룹 이국'
   }
 };
@@ -388,19 +388,19 @@ export const manetMasterworks = {
   'manet-olympia': {
     name: '올랭피아',
     nameEn: 'Olympia',
-    prompt: ', Apply Olympia style by Édouard Manet with a reclining female nude on white sheets and direct confrontational gaze. Create stark contrast of pale skin against dark background with a black maid bringing flowers. Use bold flat areas capturing modern Paris realism with visible confident brushwork. This must look like a real hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Olympia style by Édouard Manet with a reclining female nude on white sheets and direct confrontational gaze. Create stark contrast of pale skin against dark background with a black maid bringing flowers. CRITICAL: Apply VISIBLE THICK BRUSHSTROKES of 25mm+ on face, skin, sheets, and background with bold flat paint areas - NOT smooth or photographic. Use bold flat areas capturing modern Paris realism. This must look like a real hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
     feature: '여성 도발'
   },
   'manet-folies': {
     name: '폴리베르제르의 바',
     nameEn: 'Bar at the Folies-Bergère',
-    prompt: ', Apply Bar at the Folies-Bergère style by Manet with a barmaid facing the viewer behind a marble counter. Show a mirror reflection revealing the crowded café with bottles and oranges as still life. Capture modern urban Paris nightlife with bold blacks and bright accents and visible brushwork. This must look like a real hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Bar at the Folies-Bergère style by Manet with a barmaid facing the viewer behind a marble counter. Show a mirror reflection revealing the crowded café with bottles and oranges as still life. CRITICAL: Apply VISIBLE THICK BRUSHSTROKES of 25mm+ on face, skin, dress, and bottles with loose confident paint texture - NOT smooth or photographic. Capture modern urban Paris nightlife with bold blacks and bright accents. This must look like a real hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
     feature: '여성 도시'
   },
   'manet-dejeuner': {
     name: '풀밭 위의 점심',
     nameEn: 'Luncheon on the Grass',
-    prompt: ', Apply Luncheon on the Grass style by Manet with a nude female alongside clothed men in a forest picnic with direct gaze at the viewer. Create bold tonal contrasts showing modern scandal in a classical setting with visible confident brushstrokes and revolutionary composition. This must look like a real hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Luncheon on the Grass style by Manet with a nude female alongside clothed men in a forest picnic with direct gaze at the viewer. CRITICAL: Apply VISIBLE THICK BRUSHSTROKES of 25mm+ on all faces, skin, clothing, and foliage with bold confident paint texture - NOT smooth or photographic. Create bold tonal contrasts showing modern scandal in a classical setting. This must look like a real hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
     feature: '그룹 야외'
   }
 };
@@ -507,25 +507,25 @@ export const vangoghMasterworks = {
   'vangogh-starrynight': {
     name: '별이 빛나는 밤',
     nameEn: 'The Starry Night',
-    prompt: ', Apply The Starry Night style by Vincent van Gogh with giant swirling spirals in the night sky using extremely thick impasto with paint ridges standing up from the canvas. Create cobalt blue and chrome yellow contrast with vertical cypress flame and stars with concentric halos. Apply swirling thick brushstrokes to everything including the subject. This must look like a real Post-Impressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply The Starry Night style by Vincent van Gogh with giant swirling spirals in the night sky using extremely thick impasto with paint ridges standing up from the canvas. Create cobalt blue and chrome yellow contrast with vertical cypress flame and stars with concentric halos. CRITICAL: Apply THICK VISIBLE BRUSHSTROKES to FACE and SKIN - the face must show rough impasto texture with directional brush marks on cheeks, forehead, nose, and chin. The skin must NOT look smooth or photographic. Every surface including face and body must have swirling thick brushstrokes of 25mm or thicker. This must look like a real Post-Impressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital, NOT smooth skin.',
     feature: '감정/소용돌이'
   },
   'vangogh-selfportrait': {
     name: '자화상',
     nameEn: 'Self-Portrait',
-    prompt: ', Apply Self-Portrait style by Vincent van Gogh with a swirling turquoise background and directional thick impasto brushstrokes following face contours. Create an intense frontal gaze with orange-red beard against blue-green coat where every brushstroke is visible and directional with palette knife texture. This must look like a real Post-Impressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Self-Portrait style by Vincent van Gogh with a swirling turquoise background and directional thick impasto brushstrokes following face contours. CRITICAL: The FACE must have VISIBLE THICK BRUSHSTROKES with paint texture on cheeks, forehead, nose - each brushstroke must be individually visible like real Van Gogh paintings. Create an intense frontal gaze with orange-red beard against blue-green coat where every brushstroke is visible and directional with palette knife texture. The skin must NOT be smooth - show rough painted texture throughout. This must look like a real Post-Impressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital, NOT smooth skin.',
     feature: '초상'
   },
   'vangogh-sunflowers': {
     name: '해바라기',
     nameEn: 'Sunflowers',
-    prompt: ', Apply Sunflowers style by Vincent van Gogh with thick 3D impasto petals like sculptures where chrome yellow dominates 80 percent of the palette. Create paint physically raised from the canvas with heavy palette knife marks and ochre and orange accents where every surface shows thick textured paint. This must look like a real Post-Impressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Sunflowers style by Vincent van Gogh with thick 3D impasto petals like sculptures where chrome yellow dominates 80 percent of the palette. Create paint physically raised from the canvas with heavy palette knife marks and ochre and orange accents where every surface shows thick textured paint. If person is in image, their FACE and SKIN must also have THICK VISIBLE BRUSHSTROKES with rough impasto texture. This must look like a real Post-Impressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital, NOT smooth.',
     feature: '색채'
   },
   'vangogh-cafe': {
     name: '밤의 카페 테라스',
     nameEn: 'Café Terrace at Night',
-    prompt: ', Apply Café Terrace at Night style by Van Gogh with yellow gaslight against deep blue starry sky. Create a cobblestone street in perspective with warm café glow using thick impasto swirling brushstrokes. Show yellow-blue complementary contrast in a night scene with visible stars. This must look like a real Post-Impressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Café Terrace at Night style by Van Gogh with yellow gaslight against deep blue starry sky. Create a cobblestone street in perspective with warm café glow using thick impasto swirling brushstrokes. If person is in image, their FACE and SKIN must have THICK VISIBLE BRUSHSTROKES with rough paint texture. Show yellow-blue complementary contrast in a night scene with visible stars. This must look like a real Post-Impressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital, NOT smooth skin.',
     feature: '야경/인물'
   }
 };
@@ -1000,13 +1000,13 @@ export const picassoMasterworks = {
   'picasso-demoiselles': {
     name: '아비뇽의 처녀들',
     nameEn: 'Les Demoiselles d\'Avignon',
-    prompt: ', Apply Les Demoiselles d\'Avignon style by Pablo Picasso (1907) with five angular fragmented figures showing faces with African mask influence using geometric planes and sharp angles. Create fractured geometric body shapes in Cubist deconstruction with revolutionary angular brushwork breaking traditional perspective. Use pink flesh tones with ochre and blue for this proto-Cubist masterpiece. This must look like a real Cubist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Les Demoiselles d\'Avignon style by Pablo Picasso (1907). CRITICAL CUBIST REQUIREMENT: The FACE must be FRAGMENTED into GEOMETRIC ANGULAR PLANES showing MULTIPLE VIEWPOINTS simultaneously - nose from SIDE view while BOTH EYES visible from FRONT in the same face. Break the face into flat angular sections like a fractured mirror or faceted crystal. Apply African mask influence with sharp geometric shapes, angular jawline, simplified features reduced to basic geometric forms. Use pink flesh tones with ochre and blue. The face must NOT look normal or photographic - it must be visibly DECONSTRUCTED into Cubist geometric planes. This must look like a real Cubist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital, NOT realistic face.',
     feature: '그룹, 마스크'
   },
   'picasso-guernica': {
     name: '게르니카',
     nameEn: 'Guernica',
-    prompt: ', Apply Guernica style by Pablo Picasso (1937) using CRITICAL BLACK WHITE AND GREY ONLY monochrome palette. Create a dramatic war scene with anguished fragmented figures featuring a screaming horse at center, bull figure, broken sword and light bulb as sun. Show dismembered bodies and chaos with powerful anti-war imagery using Cubist distortion expressing horror. This must look like a real monochrome Cubist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Guernica style by Pablo Picasso (1937) using CRITICAL BLACK WHITE AND GREY ONLY monochrome palette. CRITICAL: The FACE must be FRAGMENTED and DISTORTED with Cubist angular planes - eyes, nose, mouth displaced from normal positions, showing anguish through geometric distortion. Create a dramatic war scene with screaming horse at center, bull figure, broken sword and light bulb as sun. All faces and figures must be broken into angular geometric shapes expressing horror through Cubist deconstruction. This must look like a real monochrome Cubist hand-painted artwork, NOT a photograph, NOT 3D, NOT digital, NOT realistic.',
     feature: '흑백, 전쟁'
   }
 };
@@ -1044,7 +1044,7 @@ export const warholMasterworks = {
   'warhol-marilyn': {
     name: '마릴린 시리즈',
     nameEn: 'Marilyn Series',
-    prompt: ', Transform this into Andy Warhol Marilyn Series style from 1962 with a 2x2 four-panel grid layout. Each panel must display the exact same face from the original photo with crisp sharp details that are not blurred or smudged in any way. The four panels must each use different bold neon color combinations - hot pink with cyan shadows in first panel, yellow with orange shadows in second panel, electric blue with lime green shadows in third panel, turquoise with magenta shadows in fourth panel. Background in each panel must be solid flat color matching that panel color scheme with absolutely no patterns or textures. Apply high contrast silkscreen printing effect with completely flat graphic colors that have no gradients and no soft edges, showing visible ink texture with slight misregistration marks like authentic screen printing. This must look like a real Andy Warhol Pop Art silkscreen print using the original subject face, absolutely NOT a photograph, NOT 3D render, NOT digital art.',
+    prompt: ', Transform this into Andy Warhol Marilyn Series style from 1962 with a 2x2 four-panel grid layout. CRITICAL: You must use the ORIGINAL SUBJECT FACE from the photo - do NOT replace with Marilyn Monroe face, do NOT change the person identity, KEEP the original person facial features and structure exactly. Each panel must display the exact same original face with crisp sharp details. The four panels must each use different bold neon color combinations - hot pink with cyan shadows in first panel, yellow with orange shadows in second panel, electric blue with lime green shadows in third panel, turquoise with magenta shadows in fourth panel. Background in each panel must be solid flat color. Apply high contrast silkscreen printing effect with completely flat graphic colors showing visible ink texture. This must look like Andy Warhol Pop Art style applied to the ORIGINAL SUBJECT, absolutely NOT Marilyn Monroe, NOT a photograph, NOT 3D render.',
     feature: '4분할, 네온'
   },
   'warhol-soup': {
