@@ -3377,15 +3377,34 @@ export default async function handler(req, res) {
         logData.prompt.applied.coreRules = true;
         // console.log(`🎯 v62: Applied CORE RULES PREFIX (${isPicassoCubist ? '피카소: 분해 강제' : '일반'})`);
         
-        // ===== 디버그 시작 =====
-        // console.log('DEBUG: selectedArtist raw value:', selectedArtist);
-        // console.log('DEBUG: selectedArtist type:', typeof selectedArtist);
-        // console.log('DEBUG: selectedArtist JSON:', JSON.stringify(selectedArtist));
-        // console.log('DEBUG: toUpperCase:', selectedArtist.toUpperCase());
-        // console.log('DEBUG: toUpperCase + trim:', selectedArtist.toUpperCase().trim());
-        // console.log('DEBUG: includes LEONARDO?', selectedArtist.toUpperCase().trim().includes('LEONARDO'));
-        // console.log('DEBUG: includes DA VINCI?', selectedArtist.toUpperCase().trim().includes('DA VINCI'));
-        // ===== 디버그 끝 =====
+        // ========================================
+        // v66: 성별 보존 프롬프트 (모든 카테고리 공통)
+        // ========================================
+        let genderPrefixCommon = '';
+        
+        // 풍경/정물/동물일 때는 성별 프롬프트 건너뛰기
+        const isNonPersonSubject = visionAnalysis && (
+          visionAnalysis.subject_type === 'landscape' || 
+          visionAnalysis.subject_type === 'animal' || 
+          visionAnalysis.subject_type === 'object'
+        );
+        
+        if (isNonPersonSubject) {
+          genderPrefixCommon = `CRITICAL: This is a ${visionAnalysis.subject_type.toUpperCase()} photo - DO NOT add any people or human figures. `;
+        } else if (identityPrompt && identityPrompt.length > 0) {
+          genderPrefixCommon = `ABSOLUTE REQUIREMENT: ${identityPrompt}. `;
+        } else if (photoAnalysisFromAI.gender === 'male') {
+          genderPrefixCommon = 'ABSOLUTE REQUIREMENT: This is a MALE person - subject MUST have MASCULINE face with strong jaw, male bone structure, NO feminine features, DO NOT feminize. ';
+        } else if (photoAnalysisFromAI.gender === 'female') {
+          genderPrefixCommon = 'ABSOLUTE REQUIREMENT: This is a FEMALE person - subject MUST have FEMININE face with soft features, female bone structure, KEEP AS WOMAN. ';
+        } else if (photoAnalysisFromAI.gender === 'both' || (visionAnalysis && visionAnalysis.gender === 'both')) {
+          genderPrefixCommon = 'ABSOLUTE REQUIREMENT: MIXED GENDER GROUP - preserve each person original gender exactly. ';
+        } else {
+          genderPrefixCommon = 'ABSOLUTE REQUIREMENT: STRICTLY PRESERVE ORIGINAL GENDER from photo. ';
+        }
+        
+        finalPrompt = genderPrefixCommon + finalPrompt;
+        logData.prompt.applied.gender = true;
         
         // ========================================
         // v62: 거장 대표작별 세부 프롬프트 적용
