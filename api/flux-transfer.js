@@ -3354,7 +3354,7 @@ export default async function handler(req, res) {
         // ========================================
         
         // ========================================
-        // v67: 대전제 - 스타일별 분기 (고대/중세/피카소/워홀/동양화)
+        // v67: 대전제 - 스타일별 분기 (고대/중세는 유화 아님)
         // ========================================
         
         // 고대/중세 스타일 체크
@@ -3424,33 +3424,20 @@ export default async function handler(req, res) {
         } else if (isPicassoCubist) {
           // v67: 피카소/입체주의: 기하학적 분해 강제 (붓터치 20mm 제외)
           coreRulesPrefix = 
-            'PAINTING STYLE FIRST (CRITICAL): ' +
-            'This must look like a REAL CUBIST OIL PAINTING with geometric fragmentation. ' +
-            'NOT photograph, NOT photorealistic, NOT smooth, NOT digital render, NOT airbrushed, ' +
-            'NOT cinematic, NOT award-winning photo, NOT 3D. ' +
-            'RULES: ' +
-            '1. IDENTITY: Preserve face identity age gender ethnicity exactly. ' +
-            '2. ATTRACTIVE: Render people beautifully (unless expressive distortion work). ' +
-            '3. NO HALLUCINATION: Do NOT add people or elements not in original photo. ' +
-            '4. MANDATORY CUBIST FRAGMENTATION: FACE must be GEOMETRICALLY FRAGMENTED into angular planes, NOSE from SIDE PROFILE while BOTH EYES visible from FRONT VIEW simultaneously, JAW and CHIN broken into geometric segments - this is REQUIRED and NON-NEGOTIABLE. ' +
-            '5. NO TEXT: No signatures, letters, writing, watermarks. ' +
-            '6. ANATOMY: Correct proportions - no missing or extra limbs. ' +
-            '7. NO PAINTER APPEARANCE: Never apply painter physical features to subject. Apply painting TECHNIQUE only. ' +
-            'END RULES. ';
+            'CRITICAL CUBIST RULES: This must look like a REAL CUBIST OIL PAINTING with geometric fragmentation. ' +
+            'MANDATORY CUBIST FRAGMENTATION: FACE must be GEOMETRICALLY FRAGMENTED into angular planes, NOSE from SIDE PROFILE while BOTH EYES visible from FRONT VIEW simultaneously, JAW and CHIN broken into geometric segments - this is REQUIRED and NON-NEGOTIABLE. ' +
+            'Preserve identity, age, gender and ethnicity exactly while applying cubist distortion. ' +
+            'Do NOT add any people or elements not present in the original photo. ' +
+            'NOT a photograph, NOT photorealistic, NOT smooth, NOT 3D render, NOT digital art. ';
         } else if (isWarholPopArt) {
-          // v67: 워홀/팝아트: 텍스트 금지 규칙 제외 (그리드 패널 허용)
+          // v67: 워홀/팝아트: 4분할 그리드 강제
           coreRulesPrefix = 
-            'PAINTING STYLE FIRST (CRITICAL): ' +
-            'This must look like a REAL POP ART SILKSCREEN PRINT with bold flat colors. ' +
-            'NOT photograph, NOT photorealistic, NOT smooth, NOT digital render, NOT 3D. ' +
-            'RULES: ' +
-            '1. IDENTITY: Preserve face identity age gender ethnicity exactly. ' +
-            '2. ATTRACTIVE: Render people beautifully. ' +
-            '3. NO HALLUCINATION: Do NOT add people or elements not in original photo. ' +
-            '4. MANDATORY VERY THICK BOLD BRUSHSTROKES ON SUBJECT: VERY THICK CHUNKY WIDE brush marks (20mm or thicker) MUST be clearly visible on SUBJECT. ' +
-            '5. ANATOMY: Correct proportions - no missing or extra limbs. ' +
-            '6. NO PAINTER APPEARANCE: Never apply painter physical features to subject - NO Marilyn/Elvis face. Apply painting TECHNIQUE only. ' +
-            'END RULES. ';
+            'CRITICAL POP ART RULES: This must look like a REAL POP ART SILKSCREEN PRINT. ' +
+            'MANDATORY 2x2 FOUR-PANEL GRID with same person repeated 4 times in DIFFERENT BOLD NEON COLORS per panel. ' +
+            'Preserve identity, age, gender and ethnicity exactly - DO NOT replace with Marilyn Monroe face. ' +
+            'High contrast silkscreen effect with flat graphic colors, NO gradients. ' +
+            'Do NOT add any people or elements not present in the original photo. ' +
+            'NOT a photograph, NOT photorealistic, NOT 3D render. ';
         } else if (isOrientalStyle) {
           // v67: 동양화: 붓터치 20mm 제외 (먹/한지/비단 질감)
           coreRulesPrefix = 
@@ -3459,7 +3446,7 @@ export default async function handler(req, res) {
             'Do NOT add any people or elements not present in the original photo. ' +
             'Maintain correct anatomical proportions. ' +
             'This must look like an authentic traditional East Asian painting on paper or silk. ' +
-            'NOT Western oil painting, NOT thick brushstrokes, NOT impasto texture, NOT photograph, NOT 3D render, NOT digital art. ';
+            'NOT Western oil painting, NOT thick impasto brushstrokes, NOT photograph, NOT 3D render, NOT digital art. ';
         } else {
           // 일반 유화: 붓터치 강제 + 나체 금지
           coreRulesPrefix = 
@@ -3479,7 +3466,8 @@ export default async function handler(req, res) {
         
         finalPrompt = coreRulesPrefix + finalPrompt;
         logData.prompt.applied.coreRules = true;
-        // console.log(`🎯 v67: Applied CORE RULES PREFIX (${isPicassoCubist ? '피카소: 분해 강제' : isWarholPopArt ? '워홀: 팝아트' : isOrientalStyle ? '동양화' : '일반'})`);        
+        // console.log(`🎯 v62: Applied CORE RULES PREFIX (${isPicassoCubist ? '피카소: 분해 강제' : '일반'})`);
+        
         // ========================================
         // v66: 성별 보존 프롬프트 (모든 카테고리 공통)
         // ========================================

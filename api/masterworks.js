@@ -118,7 +118,7 @@ export const romanMosaicMasterworks = {
   'mosaic-seasons': {
     name: '사계절 모자이크',
     nameEn: 'Four Seasons Mosaic',
-    prompt: ', Apply Four Seasons mosaic style with a personified season as an elegant portrait bust in a circular medallion frame. Transform clothing to Roman stola dress with seasonal decorations. Use large visible tesserae tiles of 50mm each with thick black grout lines. Include seasonal attributes such as flowers for spring, wheat for summer, grapes for autumn, or bare branches for winter. Apply warm earth tones with seasonal color accents in Roman villa decorative elegance. This must look like an authentic Roman mosaic, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Four Seasons mosaic style with a personified season as an elegant portrait bust in a circular medallion frame. Transform clothing to Roman stola dress with seasonal decorations and floral garlands. Use large visible tesserae tiles of 50mm each with thick black grout lines. Include seasonal attributes such as flowers for spring, wheat for summer, grapes for autumn, or bare branches for winter. Apply warm earth tones with seasonal color accents in Roman villa decorative elegance. This must look like an authentic Roman mosaic, NOT a photograph, NOT 3D, NOT digital.',
     feature: '계절, 여성 얼굴'
   },
   'mosaic-nile': {
