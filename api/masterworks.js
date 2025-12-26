@@ -12,6 +12,9 @@
 // AI가 반환한 작품명 → masterworks 키 변환
 // ========================================
 export const masterworkNameMapping = {
+  // ========================================
+  // 거장 (Masters) 대표작
+  // ========================================
   // 반 고흐
   'the starry night': 'vangogh-starrynight',
   '별이 빛나는 밤': 'vangogh-starrynight',
@@ -84,7 +87,192 @@ export const masterworkNameMapping = {
   'marilyn': 'warhol-marilyn',
   'campbell\'s soup cans': 'warhol-soup',
   '캠벨 수프 캔': 'warhol-soup',
-  'soup cans': 'warhol-soup'
+  'soup cans': 'warhol-soup',
+
+  // ========================================
+  // 사조 (Movements) 대표작
+  // ========================================
+  // 로마 모자이크
+  'alexander mosaic': 'mosaic-alexander',
+  '알렉산더 모자이크': 'mosaic-alexander',
+  'cave canem': 'mosaic-cave-canem',
+  '카베 카넴': 'mosaic-cave-canem',
+  'dionysus mosaic': 'mosaic-dionysus',
+  '디오니소스 모자이크': 'mosaic-dionysus',
+  'oceanus and tethys': 'mosaic-oceanus',
+  '오케아노스와 테티스': 'mosaic-oceanus',
+  'four seasons mosaic': 'mosaic-seasons',
+  '사계절 모자이크': 'mosaic-seasons',
+  'nile mosaic': 'mosaic-nile',
+  '나일 모자이크': 'mosaic-nile',
+  
+  // 고딕 스테인드글라스
+  'blue virgin of chartres': 'gothic-chartres',
+  '샤르트르 블루 버진': 'gothic-chartres',
+  'notre-dame rose window': 'gothic-notredame',
+  '노트르담 장미창': 'gothic-notredame',
+  'sainte-chapelle': 'gothic-saintechapelle',
+  '생트샤펠': 'gothic-saintechapelle',
+  
+  // 비잔틴
+  'emperor justinian': 'byzantine-justinian',
+  '유스티니아누스 황제': 'byzantine-justinian',
+  'empress theodora': 'byzantine-theodora',
+  '테오도라 황후': 'byzantine-theodora',
+  'deesis': 'byzantine-deesis',
+  '데이시스': 'byzantine-deesis',
+  'christ pantocrator': 'byzantine-pantocrator',
+  '판토크라토르': 'byzantine-pantocrator',
+  
+  // 이슬람 세밀화
+  'youth holding a flower': 'islamic-youth',
+  '꽃을 든 청년': 'islamic-youth',
+  'miraj': 'islamic-miraj',
+  'night journey': 'islamic-miraj',
+  '미라지': 'islamic-miraj',
+  'simurgh': 'islamic-simurgh',
+  '시무르그': 'islamic-simurgh',
+  'lovers in a garden': 'islamic-lovers',
+  '정원의 연인들': 'islamic-lovers',
+  'rustam slaying the dragon': 'islamic-rustam',
+  '루스탐과 용': 'islamic-rustam',
+  
+  // 르네상스 - 보티첼리
+  'birth of venus': 'botticelli-venus',
+  '비너스의 탄생': 'botticelli-venus',
+  'primavera': 'botticelli-primavera',
+  '봄': 'botticelli-primavera',
+  '프리마베라': 'botticelli-primavera',
+  'venus and mars': 'botticelli-venusmars',
+  '비너스와 마르스': 'botticelli-venusmars',
+  
+  // 바로크 - 카라바조
+  'david with the head of goliath': 'caravaggio-david',
+  '골리앗의 머리를 든 다윗': 'caravaggio-david',
+  'judith beheading holofernes': 'caravaggio-judith',
+  '홀로페르네스를 참수하는 유디트': 'caravaggio-judith',
+  'calling of saint matthew': 'caravaggio-matthew',
+  '성 마태오의 소명': 'caravaggio-matthew',
+  
+  // 신고전주의 - 다비드
+  'death of marat': 'david-marat',
+  '마라의 죽음': 'david-marat',
+  'coronation of napoleon': 'david-coronation',
+  '나폴레옹의 대관식': 'david-coronation',
+  'oath of the horatii': 'david-horatii',
+  '호라티우스의 맹세': 'david-horatii',
+  
+  // 신고전주의 - 앵그르
+  'grande odalisque': 'ingres-odalisque',
+  '그랑드 오달리스크': 'ingres-odalisque',
+  'valpinçon bather': 'ingres-bather',
+  '발팽송의 목욕하는 여인': 'ingres-bather',
+  'princesse de broglie': 'ingres-broglie',
+  '브로글리 공주': 'ingres-broglie',
+  
+  // 낭만주의 - 터너
+  'rain, steam and speed': 'turner-rain',
+  '비, 증기, 속도': 'turner-rain',
+  'fighting temeraire': 'turner-temeraire',
+  '전함 테메레르': 'turner-temeraire',
+  'slave ship': 'turner-slaveship',
+  '노예선': 'turner-slaveship',
+  
+  // 낭만주의 - 들라크루아
+  'liberty leading the people': 'delacroix-liberty',
+  '민중을 이끄는 자유의 여신': 'delacroix-liberty',
+  'death of sardanapalus': 'delacroix-sardanapalus',
+  '사르다나팔루스의 죽음': 'delacroix-sardanapalus',
+  'women of algiers': 'delacroix-algiers',
+  '알제리의 여인들': 'delacroix-algiers',
+  
+  // 사실주의 - 쿠르베
+  'the stone breakers': 'courbet-stonebreakers',
+  '돌 깨는 사람들': 'courbet-stonebreakers',
+  'a burial at ornans': 'courbet-burial',
+  '오르낭의 매장': 'courbet-burial',
+  'bonjour monsieur courbet': 'courbet-bonjour',
+  '봉주르 쿠르베': 'courbet-bonjour',
+  
+  // 사실주의 - 마네
+  'olympia': 'manet-olympia',
+  '올랭피아': 'manet-olympia',
+  'bar at the folies-bergère': 'manet-bar',
+  '폴리베르제르의 바': 'manet-bar',
+  'luncheon on the grass': 'manet-dejeuner',
+  '풀밭 위의 점심': 'manet-dejeuner',
+  
+  // 인상주의 - 르누아르
+  'luncheon of the boating party': 'renoir-boating',
+  '뱃놀이 점심': 'renoir-boating',
+  'bal du moulin de la galette': 'renoir-moulin',
+  '물랭 드 라 갈레트의 무도회': 'renoir-moulin',
+  'girls at the piano': 'renoir-piano',
+  '피아노 치는 소녀들': 'renoir-piano',
+  
+  // 인상주의 - 드가
+  'the dance class': 'degas-danceclass',
+  '무용 수업': 'degas-danceclass',
+  'the star': 'degas-star',
+  '별': 'degas-star',
+  'l\'absinthe': 'degas-absinthe',
+  '압생트': 'degas-absinthe',
+  
+  // 인상주의 - 모네
+  'water lilies': 'monet-waterlilies',
+  '수련': 'monet-waterlilies',
+  'impression, sunrise': 'monet-impression',
+  '인상, 해돋이': 'monet-impression',
+  'woman with a parasol': 'monet-parasol',
+  '양산을 든 여인': 'monet-parasol',
+  
+  // 인상주의 - 카유보트
+  'paris street, rainy day': 'caillebotte-paris',
+  '비 오는 파리 거리': 'caillebotte-paris',
+  'the floor scrapers': 'caillebotte-floor',
+  '마루를 긁는 사람들': 'caillebotte-floor',
+  'man at the window': 'caillebotte-window',
+  '창가의 남자': 'caillebotte-window',
+  
+  // 후기인상주의 - 고갱
+  'tahitian women': 'gauguin-tahitian',
+  '타히티 여인들': 'gauguin-tahitian',
+  'where do we come from?': 'gauguin-where',
+  '우리는 어디서 왔는가': 'gauguin-where',
+  'yellow christ': 'gauguin-christ',
+  '황색 그리스도': 'gauguin-christ',
+  
+  // 후기인상주의 - 세잔
+  'basket of apples': 'cezanne-apples',
+  '사과 바구니': 'cezanne-apples',
+  'mont sainte-victoire': 'cezanne-montagne',
+  '생트빅투아르 산': 'cezanne-montagne',
+  'the card players': 'cezanne-cards',
+  '카드놀이 하는 사람들': 'cezanne-cards',
+  
+  // 후기인상주의 - 시냐크
+  'antibes the pink cloud': 'signac-antibes',
+  '앙티브의 분홍 구름': 'signac-antibes',
+  'the papal palace avignon': 'signac-avignon',
+  '아비뇽의 교황청': 'signac-avignon',
+  'capo di noli': 'signac-capo',
+  '카포 디 놀리': 'signac-capo',
+  
+  // 야수파 - 드랭
+  'port of collioure': 'derain-collioure',
+  '콜리우르 항구': 'derain-collioure',
+  'charing cross bridge': 'derain-charingcross',
+  '채링 크로스 다리': 'derain-charingcross',
+  'portrait of matisse': 'derain-matisse',
+  '마티스의 초상': 'derain-matisse',
+  
+  // 야수파 - 블라맹크
+  'houses at chatou': 'vlaminck-chatou',
+  '샤투의 집들': 'vlaminck-chatou',
+  'red trees': 'vlaminck-redtrees',
+  '붉은 나무들': 'vlaminck-redtrees',
+  'restaurant at bougival': 'vlaminck-bougival',
+  '부지발의 레스토랑': 'vlaminck-bougival'
 };
 
 // ========================================
