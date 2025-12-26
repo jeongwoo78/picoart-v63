@@ -2187,9 +2187,8 @@ HENRI MATISSE - SELECT ONE:
 4. "The Red Room" (붉은 방) → interior, still life, single person in room | Style: RED DOMINATES 80% of scene, blue arabesque vine patterns on red, flattened space where wall and table merge`,
 
           'picasso': `
-PABLO PICASSO - SELECT ONE:
-1. "Les Demoiselles d'Avignon" (아비뇽의 처녀들) → GROUP of figures, women, multiple people | Style: ANGULAR FRAGMENTED faces with AFRICAN MASK influence, geometric planes, nude figures in proto-Cubist deconstruction, pink flesh with ochre and blue
-2. "Guernica" (게르니카) → dramatic scene, chaos, turmoil, emotional intensity | Style: BLACK WHITE GREY ONLY monochrome, anguished fragmented figures, screaming horse, bull figure, dismembered bodies, powerful anti-war imagery`,
+PABLO PICASSO - USE GUERNICA STYLE:
+"Guernica" (게르니카) → ALL portraits | Style: BLACK WHITE GREY ONLY monochrome, ANGULAR GEOMETRIC face fragmentation, bold black outlines, Cubist multiple viewpoints, anguished expression allowed`,
 
           'frida': `
 FRIDA KAHLO - SELECT ONE:
