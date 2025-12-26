@@ -702,34 +702,28 @@ export const klimtMasterworks = {
 // 뭉크 4개 (거장 겸용)
 // ========================================
 
-// 뭉크 - 감정적 초상 (40%) - 4개 대표작
+// 뭉크 - 감정적 초상 - 3개 대표작 (v61 복원)
 export const munchMasterworks = {
   'munch-scream': {
     name: '절규',
     nameEn: 'The Scream',
-    prompt: ', Transform into The Scream by Edvard Munch, Munch art style. CRITICAL MUNCH STYLE REQUIREMENTS: Apply WAVY DISTORTED UNDULATING horizontal lines flowing through ENTIRE sky and background like liquid melting reality. Create PALE GHOSTLY SICKLY skin with greenish-yellow undertones. BLOOD RED and BURNT ORANGE sky with wavy horizontal bands. Deep navy blue water below with SINUOUS WAVELIKE curves. Wooden bridge with diagonal perspective. DISTORT and BLUR background with swirling wavy lines - background must NOT be sharp or realistic. Apply DARK OUTLINES around figure and hair. Apply THICK VISIBLE BRUSHSTROKES of 25mm+. Absolutely NOT a photograph, NOT 3D, NOT digital, NOT smooth skin.',
+    prompt: ', The Scream by Edvard Munch, Munch Expressionist art style: WAVY DISTORTED swirling LINES throughout entire scene, skull-like distorted face with hands covering ears, BLOOD RED and orange dramatic sky, intense psychological emotion, extreme anxiety and existential terror, apply wavy distortion to figure too, bridge/railing setting, visible thick expressive brushwork, expression of FEAR and ANXIETY allowed (attractive rendering exception), NO bright expressions NO smiling',
     feature: '불안',
+    attractiveException: true,
     expressionRule: 'fear/anxiety allowed, NO bright, NO smiling'
   },
   'munch-madonna': {
     name: '마돈나',
     nameEn: 'Madonna',
-    prompt: ', Transform into Madonna by Edvard Munch, Munch art style. CRITICAL - MUST USE MADONNA ORIGINAL PAINTING BACKGROUND: SWIRLING DARK NAVY AND BLACK background with WAVY UNDULATING CURVED LINES flowing around figure. RED HALO or AURA glowing above head. FLOWING BLACK HAIR spreading outward like dark halo frame around face. PALE LUMINOUS skin with closed or half-closed eyes in ecstatic trance. Deep BURGUNDY RED and DARK BLACK colors dominating - NOT bright, NOT colorful. Figure appears FLOATING in swirling darkness. Apply WAVY SINUOUS organic lines throughout background like original Madonna painting. Apply DARK OUTLINES around figure and hair. THICK VISIBLE BRUSHSTROKES of 25mm+. Must have MYSTERIOUS DARK SENSUAL atmosphere. Absolutely NOT a photograph, NOT 3D, NOT digital, NOT bright background.',
+    prompt: ', Madonna by Edvard Munch, Munch Expressionist art style: flowing long dark hair spreading like HALO around head, RED AURA glowing around body, pale luminous skin with red lips, mysterious seductive expression with half-closed eyes, ecstatic sensual gaze (NOT bright smile), wavy flowing lines throughout, mystical power and danger, visible thick expressive brushwork, NO bright expressions NO happy smile',
     feature: '신비/관능',
-    expressionRule: 'ecstatic/mysterious allowed, NO bright, NO smiling, closed or half-closed eyes preferred'
+    expressionRule: 'femme fatale/ecstatic/mysterious allowed, NO bright, NO smiling'
   },
   'munch-jealousy': {
     name: '질투',
     nameEn: 'Jealousy',
-    prompt: ', Transform into Jealousy by Edvard Munch, Munch art style. CRITICAL: PALE SICKLY GREEN-TINTED face showing psychological torment. Intense haunted stare with DARK SHADOWS under eyes. SWIRLING DISTORTED background with wavy undulating lines. Murky olive greens, dark grays, shadowy blues creating oppressive tension. Apply WAVY DISTORTED lines throughout expressing emotional turmoil. Apply DARK OUTLINES around figure and features. THICK VISIBLE BRUSHSTROKES of 25mm+. Must look HAUNTED and TORMENTED - NOT healthy, NOT cheerful. Absolutely NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Jealousy by Edvard Munch, Munch Expressionist art style: PALE GREEN sickly face in foreground, intense haunted stare, psychological tension, wavy distorted background lines, emotional turmoil color palette (green/red/yellow contrast), thick visible brushstrokes, anguished expression, existential anxiety, swirling expressionist forms',
     feature: '심리'
-  },
-  'munch-anxiety': {
-    name: '불안',
-    nameEn: 'Anxiety',
-    prompt: ', Transform into Anxiety by Edvard Munch, Munch art style. CRITICAL: Group of figures with PALE GHOSTLY ANXIOUS faces staring forward in collective dread. BLOOD ORANGE-RED sky with WAVY HORIZONTAL UNDULATING lines. Wooden bridge or path. PALE SICKLY skin tones on all faces. Dark navy blues, burnt oranges, shadowy grays creating nightmarish mood. DISTORTED WAVY background curves expressing cosmic anxiety. Apply DARK OUTLINES around figures. THICK VISIBLE BRUSHSTROKES of 25mm+. Absolutely NOT a photograph, NOT 3D, NOT digital.',
-    feature: '군중/불안',
-    expressionRule: 'anxiety/worry allowed, NO bright, NO smiling'
   }
 };
 
@@ -1044,7 +1038,7 @@ export const warholMasterworks = {
   'warhol-marilyn': {
     name: '마릴린 시리즈',
     nameEn: 'Marilyn Series',
-    prompt: ', Transform this into Andy Warhol Marilyn Series style from 1962 with a 2x2 four-panel grid layout. CRITICAL: You must use the ORIGINAL SUBJECT FACE from the photo - do NOT replace with Marilyn Monroe face, do NOT change the person identity, KEEP the original person facial features and structure exactly. Each panel must display the exact same original face with crisp sharp details. The four panels must each use different bold neon color combinations - hot pink with cyan shadows in first panel, yellow with orange shadows in second panel, electric blue with lime green shadows in third panel, turquoise with magenta shadows in fourth panel. Background in each panel must be solid flat color. Apply high contrast silkscreen printing effect with completely flat graphic colors showing visible ink texture. This must look like Andy Warhol Pop Art style applied to the ORIGINAL SUBJECT, absolutely NOT Marilyn Monroe, NOT a photograph, NOT 3D render.',
+    prompt: ', Transform into Andy Warhol Pop Art silkscreen style with a 2x2 four-panel grid layout. CRITICAL: Use ONLY the ORIGINAL SUBJECT FACE from the photo - KEEP the original person facial features exactly. Each panel must display the exact same original face with crisp sharp details. The four panels must each use different bold neon color combinations - hot pink with cyan shadows in first panel, yellow with orange shadows in second panel, electric blue with lime green shadows in third panel, turquoise with magenta shadows in fourth panel. Background in each panel must be solid flat color. Apply high contrast silkscreen printing effect with completely flat graphic colors showing visible ink texture. This must look like Andy Warhol Pop Art style applied to the ORIGINAL SUBJECT - do NOT use Marilyn Monroe face.',
     feature: '4분할, 네온'
   },
   'warhol-soup': {

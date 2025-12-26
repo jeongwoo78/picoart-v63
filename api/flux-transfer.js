@@ -2167,12 +2167,11 @@ VINCENT VAN GOGH - SELECT ONE:
 
           'munch': `
 EDVARD MUNCH - SELECT ONE:
-1. "The Scream" (절규) → DEFAULT for SINGLE person (male or female), emotional scenes, landscapes | Style: WAVY DISTORTED UNDULATING lines throughout sky and background, BLOOD RED and ORANGE sky, PALE GHOSTLY skin, wooden bridge, existential terror
-2. "Madonna" (마돈나) → FEMALE portrait ONLY (50% chance when female - randomly choose between Scream or Madonna) | Style: SWIRLING DARK background, RED HALO above head, FLOWING BLACK HAIR spreading like dark halo, closed eyes, floating sensation
-3. "Jealousy" (질투) → MALE portrait (30% chance when male - 70% use Scream instead) | Style: PALE SICKLY GREEN face, intense haunted stare, swirling dark background, psychological torment
-4. "Anxiety" (불안) → GROUP of people (2+) ONLY | Style: BLOOD ORANGE-RED sky, PALE GHOSTLY FACES, wavy horizontal lines, wooden bridge, collective existential dread
+1. "The Scream" (절규) → emotional portrait, anxiety, existential dread | Style: WAVY DISTORTED swirling LINES throughout, BLOOD RED and orange sky, skull-like distorted face, bridge setting, extreme anxiety
+2. "Madonna" (마돈나) → mysterious, sensual, ecstatic mood | Style: flowing dark hair like HALO, RED AURA, pale luminous skin, half-closed eyes, mystical power
+3. "Jealousy" (질투) → psychological tension, torment | Style: PALE GREEN sickly face, intense haunted stare, emotional turmoil colors
 
-⚠️ PRIORITY: "The Scream" is the DEFAULT. Use it for most single subjects unless specifically choosing variety. For FEMALE: randomly 50/50 between Scream and Madonna. For MALE: 70% Scream, 30% Jealousy.`,
+⚠️ AI selects based on photo mood and atmosphere.`,
 
           'klimt': `
 GUSTAV KLIMT - SELECT ONE:
@@ -3372,7 +3371,7 @@ export default async function handler(req, res) {
           'Do NOT add any people or elements not present in the original photo. ' +
           'Do NOT add any text, signatures, letters, writing or watermarks. ' +
           'Maintain correct anatomical proportions with no missing or extra limbs. ' +
-          'Apply only the painting TECHNIQUE, never the painter physical appearance - no Van Gogh beard, no Frida unibrow, no Marilyn or Elvis face. ' +
+          'Apply only the painting TECHNIQUE, never the painter physical appearance - no Van Gogh beard, no Frida unibrow. ' +
           'This must look like a real hand-painted oil painting, absolutely NOT a photograph, NOT photorealistic, NOT smooth, NOT 3D render, NOT digital art, NOT airbrushed. ';
         
         finalPrompt = coreRulesPrefix + finalPrompt;
