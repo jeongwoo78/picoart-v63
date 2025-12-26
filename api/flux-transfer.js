@@ -3425,11 +3425,11 @@ export default async function handler(req, res) {
           genderPrefixCommon = `CRITICAL: This is a ${visionAnalysis.subject_type.toUpperCase()} photo - DO NOT add any people or human figures. `;
         } else if (identityPrompt && identityPrompt.length > 0) {
           genderPrefixCommon = `ABSOLUTE REQUIREMENT: ${identityPrompt}. `;
-        } else if (photoAnalysisFromAI.gender === 'male') {
+        } else if (visionAnalysis && visionAnalysis.gender === 'male') {
           genderPrefixCommon = 'ABSOLUTE REQUIREMENT: This is a MALE person - subject MUST have MASCULINE face with strong jaw, male bone structure, NO feminine features, DO NOT feminize. ';
-        } else if (photoAnalysisFromAI.gender === 'female') {
+        } else if (visionAnalysis && visionAnalysis.gender === 'female') {
           genderPrefixCommon = 'ABSOLUTE REQUIREMENT: This is a FEMALE person - subject MUST have FEMININE face with soft features, female bone structure, KEEP AS WOMAN. ';
-        } else if (photoAnalysisFromAI.gender === 'both' || (visionAnalysis && visionAnalysis.gender === 'both')) {
+        } else if (visionAnalysis && visionAnalysis.gender === 'both') {
           genderPrefixCommon = 'ABSOLUTE REQUIREMENT: MIXED GENDER GROUP - preserve each person original gender exactly. ';
         } else {
           genderPrefixCommon = 'ABSOLUTE REQUIREMENT: STRICTLY PRESERVE ORIGINAL GENDER from photo. ';
