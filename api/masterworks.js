@@ -94,7 +94,7 @@ export const romanMosaicMasterworks = {
   'mosaic-alexander': {
     name: '알렉산더 모자이크',
     nameEn: 'Alexander Mosaic',
-    prompt: ', Apply Alexander Mosaic style from the House of the Faun in Pompeii with a dynamic battle scene and dramatic diagonal composition. Use large visible tesserae tiles of 50mm each with thick black grout lines. Apply an earth tone palette of terracotta, ochre, umber, ivory and black with intense warrior expressions and horses in motion, capturing dramatic action frozen in stone tiles. This must look like an authentic Roman mosaic, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Alexander Mosaic style from the House of the Faun in Pompeii with a dynamic battle scene and dramatic diagonal composition. Transform clothing to ancient warrior battle armor with bronze cuirass, helmet, and military cloak. Use large visible tesserae tiles of 50mm each with thick black grout lines. Apply an earth tone palette of terracotta, ochre, umber, ivory and black with intense warrior expressions and horses in motion, capturing dramatic action frozen in stone tiles. This must look like an authentic Roman mosaic, NOT a photograph, NOT 3D, NOT digital.',
     feature: '전투, 역동적'
   },
   'mosaic-cave-canem': {
@@ -106,19 +106,19 @@ export const romanMosaicMasterworks = {
   'mosaic-dionysus': {
     name: '디오니소스 모자이크',
     nameEn: 'Dionysus Mosaic',
-    prompt: ', Apply Dionysus mosaic style with a mythological figure featuring grape vines and wine imagery. Use large visible tesserae tiles of 50mm each with thick black grout lines. Apply rich purple, green and gold accents on a terracotta base with celebratory divine atmosphere in Roman villa floor style. This must look like an authentic Roman mosaic, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Dionysus mosaic style with a mythological figure featuring grape vines and wine imagery. Transform clothing to Roman banquet toga with grape vine crown and flowing robes. Use large visible tesserae tiles of 50mm each with thick black grout lines. Apply rich purple, green and gold accents on a terracotta base with celebratory divine atmosphere in Roman villa floor style. This must look like an authentic Roman mosaic, NOT a photograph, NOT 3D, NOT digital.',
     feature: '신화, 인물'
   },
   'mosaic-oceanus': {
     name: '오케아노스와 테티스',
     nameEn: 'Oceanus and Tethys',
-    prompt: ', Apply Oceanus and Tethys mosaic style from Zeugma featuring sea god and goddess portrait busts. Use a dominant ocean blue and turquoise palette with large visible tesserae tiles of 50mm each and thick black grout lines. Create flowing water imagery with fish and sea creatures in divine aquatic atmosphere with majestic regal expressions and Roman mythological grandeur. This must look like an authentic Roman mosaic, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Oceanus and Tethys mosaic style from Zeugma featuring sea god and goddess portrait busts. Transform clothing to divine mythological robes with flowing aquatic drapery. Use a dominant ocean blue and turquoise palette with large visible tesserae tiles of 50mm each and thick black grout lines. Create flowing water imagery with fish and sea creatures in divine aquatic atmosphere with majestic regal expressions and Roman mythological grandeur. This must look like an authentic Roman mosaic, NOT a photograph, NOT 3D, NOT digital.',
     feature: '바다신, 블루톤'
   },
   'mosaic-seasons': {
     name: '사계절 모자이크',
     nameEn: 'Four Seasons Mosaic',
-    prompt: ', Apply Four Seasons mosaic style with a personified season as an elegant portrait bust in a circular medallion frame. Use large visible tesserae tiles of 50mm each with thick black grout lines. Include seasonal attributes such as flowers for spring, wheat for summer, grapes for autumn, or bare branches for winter. Apply warm earth tones with seasonal color accents in Roman villa decorative elegance. This must look like an authentic Roman mosaic, NOT a photograph, NOT 3D, NOT digital.',
+    prompt: ', Apply Four Seasons mosaic style with a personified season as an elegant portrait bust in a circular medallion frame. Transform clothing to Roman stola dress with seasonal decorations. Use large visible tesserae tiles of 50mm each with thick black grout lines. Include seasonal attributes such as flowers for spring, wheat for summer, grapes for autumn, or bare branches for winter. Apply warm earth tones with seasonal color accents in Roman villa decorative elegance. This must look like an authentic Roman mosaic, NOT a photograph, NOT 3D, NOT digital.',
     feature: '계절, 여성 얼굴'
   },
   'mosaic-nile': {
