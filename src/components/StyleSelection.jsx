@@ -163,7 +163,7 @@ const StyleSelection = ({ onSelect }) => {
               }}
               onClick={() => onSelect({ 
                 id: 'movements-all', 
-                name: '미술사조 전체 변환',
+                name: '2,500년 서양미술사',
                 category: 'movements',
                 isFullTransform: true,
                 count: 11
@@ -224,7 +224,7 @@ const StyleSelection = ({ onSelect }) => {
                     }}
                     onClick={() => onSelect({ 
                       id: 'masters-all', 
-                      name: '거장 전체 변환',
+                      name: '일곱 거장의 세계',
                       category: 'masters',
                       isFullTransform: true,
                       count: 7

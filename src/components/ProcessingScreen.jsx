@@ -952,7 +952,6 @@ const ProcessingScreen = ({ photo, selectedStyle, onComplete }) => {
                 <img src={URL.createObjectURL(photo)} alt="원본 사진" />
                 <div className="preview-info">
                   <div className="preview-style">{selectedStyle?.name || '전체 변환'}</div>
-                  <div className="preview-subtitle">원본 사진</div>
                 </div>
                 <div className="edu-card primary">
                   <h3>{getPrimaryEducation().title}</h3>

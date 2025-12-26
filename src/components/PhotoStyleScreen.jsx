@@ -15,7 +15,7 @@ const PhotoStyleScreen = ({ mainCategory, onBack, onSelect }) => {
       icon: '🎨',
       fullTransform: {
         id: 'movements-all',
-        name: '미술사조 전체 변환',
+        name: '2,500년 서양미술사',
         desc: '당신의 사진 한 장이 2,500년 서양 미술을 관통합니다',
         count: 11,
         isFullTransform: true,
@@ -40,7 +40,7 @@ const PhotoStyleScreen = ({ mainCategory, onBack, onSelect }) => {
       icon: '⭐',
       fullTransform: {
         id: 'masters-all',
-        name: '거장 전체 변환',
+        name: '일곱 거장의 세계',
         desc: '당신의 사진 한 장이 일곱 거장의 세계를 만납니다',
         count: 7,
         isFullTransform: true,

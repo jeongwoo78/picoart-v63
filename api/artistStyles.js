@@ -186,61 +186,64 @@ export function getArtistStyleByName(artistName) {
   const nameToKey = {
     // 고대
     'CLASSICAL': 'classical-sculpture', 'SCULPTURE': 'classical-sculpture', '조각': 'classical-sculpture',
+    'CLASSICAL SCULPTURE': 'classical-sculpture', 'GREEK SCULPTURE': 'classical-sculpture', 'ROMAN SCULPTURE': 'classical-sculpture',
     'MOSAIC': 'roman-mosaic', 'ROMAN': 'roman-mosaic', '모자이크': 'roman-mosaic',
+    'ROMAN MOSAIC': 'roman-mosaic', 'ANCIENT MOSAIC': 'roman-mosaic',
     
     // 중세
-    'BYZANTINE': 'byzantine', '비잔틴': 'byzantine',
-    'GOTHIC': 'gothic', '고딕': 'gothic',
+    'BYZANTINE': 'byzantine', '비잔틴': 'byzantine', 'BYZANTINE ICON': 'byzantine', 'BYZANTINE MOSAIC': 'byzantine',
+    'GOTHIC': 'gothic', '고딕': 'gothic', 'GOTHIC STAINED GLASS': 'gothic', 'STAINED GLASS': 'gothic',
     'ISLAMIC': 'islamic-miniature', 'MINIATURE': 'islamic-miniature', '이슬람': 'islamic-miniature',
+    'ISLAMIC MINIATURE': 'islamic-miniature', 'PERSIAN MINIATURE': 'islamic-miniature', 'OTTOMAN MINIATURE': 'islamic-miniature',
     
     // 르네상스
-    'BOTTICELLI': 'botticelli', '보티첼리': 'botticelli',
-    'LEONARDO': 'leonardo', 'DA VINCI': 'leonardo', '다빈치': 'leonardo', '레오나르도': 'leonardo',
-    'TITIAN': 'titian', '티치아노': 'titian',
-    'MICHELANGELO': 'michelangelo', '미켈란젤로': 'michelangelo',
-    'RAPHAEL': 'raphael', '라파엘로': 'raphael',
+    'BOTTICELLI': 'botticelli', '보티첼리': 'botticelli', 'SANDRO BOTTICELLI': 'botticelli',
+    'LEONARDO': 'leonardo', 'DA VINCI': 'leonardo', '다빈치': 'leonardo', '레오나르도': 'leonardo', 'LEONARDO DA VINCI': 'leonardo',
+    'TITIAN': 'titian', '티치아노': 'titian', 'TIZIANO': 'titian',
+    'MICHELANGELO': 'michelangelo', '미켈란젤로': 'michelangelo', 'MICHELANGELO BUONARROTI': 'michelangelo',
+    'RAPHAEL': 'raphael', '라파엘로': 'raphael', 'RAFFAELLO': 'raphael', 'RAFFAELLO SANZIO': 'raphael',
     
     // 바로크
-    'CARAVAGGIO': 'caravaggio', '카라바조': 'caravaggio',
-    'RUBENS': 'rubens', '루벤스': 'rubens',
-    'REMBRANDT': 'rembrandt', '렘브란트': 'rembrandt',
-    'VELÁZQUEZ': 'velazquez', 'VELAZQUEZ': 'velazquez', '벨라스케스': 'velazquez',
+    'CARAVAGGIO': 'caravaggio', '카라바조': 'caravaggio', 'MICHELANGELO MERISI DA CARAVAGGIO': 'caravaggio',
+    'RUBENS': 'rubens', '루벤스': 'rubens', 'PETER PAUL RUBENS': 'rubens',
+    'REMBRANDT': 'rembrandt', '렘브란트': 'rembrandt', 'REMBRANDT VAN RIJN': 'rembrandt',
+    'VELÁZQUEZ': 'velazquez', 'VELAZQUEZ': 'velazquez', '벨라스케스': 'velazquez', 'DIEGO VELÁZQUEZ': 'velazquez', 'DIEGO VELAZQUEZ': 'velazquez',
     
     // 로코코
-    'WATTEAU': 'watteau', '와토': 'watteau',
-    'BOUCHER': 'boucher', '부셰': 'boucher',
+    'WATTEAU': 'watteau', '와토': 'watteau', 'ANTOINE WATTEAU': 'watteau', 'JEAN-ANTOINE WATTEAU': 'watteau',
+    'BOUCHER': 'boucher', '부셰': 'boucher', 'FRANÇOIS BOUCHER': 'boucher', 'FRANCOIS BOUCHER': 'boucher',
     
     // 신고전/낭만/사실
-    'DAVID': 'david', '다비드': 'david',
-    'INGRES': 'ingres', '앵그르': 'ingres',
-    'TURNER': 'turner', '터너': 'turner',
-    'FRIEDRICH': 'friedrich', '프리드리히': 'friedrich',
-    'GOYA': 'goya', '고야': 'goya',
-    'DELACROIX': 'delacroix', '들라크루아': 'delacroix',
-    'MILLET': 'millet', '밀레': 'millet',
-    'MANET': 'manet', '마네': 'manet',
+    'DAVID': 'david', '다비드': 'david', 'JACQUES-LOUIS DAVID': 'david',
+    'INGRES': 'ingres', '앵그르': 'ingres', 'JEAN-AUGUSTE-DOMINIQUE INGRES': 'ingres',
+    'TURNER': 'turner', '터너': 'turner', 'J.M.W. TURNER': 'turner', 'WILLIAM TURNER': 'turner',
+    'FRIEDRICH': 'friedrich', '프리드리히': 'friedrich', 'CASPAR DAVID FRIEDRICH': 'friedrich',
+    'GOYA': 'goya', '고야': 'goya', 'FRANCISCO GOYA': 'goya',
+    'DELACROIX': 'delacroix', '들라크루아': 'delacroix', 'EUGÈNE DELACROIX': 'delacroix', 'EUGENE DELACROIX': 'delacroix',
+    'MILLET': 'millet', '밀레': 'millet', 'JEAN-FRANÇOIS MILLET': 'millet', 'JEAN-FRANCOIS MILLET': 'millet',
+    'MANET': 'manet', '마네': 'manet', 'ÉDOUARD MANET': 'manet', 'EDOUARD MANET': 'manet',
     
     // 인상주의
-    'RENOIR': 'renoir', '르누아르': 'renoir',
-    'MONET': 'monet', '모네': 'monet',
-    'DEGAS': 'degas', '드가': 'degas',
-    'CAILLEBOTTE': 'caillebotte', '카유보트': 'caillebotte', '칼리보트': 'caillebotte',
+    'RENOIR': 'renoir', '르누아르': 'renoir', 'PIERRE-AUGUSTE RENOIR': 'renoir',
+    'MONET': 'monet', '모네': 'monet', 'CLAUDE MONET': 'monet',
+    'DEGAS': 'degas', '드가': 'degas', 'EDGAR DEGAS': 'degas',
+    'CAILLEBOTTE': 'caillebotte', '카유보트': 'caillebotte', '칼리보트': 'caillebotte', 'GUSTAVE CAILLEBOTTE': 'caillebotte',
     
     // 후기인상주의
-    'VAN GOGH': 'vangogh', 'GOGH': 'vangogh', '반 고흐': 'vangogh', '고흐': 'vangogh', '빈센트': 'vangogh',
-    'GAUGUIN': 'gauguin', '고갱': 'gauguin',
-    'CÉZANNE': 'cezanne', 'CEZANNE': 'cezanne', '세잔': 'cezanne',
-    'SIGNAC': 'signac', '시냐크': 'signac',
+    'VAN GOGH': 'vangogh', 'GOGH': 'vangogh', '반 고흐': 'vangogh', '고흐': 'vangogh', '빈센트': 'vangogh', 'VINCENT VAN GOGH': 'vangogh',
+    'GAUGUIN': 'gauguin', '고갱': 'gauguin', 'PAUL GAUGUIN': 'gauguin',
+    'CÉZANNE': 'cezanne', 'CEZANNE': 'cezanne', '세잔': 'cezanne', 'PAUL CÉZANNE': 'cezanne', 'PAUL CEZANNE': 'cezanne',
+    'SIGNAC': 'signac', '시냐크': 'signac', 'PAUL SIGNAC': 'signac',
     
     // 야수파
-    'MATISSE': 'matisse', '마티스': 'matisse',
-    'DERAIN': 'derain', '드랭': 'derain',
-    'VLAMINCK': 'vlaminck', '블라맹크': 'vlaminck',
+    'MATISSE': 'matisse', '마티스': 'matisse', 'HENRI MATISSE': 'matisse',
+    'DERAIN': 'derain', '드랭': 'derain', 'ANDRÉ DERAIN': 'derain', 'ANDRE DERAIN': 'derain',
+    'VLAMINCK': 'vlaminck', '블라맹크': 'vlaminck', 'MAURICE DE VLAMINCK': 'vlaminck',
     
     // 표현주의
-    'MUNCH': 'munch', '뭉크': 'munch',
-    'KIRCHNER': 'kirchner', '키르히너': 'kirchner',
-    'KOKOSCHKA': 'kokoschka', '코코슈카': 'kokoschka',
+    'MUNCH': 'munch', '뭉크': 'munch', 'EDVARD MUNCH': 'munch',
+    'KIRCHNER': 'kirchner', '키르히너': 'kirchner', 'ERNST LUDWIG KIRCHNER': 'kirchner',
+    'KOKOSCHKA': 'kokoschka', '코코슈카': 'kokoschka', 'OSKAR KOKOSCHKA': 'kokoschka',
     
     // 모더니즘
     'PICASSO': 'picasso', '피카소': 'picasso',
