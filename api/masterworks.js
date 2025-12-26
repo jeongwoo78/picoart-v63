@@ -1038,13 +1038,13 @@ export const warholMasterworks = {
   'warhol-marilyn': {
     name: '마릴린 시리즈',
     nameEn: 'Marilyn Series',
-    prompt: ', Transform into Andy Warhol Pop Art silkscreen style with a 2x2 four-panel grid layout. CRITICAL: Use ONLY the ORIGINAL SUBJECT FACE from the photo - KEEP the original person facial features exactly. Each panel must display the exact same original face with crisp sharp details. The four panels must each use different bold neon color combinations - hot pink with cyan shadows in first panel, yellow with orange shadows in second panel, electric blue with lime green shadows in third panel, turquoise with magenta shadows in fourth panel. Background in each panel must be solid flat color. Apply high contrast silkscreen printing effect with completely flat graphic colors showing visible ink texture. This must look like Andy Warhol Pop Art style applied to the ORIGINAL SUBJECT - do NOT use Marilyn Monroe face.',
+    prompt: ', Warhol pop art portrait style: Transform THE PERSON IN PHOTO into 2x2 FOUR-PANEL GRID with SAME PERSON repeated 4 times, DIFFERENT BOLD NEON COLOR each panel (hot pink/cyan/yellow/orange/turquoise/lime), high contrast silkscreen print effect with ink bleed imperfections and halftone, flat graphic high-contrast, glamorous iconic expression, background must be SOLID COLORS only, NO celebrity faces anywhere, NO Marilyn Monroe face, apply pop art style to SUBJECT ONLY',
     feature: '4분할, 네온'
   },
   'warhol-soup': {
     name: '캠벨 수프 캔',
     nameEn: 'Campbell\'s Soup Cans',
-    prompt: ', Transform this into Campbell Soup Cans style by Andy Warhol from 1962 with grid repetition pattern showing the same image repeated in rows and columns. Each repeated panel should display different bold Pop color variations including red, blue, green, orange and pink backgrounds. Create commercial product aesthetic with completely flat graphic silkscreen style showing visible print texture and mechanical reproduction marks. Transform everyday subject into fine art through repetition with authentic 1960s Pop Art silkscreen printing technique. This must look like a real Andy Warhol Pop Art silkscreen print, absolutely NOT a photograph, NOT 3D render, NOT digital art.',
+    prompt: ', Campbells Soup Cans style by Andy Warhol, Warhol pop art style: commercial product art aesthetic, clean graphic outlines, flat color areas, red/white/gold can label colors, supermarket display repetition, pop art commercial design, silkscreen print flatness, bold colors mass culture theme, for portrait photos recommend switching to Marilyn style',
     feature: '반복, 상업'
   }
 };
