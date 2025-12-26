@@ -3354,24 +3354,56 @@ export default async function handler(req, res) {
         // ========================================
         
         // ========================================
-        // v64: 대전제 v3 - 자연어 + 키워드 하이브리드 (FLUX 효율적 전달)
-        // 연구 결과: 자연어 문장 안에 핵심 키워드 포함이 가장 효과적
+        // v67: 대전제 - 스타일별 분기 (고대/중세는 유화 아님)
         // ========================================
         
-        // 일반: 붓터치 강제 + 나체 금지 (자연어 통합)
-        const coreRulesPrefix = 
-          'CRITICAL: NO nudity, NO naked bodies, NO exposed breasts - subjects must be FULLY CLOTHED. ' +
-          'Transform this photo into an authentic TRADITIONAL OIL PAINTING with thick impasto technique. ' +
-          'The entire image including the subject face, skin, hair and clothing MUST have very thick visible brushstrokes of 20mm or thicker that are clearly visible even without zooming in. ' +
-          'Use palette knife marks and heavy textured brushwork throughout the canvas. ' +
-          'This thick brushstroke texture on the subject is REQUIRED and NON-NEGOTIABLE - not fine lines, not subtle texture, not just on the background. ' +
-          'CRITICAL RULES: Preserve the original subject FACE and APPEARANCE exactly - same facial features, same face shape, same look. Preserve identity, age, gender and ethnicity exactly. ' +
-          'Render people attractively unless expressive distortion is part of the style. ' +
-          'Do NOT add any people or elements not present in the original photo. ' +
-          'Do NOT add any text, signatures, letters, writing or watermarks. ' +
-          'Maintain correct anatomical proportions with no missing or extra limbs. ' +
-          'Apply only the painting TECHNIQUE, never the painter physical appearance - no Van Gogh beard, no Frida unibrow. ' +
-          'This must look like a real hand-painted oil painting, absolutely NOT a photograph, NOT photorealistic, NOT smooth, NOT 3D render, NOT digital art, NOT airbrushed. ';
+        // 고대/중세 스타일 체크
+        const isAncientStyle = categoryType === 'ancient' || 
+          (selectedArtist && (selectedArtist.toUpperCase().includes('SCULPTURE') || 
+           selectedArtist.toUpperCase().includes('CLASSICAL') || 
+           selectedArtist.toUpperCase().includes('MOSAIC') ||
+           selectedArtist.toUpperCase().includes('MARBLE')));
+        
+        const isMedievalStyle = categoryType === 'medieval' || 
+          (selectedArtist && (selectedArtist.toUpperCase().includes('BYZANTINE') || 
+           selectedArtist.toUpperCase().includes('GOTHIC') || 
+           selectedArtist.toUpperCase().includes('ISLAMIC')));
+        
+        let coreRulesPrefix;
+        
+        if (isAncientStyle) {
+          // 고대 그리스-로마: 붓터치 규칙 제외
+          coreRulesPrefix = 
+            'CRITICAL RULES: Preserve the original subject FACE and APPEARANCE exactly - same facial features, same face shape, same look. ' +
+            'Preserve identity, age, gender and ethnicity exactly. ' +
+            'Render people attractively. ' +
+            'Do NOT add any people or elements not present in the original photo. ' +
+            'Maintain correct anatomical proportions. ' +
+            'NOT a photograph, NOT photorealistic, NOT 3D render, NOT digital art. ';
+        } else if (isMedievalStyle) {
+          // 중세: 붓터치 규칙 제외, 평면적 스타일
+          coreRulesPrefix = 
+            'CRITICAL RULES: Preserve the original subject FACE and APPEARANCE - same facial features, same face shape. ' +
+            'Preserve identity, age, gender and ethnicity exactly. ' +
+            'Do NOT add any people or elements not present in the original photo. ' +
+            'Maintain correct anatomical proportions. ' +
+            'NOT a photograph, NOT photorealistic, NOT 3D render, NOT digital art. ';
+        } else {
+          // 일반 유화: 붓터치 강제 + 나체 금지
+          coreRulesPrefix = 
+            'CRITICAL: NO nudity, NO naked bodies, NO exposed breasts - subjects must be FULLY CLOTHED. ' +
+            'Transform this photo into an authentic TRADITIONAL OIL PAINTING with thick impasto technique. ' +
+            'The entire image including the subject face, skin, hair and clothing MUST have very thick visible brushstrokes of 20mm or thicker that are clearly visible even without zooming in. ' +
+            'Use palette knife marks and heavy textured brushwork throughout the canvas. ' +
+            'This thick brushstroke texture on the subject is REQUIRED and NON-NEGOTIABLE - not fine lines, not subtle texture, not just on the background. ' +
+            'CRITICAL RULES: Preserve the original subject FACE and APPEARANCE exactly - same facial features, same face shape, same look. Preserve identity, age, gender and ethnicity exactly. ' +
+            'Render people attractively unless expressive distortion is part of the style. ' +
+            'Do NOT add any people or elements not present in the original photo. ' +
+            'Do NOT add any text, signatures, letters, writing or watermarks. ' +
+            'Maintain correct anatomical proportions with no missing or extra limbs. ' +
+            'Apply only the painting TECHNIQUE, never the painter physical appearance - no Van Gogh beard, no Frida unibrow. ' +
+            'This must look like a real hand-painted oil painting, absolutely NOT a photograph, NOT photorealistic, NOT smooth, NOT 3D render, NOT digital art, NOT airbrushed. ';
+        }
         
         finalPrompt = coreRulesPrefix + finalPrompt;
         logData.prompt.applied.coreRules = true;

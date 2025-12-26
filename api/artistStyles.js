@@ -20,18 +20,18 @@ export const ARTIST_STYLES = {
   // ========================================
   // 🏛️ 고대 
   // ========================================
-  'classical-sculpture': 'Transform into ancient Greek-Roman MARBLE SCULPTURE. PURE WHITE CARRARA MARBLE with smooth polished surface and subtle veining. Subject wears WHITE DRAPED TOGA with elegant stone fabric folds. MONOCHROMATIC white, cream, grey tones ONLY. Heroic classical proportions like Discobolus or Augustus. Museum pedestal display with neutral grey background and dramatic sculptural lighting. Frozen dynamic moment in eternal marble. NOT colorful, NOT mosaic, NOT photograph, NOT 3D render',
+  'classical-sculpture': 'Ancient Greek-Roman marble sculpture style, classical sculpture aesthetic: PURE WHITE CARRARA MARBLE, polished marble surface with subtle veining, pure white/cream/grey tones ONLY, transform clothing to carved marble toga/tunic with realistic stone fabric folds, ALL skin becomes smooth polished marble, heroic classical proportions, museum pedestal display, dramatic sculptural lighting, apply marble effect to SUBJECT not just background',
   
-  'roman-mosaic': 'Transform into ancient ROMAN FLOOR MOSAIC in Pompeii villa style. LARGE VISIBLE SQUARE TESSERAE TILES of 50mm with THICK DARK GROUT LINES between every tile. Face and body made of stone tiles with grid pattern. LIMITED ANCIENT COLORS: terracotta orange, ochre yellow, umber brown, ivory white, slate blue, olive green. White draped toga clothing. Authentic Roman mosaic craftsmanship like Alexander Mosaic',
+  'roman-mosaic': 'Ancient Roman floor mosaic style, Roman mosaic aesthetic: LARGE VISIBLE TESSERAE TILES 20-30mm each, THICK BLACK GROUT LINES clearly visible between every tile, terracotta/ochre/umber/ivory/slate color palette, Pompeii villa floor style, transform clothing to toga/tunic, apply mosaic tiles to SUBJECT including face and body not just background',
 
   // ========================================
   // ⛪ 중세 
   // ========================================
-  'byzantine': 'Transform into BYZANTINE SACRED ICON painting. CIRCULAR GOLDEN HALO behind head. GOLD LEAF MOSAIC background with visible tiny tesserae tiles. Flat hieratic frontal pose with large solemn eyes. Byzantine robes in deep red, royal blue, purple with gold patterns. Eastern Orthodox icon style like Christ Pantocrator. NOT photograph, NOT 3D, NOT digital',
+  'byzantine': 'Byzantine sacred icon painting style, Byzantine art aesthetic: CIRCULAR GOLDEN HALO behind head, GOLD LEAF mosaic background with visible tiny tesserae, flat hieratic frontal pose, LARGE SOLEMN EYES gazing at viewer, rich jewel colors (deep red/royal blue/purple) for robes, transform clothing to Byzantine robes with gold decorations and jewels, Eastern Orthodox icon style, visible paint and gold texture',
   
-  'gothic': 'Transform into GOTHIC STAINED GLASS WINDOW style. THICK BLACK LEAD LINES dividing entire image into colored glass segments crossing through face, body, hair, clothing, background. JEWEL-TONE TRANSLUCENT COLORS: ruby red, sapphire blue, emerald green, amber gold, deep purple. FLAT TWO-DIMENSIONAL medieval aesthetic. Gothic pointed arch elements. NOT photograph, NOT 3D, NOT digital',
+  'gothic': 'Gothic cathedral STAINED GLASS window style: MANDATORY THICK BLACK LEAD LINES (cames) dividing ENTIRE image into distinct glass segments - face/body/clothing/background ALL separated by bold black outlines, JEWEL-TONE TRANSLUCENT COLORS (ruby red/sapphire blue/emerald green/amber gold) filling each segment, FLAT TWO-DIMENSIONAL medieval style with NO realistic shading, every area must look like colored glass piece outlined in BLACK LEAD, pointed arch frame, divine light streaming through, transform clothing to medieval style, NOT oil painting NOT realistic',
   
-  'islamic-miniature': 'Transform into PERSIAN OTTOMAN COURT MINIATURE painting. Intricate delicate details with fine brushwork. Vibrant jewel colors: ruby red, sapphire blue, emerald green, gold. Flat decorative composition with ornamental floral patterns and arabesques. Persian or Ottoman court clothing. Luxurious manuscript illumination quality. NOT photograph, NOT 3D, NOT digital',
+  'islamic-miniature': 'Persian Ottoman court miniature painting style: intricate delicate details with fine brushwork, vibrant jewel colors (ruby red/sapphire blue/emerald green/gold), flat decorative composition, ornamental floral patterns and arabesques, Persian or Ottoman court clothing, luxurious manuscript illumination quality, richly decorated background',
 
   // ========================================
   // 🎨 르네상스 
@@ -187,6 +187,7 @@ export function getArtistStyleByName(artistName) {
     // 고대
     'CLASSICAL': 'classical-sculpture', 'SCULPTURE': 'classical-sculpture', '조각': 'classical-sculpture',
     'CLASSICAL SCULPTURE': 'classical-sculpture', 'GREEK SCULPTURE': 'classical-sculpture', 'ROMAN SCULPTURE': 'classical-sculpture',
+    'MARBLE': 'classical-sculpture', 'MARBLE SCULPTURE': 'classical-sculpture',
     'MOSAIC': 'roman-mosaic', 'ROMAN': 'roman-mosaic', '모자이크': 'roman-mosaic',
     'ROMAN MOSAIC': 'roman-mosaic', 'ANCIENT MOSAIC': 'roman-mosaic',
     
