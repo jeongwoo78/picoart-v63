@@ -1970,17 +1970,17 @@ const fallbackPrompts = {
   },
   
   renaissance: {
-    name: '르네상스',
+    name: 'Leonardo da Vinci',
     prompt: 'Renaissance painting by Leonardo da Vinci, Leonardo art style, EXTREME sfumato technique, PRESERVE original person face and features exactly, apply Mona Lisa PAINTING TECHNIQUE ONLY sfumato haze, do NOT transform face into Mona Lisa apply Leonardo STYLE not LIKENESS, apply very strong soft atmospheric haze throughout, all edges must be completely blurred, no sharp outlines anywhere in entire painting, mysterious smoky depth with sfumato technique, every boundary softly dissolved into atmosphere, warm golden Renaissance colors, harmonious balanced composition, unified composition all figures together NOT separated, preserve facial identity, Renaissance masterpiece quality, VISIBLE THICK BRUSHSTROKES 20mm+, NOT photograph, NOT 3D, NOT digital'
   },
   
   baroque: {
-    name: '바로크',
+    name: 'Caravaggio',
     prompt: 'Baroque painting by Caravaggio, Caravaggio art style, DRAMATIC chiaroscuro lighting with extreme light-dark contrast, theatrical spotlight effect, deep black shadows, tenebrism technique, rich deep colors, dynamic diagonal composition, theatrical emotional atmosphere, single unified composition with all figures together in one cohesive continuous scene NOT separated into multiple groups, Baroque masterpiece quality, VISIBLE THICK BRUSHSTROKES 20mm+, NOT photograph, NOT 3D, NOT digital'
   },
   
   rococo: {
-    name: '로코코',
+    name: 'Antoine Watteau',
     prompt: 'Rococo oil painting by Watteau, Watteau art style, VISIBLE BRUSHSTROKES with oil paint texture throughout, light pastel colors, playful ornate decoration, soft delicate brushwork, romantic elegant atmosphere, graceful curved lines, whimsical charm, single unified composition with all figures together in one cohesive scene NOT separated into multiple groups, painted on canvas with VISIBLE PAINT TEXTURE, Rococo masterpiece quality, VISIBLE THICK BRUSHSTROKES 20mm+, NOT photograph, NOT 3D, NOT digital'
   },
   
@@ -1990,28 +1990,28 @@ const fallbackPrompts = {
   },
   
   impressionism: {
-    name: '인상주의',
+    name: 'Claude Monet',
     prompt: 'Impressionist painting by Claude Monet, Monet art style, ROUGH VISIBLE BROKEN brushstrokes, SOFT HAZY atmospheric effects like morning mist, colors BLENDED and DISSOLVED into each other, NO sharp edges, dreamy blurred boundaries, dappled light filtering through atmosphere, Woman with a Parasol style atmospheric haze, everything slightly out of focus and impressionistic, NOT photographic clarity, Impressionist masterpiece quality, VISIBLE THICK BRUSHSTROKES 20mm+, NOT photograph, NOT 3D, NOT digital'
   },
   
   postImpressionism: {
-    name: '후기인상주의',
+    name: 'Vincent van Gogh',
     prompt: 'Post-Impressionist painting, Post-Impressionist art style, bold expressive colors, personal artistic vision, emotional depth and symbolic meaning, visible distinctive brushwork, Post-Impressionist masterpiece quality, VISIBLE THICK BRUSHSTROKES 20mm+, NOT photograph, NOT 3D, NOT digital'
   },
   
   fauvism: {
-    name: '야수파',
+    name: 'Henri Matisse',
     prompt: 'Fauvist painting by Henri Matisse, Matisse Fauvist art style, pure bold unmixed colors, flat decorative patterns, intense color contrasts, liberation of color from reality, simplified forms, joyful energetic atmosphere, The Dance-like pure color harmony, Fauvist masterpiece quality, VISIBLE THICK BRUSHSTROKES 20mm+, NOT photograph, NOT 3D, NOT digital'
   },
   
   expressionism: {
-    name: '표현주의',
+    name: 'Edvard Munch',
     prompt: 'MUNCH_EXPRESSIONISM',  // 기본값 - 실제로는 artistStyles.js에서 동적 생성
     dynamicPrompt: true
   },
   
   modernism: {
-    name: '20세기 모더니즘',
+    name: 'Pablo Picasso',
     prompt: 'PICASSO_CUBIST',  // 기본값 - 실제로는 artistStyles.js에서 동적 생성
     dynamicPrompt: true  // 동적 프롬프트 플래그
   },
