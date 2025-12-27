@@ -2189,10 +2189,10 @@ HENRI MATISSE - SELECT ONE:
 
           'picasso': `
 PABLO PICASSO - SELECT ONE based on photo mood and composition:
-1. "Guernica" (게르니카, 1937) [30%] | Style: BLACK WHITE GREY ONLY monochrome, ANGULAR GEOMETRIC face fragmentation, screaming anguished expression, bold black outlines
-2. "The Old Guitarist" (늙은 기타리스트, 1903-04) [25%] | Style: BLUE PERIOD monochrome ALL BLUE tones only, melancholic hunched figure, elongated limbs, somber mood
-3. "Three Musicians" (세 명의 음악가, 1921) [25%] | Style: Synthetic Cubism FLAT GEOMETRIC SHAPES like paper cutouts collage, BOLD PRIMARY COLORS red blue yellow brown black, angular masked figures
-4. "Portrait of Dora Maar" (도라 마르의 초상, 1937) [20%] | Style: Cubist DOUBLE PROFILE showing FRONT and SIDE view simultaneously, VIBRANT COLORS red yellow green blue, sharp angular geometric face planes, seated pose, bold black outlines
+1. "Guernica" (게르니카, 1937) [45%] | Style: BLACK WHITE GREY ONLY monochrome, ANGULAR GEOMETRIC face fragmentation, screaming anguished expression, bold black outlines
+2. "The Old Guitarist" (늙은 기타리스트, 1903-04) [20%] | Style: BLUE PERIOD monochrome ALL BLUE tones only, melancholic hunched figure, elongated limbs, somber mood
+3. "Three Musicians" (세 명의 음악가, 1921) [20%] | Style: Synthetic Cubism FLAT GEOMETRIC SHAPES like paper cutouts collage, BOLD PRIMARY COLORS red blue yellow brown black, angular masked figures
+4. "Portrait of Dora Maar" (도라 마르의 초상, 1937) [15%] | Style: Cubist DOUBLE PROFILE showing FRONT and SIDE view simultaneously, VIBRANT COLORS red yellow green blue, sharp angular geometric face planes, seated pose, bold black outlines
 
 ⚠️ Select based on weighted percentages above. Guernica preferred for dramatic impact.`,
 
