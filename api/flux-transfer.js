@@ -4390,6 +4390,14 @@ export default async function handler(req, res) {
     // v68: 대전제 + 성별 추가 (화풍+대표작 뒤에)
     // 순서: [화풍 + 대표작] + [대전제] + [성별] + [매력]
     // ========================================
+    // v68.3: coreRulesPrefix/genderPrefixCommon 미정의 시 기본값
+    if (typeof coreRulesPrefix === 'undefined') {
+      coreRulesPrefix = 'Preserve identity, gender, ethnicity exactly. Do not add people or elements not in photo. NOT photograph, NOT 3D, NOT digital. No text, no signatures, no watermarks. ';
+    }
+    if (typeof genderPrefixCommon === 'undefined') {
+      genderPrefixCommon = '';
+    }
+    
     finalPrompt = finalPrompt + ' ' + coreRulesPrefix;
     logData.prompt.applied.coreRules = true;
     
