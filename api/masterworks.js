@@ -36,7 +36,7 @@ export const masterworkNameMapping = {
   // 피카소
   'guernica': 'picasso-guernica', '게르니카': 'picasso-guernica',
   'three musicians': 'picasso-musicians', '세 명의 음악가': 'picasso-musicians', '세명의 음악가': 'picasso-musicians',
-  'girl before a mirror': 'picasso-mirror', '거울 앞의 소녀': 'picasso-mirror', '거울앞의 소녀': 'picasso-mirror',
+  'les demoiselles d\'avignon': 'picasso-demoiselles', '아비뇽의 처녀들': 'picasso-demoiselles', 'demoiselles': 'picasso-demoiselles',
   'portrait of dora maar': 'picasso-doramaar', 'dora maar': 'picasso-doramaar', '도라 마르': 'picasso-doramaar', '도라 마르의 초상': 'picasso-doramaar',
   
   // 프리다 칼로
@@ -1064,7 +1064,7 @@ export const kirchnerMasterworks = {
 };
 
 // ========================================
-// 37. 피카소 (4개) - control_strength 0.1
+// 37. 피카소 (4개) - control_strength 0.0
 // ========================================
 export const picassoMasterworks = {
   'picasso-guernica': {
@@ -1079,11 +1079,11 @@ export const picassoMasterworks = {
     prompt: 'Pablo Picasso "Three Musicians" (1921), Synthetic Cubism FLAT GEOMETRIC SHAPES like paper cutouts collage, BOLD PRIMARY COLORS red blue yellow brown black, angular masked figures, musical instruments guitar clarinet.',
     feature: '그룹, 콜라주'
   },
-  'picasso-mirror': {
-    name: '거울 앞의 소녀',
-    nameEn: 'Girl Before a Mirror',
-    prompt: 'Pablo Picasso "Girl Before a Mirror" (1932), MIRROR REFLECTION showing dual image, VIBRANT COLORS purple yellow green red, curved organic shapes, decorative wallpaper pattern background, female profile.',
-    feature: '거울, 이중'
+  'picasso-demoiselles': {
+    name: '아비뇽의 처녀들',
+    nameEn: 'Les Demoiselles d\'Avignon',
+    prompt: 'Pablo Picasso "Les Demoiselles d\'Avignon" (1907), FACE FRAGMENTED GEOMETRIC ANGULAR PLANES, nose SIDE view both EYES FRONT, African mask influence, pink ochre blue earth tones.',
+    feature: '그룹, 마스크'
   },
   'picasso-doramaar': {
     name: '도라 마르의 초상',

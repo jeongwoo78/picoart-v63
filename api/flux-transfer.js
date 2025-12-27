@@ -94,9 +94,9 @@ function getAlternativeWork(artistName, avoidedWork) {
     },
     'picasso': {
       'guernica': 'doramaar',
-      'musicians': 'mirror',
-      'mirror': 'doramaar',
-      'doramaar': 'musicians'
+      'musicians': 'demoiselles',
+      'demoiselles': 'musicians',
+      'doramaar': 'demoiselles'
     },
     'frida': {
       'brokencolumn': 'parrots', // 부러진 기둥 대신 → 앵무새
@@ -2191,10 +2191,10 @@ HENRI MATISSE - SELECT ONE:
 PABLO PICASSO - SELECT ONE:
 1. "Portrait of Dora Maar" (도라 마르의 초상, 1937) → SINGLE person portrait (⭐PREFERRED DEFAULT) | Style: Cubist DOUBLE PROFILE showing FRONT and SIDE view simultaneously, VIBRANT COLORS red yellow green blue, sharp angular geometric face planes, seated pose, bold black outlines
 2. "Three Musicians" (세 명의 음악가, 1921) → GROUP of people (2+) | Style: Synthetic Cubism FLAT GEOMETRIC SHAPES like paper cutouts collage, BOLD PRIMARY COLORS red blue yellow brown black, angular masked figures
-3. "Girl Before a Mirror" (거울 앞의 소녀, 1932) → FEMALE portrait, reflective mood | Style: MIRROR REFLECTION showing dual image, VIBRANT COLORS purple yellow green red, curved organic shapes, decorative wallpaper pattern background
+3. "Les Demoiselles d'Avignon" (아비뇽의 처녀들, 1907) → GROUP of FEMALE figures (2+) | Style: FACE FRAGMENTED GEOMETRIC ANGULAR PLANES, nose SIDE view both EYES FRONT, African mask influence, pink ochre blue earth tones
 4. "Guernica" (게르니카, 1937) → dramatic, dark mood, war/conflict theme | Style: BLACK WHITE GREY ONLY monochrome, ANGULAR GEOMETRIC face fragmentation, screaming anguished expression, bold black outlines
 
-⚠️ For SINGLE portrait: Default to "Portrait of Dora Maar" for colorful vibrant result. For GROUP: Use "Three Musicians". Use "Guernica" only for explicitly dark/dramatic mood.`,
+⚠️ For SINGLE portrait: Default to "Portrait of Dora Maar". For GROUP: Use "Three Musicians" or "Les Demoiselles d'Avignon". Use "Guernica" only for explicitly dark/dramatic mood.`,
 
           'frida': `
 FRIDA KAHLO - SELECT ONE:
@@ -4175,9 +4175,9 @@ export default async function handler(req, res) {
           if (!finalPrompt.includes('Cubist')) {
             finalPrompt = finalPrompt + ', Cubist painting by Pablo Picasso: MANDATORY CUBIST FRAGMENTATION with GEOMETRIC SIMPLIFIED PLANES, face AND body MUST be broken into ANGULAR GEOMETRIC SHAPES showing MULTIPLE VIEWPOINTS simultaneously, NOSE from SIDE while BOTH EYES from FRONT in same face like fractured mirror, face divided into FLAT colored angular sections like faceted crystal, REDUCED TO ESSENTIAL GEOMETRIC FORMS, this fragmentation is REQUIRED and NON-NEGOTIABLE for Picasso style, NOT photorealistic NOT smooth NOT normal face, SINGLE UNIFIED IMAGE not panels, VISIBLE BRUSHSTROKES with thick oil paint, earth tone palette (ochre sienna brown olive grey), Analytical Cubism intersecting shapes';
           }
-          // 피카소: 스타일 극대화를 위해 control_strength 0.1
-          controlStrength = 0.10;
-          // console.log('✅ Picasso: control_strength 0.10 (스타일 극대화)');
+          // 피카소: 스타일 극대화를 위해 control_strength 0.0
+          controlStrength = 0.00;
+          // console.log('✅ Picasso: control_strength 0.00 (스타일 극대화)');
         }
         
         // ========================================
