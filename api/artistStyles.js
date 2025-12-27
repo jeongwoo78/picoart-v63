@@ -1,16 +1,12 @@
 // ========================================
-// 🎨 통합 화풍 프롬프트 (artistStyles.js) v2
-// v2: 자연어 문장형 프롬프트 적용
-//     - "by [Artist], [Artist] art style" 패턴 적용
-//     - FLUX 효율적 전달 방식 (연구 결과 기반)
-//     - 핵심 내용 유지하면서 더 명확한 전달
-// 모든 화가의 화풍을 한 곳에서 관리
+// 🎨 통합 화풍 프롬프트 (artistStyles.js) v68
+// v68: 간소화 + FLUX 최적화
+//     - "by [풀네임], [이름] art style" 패턴
+//     - 강한 표현 (extreme, intense, explosive 등)
+//     - 피사체 강조 (face, skin, clothing, entire subject)
+//     - 금지는 단어 나열 (NOT xxx, NOT yyy)
+//     - 서양화: NOT photograph, NOT digital 추가
 // ========================================
-
-// 공통 상수 - v64: 자연어 문장형
-export const GENDER_RULE = 'CRITICAL: NO nudity, NO naked bodies, NO exposed breasts, NO sexual content - subjects must be FULLY CLOTHED at all times. Preserve the original gender and ethnicity exactly. If the photo shows a male subject, the painting must have a masculine face with strong jaw and male bone structure without any feminine features - do not feminize, soften or make delicate, keep as a man. If the photo shows a female subject, the painting must have a feminine face with soft features and female bone structure without any masculine features - do not masculinize or make rough, keep as a woman. Preserve the original ethnicity and skin color exactly without changing race or lightening or darkening skin - Asian must stay Asian, Caucasian must stay Caucasian, African must stay African. ';
-
-export const PAINT_TEXTURE = ' This must look like a real hand-painted oil painting with very thick visible brushstrokes of 20mm or thicker throughout. It must NOT look like a photograph, NOT 3D render, NOT digital art, NOT photorealistic, NOT smooth, NOT AI-generated photo. CRITICAL: NO nudity, NO naked bodies, NO exposed breasts - must be FULLY CLOTHED.';
 
 // ========================================
 // 📚 모든 화가 화풍 프롬프트
@@ -18,141 +14,139 @@ export const PAINT_TEXTURE = ' This must look like a real hand-painted oil paint
 export const ARTIST_STYLES = {
   
   // ========================================
-  // 🏛️ 고대 
+  // 🏛️ 고대 (NOT photograph 이미 있거나 특수 질감)
   // ========================================
-  'classical-sculpture': 'Ancient Greek-Roman marble sculpture style, classical sculpture aesthetic: PURE WHITE CARRARA MARBLE, polished marble surface with subtle veining, pure white/cream/grey tones ONLY, transform clothing to carved marble toga/tunic with realistic stone fabric folds, ALL skin becomes smooth polished marble, heroic classical proportions, museum pedestal display, dramatic sculptural lighting, apply marble effect to SUBJECT not just background',
+  'classical-sculpture': 'Ancient Greek-Roman marble sculpture style. Pure white Carrara marble with smooth polished surface, carved stone texture. NOT colored, NOT painting, NOT photograph, NOT digital.',
   
-  'roman-mosaic': 'Ancient Roman floor mosaic style, Roman mosaic aesthetic: LARGE VISIBLE TESSERAE TILES 50mm each, THICK BLACK GROUT LINES clearly visible between every tile, terracotta/ochre/umber/ivory/slate color palette, Pompeii villa floor style, transform clothing to toga/tunic, apply mosaic tiles to SUBJECT including face and body not just background',
+  'roman-mosaic': 'Roman floor mosaic style. Large visible tesserae tiles 50mm, thick black grout lines, earth tone palette. NOT painting, NOT smooth, NOT photograph, NOT digital.',
 
   // ========================================
   // ⛪ 중세 
   // ========================================
-  'byzantine': 'Byzantine sacred icon painting style, Byzantine art aesthetic: CIRCULAR GOLDEN HALO behind head, GOLD LEAF mosaic background with visible tiny tesserae, flat hieratic frontal pose, LARGE SOLEMN EYES gazing at viewer, rich jewel colors (deep red/royal blue/purple) for robes, transform clothing to Byzantine robes with gold decorations and jewels, Eastern Orthodox icon style, visible paint and gold texture',
+  'byzantine': 'Byzantine sacred icon style. Brilliant gold leaf background, flat frontal pose, large solemn eyes, rich jewel colors. NOT realistic, NOT 3D, NOT photograph, NOT digital.',
   
-  'gothic': 'Gothic cathedral STAINED GLASS window style: MANDATORY THICK BLACK LEAD LINES (cames) dividing ENTIRE image into distinct glass segments - face/body/clothing/background ALL separated by bold black outlines, JEWEL-TONE TRANSLUCENT COLORS (ruby red/sapphire blue/emerald green/amber gold) filling each segment, FLAT TWO-DIMENSIONAL medieval style with NO realistic shading, every area must look like colored glass piece outlined in BLACK LEAD, pointed arch frame, divine light streaming through, transform clothing to medieval style, NOT oil painting NOT realistic',
+  'gothic': 'Gothic stained glass style. Bold black lead lines, luminous jewel-tone translucent colors, light streaming through. NOT painting, NOT realistic, NOT photograph, NOT digital.',
   
-  'islamic-miniature': 'Persian Ottoman court miniature painting style: intricate delicate details with fine brushwork, vibrant jewel colors (ruby red/sapphire blue/emerald green/gold), flat decorative composition, ornamental floral patterns and arabesques, Persian or Ottoman court clothing, luxurious manuscript illumination quality, richly decorated background',
+  'islamic-miniature': 'Persian miniature painting style. Exquisite intricate details, vibrant jewel colors, delicate fine brushwork. NOT Western style, NOT oil painting, NOT photograph, NOT digital.',
 
   // ========================================
   // 🎨 르네상스 
   // ========================================
-  'botticelli': 'Transform into an oil painting by Sandro Botticelli, Botticelli art style. CRITICAL: Apply GRACEFUL FLOWING LINES with ELEGANT ELONGATED figures. Create ETHEREAL PALE SKIN with soft rose tints. Hair must have FLOWING GOLDEN WAVES with intricate patterns. Apply SHEER DIAPHANOUS FABRICS billowing gently - flowing robes and drapery like Birth of Venus. SWEET MELANCHOLIC expressions with delicate features. Decorative FLORAL backgrounds. Early Renaissance Florentine grace with mythological atmosphere. Classical poses with elegant gestures. Include visible tempera brushwork of 25mm or thicker.' + PAINT_TEXTURE,
+  'botticelli': 'by Sandro Botticelli, Botticelli art style, elegant flowing lines, ethereal pale skin, graceful diaphanous fabrics billowing gently. NOT photograph, NOT digital.',
   
-  'leonardo': 'Transform this into an oil painting by Leonardo da Vinci, Leonardo da Vinci art style, with extreme sfumato technique where all edges are completely soft and blurred like smoke or fog. There should be zero sharp lines anywhere, with every boundary dissolved into hazy atmospheric mist and faces emerging from smoky darkness. Apply the Mona Lisa painting technique only for the mysterious sfumato haze while preserving the original face structure - do not transform the face into Mona Lisa face, apply Leonardo sfumato style not Mona Lisa likeness. Capture the Virgin of the Rocks atmospheric depth with warm golden-brown Renaissance palette. Create soft focus throughout like looking through gauze with oil painting subtle glazing layers and very thick visible brushstrokes of 20mm or thicker in the background.' + PAINT_TEXTURE,
+  'leonardo': 'by Leonardo da Vinci, da Vinci art style, extreme sfumato technique, soft hazy edges dissolving like smoke, mysterious atmospheric depth. NOT sharp lines, NOT bright colors, NOT photograph, NOT digital.',
   
-  'titian': 'Transform this into an oil painting by Titian, Titian art style, Venetian Renaissance with rich warm colors and glowing golden flesh tones. Apply loose expressive brushwork especially visible in fabrics with dramatic atmospheric backgrounds. Create sensuous rendering of silk, velvet and skin textures in the Venetian colorito tradition with color over line. Capture the Portrait of a Man style dignified poses with deep reds, golds and earth tones using luminous glazing technique. Include very thick visible brushstrokes of 20mm or thicker.' + PAINT_TEXTURE,
+  'titian': 'by Titian, Titian art style, warm glowing golden flesh, rich luminous Venetian colors, bold loose brushwork. NOT photograph, NOT digital.',
   
-  'michelangelo': 'Transform this into an oil painting by Michelangelo, Michelangelo art style, with heroic sculptural figures showing powerful muscular anatomy. Capture the Sistine Chapel style monumental grandeur with dramatic foreshortening and dynamic poses. Apply strong modeling with clear light and shadow, creating idealized human form with classical proportions. Use rich saturated colors with an architectural sense of space. Include visible brushstrokes with fresco-like texture and very thick visible brushstrokes of 20mm or thicker.' + PAINT_TEXTURE,
+  'michelangelo': 'by Michelangelo, Michelangelo art style, powerful heroic muscular figures, dramatic foreshortening, monumental grandeur. NOT photograph, NOT digital.',
   
-  'raphael': 'Transform this into an oil painting by Raphael, Raphael art style, with perfect harmonious beauty and idealized graceful figures. Create serene balanced compositions with sweet gentle expressions and clear luminous colors. Apply elegant flowing drapery in the School of Athens style classical perfection with soft modeling and gentle transitions. Use visible soft brushwork with divine serenity and grace. Include very thick visible brushstrokes of 20mm or thicker.' + PAINT_TEXTURE,
+  'raphael': 'by Raphael, Raphael art style, perfect harmonious beauty, serene balanced composition, gentle graceful expressions. NOT photograph, NOT digital.',
 
   // ========================================
   // 🎭 바로크 
   // ========================================
-  'caravaggio': 'Transform this into an oil painting by Caravaggio, Caravaggio art style, with dramatic tenebrism and extreme light-dark contrast. Use a single theatrical spotlight illuminating figures from darkness with deep black shadows engulfing most of the scene. Capture intense emotional realism with rich saturated colors emerging from darkness and dramatic diagonal composition. CRITICAL: Apply THICK VISIBLE BRUSHSTROKES on FACE and SKIN with rough impasto texture showing individual brush marks on cheeks, forehead, and nose. The skin must NOT look smooth or photographic - it must show paint texture and brushwork like a real 17th century oil painting. Include very thick visible brushstrokes of 25mm or thicker throughout especially on illuminated flesh areas.' + PAINT_TEXTURE,
+  'caravaggio': 'by Caravaggio, Caravaggio art style, extreme tenebrism, intense spotlight from absolute black darkness, dramatic theatrical illumination. NOT photograph, NOT digital.',
   
-  'rubens': 'Transform this into an oil painting by Peter Paul Rubens, Rubens art style, with warm sensual flesh tones and luminous glowing skin. Create dynamic swirling composition full of movement and energy with a rich warm palette of reds, golds and creams. Apply voluptuous graceful forms with romantic intimate atmosphere in The Garden of Love style warmth and passion. Use visible energetic brushwork with fluid paint texture. Include very thick visible brushstrokes of 20mm or thicker.' + PAINT_TEXTURE,
+  'rubens': 'by Peter Paul Rubens, Rubens art style, radiant luminous flesh, explosive swirling movement, rich passionate reds and golds. NOT photograph, NOT digital.',
   
-  'rembrandt': 'Transform this into an oil painting by Rembrandt, Rembrandt art style, with golden luminous light and warm glowing illumination. Apply subtle light gradations revealing form from shadow with rich impasto brushwork visible in highlights. Capture deep psychological introspection with intimate emotional depth using a warm brown and gold palette in The Night Watch style dramatic lighting. Include very thick visible brushstrokes of 20mm or thicker especially in light areas.' + PAINT_TEXTURE,
+  'rembrandt': 'by Rembrandt, Rembrandt art style, intense golden glow, deep mysterious shadows, thick impasto highlights. NOT photograph, NOT digital.',
   
-  'velazquez': 'Transform this into an oil painting by Diego Velázquez, Velázquez art style, with sophisticated court elegance and dignified formal poses. Apply loose confident brushwork visible up close with a subtle silver-grey palette and rich blacks. Create atmospheric perspective for depth in Las Meninas style complex spatial arrangement with aristocratic refinement. Include very thick expressive brushstrokes of 20mm or thicker.' + PAINT_TEXTURE,
+  'velazquez': 'by Diego Velazquez, Velazquez art style, refined court elegance, masterful loose brushwork, subtle silver-grey palette. NOT photograph, NOT digital.',
 
   // ========================================
   // 🌸 로코코 
   // ========================================
-  'watteau': 'Transform this into an oil painting by Antoine Watteau, Watteau art style, depicting a fête galante outdoor aristocratic gathering. Transform the clothing to Rococo aristocratic silk costumes set in a soft dreamy pastoral landscape. Apply delicate feathery brushwork visible throughout with romantic melancholic atmosphere in Pilgrimage to Cythera style poetic reverie. Use pale pastel colors with touches of rose and gold, creating theatrical graceful poses. Include very thick visible brushstrokes of 20mm or thicker.' + PAINT_TEXTURE,
+  'watteau': 'by Antoine Watteau, Watteau art style, delicate feathery brushwork, soft dreamy pastoral scenes, romantic melancholic atmosphere. NOT photograph, NOT digital.',
   
-  'boucher': 'Transform this into an oil painting by François Boucher, Boucher art style, with decorative beauty and soft rosy flesh tones. Transform the clothing to Rococo aristocratic style with playful mythological or pastoral scenes. Apply a light pastel palette of pink, blue and cream with fluffy clouds and lush foliage. Use ornate Rococo decoration with sweet idealized figures and visible soft brushwork with delicate paint texture. Include very thick visible brushstrokes of 20mm or thicker.' + PAINT_TEXTURE,
+  'boucher': 'by François Boucher, Boucher art style, soft rosy flesh tones, light pastel palette, playful decorative elegance. NOT photograph, NOT digital.',
 
   // ========================================
   // 🏛️ 신고전주의 
   // ========================================
-  'david': 'Transform this into an oil painting by Jacques-Louis David, David art style, with Neoclassical perfection and clear crisp outlines. Create heroic idealized figures in classical poses with a cool restrained color palette. Apply dramatic moral narratives in Oath of the Horatii style civic virtue with sculptural modeling. CRITICAL: This must show VISIBLE OIL PAINT TEXTURE with THICK BRUSHSTROKES on face, skin, and clothing - the surface must NOT look smooth or photographic. Apply rough canvas texture and visible brush marks throughout especially on flesh areas. Use balanced symmetrical compositions. Include very thick visible brushstrokes of 25mm or thicker on ALL surfaces including skin.' + PAINT_TEXTURE,
+  'david': 'by Jacques-Louis David, David art style, crisp clear outlines, heroic idealized figures, dramatic moral intensity. NOT photograph, NOT digital.',
   
-  'ingres': 'Transform this into an oil painting by Jean-Auguste-Dominique Ingres, Ingres art style, with perfectly smooth flowing contours and porcelain-smooth skin. Apply subtle brushwork visible in the background with elegant sinuous curves and graceful elongated forms. Create idealized beauty with a cool serene color palette and meticulous precise detail. CRITICAL: Despite smooth style, must show VISIBLE OIL PAINT TEXTURE - this is a painting NOT a photograph. Include canvas texture and subtle brush marks especially in background and clothing. Include very thick visible brushstrokes of 20mm or thicker in background areas.' + PAINT_TEXTURE,
+  'ingres': 'by Jean-Auguste-Dominique Ingres, Ingres art style, smooth flowing contours, porcelain-smooth skin, elegant sinuous curves. NOT photograph, NOT digital.',
 
   // ========================================
   // 🌊 낭만주의 
   // ========================================
-  'turner': 'Transform this into an oil painting by J.M.W. Turner, Turner art style, with atmospheric sublime quality and swirling mist, light and color. Capture dramatic natural phenomena with luminous golden light dissolving forms. Create romantic awe-inspiring landscapes in The Fighting Temeraire style emotional power. CRITICAL: Apply THICK IMPASTO brushstrokes with heavy paint texture visible throughout - faces and figures must show rough painted surface NOT smooth skin. Include very thick visible brushstrokes of 25mm or thicker on ALL surfaces.' + PAINT_TEXTURE,
+  'turner': 'by J.M.W. Turner, Turner art style, atmospheric sublime light, swirling mist dissolving forms, luminous golden glow. NOT photograph, NOT digital.',
   
-  'delacroix': 'Transform this into an oil painting by Eugène Delacroix, Delacroix art style, with passionate revolutionary energy in Liberty Leading the People style dramatic action. Use vivid intense colors with bold reds, blues and warm golden tones. Create dynamic diagonal compositions with turbulent swirling movement. CRITICAL: Apply THICK EXPRESSIVE BRUSHSTROKES full of emotion with heavy paint texture visible on face, skin, and figures - NOT smooth or photographic. Include very thick visible brushstrokes of 25mm or thicker throughout.' + PAINT_TEXTURE,
+  'delacroix': 'by Eugène Delacroix, Delacroix art style, passionate revolutionary energy, vivid intense colors, turbulent swirling movement. NOT photograph, NOT digital.',
 
   // ========================================
-  // 🌾 사실주의 (Realism)
+  // 🌾 사실주의 
   // ========================================
-  'courbet': 'Transform this into an oil painting by Gustave Courbet, Courbet art style, with raw unidealized realism depicting subjects as they are. Apply bold palette knife technique with thick impasto paint. Use a dark earthy palette with rich browns, greens and ochres. Create powerful social realism in The Stone Breakers style working class dignity. CRITICAL: Apply THICK VISIBLE BRUSHSTROKES and palette knife marks throughout - the surface must NOT look smooth or photographic. Include very thick visible brushstrokes of 25mm or thicker on ALL surfaces.' + PAINT_TEXTURE,
+  'courbet': 'by Gustave Courbet, Courbet art style, raw unidealized realism, bold palette knife texture, dark earthy tones. NOT photograph, NOT digital.',
   
-  'manet': 'Transform this into an oil painting by Édouard Manet, Manet art style, with modern Paris realism in Olympia-style bold flat composition and striking contrasts. Transform the clothing to 19th century Parisian bourgeois fashion with dramatic blacks and pure whites using minimal mid-tones. Create sophisticated urban café society atmosphere with frank direct confrontational gaze. CRITICAL: Apply THICK VISIBLE BRUSHSTROKES with loose confident paint texture on face, skin, and clothing - NOT smooth or photographic. Include very thick visible brushstrokes of 25mm or thicker throughout.' + PAINT_TEXTURE,
+  'manet': 'by Édouard Manet, Manet art style, bold flat composition, striking light-dark contrast, loose confident brushwork. NOT photograph, NOT digital.',
 
   // ========================================
-  // 🌅 인상주의 (Impressionism)
+  // 🌅 인상주의 
   // ========================================
-  'renoir': 'Transform into an oil painting by Pierre-Auguste Renoir, Renoir art style. CRITICAL: Apply SOFT FEATHERY BRUSHSTROKES with WARM LUMINOUS GLOW. Skin must have ROSY PINK flesh tones with PEARLY WHITE highlights and soft DAPPLED SUNLIGHT. Use warm harmonious colors - PEACH, PINK, CORAL, GOLD. Hair should have GOLDEN COPPER tones with light catching strands. Background must have SOFT IMPRESSIONIST foliage with broken color. Create JOYFUL INTIMATE atmosphere. Visible brushwork throughout - NOT smooth, NOT photographic. Include very thick visible brushstrokes of 25mm or thicker.' + PAINT_TEXTURE,
+  'renoir': 'by Pierre-Auguste Renoir, Renoir art style, warm luminous glow, soft feathery brushstrokes, rosy pink flesh tones, dappled sunlight filtering through leaves. NOT photograph, NOT digital.',
   
-  'monet': 'Transform into an oil painting by Claude Monet, Monet art style. CRITICAL: Apply BROKEN COLOR brushstrokes capturing FLEETING LIGHT. Create SOFT HAZY ATMOSPHERIC effects like morning mist. Colors must BLEND and DISSOLVE into each other. NO sharp edges - everything slightly BLURRED and DREAMY. Use COOL BLUE-GREEN palette with warm accents. Water Lilies style light dissolution throughout. Include very thick visible brushstrokes of 25mm or thicker.' + PAINT_TEXTURE,
+  'monet': 'by Claude Monet, Monet art style, broken color brushstrokes, soft hazy atmospheric light, colors blending and dissolving. NOT photograph, NOT digital.',
   
-  'degas': 'Transform into an oil painting by Edgar Degas, Degas art style. CRITICAL: Apply UNUSUAL CROPPED ANGLES and ASYMMETRIC composition. Use SOFT PASTEL texture with visible CHALKY strokes. Pale muted colors - soft PINK, PEACH, POWDER BLUE. Capture MOVEMENT and GESTURE with delicate precise drawing. Include very thick visible brushstrokes of 25mm or thicker.' + PAINT_TEXTURE,
+  'degas': 'by Edgar Degas, Degas art style, unusual cropped angles, asymmetric composition, soft pastel chalky texture. NOT photograph, NOT digital.',
   
-  'caillebotte': 'Transform into an oil painting by Gustave Caillebotte, Caillebotte art style. CRITICAL: Apply DRAMATIC PERSPECTIVE with strong converging lines. Paris Street Rainy Day style urban scenes. Muted GRAY-BLUE tones with warm accents. Elegant bourgeois figures with wet pavement reflections. Include very thick visible brushstrokes of 25mm or thicker.' + PAINT_TEXTURE,
+  'caillebotte': 'by Gustave Caillebotte, Caillebotte art style, dramatic converging perspective, muted grey-blue tones, wet pavement reflections. NOT photograph, NOT digital.',
 
   // ========================================
-  // 🌻 후기인상주의 (Post-Impressionism)
+  // 🌻 후기인상주의 
   // ========================================
-  'vangogh': 'Transform into an oil painting by Vincent van Gogh, Van Gogh art style. CRITICAL: Apply SWIRLING SPIRAL DIRECTIONAL BRUSHSTROKES throughout ENTIRE image - sky, background, clothing, hair, AND SKIN must ALL have visible curved brushstrokes following contours. Use COBALT BLUE and CHROME YELLOW and ORANGE as dominant colors. Sky must have SWIRLING CIRCULAR patterns like Starry Night. Include CYPRESS TREES or swirling vegetation in background. Face and skin must show THICK IMPASTO brushstrokes with paint ridges visible - NOT smooth, NOT photographic. Every surface must have DIRECTIONAL CURVED brush marks. Include very thick visible brushstrokes of 25mm or thicker.' + PAINT_TEXTURE,
+  'vangogh': 'by Vincent van Gogh, Van Gogh art style, swirling spiral brushstrokes on face skin clothing and entire subject, thick impasto texture throughout, intense cobalt blue and chrome yellow. NOT photograph, NOT digital.',
   
-  'gauguin': 'Transform this into an oil painting by Paul Gauguin, Gauguin Tahitian art style, with cloisonnism technique using bold black outlines separating flat color areas. Apply pure unmixed saturated colors in simplified shapes with primitivism aesthetic and raw primitive power. Use an exotic tropical palette including deep orange, ochre yellow, turquoise, rich purple and vibrant green with warm golden-brown skin tones. Create a lush Tahitian tropical background with palm trees and exotic flowers in Tahitian Women on the Beach style decorative simplified forms. Apply visible brushstrokes with thick oil paint texture and symbolic mysterious atmosphere. Do not create any mosaic effect, tiles, geometric grid or stained glass look - use pure flat color planes with dark contour lines. Include very thick visible brushstrokes of 25mm or thicker. This must look like a real hand-painted artwork, NOT photorealistic, NOT AI-generated, NOT a photograph, NOT 3D, NOT digital.',
+  'gauguin': 'by Paul Gauguin, Gauguin art style, bold black outlines, flat pure saturated colors, exotic tropical palette. NOT photograph, NOT digital.',
   
-  'cezanne': 'Transform into an oil painting by Paul Cézanne, Cézanne art style. CRITICAL: Build forms with GEOMETRIC COLOR PLANES and PARALLEL DIRECTIONAL BRUSHSTROKES. Simplify shapes into basic geometric forms. Use MUTED EARTH TONES - ochres, greens, blues, warm browns. Apply FLAT COLOR PATCHES that construct volume through color relationships NOT shading. Brushstrokes must be VISIBLE and follow consistent DIRECTIONAL patterns. Background and figure must integrate with same brushstroke treatment. Include very thick visible brushstrokes of 25mm or thicker.' + PAINT_TEXTURE,
+  'cezanne': 'by Paul Cézanne, Cézanne art style, geometric structural forms, visible constructive brushstrokes, muted earthy palette. NOT photograph, NOT digital.',
   
-  'signac': 'Transform this into a painting by Paul Signac, Signac Neo-Impressionist art style, with Pointillist technique using large visible dots of 8mm each. Apply a soft pastel color palette including pale pink, light blue, soft lavender, mint green, peach and cream yellow. The dots must not be tiny or small, and must cover the face, body and clothing. Create bright Mediterranean sunlight where dots blend optically when viewed from distance with luminous color vibration. Each dot must be individually visible. This must look like a real hand-painted Pointillist artwork, NOT a photograph, NOT 3D, NOT digital, NOT photorealistic, NOT AI-generated.',
+  'signac': 'by Paul Signac, Signac art style, pure color dots 8mm, vibrant optical color mixing, luminous Mediterranean light. NOT brushstrokes, NOT smooth, NOT photograph, NOT digital.',
 
   // ========================================
-  // 🔥 야수파 (Fauvism)
+  // 🔥 야수파 
   // ========================================
-  'matisse': 'Transform into an oil painting by Henri Matisse, Matisse Fauvist art style. CRITICAL: Apply BOLD FLAT COLOR AREAS with STRONG DARK OUTLINES. Face must have UNREALISTIC COLORS - bright RED or ORANGE patches on cheeks, GREEN or BLUE shadows. Use PURE SATURATED PRIMARY COLORS - vivid reds, yellows, blues, greens that CLASH and VIBRATE. FLAT 2D DECORATIVE style with NO realistic shading, NO gradients. Background must have BOLD DECORATIVE PATTERNS or flat color blocks. Simplify forms with CURVED FLOWING LINES. Include very thick visible brushstrokes of 25mm or thicker.' + PAINT_TEXTURE,
+  'matisse': 'by Henri Matisse, Matisse art style, bold flat pure colors, simplified expressive forms, vibrant emotional intensity. NOT photograph, NOT digital.',
   
-  'derain': 'Transform into an oil painting by André Derain, Derain Fauvist art style. CRITICAL: Use WILD UNNATURAL COLORS - orange sky, blue trees, green faces, purple shadows. Apply BOLD FLAT COLOR PATCHES with visible brushstrokes. Strong color contrasts with pure unmixed pigments. Energetic rough brushwork throughout. Include very thick visible brushstrokes of 25mm or thicker.' + PAINT_TEXTURE,
+  'derain': 'by André Derain, Derain art style, explosive vivid colors, bold rough brushstrokes, raw fauvist energy. NOT photograph, NOT digital.',
   
-  'vlaminck': 'Transform into an oil painting by Maurice de Vlaminck, Vlaminck Fauvist art style. CRITICAL: Apply VIOLENT EXPLOSIVE COLORS with AGGRESSIVE brushwork. Use the most INTENSE saturated colors - fiery reds, electric blues, acid greens. THICK IMPULSIVE brushstrokes showing raw emotional energy. Van Gogh-influenced passionate intensity. Include very thick visible brushstrokes of 25mm or thicker.' + PAINT_TEXTURE,
+  'vlaminck': 'by Maurice de Vlaminck, Vlaminck art style, violent intense colors, thick aggressive brushwork, wild untamed energy. NOT photograph, NOT digital.',
 
   // ========================================
-  // 😱 표현주의 (Expressionism)
+  // 😱 표현주의 
   // ========================================
-  'munch': 'Expressionist oil painting by Edvard Munch, Munch Expressionist art style: intense psychological emotion, wavy distorted swirling lines throughout, apply distortion to figures too, blood red dramatic sky, anxiety and existential dread, vivid emotional colors, distorted forms, visible thick expressive brushwork, emotional impact' + PAINT_TEXTURE,
+  'munch': 'by Edvard Munch, Munch art style, extreme psychological emotion, wavy distorted swirling lines throughout entire image, blood red apocalyptic sky, intense anxiety and existential dread. NOT photograph, NOT digital.',
   
-  'kirchner': 'Transform into an oil painting by Ernst Ludwig Kirchner, Kirchner Expressionist art style. CRITICAL: Apply ANGULAR JAGGED forms with ELONGATED SHARP features. Faces must be MASK-LIKE and SIMPLIFIED with exaggerated angular shapes. Use BOLD CLASHING COLORS - acid GREEN, hot PINK, electric BLUE, harsh ORANGE, deep RED. Apply GEOMETRIC COLOR BLOCKS with BLACK OUTLINES separating areas. Die Brücke German Expressionist raw primitive intensity. FLAT COLOR PLANES with angular brushstrokes. Urban tension and psychological alienation. Include very thick visible brushstrokes of 25mm or thicker.' + PAINT_TEXTURE,
+  'kirchner': 'by Ernst Ludwig Kirchner, Kirchner art style, sharp angular jagged forms, extreme bold clashing colors, elongated mask-like faces, raw primitive aggressive intensity. NOT photograph, NOT digital.',
   
-  'kokoschka': 'Transform into an oil painting by Oskar Kokoschka, Kokoschka Expressionist art style. CRITICAL: DISTORT facial features with ANGULAR EXAGGERATED forms. Apply VIOLENT TURBULENT BRUSHWORK with paint scraped and slashed. Use HARSH ACIDIC COLORS - sickly greens, bruised purples, feverish reds. Face must show PSYCHOLOGICAL TENSION with warped features. Background CHURNING with NERVOUS ENERGY. Include very thick visible brushstrokes of 25mm or thicker.' + PAINT_TEXTURE,
-  
-  
+  'kokoschka': 'by Oskar Kokoschka, Kokoschka art style, violent turbulent slashing brushwork, harsh acidic feverish colors, deeply distorted psychological tension. NOT photograph, NOT digital.',
 
   // ========================================
-  // 🎪 모더니즘 (Modernism)
+  // 🎪 모더니즘 
   // ========================================
-  'picasso': 'Transform into a Cubist OIL PAINTING by Pablo Picasso, Picasso Cubist art style. CRITICAL CUBIST FRAGMENTATION: Face must be SHATTERED into ANGULAR GEOMETRIC PLANES showing MULTIPLE VIEWPOINTS simultaneously - nose from SIDE while BOTH EYES visible from FRONT. Apply THICK BLACK OUTLINES separating each geometric section. Use MONOCHROMATIC palette - BLACK, WHITE, GRAYS for Guernica style, OR bold colors (cobalt blue, terracotta, ochre) for colorful Cubism. FLAT ANGULAR PLANES like fractured mirror. Background must also be FRAGMENTED into geometric shapes. African mask angularity with sharp edges. This must be a PAINTED artwork with visible brushstrokes - NOT a photo collage, NOT digital manipulation, NOT photographic composite. Include very thick visible brushstrokes of 25mm or thicker.' + PAINT_TEXTURE,
+  'picasso': 'by Pablo Picasso, Picasso Cubist art style, geometric fragmentation on face and entire body, face broken into angular planes, nose from side profile while both eyes visible from front, jaw chin cheeks shattered into geometric segments, multiple viewpoints simultaneously. NOT realistic face, NOT smooth, NOT normal face, NOT photograph, NOT digital.',
   
-  'magritte': 'Transform this into a Surrealist oil painting by René Magritte, Magritte Surrealist art style, creating a philosophical visual paradox. Apply The Son of Man style with a mysterious object partially obscuring the face, or Golconda style multiplication of the same figure repeated in a grid pattern floating or falling through the sky. Use bowler hat gentleman aesthetic with smooth but visible oil painting technique showing subtle brushwork. Create dreamlike impossible scenarios with thought-provoking conceptual art as Belgian Surrealist. Include visible brushwork.' + PAINT_TEXTURE,
+  'magritte': 'by René Magritte, Magritte Surrealist art style, philosophical visual paradox, mysterious object obscuring face, dreamlike impossible scenarios. NOT photograph, NOT digital.',
   
-  'miro': 'Transform this into an abstract oil painting by Joan Miró, Miró Surrealist art style, with playful biomorphic shapes floating on canvas. Apply childlike symbols including stars, moons, eyes and birds using primary colors of red, blue and yellow on a white or neutral background. Create spontaneous automatic drawing style with whimsical dreamlike universe and black calligraphic lines. Capture Catalan Surrealist fantasy with joyful cosmic abstraction. Include very thick visible brushstrokes of 20mm or thicker with visible paint texture. This must look like a real hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.' + PAINT_TEXTURE,
+  'miro': 'by Joan Miró, Miró art style, playful biomorphic shapes, childlike symbols floating, primary colors on white background, spontaneous whimsical lines. NOT photograph, NOT digital.',
   
-  'chagall': 'Transform into a dreamlike painting by Marc Chagall, Chagall art style. CRITICAL: Apply SOFT PASTEL COLORS - lavender, pale blue, rose pink, soft yellow. Create DREAMY FLOATING atmosphere with tilted village houses in background. Figures should have ROUNDED SOFT FACES with CLOSED or DREAMY EYES. Use GENTLE CURVED LINES throughout. NOSTALGIC ROMANTIC mood with poetic lyrical quality. Soft feathery brushstrokes. Jewish folklore dreamscape elements. Everything should feel GENTLE, SOFT, DREAMLIKE. Include visible brushwork of 25mm or thicker.' + PAINT_TEXTURE,
+  'chagall': 'by Marc Chagall, Chagall art style, dreamy floating figures, soft pastel colors, nostalgic romantic atmosphere, poetic lyrical quality. NOT photograph, NOT digital.',
   
-  'warhol': 'Pop art artwork by Andy Warhol, Warhol pop art style: 2x2 FOUR-PANEL GRID mandatory with same person repeated 4 times, DIFFERENT BOLD NEON COLOR in each panel (hot pink/cyan/yellow/orange/electric blue/lime green), high contrast silkscreen print effect with ink imperfections and halftone, flat graphic pop art style, bold colors mass culture theme, comic book style outlines, DO NOT draw Marilyn Monroe herself',
+  'warhol': 'by Andy Warhol, Warhol Pop Art style, MUST be 2x2 four-panel grid, same person from photo repeated 4 times, different bold neon color each panel, high contrast silkscreen effect, preserve original face identity. NOT realistic, NOT gradients, NOT single image, NOT photograph.',
   
-  'lichtenstein': 'Transform this into Pop Art by Roy Lichtenstein, Lichtenstein Pop Art style, with comic book style using visible Ben-Day dots pattern throughout the entire image. Apply thick black outlines around all forms using primary colors of red, yellow and blue with white. Create speech bubble aesthetic with dramatic comic panel composition and halftone printing effect. Apply bold graphic simplification with visible paint texture on dots. This must look like authentic Pop Art, NOT a photograph, NOT 3D, NOT digital.',
+  'lichtenstein': 'by Roy Lichtenstein, Lichtenstein Pop Art style, visible Ben-Day dots pattern, thick black outlines, primary colors, comic book aesthetic. NOT photograph, NOT digital.',
   
-  'haring': 'Transform this into street art by Keith Haring, Keith Haring art style, with bold continuous black outlines and simplified dancing human figures with radiant energy lines emanating from bodies. Apply flat bright colors including red, yellow, blue and green with dynamic movement and rhythm. Create subway graffiti aesthetic with joyful kinetic energy and interlocking figures. Use visible spray paint or marker texture. Include very thick visible brushstrokes of 20mm or thicker. This must look like authentic street art, NOT a photograph, NOT 3D, NOT digital.',
+  'haring': 'by Keith Haring, Keith Haring art style, bold continuous black outlines, simplified dancing figures, radiant energy lines, flat bright colors. NOT photograph, NOT digital.',
 
   // ========================================
-  // ⭐ 거장 전용 (Masters Only)
+  // ⭐ 거장 전용 
   // ========================================
-  'klimt': 'Transform this into an oil painting by Gustav Klimt, Klimt Vienna Secession art style, with elaborate golden patterns and real gold leaf texture throughout. Apply Byzantine mosaic decorative elements with flat ornamental backgrounds covered in geometric spirals, circles and rectangular motifs in shimmering gold leaf. Create sensuous organic forms emerging from abstract decorative fields combining Art Nouveau flowing curves with geometric precision. Use rich textures of gold, silver and precious jewel-like colors including deep ruby red, sapphire blue and emerald green. Capture The Kiss style intimate embrace aesthetic and Judith style powerful female portraiture with erotic intimate mood within sacred ornamental splendor. Include very thick visible brushstrokes of 20mm or thicker.' + PAINT_TEXTURE,
+  'klimt': 'by Gustav Klimt, Klimt art style, ornate gold leaf patterns, intricate decorative mosaic, flat Byzantine-inspired figures, jewel-like embedded details, geometric robes with spirals and rectangles. NOT photograph, NOT digital.',
   
-  'frida': 'Transform this into an oil painting by Frida Kahlo, Frida Kahlo Mexican Surrealist art style, with intense direct gaze portrait showing unflinching emotional honesty. Apply vibrant Mexican folk art colors including bright red, yellow, green, blue and pink. Create a lush tropical jungle foliage background with exotic plants and flowers. Include symbolic personal imagery such as thorns, ribbons, hearts and veins. Feature distinctive facial features with prominent connected eyebrows. Dress the subject in traditional Mexican Tehuana dress with floral headpiece and elaborate jewelry. Surround the figure with symbolic animals including monkeys, hummingbirds, black cats, deer or parrots. Incorporate autobiographical narrative elements with raw vulnerability combined with fierce strength and exposed anatomical elements if emotional. Create surreal juxtaposition of pain and beauty with visible brushwork and oil paint texture. Include very thick visible brushstrokes of 20mm or thicker.' + PAINT_TEXTURE,
+  'frida': 'by Frida Kahlo, Frida Kahlo art style, intense direct gaze, symbolic personal elements, vibrant Mexican folk colors, lush tropical foliage background, raw emotional honesty. NOT photograph, NOT digital.',
 
   // ========================================
-  // 🎎 동양화 (Oriental Art)
+  // 🎎 동양화 (현재 유지 - 이미 NO digital 등 포함)
   // ========================================
   'minhwa': 'Korean folk painting (Minhwa) style from late Joseon Dynasty. MINERAL PIGMENTS on AGED YELLOWED HANJI PAPER with visible paper texture. OLD FADED WEATHERED colors like antique painting 200+ years old. Muted earthy tones - faded ochre, dusty red, weathered green, pale greyish blue. ROUGH FOLK ART brush strokes with uneven pigment. Visible hanji paper texture throughout. Primitive naive quality. Museum artifact quality with aged patina. NO bright saturated colors, NO digital rendering, NO smooth surfaces, NO Japanese elements.',
   
@@ -258,17 +252,17 @@ export function getArtistStyleByName(artistName) {
     'KOKOSCHKA': 'kokoschka', '코코슈카': 'kokoschka', 'OSKAR KOKOSCHKA': 'kokoschka',
     
     // 모더니즘
-    'PICASSO': 'picasso', '피카소': 'picasso',
-    'MAGRITTE': 'magritte', '마그리트': 'magritte',
-    'MIRÓ': 'miro', 'MIRO': 'miro', '미로': 'miro',
-    'CHAGALL': 'chagall', '샤갈': 'chagall',
-    'WARHOL': 'warhol', '워홀': 'warhol',
-    'LICHTENSTEIN': 'lichtenstein', '리히텐슈타인': 'lichtenstein',
+    'PICASSO': 'picasso', '피카소': 'picasso', 'PABLO PICASSO': 'picasso',
+    'MAGRITTE': 'magritte', '마그리트': 'magritte', 'RENÉ MAGRITTE': 'magritte', 'RENE MAGRITTE': 'magritte',
+    'MIRÓ': 'miro', 'MIRO': 'miro', '미로': 'miro', 'JOAN MIRÓ': 'miro', 'JOAN MIRO': 'miro',
+    'CHAGALL': 'chagall', '샤갈': 'chagall', 'MARC CHAGALL': 'chagall',
+    'WARHOL': 'warhol', '워홀': 'warhol', 'ANDY WARHOL': 'warhol',
+    'LICHTENSTEIN': 'lichtenstein', '리히텐슈타인': 'lichtenstein', 'ROY LICHTENSTEIN': 'lichtenstein',
     'HARING': 'haring', 'KEITH HARING': 'haring', '해링': 'haring', '키스 해링': 'haring',
     
     // 거장 전용
-    'KLIMT': 'klimt', '클림트': 'klimt',
-    'FRIDA': 'frida', 'KAHLO': 'frida', '프리다': 'frida', '칼로': 'frida',
+    'KLIMT': 'klimt', '클림트': 'klimt', 'GUSTAV KLIMT': 'klimt',
+    'FRIDA': 'frida', 'KAHLO': 'frida', '프리다': 'frida', '칼로': 'frida', 'FRIDA KAHLO': 'frida',
     
     // 동양화
     'MINHWA': 'minhwa', '민화': 'minhwa', 'KOREAN FOLK': 'minhwa',
@@ -291,4 +285,4 @@ export function getArtistStyleByName(artistName) {
 }
 
 // 콘솔 로그
-console.log('📚 Artist Styles loaded:', Object.keys(ARTIST_STYLES).length, 'artists');
+console.log('📚 Artist Styles v68 loaded:', Object.keys(ARTIST_STYLES).length, 'artists');

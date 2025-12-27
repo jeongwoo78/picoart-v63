@@ -2930,7 +2930,7 @@ export default async function handler(req, res) {
       prompt: { 
         wordCount: 0, 
         applied: { 
-          coreRules: false, gender: false, artist: false, masterwork: false, 
+          coreRules: false, gender: false, artist: false, masterwork: false, sandwich: false, 
           identity: false, attractive: false, painting: false, brushwork: false, sandwich: false 
         }
       },
@@ -3308,11 +3308,14 @@ export default async function handler(req, res) {
               genderPrefix = 'ABSOLUTE REQUIREMENT: MIXED GENDER GROUP - MALE figures MUST remain MASCULINE with strong jaw and male bone structure, FEMALE figures MUST remain FEMININE with soft features, DO NOT swap genders, DO NOT feminize males, DO NOT masculinize females, PRESERVE EACH PERSON\'S ORIGINAL GENDER EXACTLY. ';
               // console.log('🚨 Detected BOTH genders - Added MIXED preservation rule');
             } else {
-              // 성별 미감지 시에도 강력한 보존 규칙 적용
-              genderPrefix = 'ABSOLUTE REQUIREMENT: STRICTLY PRESERVE ORIGINAL GENDER from photo - if subject appears MALE keep MASCULINE features with strong jaw and male bone structure DO NOT feminize DO NOT soften DO NOT add feminine traits, if subject appears FEMALE keep FEMININE features. ';
-              // console.log('🚨 Gender unknown - Added STRONG preservation rule');
+              // v68: 성별 미감지 - 대전제에서 처리 (중복 제거)
+              genderPrefix = '';
             }
-            finalPrompt = genderPrefix + finalPrompt;
+            
+            // v68: genderPrefix는 뒤에서 genderPrefixCommon으로 통합 처리
+            if (genderPrefix) {
+              finalPrompt = finalPrompt + ' ' + genderPrefix;
+            }
             logData.prompt.applied.gender = true;
             
             // ========================================
@@ -3402,75 +3405,35 @@ export default async function handler(req, res) {
             selectedArtist.toUpperCase().includes('CHINESE') ||
             selectedArtist.toUpperCase().includes('JAPANESE')));
         
+        // ========================================
+        // v68: 순서 변경
+        // [화풍 + 대표작] + [대전제] + [성별] + [매력]
+        // 대전제와 성별은 대표작 적용 후에 추가 (아래에서 처리)
+        // ========================================
         let coreRulesPrefix;
         
-        if (isAncientStyle) {
-          // 고대 그리스-로마: 붓터치 규칙 제외
-          coreRulesPrefix = 
-            'CRITICAL RULES: Preserve the original subject FACE and APPEARANCE exactly - same facial features, same face shape, same look. ' +
-            'Preserve identity, age, gender and ethnicity exactly. ' +
-            'Render people attractively. ' +
-            'Do NOT add any people or elements not present in the original photo. ' +
-            'Maintain correct anatomical proportions. ' +
-            'NOT a photograph, NOT photorealistic, NOT 3D render, NOT digital art. ';
-        } else if (isMedievalStyle) {
-          // 중세: 붓터치 규칙 제외, 평면적 스타일
-          coreRulesPrefix = 
-            'CRITICAL RULES: Preserve the original subject FACE and APPEARANCE - same facial features, same face shape. ' +
-            'Preserve identity, age, gender and ethnicity exactly. ' +
-            'Do NOT add any people or elements not present in the original photo. ' +
-            'Maintain correct anatomical proportions. ' +
-            'NOT a photograph, NOT photorealistic, NOT 3D render, NOT digital art. ';
-        } else if (isPicassoCubist) {
-          // v67: 피카소/입체주의: 기하학적 분해 강제 (붓터치 20mm 제외)
-          coreRulesPrefix = 
-            'CRITICAL CUBIST RULES: This must look like a REAL CUBIST OIL PAINTING with geometric fragmentation. ' +
-            'MANDATORY CUBIST FRAGMENTATION: FACE must be GEOMETRICALLY FRAGMENTED into angular planes, NOSE from SIDE PROFILE while BOTH EYES visible from FRONT VIEW simultaneously, JAW and CHIN broken into geometric segments - this is REQUIRED and NON-NEGOTIABLE. ' +
-            'Preserve identity, age, gender and ethnicity exactly while applying cubist distortion. ' +
-            'Do NOT add any people or elements not present in the original photo. ' +
-            'NOT a photograph, NOT photorealistic, NOT smooth, NOT 3D render, NOT digital art. ';
-        } else if (isWarholPopArt) {
-          // v67: 워홀/팝아트: 4분할 그리드 강제
-          coreRulesPrefix = 
-            'CRITICAL POP ART RULES: This must look like a REAL POP ART SILKSCREEN PRINT. ' +
-            'MANDATORY 2x2 FOUR-PANEL GRID with same person repeated 4 times in DIFFERENT BOLD NEON COLORS per panel. ' +
-            'Preserve identity, age, gender and ethnicity exactly - DO NOT replace with Marilyn Monroe face. ' +
-            'High contrast silkscreen effect with flat graphic colors, NO gradients. ' +
-            'Do NOT add any people or elements not present in the original photo. ' +
-            'NOT a photograph, NOT photorealistic, NOT 3D render. ';
-        } else if (isOrientalStyle) {
-          // v67: 동양화: 붓터치 20mm 제외 (먹/한지/비단 질감)
-          coreRulesPrefix = 
-            'CRITICAL RULES: Preserve the original subject FACE and APPEARANCE exactly - same facial features, same face shape, same look. ' +
-            'Preserve identity, age, gender and ethnicity exactly. ' +
-            'Do NOT add any people or elements not present in the original photo. ' +
-            'Maintain correct anatomical proportions. ' +
-            'This must look like an authentic traditional East Asian painting on paper or silk. ' +
-            'NOT Western oil painting, NOT thick impasto brushstrokes, NOT photograph, NOT 3D render, NOT digital art. ';
+        // v68.2: 피부색 변환이 화풍 핵심인 작가들 (ethnicity 보존 제외)
+        const skinColorTransformArtists = ['gauguin', 'matisse', 'derain', 'vlaminck'];
+        const skipEthnicityPreserve = skinColorTransformArtists.includes(artistId);
+        
+        // 공통 대전제 (텍스트 금지는 별도)
+        const CORE_RULES_BASE = skipEthnicityPreserve
+          ? 'Preserve identity, gender exactly. ' +  // ethnicity 제외
+            'Do not add people or elements not in photo. ' +
+            'NOT photograph, NOT 3D, NOT digital.'
+          : 'Preserve identity, gender, ethnicity exactly. ' +  // 기본값
+            'Do not add people or elements not in photo. ' +
+            'NOT photograph, NOT 3D, NOT digital.';
+        
+        if (isOrientalStyle) {
+          // v68: 동양화 - 텍스트 허용 (낙관/시문)
+          coreRulesPrefix = CORE_RULES_BASE + ' ';
         } else {
-          // 일반 유화: 붓터치 강제 + 나체 금지
-          coreRulesPrefix = 
-            'CRITICAL: NO nudity, NO naked bodies, NO exposed breasts - subjects must be FULLY CLOTHED. ' +
-            'Transform this photo into an authentic TRADITIONAL OIL PAINTING with thick impasto technique. ' +
-            'The entire image including the subject face, skin, hair and clothing MUST have very thick visible brushstrokes of 20mm or thicker that are clearly visible even without zooming in. ' +
-            'Use palette knife marks and heavy textured brushwork throughout the canvas. ' +
-            'This thick brushstroke texture on the subject is REQUIRED and NON-NEGOTIABLE - not fine lines, not subtle texture, not just on the background. ' +
-            'CRITICAL RULES: Preserve the original subject FACE and APPEARANCE exactly - same facial features, same face shape, same look. Preserve identity, age, gender and ethnicity exactly. ' +
-            'Render people attractively unless expressive distortion is part of the style. ' +
-            'Do NOT add any people or elements not present in the original photo. ' +
-            'Do NOT add any text, signatures, letters, writing or watermarks. ' +
-            'Maintain correct anatomical proportions with no missing or extra limbs. ' +
-            'Apply only the painting TECHNIQUE, never the painter physical appearance - no Van Gogh beard, no Frida unibrow. ' +
-            'This must look like a real hand-painted oil painting, absolutely NOT a photograph, NOT photorealistic, NOT smooth, NOT 3D render, NOT digital art, NOT airbrushed. ';
+          // 서양화 - 텍스트 금지
+          coreRulesPrefix = CORE_RULES_BASE + ' No text, no signatures, no watermarks. ';
         }
         
-        finalPrompt = coreRulesPrefix + finalPrompt;
-        logData.prompt.applied.coreRules = true;
-        // console.log(`🎯 v62: Applied CORE RULES PREFIX (${isPicassoCubist ? '피카소: 분해 강제' : '일반'})`);
-        
-        // ========================================
-        // v66: 성별 보존 프롬프트 (모든 카테고리 공통)
-        // ========================================
+        // v68: 성별 보존 프롬프트 (간소화) - 나중에 적용
         let genderPrefixCommon = '';
         
         // 풍경/정물/동물일 때는 성별 프롬프트 건너뛰기
@@ -3481,21 +3444,17 @@ export default async function handler(req, res) {
         );
         
         if (isNonPersonSubject) {
-          genderPrefixCommon = `CRITICAL: This is a ${visionAnalysis.subject_type.toUpperCase()} photo - DO NOT add any people or human figures. `;
+          genderPrefixCommon = `This is a ${visionAnalysis.subject_type} - no people. `;
         } else if (identityPrompt && identityPrompt.length > 0) {
-          genderPrefixCommon = `ABSOLUTE REQUIREMENT: ${identityPrompt}. `;
+          genderPrefixCommon = `${identityPrompt}. `;
         } else if (visionAnalysis && visionAnalysis.gender === 'male') {
-          genderPrefixCommon = 'ABSOLUTE REQUIREMENT: This is a MALE person - subject MUST have MASCULINE face with strong jaw, male bone structure, NO feminine features, DO NOT feminize. ';
+          genderPrefixCommon = 'MALE subject with masculine features. ';
         } else if (visionAnalysis && visionAnalysis.gender === 'female') {
-          genderPrefixCommon = 'ABSOLUTE REQUIREMENT: This is a FEMALE person - subject MUST have FEMININE face with soft features, female bone structure, KEEP AS WOMAN. ';
+          genderPrefixCommon = 'FEMALE subject with feminine features. ';
         } else if (visionAnalysis && visionAnalysis.gender === 'both') {
-          genderPrefixCommon = 'ABSOLUTE REQUIREMENT: MIXED GENDER GROUP - preserve each person original gender exactly. ';
-        } else {
-          genderPrefixCommon = 'ABSOLUTE REQUIREMENT: STRICTLY PRESERVE ORIGINAL GENDER from photo. ';
+          genderPrefixCommon = 'Mixed gender group - preserve each gender. ';
         }
-        
-        finalPrompt = genderPrefixCommon + finalPrompt;
-        logData.prompt.applied.gender = true;
+        // 대전제와 성별은 대표작 적용 후 아래에서 추가됨
         
         // ========================================
         // v62: 거장 대표작별 세부 프롬프트 적용
@@ -4401,42 +4360,7 @@ export default async function handler(req, res) {
                           finalPrompt.toLowerCase().includes('pointillist') ||
                           finalPrompt.toLowerCase().includes('pointillism');
     
-    let paintingEnforcement;
-    
-    // 한국 민화 특별 처리
-    const isKoreanMinhwa = finalPrompt.includes('Korean Minhwa') || finalPrompt.includes('Korean folk painting');
-    const isKoreanPungsokdo = finalPrompt.includes('Korean Pungsokdo') || finalPrompt.includes('Kim Hong-do');
-    // v60: 중국 공필화 특별 처리
-    const isChineseGongbi = finalPrompt.includes('Chinese Gongbi') || finalPrompt.includes('Gongbi meticulous') || finalPrompt.includes('工筆');
-    
-    if (isKoreanMinhwa) {
-      // v64: 한국 민화 - 자연어 문장형
-      paintingEnforcement = ', Transform this into an authentic Joseon dynasty folk painting on thick rough hanji paper with prominent fiber texture throughout. Apply uneven patchy pigment absorption creating irregular color areas, with genuinely faded and weathered colors like a 200-year-old museum piece. Use trembling wobbly folk brushlines with amateur quality charm, thick black outlines but irregular. Let the colors pool naturally in the paper fibers. Preserve the original face identity and gender accurately. Transform the clothing to simple folk hanbok style. Create a primitive naive artifact feeling with visible thick brushstrokes of 20mm or thicker. This must look like an authentic Korean folk painting, NOT a photograph, NOT 3D, NOT digital.';
-      // console.log('ℹ️ Korean Minhwa mode: thick hanji texture + wobbly folk brushwork');
-    } else if (isKoreanPungsokdo) {
-      // v64: 한국 풍속도 - 자연어 문장형
-      paintingEnforcement = ', Transform this into an authentic Korean Pungsokdo genre painting on rough textured hanji with visible paper fibers. Black ink must dominate 70 to 80 percent of the image with confident spontaneous brushwork. Apply only minimal pale color washes for the remaining 20 to 30 percent, using exclusively earth tones such as pale brown, grey-green and faint ochre. Do not use bright or saturated colors. Capture the elegant restraint of Kim Hong-do style, making this distinctly different from colorful Chinese gongbi paintings. Preserve the original face identity and gender. Use simple everyday hanbok clothing. Create a historical painting feeling rather than an illustration, with visible thick brushstrokes of 20mm or thicker. This must look like an authentic Korean historical painting, NOT a photograph, NOT 3D, NOT digital.';
-      // console.log('ℹ️ Korean Pungsokdo mode: 70% ink 30% pale color on textured hanji');
-    } else if (isChineseGongbi) {
-      // v64: 중국 공필화 - 자연어 문장형
-      paintingEnforcement = ', Transform this into an authentic Chinese Gongbi meticulous painting on silk surface with visible silk texture throughout. Apply extremely fine hair-thin brush lines with rich mineral pigment colors including malachite green, azurite blue, cinnabar red and gold leaf accents. Create a traditional hand-painted feel rather than digital or smooth AI art, using delicate layered color washes. Achieve imperial court quality refinement. Preserve the original face identity and gender. Transform the clothing to Chinese court clothing style. Include visible thick brushstrokes of 20mm or thicker. This must look like an authentic Chinese traditional painting, NOT a photograph, NOT 3D, NOT digital.';
-      // console.log('ℹ️ v60 Chinese Gongbi mode: silk texture + fine mineral pigments + traditional feel');
-    } else if (isMosaic) {
-      // v64: 모자이크 - 자연어 문장형 (brushstrokes 제외)
-      paintingEnforcement = ', Transform this into authentic mosaic art made of small stone or glass tesserae tiles with a visible grid pattern of square tiles. Do not use brushstrokes or oil painting texture. Apply the mosaic style to the entire image including the person, who must also look like they are made of mosaic tiles rather than looking photographic. Preserve the original facial identity but render it entirely in mosaic tile style. Preserve gender accurately. Create a unified composition with all figures together. Do not add any text, signatures, letters or writing anywhere. This must look like authentic mosaic art, NOT a photograph, NOT digital.';
-      // console.log('ℹ️ Mosaic mode: tesserae tiles WITHOUT brushstrokes, style applied to person too');
-    } else if (isPointillism) {
-      // v64: 점묘법 - 자연어 문장형 (brushstrokes 완전 금지)
-      paintingEnforcement = ', Transform this into a Pointillist painting style composed entirely of large visible colored dots of 8mm each. Do not use any brushstrokes, brush texture or oil painting strokes. The entire image must be composed of large visible dots of pure unmixed color placed side by side, creating a visible dot pattern throughout like Signac or Seurat paintings. Apply the Pointillist dot style to the entire image including all people, who must also be rendered entirely in dots rather than looking photographic. Preserve the original facial identity but render entirely in soft pastel colored dots. Preserve gender accurately. Create a unified composition with all figures together. Do not add any text, signatures, letters or writing anywhere. This must look like authentic Pointillist art, NOT a photograph, NOT digital.';
-      // console.log('ℹ️ Pointillism mode: tiny dots only, NO brushstrokes');
-    } else if (isOrientalArt) {
-      // v64: 동양 미술 - 자연어 문장형
-      paintingEnforcement = ', Apply the traditional painting style to the entire image including all people, who must look painted rather than photographic. Use traditional brush painting techniques with visible brushstrokes. Preserve the original facial identity but render it in painting style. Preserve gender accurately where male stays male with masculine features and female stays female with feminine features. Create a unified composition with all figures together. Include visible thick brushstrokes of 20mm or thicker. This must look like an authentic traditional painting, NOT a photograph, NOT photo-realistic, NOT 3D, NOT digital.';
-      // console.log('ℹ️ v60 Oriental art mode: text will be generated by A (Claude) and passed to F');
-    } else {
-      // v64: 일반 서양화 - 자연어 문장형
-      paintingEnforcement = ', Apply the painting style to the entire image including all people, who must look painted rather than photographic. Create a fully realized oil painting with very thick visible brushstrokes of 20mm or thicker throughout, including on skin and clothing. Canvas texture and paint texture must be apparent. Preserve facial identity but render in painting style with visible brushwork on the face. Preserve gender accurately where male stays male with masculine features and female stays female with feminine features. Create a unified composition with all figures together. Do not add any text, signatures, letters, writing or watermarks anywhere in the image. This must look like a real hand-painted artwork, NOT a photograph, NOT 3D, NOT digital.';
-    }
+    // v68.2: 샌드위치 삭제 - 대전제와 화풍에서 NOT photograph 이미 커버
     
     // ========================================
     // 20세기 모더니즘: 대전제 적용 제외!
@@ -4462,76 +4386,65 @@ export default async function handler(req, res) {
     
     const shouldApplyAttractive = !hasAttractiveException;
     
-    // 🎯 v64: Identity 보존 - 자연어 문장형
-    // (이전 버전 호환성 위해 유지, 단 중복 체크)
-    if (!finalPrompt.includes('IDENTITY PRESERVATION')) {
-      const identityPreservation = ', Absolutely preserve the original subject face identity, age, gender and ethnicity exactly. Asian faces must remain Asian, Western faces must remain Western, children must remain children, adults must remain adults. For gender preservation, male subjects MUST remain male with masculine features, strong jaw and male bone structure without being feminized, softened or made delicate. Female subjects must remain female with feminine features. Do not change hair color or skin tone. Do not Westernize Asian faces or Asianize Western faces. Keep the original facial features and bone structure intact.';
-      finalPrompt = finalPrompt + identityPreservation;
-      logData.prompt.applied.identity = true;
-      // console.log('🎯 Applied identity preservation rule (자연어 문장형)');
-    }
+    // ========================================
+    // v68: 대전제 + 성별 추가 (화풍+대표작 뒤에)
+    // 순서: [화풍 + 대표작] + [대전제] + [성별] + [매력]
+    // ========================================
+    finalPrompt = finalPrompt + ' ' + coreRulesPrefix;
+    logData.prompt.applied.coreRules = true;
     
+    if (genderPrefixCommon) {
+      finalPrompt = finalPrompt + genderPrefixCommon;
+    }
+    logData.prompt.applied.gender = true;
+    
+    // ========================================
+    // v68: 매력 조항 (간소화)
+    // ========================================
     if (shouldApplyAttractive) {
-      const attractiveEnhancement = ', Render all people attractively, beautifully and with appealing refined features. While strictly preserving the original gender, make male subjects look handsome, masculine and dignified, and make female subjects look pretty, feminine and elegant. Create an idealized flattering portrayal that enhances visual appeal.';
+      const attractiveEnhancement = ' Render stunningly beautiful - male as handsome, dignified; female as gorgeous, elegant, graceful. Idealized flattering portrait.';
       finalPrompt = finalPrompt + attractiveEnhancement;
       logData.prompt.applied.attractive = true;
-      // console.log('✨ Applied attractive enhancement (자연어 문장형)');
-    } else {
-      // console.log('🎭 Skipped attractive enhancement (expressive distortion allowed):', workKey || selectedWork);
-    }
-    
-    if (categoryType === 'modernism') {
-      // console.log('🎨 Modernism: Skipping paintingEnforcement (allows face distortion/fragmentation/multiplication)');
-      // 대전제 적용 안 함 - 모더니즘은 프롬프트에서 직접 제어
-    }
-    // 이미 회화 강조가 없는 경우에만 추가 (소문자도 체크)
-    else if (!finalPrompt.toLowerCase().includes('preserve facial') && 
-        !finalPrompt.includes('brushstrokes') &&
-        !finalPrompt.toLowerCase().includes('not photographic')) {
-      finalPrompt = finalPrompt + paintingEnforcement;
-      logData.prompt.applied.painting = true;
-      // console.log('✅ Added Level 3+ painting enforcement (re-drawn with brush) + facial preservation');
-    } else {
-      // console.log('ℹ️ Skipped paintingEnforcement (already in fallback prompt)');
     }
     
     // ========================================
-    // 공통 제외 조건: 워홀, 모자이크, 점묘법, 조각, 비잔틴, 고딕
+    // v68: 텍스트 금지 (서양화만)
     // ========================================
-    const isWarhol = finalPrompt.toLowerCase().includes('warhol');
-    const isMosaicStyle = finalPrompt.toLowerCase().includes('mosaic') || finalPrompt.toLowerCase().includes('tesserae');
-    const isPointillismStyle = finalPrompt.toLowerCase().includes('pointillist') || finalPrompt.toLowerCase().includes('signac');
-    const isSculpture = finalPrompt.toLowerCase().includes('sculpture') || finalPrompt.toLowerCase().includes('marble');
-    const isByzantine = finalPrompt.toLowerCase().includes('byzantine');
-    const isGothicGlass = finalPrompt.toLowerCase().includes('stained glass') || finalPrompt.toLowerCase().includes('gothic');
-    const isPicasso = finalPrompt.toLowerCase().includes('picasso') || finalPrompt.toLowerCase().includes('cubist');
+    const promptLower = finalPrompt.toLowerCase();
     
-    const skipBrushstrokeRules = isWarhol || isMosaicStyle || isPointillismStyle || isSculpture || isByzantine || isGothicGlass || isPicasso;
+    // 동양화 체크 (텍스트 허용)
+    const isOriental = promptLower.includes('minhwa') || 
+      promptLower.includes('pungsokdo') ||
+      promptLower.includes('jingyeong') ||
+      promptLower.includes('shuimohua') ||
+      promptLower.includes('gongbi') ||
+      promptLower.includes('huaniaohua') ||
+      promptLower.includes('ukiyoe') ||
+      promptLower.includes('ink wash') ||
+      promptLower.includes('korean folk') ||
+      promptLower.includes('korean genre');
     
-    // ========================================
-    // v64: 붓터치 규칙 - 자연어 문장형
-    // ========================================
-    if (!skipBrushstrokeRules) {
-      const brushworkRule = ', Apply very thick bold brushstrokes throughout the subject including face, skin, hair and clothing. Use chunky wide brush marks of 20mm or thicker that are clearly visible even without zooming in. The brushwork should have impasto paint texture with visible brush direction, not fine lines, not subtle texture, not smooth digital rendering, not airbrushed, not photo-like skin. This thick brushwork on the subject is essential and required.';
-      finalPrompt = finalPrompt + brushworkRule;
-      logData.prompt.applied.brushwork = true;
-      // console.log('🖌️ Applied brushwork rule (자연어 문장형)');
-    } else {
-      // console.log('🎨 Skipped brushwork rule (제외 대상)');
-    }
+    // v68: 텍스트 금지는 대전제에서 처리 (서양화만)
     
     // ========================================
-    // 🥪 샌드위치 방식 v2: 자연어 문장형 핵심 규칙
-    // FLUX가 프롬프트 시작과 끝에서 핵심 규칙을 명확히 인식
+    // v68: 붓터치 제외 조건 (skipBrushstrokeRules)
     // ========================================
-    if (!skipBrushstrokeRules) {
-      const sandwichCore = 'This painting MUST preserve the original face identity, age, gender and ethnicity exactly while rendering the subject attractively. Very thick visible brushstrokes of 20mm or thicker MUST be clearly visible on the subject face, skin and clothing even without zooming in. This must look like a real hand-painted artwork, NOT a photograph, NOT 3D, NOT digital. ';
-      finalPrompt = sandwichCore + finalPrompt + ' ' + sandwichCore.trim();
-      logData.prompt.applied.sandwich = true;
-      // console.log('🥪 Applied SANDWICH rule (자연어 문장형)');
-    } else {
-      // console.log('🥪 Skipped SANDWICH rule (제외 대상)');
-    }
+    const isWarhol = promptLower.includes('warhol');
+    const isMosaicStyle = promptLower.includes('mosaic') || promptLower.includes('tesserae');
+    const isPointillismStyle = promptLower.includes('pointillist') || promptLower.includes('signac');
+    const isSculpture = promptLower.includes('sculpture') || promptLower.includes('marble');
+    const isByzantine = promptLower.includes('byzantine');
+    const isGothicGlass = promptLower.includes('stained glass') || promptLower.includes('gothic');
+    const isPicasso = promptLower.includes('picasso') || promptLower.includes('cubist');
+    const isIslamicMiniature = promptLower.includes('persian miniature') ||
+      promptLower.includes('islamic miniature') ||
+      promptLower.includes('ottoman');
+    
+    const skipBrushstrokeRules = isWarhol || isMosaicStyle || isPointillismStyle || 
+      isSculpture || isByzantine || isGothicGlass || isPicasso || 
+      isOriental || isIslamicMiniature;
+    
+    // v68.2: 샌드위치 삭제됨 (대전제+화풍에서 커버)
     
     // ========================================
     // v66: 구조화된 콘솔 로그 출력
