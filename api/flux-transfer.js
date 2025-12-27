@@ -3058,7 +3058,7 @@ export default async function handler(req, res) {
       const aiResult = await selectArtistWithAI(
         image, 
         selectedStyle,
-        15000 // 15초 타임아웃 (성공률 98%)
+        25000 // 25초 타임아웃 (v68.3: 15초→25초 증가)
       );
       
       // Vision 분석 결과 추출 (통합됨)
@@ -4291,6 +4291,21 @@ export default async function handler(req, res) {
           ai_error: aiResult.error
         };
         
+        // v68.3: fallback에서도 로그 데이터 설정
+        logData.selection.category = selectedStyle.category || '';
+        logData.selection.movement = selectedStyle.id || '';
+        logData.selection.artist = selectedArtist || '';
+        logData.selection.masterwork = selectedWork || '';
+        logData.prompt.applied.artist = true;
+        if (selectedWork) logData.prompt.applied.masterwork = true;
+        // fallback 프롬프트에 포함된 요소들 플래그
+        if (fallback.prompt.includes('BRUSHSTROKE') || fallback.prompt.includes('brushstroke')) {
+          logData.prompt.applied.brushwork = true;
+        }
+        if (fallback.prompt.includes('painting') || fallback.prompt.includes('PAINTING')) {
+          logData.prompt.applied.painting = true;
+        }
+        
         // Renaissance fallback도 control_strength 0.65
         if (fallbackKey === 'renaissance') {
           controlStrength = 0.65;
@@ -4336,6 +4351,20 @@ export default async function handler(req, res) {
       selectedArtist = fallback.name;
       selectedWork = fallback.defaultWork || null;  // 거장 기본 작품
       selectionMethod = 'fallback_no_key';
+      
+      // v68.3: fallback에서도 로그 데이터 설정
+      logData.selection.category = selectedStyle.category || '';
+      logData.selection.movement = selectedStyle.id || '';
+      logData.selection.artist = selectedArtist || '';
+      logData.selection.masterwork = selectedWork || '';
+      logData.prompt.applied.artist = true;
+      if (selectedWork) logData.prompt.applied.masterwork = true;
+      if (fallback.prompt.includes('BRUSHSTROKE') || fallback.prompt.includes('brushstroke')) {
+        logData.prompt.applied.brushwork = true;
+      }
+      if (fallback.prompt.includes('painting') || fallback.prompt.includes('PAINTING')) {
+        logData.prompt.applied.painting = true;
+      }
       
       // Renaissance fallback (no key)도 control_strength 0.65
       if (fallbackKey === 'renaissance') {
