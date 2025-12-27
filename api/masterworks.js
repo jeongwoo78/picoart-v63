@@ -36,7 +36,7 @@ export const masterworkNameMapping = {
   // 피카소
   'guernica': 'picasso-guernica', '게르니카': 'picasso-guernica',
   'three musicians': 'picasso-musicians', '세 명의 음악가': 'picasso-musicians', '세명의 음악가': 'picasso-musicians',
-  'les demoiselles d\'avignon': 'picasso-demoiselles', '아비뇽의 처녀들': 'picasso-demoiselles', 'demoiselles': 'picasso-demoiselles',
+  'the old guitarist': 'picasso-oldguitarist', 'old guitarist': 'picasso-oldguitarist', '늙은 기타리스트': 'picasso-oldguitarist', '올드 기타리스트': 'picasso-oldguitarist',
   'portrait of dora maar': 'picasso-doramaar', 'dora maar': 'picasso-doramaar', '도라 마르': 'picasso-doramaar', '도라 마르의 초상': 'picasso-doramaar',
   
   // 프리다 칼로
@@ -1064,7 +1064,7 @@ export const kirchnerMasterworks = {
 };
 
 // ========================================
-// 37. 피카소 (4개) - control_strength 0.0
+// 37. 피카소 (4개) - control_strength 0.2
 // ========================================
 export const picassoMasterworks = {
   'picasso-guernica': {
@@ -1079,11 +1079,11 @@ export const picassoMasterworks = {
     prompt: 'Pablo Picasso "Three Musicians" (1921), Synthetic Cubism FLAT GEOMETRIC SHAPES like paper cutouts collage, BOLD PRIMARY COLORS red blue yellow brown black, angular masked figures, musical instruments guitar clarinet.',
     feature: '그룹, 콜라주'
   },
-  'picasso-demoiselles': {
-    name: '아비뇽의 처녀들',
-    nameEn: 'Les Demoiselles d\'Avignon',
-    prompt: 'Pablo Picasso "Les Demoiselles d\'Avignon" (1907), FACE FRAGMENTED GEOMETRIC ANGULAR PLANES, nose SIDE view both EYES FRONT, African mask influence, pink ochre blue earth tones.',
-    feature: '그룹, 마스크'
+  'picasso-oldguitarist': {
+    name: '늙은 기타리스트',
+    nameEn: 'The Old Guitarist',
+    prompt: 'Pablo Picasso "The Old Guitarist" (1903-04), BLUE PERIOD monochrome ALL BLUE tones only, melancholic hunched figure, elongated limbs, somber mood, thin emaciated body, guitar held close.',
+    feature: '블루, 우울'
   },
   'picasso-doramaar': {
     name: '도라 마르의 초상',
