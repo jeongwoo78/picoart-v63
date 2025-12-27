@@ -9,6 +9,16 @@
 // ========================================
 
 // ========================================
+// 🚻 성별 보존 규칙 (GENDER_RULE)
+// ========================================
+export const GENDER_RULE = 'If photo shows FEMALE - MUST have FEMININE face with SOFT features, female bone structure, NO masculine features, DO NOT masculinize, DO NOT make rough, KEEP AS WOMAN. PRESERVE ORIGINAL ETHNICITY AND SKIN COLOR EXACTLY - DO NOT change race, DO NOT lighten or darken skin, Asian must stay Asian, Caucasian must stay Caucasian, African must stay African. ';
+
+// ========================================
+// 🖌️ 유화 질감 강제 (PAINT_TEXTURE) - 샌드위치 끝
+// ========================================
+export const PAINT_TEXTURE = ' MUST look like HAND-PAINTED oil painting with VISIBLE THICK BRUSHSTROKES (20mm or thicker on subject), NOT photograph, NOT digital, NOT photorealistic, NOT smooth, NOT AI-generated photo.';
+
+// ========================================
 // 📚 모든 화가 화풍 프롬프트
 // ========================================
 export const ARTIST_STYLES = {
