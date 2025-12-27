@@ -310,7 +310,7 @@ export const leonardoMasterworks = {
   'leonardo-monalisa': {
     name: '모나리자',
     nameEn: 'Mona Lisa',
-    prompt: 'Leonardo da Vinci "Mona Lisa" (c.1503-1519), extreme sfumato edges dissolving like smoke, enigmatic subtle smile, dark atmospheric landscape, warm golden-brown.',
+    prompt: 'Leonardo da Vinci "Mona Lisa" (c.1503-1519), extreme sfumato edges dissolving like smoke, enigmatic subtle smile, dark atmospheric landscape, warm golden-brown. CRITICAL: Paint ONLY the person in the original photo, apply sfumato style to THIS subject.',
     feature: '미소, 스푸마토'
   },
   'leonardo-lastsupper': {
@@ -1130,7 +1130,7 @@ export const warholMasterworks = {
   'warhol-marilyn': {
     name: '마릴린 먼로',
     nameEn: 'Marilyn Monroe',
-    prompt: 'Andy Warhol "Marilyn Monroe" (1962), MUST be 2x2 four-panel grid, same face repeated 4 times, different bold neon color each panel, high contrast silkscreen.',
+    prompt: 'Andy Warhol "Marilyn Monroe" (1962), MUST be 2x2 four-panel grid, same face repeated 4 times, different bold neon color each panel, high contrast silkscreen. CRITICAL: Paint ONLY the person in the original photo, apply Warhol pop art style to THIS subject.',
     feature: '반복, 컬러'
   },
   'warhol-soup': {
