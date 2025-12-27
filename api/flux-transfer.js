@@ -3706,8 +3706,8 @@ export default async function handler(req, res) {
           // console.log('🎯 Leonardo da Vinci detected');
           if (!finalPrompt.includes('Mona Lisa-style')) {
             finalPrompt = finalPrompt + ', painting by Leonardo da Vinci: DARK MYSTERIOUS BACKGROUND with deep shadows, EXTREME SFUMATO technique - ALL EDGES SOFT AND BLURRED like smoke dissolving into darkness, faces emerging from smoky dark atmosphere, NO SHARP EDGES anywhere, warm golden-brown palette against dark background, Mona Lisa PAINTING TECHNIQUE ONLY (sfumato haze) - PRESERVE ORIGINAL FACE STRUCTURE do NOT transform face into Mona Lisa, PRESERVE original subject identity exactly';
-            controlStrength = 0.50;
-            // console.log('✅ Enhanced Leonardo sfumato + dark background (control_strength 0.50)');
+            controlStrength = 0.35;
+            // console.log('✅ Enhanced Leonardo sfumato + dark background (control_strength 0.35)');
           } else {
             // console.log('ℹ️ Leonardo sfumato already in prompt');
           }

@@ -1374,7 +1374,7 @@ export function getArtistMasterworkList(artistKey) {
     'munch': ['munch-scream', 'munch-madonna', 'munch-jealousy'],
     'kokoschka': ['kokoschka-bride', 'kokoschka-degenerate', 'kokoschka-double'],
     'kirchner': ['kirchner-berlin', 'kirchner-soldier', 'kirchner-oldwomen'],
-    'picasso': ['picasso-demoiselles', 'picasso-guernica'],
+    'picasso': ['picasso-guernica', 'picasso-oldguitarist', 'picasso-musicians', 'picasso-doramaar'],
     'frida': ['frida-parrots', 'frida-thornnecklace', 'frida-monkeys', 'frida-diegoandi'],
     'warhol': ['warhol-marilyn', 'warhol-soup'],
     'magritte': ['magritte-sonofman', 'magritte-golconda', 'magritte-bowlerhat', 'magritte-humancondition', 'magritte-empireoflight'],
