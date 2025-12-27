@@ -3418,7 +3418,8 @@ export default async function handler(req, res) {
         
         // v68.2: 피부색 변환이 화풍 핵심인 작가들 (ethnicity 보존 제외)
         const skinColorTransformArtists = ['gauguin', 'matisse', 'derain', 'vlaminck'];
-        const skipEthnicityPreserve = skinColorTransformArtists.includes(artistId);
+        const artistLower = (selectedArtist || '').toLowerCase();
+        const skipEthnicityPreserve = skinColorTransformArtists.some(a => artistLower.includes(a));
         
         // 공통 대전제 (텍스트 금지는 별도)
         const CORE_RULES_BASE = skipEthnicityPreserve
