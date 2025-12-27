@@ -2187,8 +2187,12 @@ HENRI MATISSE - SELECT ONE:
 4. "The Red Room" (붉은 방) → interior, still life, single person in room | Style: RED DOMINATES 80% of scene, blue arabesque vine patterns on red, flattened space where wall and table merge`,
 
           'picasso': `
-PABLO PICASSO - USE GUERNICA STYLE:
-"Guernica" (게르니카) → ALL portraits | Style: BLACK WHITE GREY ONLY monochrome, ANGULAR GEOMETRIC face fragmentation, bold black outlines, Cubist multiple viewpoints, anguished expression allowed`,
+PABLO PICASSO - SELECT ONE:
+1. "Portrait of Dora Maar" (도라 마르의 초상) → SINGLE person portrait (⭐PREFERRED DEFAULT) | Style: Cubist DOUBLE PROFILE showing FRONT and SIDE view simultaneously, VIBRANT COLORS red yellow green blue, sharp angular geometric face planes, seated pose, bold black outlines
+2. "Les Demoiselles d'Avignon" (아비뇽의 처녀들) → GROUP of people (2+), female figures | Style: FACE FRAGMENTED GEOMETRIC ANGULAR PLANES, nose SIDE view both EYES FRONT, African mask influence, pink ochre blue earth tones
+3. "Guernica" (게르니카) → dramatic, dark mood, war/conflict theme | Style: BLACK WHITE GREY ONLY monochrome, ANGULAR GEOMETRIC face fragmentation, screaming anguished expression, bold black outlines
+
+⚠️ For SINGLE portrait: Default to "Portrait of Dora Maar" for colorful vibrant result. Use "Guernica" only for explicitly dark/dramatic mood.`,
 
           'frida': `
 FRIDA KAHLO - SELECT ONE:

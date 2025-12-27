@@ -36,6 +36,7 @@ export const masterworkNameMapping = {
   // 피카소
   'les demoiselles d\'avignon': 'picasso-demoiselles', '아비뇽의 처녀들': 'picasso-demoiselles',
   'guernica': 'picasso-guernica', '게르니카': 'picasso-guernica',
+  'portrait of dora maar': 'picasso-doramaar', 'dora maar': 'picasso-doramaar', '도라 마르': 'picasso-doramaar', '도라 마르의 초상': 'picasso-doramaar',
   
   // 프리다 칼로
   'me and my parrots': 'frida-parrots', '나와 앵무새들': 'frida-parrots',
@@ -1076,6 +1077,12 @@ export const picassoMasterworks = {
     nameEn: 'Guernica',
     prompt: 'Pablo Picasso "Guernica" (1937), BLACK WHITE GREY ONLY monochrome, FACE FRAGMENTED Cubist angular planes, screaming horse center, bull, broken sword light bulb.',
     feature: '흑백, 전쟁'
+  },
+  'picasso-doramaar': {
+    name: '도라 마르의 초상',
+    nameEn: 'Portrait of Dora Maar',
+    prompt: 'Pablo Picasso "Portrait of Dora Maar" (1937), Cubist DOUBLE PROFILE showing FRONT and SIDE view simultaneously, VIBRANT COLORS red yellow green blue, sharp angular geometric face planes, seated pose with hands visible, bold black outlines.',
+    feature: '초상화, 컬러풀'
   }
 };
 
