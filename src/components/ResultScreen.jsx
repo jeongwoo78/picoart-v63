@@ -72,6 +72,8 @@ const ResultScreen = ({
   const [isLoadingEducation, setIsLoadingEducation] = useState(true);
   const [savedToGallery, setSavedToGallery] = useState(false);
   const hasSavedRef = useRef(false);
+  const navDotsRef = useRef(null);
+  const activeDotRef = useRef(null);
 
 
   // ========== 갤러리 자동 저장 ==========
@@ -254,16 +256,28 @@ const ResultScreen = ({
     generate2ndEducation();
   }, [aiSelectedArtist, currentIndex, currentResult?.aiSelectedArtist, currentResult?.selected_work]);
 
+  // 🔄 현재 점(dot)으로 자동 스크롤
+  useEffect(() => {
+    if (isFullTransform && activeDotRef.current && navDotsRef.current) {
+      activeDotRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center'
+      });
+    }
+  }, [currentIndex, isFullTransform]);
+
   // 원클릭: 화면 이동 시 현재 결과 로그
   useEffect(() => {
     if (isFullTransform && currentResult) {
-      // v67: 화면 전환 시 콘솔 네비 로그 (새 표기 형식)
+      // 콘솔 클리어 후 현재 결과만 표시
+      console.clear();
+      
       const category = currentResult.style?.category;
       const styleName = currentResult.style?.name;
       const artist = currentResult.aiSelectedArtist;
       const work = currentResult.selected_work;
       
-      console.log('');
       console.log(`📍 [${currentIndex + 1}/${results.length}] ─────────────────────`);
       
       if (category === 'masters') {
@@ -2147,10 +2161,11 @@ const ResultScreen = ({
             >
               ◀ 이전
             </button>
-            <div className="nav-dots">
+            <div className="nav-dots" ref={navDotsRef}>
               {fullTransformResults.map((_, idx) => (
                 <button
                   key={idx}
+                  ref={idx === currentIndex ? activeDotRef : null}
                   className={`nav-dot ${idx === currentIndex ? 'active' : ''}`}
                   onClick={() => setCurrentIndex(idx)}
                 />
@@ -2637,6 +2652,14 @@ const ResultScreen = ({
         .nav-dots {
           display: flex;
           gap: 6px;
+          overflow-x: auto;
+          max-width: 200px;
+          padding: 4px 0;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+        .nav-dots::-webkit-scrollbar {
+          display: none;
         }
         .nav-dot {
           width: 10px;
