@@ -2922,6 +2922,10 @@ export default async function handler(req, res) {
   try {
     const startTime = Date.now();
     const { image, selectedStyle } = req.body;
+    
+    // v68.3: 변수 초기화 (스코프 문제 해결)
+    let coreRulesPrefix = 'Preserve identity, gender, ethnicity exactly. Do not add people or elements not in photo. NOT photograph, NOT 3D, NOT digital. No text, no signatures, no watermarks. ';
+    let genderPrefixCommon = '';
 
     // v66: 구조화된 로그 수집 객체
     const logData = {
@@ -3410,7 +3414,7 @@ export default async function handler(req, res) {
         // [화풍 + 대표작] + [대전제] + [성별] + [매력]
         // 대전제와 성별은 대표작 적용 후에 추가 (아래에서 처리)
         // ========================================
-        let coreRulesPrefix;
+        // v68.3: coreRulesPrefix는 handler 시작에서 초기화됨
         
         // v68.2: 피부색 변환이 화풍 핵심인 작가들 (ethnicity 보존 제외)
         const skinColorTransformArtists = ['gauguin', 'matisse', 'derain', 'vlaminck'];
@@ -3434,7 +3438,7 @@ export default async function handler(req, res) {
         }
         
         // v68: 성별 보존 프롬프트 (간소화) - 나중에 적용
-        let genderPrefixCommon = '';
+        // v68.3: genderPrefixCommon은 handler 시작에서 초기화됨
         
         // 풍경/정물/동물일 때는 성별 프롬프트 건너뛰기
         const isNonPersonSubject = visionAnalysis && (
@@ -4390,14 +4394,6 @@ export default async function handler(req, res) {
     // v68: 대전제 + 성별 추가 (화풍+대표작 뒤에)
     // 순서: [화풍 + 대표작] + [대전제] + [성별] + [매력]
     // ========================================
-    // v68.3: coreRulesPrefix/genderPrefixCommon 미정의 시 기본값
-    if (typeof coreRulesPrefix === 'undefined') {
-      coreRulesPrefix = 'Preserve identity, gender, ethnicity exactly. Do not add people or elements not in photo. NOT photograph, NOT 3D, NOT digital. No text, no signatures, no watermarks. ';
-    }
-    if (typeof genderPrefixCommon === 'undefined') {
-      genderPrefixCommon = '';
-    }
-    
     finalPrompt = finalPrompt + ' ' + coreRulesPrefix;
     logData.prompt.applied.coreRules = true;
     
