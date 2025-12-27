@@ -4173,11 +4173,11 @@ export default async function handler(req, res) {
             selectedArtist.includes('파블로')) {
           // console.log('🎯 Picasso detected');
           if (!finalPrompt.includes('Cubist')) {
-            finalPrompt = finalPrompt + ', Cubist painting by Pablo Picasso: MANDATORY CUBIST FRAGMENTATION with GEOMETRIC SIMPLIFIED PLANES, face AND body MUST be broken into ANGULAR GEOMETRIC SHAPES showing MULTIPLE VIEWPOINTS simultaneously, NOSE from SIDE while BOTH EYES from FRONT in same face like fractured mirror, face divided into FLAT colored angular sections like faceted crystal, REDUCED TO ESSENTIAL GEOMETRIC FORMS, this fragmentation is REQUIRED and NON-NEGOTIABLE for Picasso style, NOT photorealistic NOT smooth NOT normal face, SINGLE UNIFIED IMAGE not panels, VISIBLE BRUSHSTROKES with thick oil paint, earth tone palette (ochre sienna brown olive grey), Analytical Cubism intersecting shapes';
+            finalPrompt = finalPrompt + ', CRITICAL: TRANSFORM THE SUBJECT NOT JUST BACKGROUND. Cubist painting by Pablo Picasso: THE PERSON/SUBJECT MUST BE CUBIST FRAGMENTED, face AND body broken into ANGULAR GEOMETRIC SHAPES, NOSE from SIDE while BOTH EYES from FRONT simultaneously, face divided into FLAT colored angular sections like shattered glass, SUBJECT CANNOT LOOK REALISTIC OR PHOTOGRAPHIC, apply Cubist distortion to ALL human features, NOT photorealistic NOT smooth NOT normal face, VISIBLE THICK BRUSHSTROKES 20mm+, earth tones ochre sienna brown olive grey';
           }
-          // 피카소: 스타일 극대화를 위해 control_strength 0.2
-          controlStrength = 0.20;
-          // console.log('✅ Picasso: control_strength 0.20 (스타일 극대화)');
+          // 피카소: 스타일 극대화를 위해 control_strength 0.1
+          controlStrength = 0.10;
+          // console.log('✅ Picasso: control_strength 0.10 (스타일 극대화)');
         }
         
         // ========================================
