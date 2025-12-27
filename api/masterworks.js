@@ -1376,9 +1376,34 @@ export function getArtistMasterworkList(artistKey) {
 // 콘솔 로그
 console.log('📚 Masterworks v68.1 loaded:', Object.keys(allMovementMasterworks).length, 'masterworks with artist name + year pattern');
 
+/**
+ * AI용 대표작 가이드 (getMasterworkGuideForAI)
+ * 대표작 정보를 AI 프롬프트 형태로 반환
+ */
+export function getMasterworkGuideForAI(workKey) {
+  const masterwork = getMovementMasterwork(workKey);
+  if (!masterwork) return '';
+  return masterwork.prompt || '';
+}
+
+/**
+ * 사조별 대표작 가이드 (getMovementMasterworkGuide)
+ * 특정 사조의 대표작들 프롬프트를 결합하여 반환
+ */
+export function getMovementMasterworkGuide(movementKey) {
+  const artistList = getArtistMasterworkList(movementKey);
+  if (!artistList || artistList.length === 0) return '';
+  
+  // 첫 번째 대표작의 프롬프트만 반환 (너무 길어지지 않게)
+  const firstWork = getMovementMasterwork(artistList[0]);
+  return firstWork ? (firstWork.prompt || '') : '';
+}
+
 export default {
   masterworkNameMapping,
   allMovementMasterworks,
   getMovementMasterwork,
-  getArtistMasterworkList
+  getArtistMasterworkList,
+  getMasterworkGuideForAI,
+  getMovementMasterworkGuide
 };
