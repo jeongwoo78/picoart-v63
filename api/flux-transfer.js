@@ -93,9 +93,10 @@ function getAlternativeWork(artistName, avoidedWork) {
       'madonna': 'scream'
     },
     'picasso': {
-      'demoiselles': 'weepingwoman',
-      'guernica': 'demoiselles',
-      'weepingwoman': 'demoiselles'
+      'guernica': 'doramaar',
+      'musicians': 'mirror',
+      'mirror': 'doramaar',
+      'doramaar': 'musicians'
     },
     'frida': {
       'brokencolumn': 'parrots', // 부러진 기둥 대신 → 앵무새
@@ -2188,11 +2189,12 @@ HENRI MATISSE - SELECT ONE:
 
           'picasso': `
 PABLO PICASSO - SELECT ONE:
-1. "Portrait of Dora Maar" (도라 마르의 초상) → SINGLE person portrait (⭐PREFERRED DEFAULT) | Style: Cubist DOUBLE PROFILE showing FRONT and SIDE view simultaneously, VIBRANT COLORS red yellow green blue, sharp angular geometric face planes, seated pose, bold black outlines
-2. "Les Demoiselles d'Avignon" (아비뇽의 처녀들) → GROUP of people (2+), female figures | Style: FACE FRAGMENTED GEOMETRIC ANGULAR PLANES, nose SIDE view both EYES FRONT, African mask influence, pink ochre blue earth tones
-3. "Guernica" (게르니카) → dramatic, dark mood, war/conflict theme | Style: BLACK WHITE GREY ONLY monochrome, ANGULAR GEOMETRIC face fragmentation, screaming anguished expression, bold black outlines
+1. "Portrait of Dora Maar" (도라 마르의 초상, 1937) → SINGLE person portrait (⭐PREFERRED DEFAULT) | Style: Cubist DOUBLE PROFILE showing FRONT and SIDE view simultaneously, VIBRANT COLORS red yellow green blue, sharp angular geometric face planes, seated pose, bold black outlines
+2. "Three Musicians" (세 명의 음악가, 1921) → GROUP of people (2+) | Style: Synthetic Cubism FLAT GEOMETRIC SHAPES like paper cutouts collage, BOLD PRIMARY COLORS red blue yellow brown black, angular masked figures
+3. "Girl Before a Mirror" (거울 앞의 소녀, 1932) → FEMALE portrait, reflective mood | Style: MIRROR REFLECTION showing dual image, VIBRANT COLORS purple yellow green red, curved organic shapes, decorative wallpaper pattern background
+4. "Guernica" (게르니카, 1937) → dramatic, dark mood, war/conflict theme | Style: BLACK WHITE GREY ONLY monochrome, ANGULAR GEOMETRIC face fragmentation, screaming anguished expression, bold black outlines
 
-⚠️ For SINGLE portrait: Default to "Portrait of Dora Maar" for colorful vibrant result. Use "Guernica" only for explicitly dark/dramatic mood.`,
+⚠️ For SINGLE portrait: Default to "Portrait of Dora Maar" for colorful vibrant result. For GROUP: Use "Three Musicians". Use "Guernica" only for explicitly dark/dramatic mood.`,
 
           'frida': `
 FRIDA KAHLO - SELECT ONE:
@@ -4164,7 +4166,7 @@ export default async function handler(req, res) {
           // console.log('✅ Enhanced Warhol 4-panel grid (FRONT position, control_strength 0.45 for face preservation)');
         }
         
-        // 피카소 선택시 입체주의 강화 (거장 + 모더니즘)
+        // 피카소 선택시 입체주의 강화 - control_strength 0.1 (스타일 극대화)
         if (selectedArtist.toUpperCase().trim().includes('PICASSO') || 
             selectedArtist.toUpperCase().trim().includes('PABLO') ||
             selectedArtist.includes('피카소') ||
@@ -4172,17 +4174,10 @@ export default async function handler(req, res) {
           // console.log('🎯 Picasso detected');
           if (!finalPrompt.includes('Cubist')) {
             finalPrompt = finalPrompt + ', Cubist painting by Pablo Picasso: MANDATORY CUBIST FRAGMENTATION with GEOMETRIC SIMPLIFIED PLANES, face AND body MUST be broken into ANGULAR GEOMETRIC SHAPES showing MULTIPLE VIEWPOINTS simultaneously, NOSE from SIDE while BOTH EYES from FRONT in same face like fractured mirror, face divided into FLAT colored angular sections like faceted crystal, REDUCED TO ESSENTIAL GEOMETRIC FORMS, this fragmentation is REQUIRED and NON-NEGOTIABLE for Picasso style, NOT photorealistic NOT smooth NOT normal face, SINGLE UNIFIED IMAGE not panels, VISIBLE BRUSHSTROKES with thick oil paint, earth tone palette (ochre sienna brown olive grey), Analytical Cubism intersecting shapes';
-            controlStrength = 0.40;
-            // console.log('✅ Enhanced Picasso MANDATORY CUBIST FACE+SUBJECT (control_strength 0.40)');
-          } else {
-            // console.log('ℹ️ Picasso Cubism already in prompt (AI included it)');
-            controlStrength = 0.40;
           }
-          // 20세기 모더니즘에서 피카소 선택시 더 강한 분해
-          if (categoryType === 'modernism') {
-            controlStrength = 0.30;
-            // console.log('✅ Modernism Picasso: control_strength 0.30 (stronger Cubist fragmentation)');
-          }
+          // 피카소: 스타일 극대화를 위해 control_strength 0.1
+          controlStrength = 0.10;
+          // console.log('✅ Picasso: control_strength 0.10 (스타일 극대화)');
         }
         
         // ========================================

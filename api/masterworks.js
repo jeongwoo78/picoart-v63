@@ -34,8 +34,9 @@ export const masterworkNameMapping = {
   'woman in a purple coat': 'matisse-purplecoat', '보라색 코트': 'matisse-purplecoat',
   
   // 피카소
-  'les demoiselles d\'avignon': 'picasso-demoiselles', '아비뇽의 처녀들': 'picasso-demoiselles',
   'guernica': 'picasso-guernica', '게르니카': 'picasso-guernica',
+  'three musicians': 'picasso-musicians', '세 명의 음악가': 'picasso-musicians', '세명의 음악가': 'picasso-musicians',
+  'girl before a mirror': 'picasso-mirror', '거울 앞의 소녀': 'picasso-mirror', '거울앞의 소녀': 'picasso-mirror',
   'portrait of dora maar': 'picasso-doramaar', 'dora maar': 'picasso-doramaar', '도라 마르': 'picasso-doramaar', '도라 마르의 초상': 'picasso-doramaar',
   
   // 프리다 칼로
@@ -1063,25 +1064,31 @@ export const kirchnerMasterworks = {
 };
 
 // ========================================
-// 37. 피카소 (2개)
+// 37. 피카소 (4개) - control_strength 0.1
 // ========================================
 export const picassoMasterworks = {
-  'picasso-demoiselles': {
-    name: '아비뇽의 처녀들',
-    nameEn: 'Les Demoiselles d\'Avignon',
-    prompt: 'Pablo Picasso "Les Demoiselles d\'Avignon" (1907), FACE FRAGMENTED GEOMETRIC ANGULAR PLANES, nose SIDE view both EYES FRONT, African mask influence, pink ochre blue.',
-    feature: '그룹, 마스크'
-  },
   'picasso-guernica': {
     name: '게르니카',
     nameEn: 'Guernica',
-    prompt: 'Pablo Picasso "Guernica" (1937), BLACK WHITE GREY ONLY monochrome, FACE FRAGMENTED Cubist angular planes, screaming horse center, bull, broken sword light bulb.',
+    prompt: 'Pablo Picasso "Guernica" (1937), BLACK WHITE GREY ONLY monochrome, FACE FRAGMENTED Cubist angular planes, screaming figures, bold black outlines, anti-war.',
     feature: '흑백, 전쟁'
+  },
+  'picasso-musicians': {
+    name: '세 명의 음악가',
+    nameEn: 'Three Musicians',
+    prompt: 'Pablo Picasso "Three Musicians" (1921), Synthetic Cubism FLAT GEOMETRIC SHAPES like paper cutouts collage, BOLD PRIMARY COLORS red blue yellow brown black, angular masked figures, musical instruments guitar clarinet.',
+    feature: '그룹, 콜라주'
+  },
+  'picasso-mirror': {
+    name: '거울 앞의 소녀',
+    nameEn: 'Girl Before a Mirror',
+    prompt: 'Pablo Picasso "Girl Before a Mirror" (1932), MIRROR REFLECTION showing dual image, VIBRANT COLORS purple yellow green red, curved organic shapes, decorative wallpaper pattern background, female profile.',
+    feature: '거울, 이중'
   },
   'picasso-doramaar': {
     name: '도라 마르의 초상',
     nameEn: 'Portrait of Dora Maar',
-    prompt: 'Pablo Picasso "Portrait of Dora Maar" (1937), Cubist DOUBLE PROFILE showing FRONT and SIDE view simultaneously, VIBRANT COLORS red yellow green blue, sharp angular geometric face planes, seated pose with hands visible, bold black outlines.',
+    prompt: 'Pablo Picasso "Portrait of Dora Maar" (1937), Cubist DOUBLE PROFILE showing FRONT and SIDE view simultaneously, VIBRANT COLORS red yellow green blue, sharp angular geometric face planes, seated pose, bold black outlines.',
     feature: '초상화, 컬러풀'
   }
 };
