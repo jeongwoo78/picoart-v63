@@ -60,6 +60,236 @@ import {
 } from './artistStyles.js';
 
 // ========================================
+// v70: 화가별 control_strength 통합 관리
+// 🎯 수정 위치: 여기서 화가별 control_strength 조정!
+// 값이 낮을수록 화풍 강하게, 높을수록 원본 유지
+// ========================================
+const ARTIST_CONTROL_STRENGTH = {
+  // === 고대/중세 (0.50~0.60) ===
+  'classical-sculpture': 0.55,
+  'sculpture': 0.55,
+  'roman-mosaic': 0.60,
+  'mosaic': 0.60,
+  'byzantine': 0.55,
+  'gothic': 0.50,
+  'islamic-miniature': 0.80,
+  
+  // === 르네상스 (0.40~0.80) ===
+  'botticelli': 0.70,
+  'leonardo': 0.40,
+  'titian': 0.70,
+  'michelangelo': 0.70,
+  'raphael': 0.70,
+  
+  // === 바로크 (0.60~0.65) ===
+  'caravaggio': 0.50,
+  'rubens': 0.60,
+  'rembrandt': 0.60,
+  'velazquez': 0.60,
+  
+  // === 로코코 (0.70) ===
+  'watteau': 0.60,
+  'boucher': 0.60,
+  
+  // === 신고전/낭만/사실 (0.80) ===
+  'david': 0.60,
+  'ingres': 0.60,
+  'turner': 0.60,
+  'delacroix': 0.60,
+  'courbet': 0.60,
+  'manet': 0.60,
+  
+  // === 인상주의 (0.50~0.70) ===
+  'renoir': 0.40,
+  'monet': 0.30,
+  'degas': 0.60,
+  'caillebotte': 0.60,
+  
+  // === 후기인상주의 (0.50~0.65) ===
+  'vangogh': 0.45,
+  'gogh': 0.50,
+  'gauguin': 0.60,
+  'cezanne': 0.65,
+  'signac': 0.55,
+  
+  // === 야수파 (0.45) ===
+  'matisse': 0.45,
+  'derain': 0.45,
+  'vlaminck': 0.45,
+  
+  // === 표현주의 (0.45) ===
+  'munch': 0.50,
+  'kirchner': 0.45,
+  'kokoschka': 0.45,
+  
+  // === 모더니즘/팝아트 (0.10~0.65) ===
+  'picasso': 0.10,
+  'magritte': 0.55,
+  'miro': 0.55,
+  'chagall': 0.40,
+  'warhol': 0.45,
+  'lichtenstein': 0.55,
+  'haring': 0.40,
+  'manray': 0.60,
+  
+  // === 거장 (0.60~0.65) ===
+  'klimt': 0.65,
+  'frida': 0.80,
+  
+  // === 동양화 (0.75) ===
+  'korean': 0.75,
+  'chinese': 0.75,
+  'japanese': 0.75,
+};
+
+// 사조별 기본값 (화가 매칭 안 될 때 fallback)
+const MOVEMENT_DEFAULT_STRENGTH = {
+  'ancient-greek-sculpture': 0.55,
+  'roman-mosaic': 0.60,
+  'byzantine': 0.55,
+  'islamic-miniature': 0.80,
+  'gothic': 0.50,
+  'renaissance': 0.80,
+  'baroque': 0.70,
+  'rococo': 0.70,
+  'neoclassicism': 0.80,
+  'neoclassicism_vs_romanticism_vs_realism': 0.80,
+  'romanticism': 0.80,
+  'impressionism': 0.60,
+  'post-impressionism': 0.55,
+  'pointillism': 0.55,
+  'fauvism': 0.45,
+  'expressionism': 0.45,
+  'modernism': 0.50,
+  'korean': 0.75,
+  'chinese': 0.75,
+  'japanese': 0.75,
+};
+
+// 화가명 정규화 매핑
+const ARTIST_NAME_MAPPING = {
+  'leonardodavinci': 'leonardo',
+  'davinci': 'leonardo',
+  'vincentvangogh': 'vangogh',
+  'vincent': 'vangogh',
+  'gogh': 'vangogh',
+  '반고흐': 'vangogh',
+  '고흐': 'vangogh',
+  '빈센트': 'vangogh',
+  'pierreaugusterenoir': 'renoir',
+  'claudemonet': 'monet',
+  'edgardegas': 'degas',
+  'paulcezanne': 'cezanne',
+  'paulsignac': 'signac',
+  'henrimatisse': 'matisse',
+  '마티스': 'matisse',
+  'andrederain': 'derain',
+  '드랭': 'derain',
+  'mauricedevlaminck': 'vlaminck',
+  '블라맹크': 'vlaminck',
+  'edvardmunch': 'munch',
+  '뭉크': 'munch',
+  'ernstludwigkirchner': 'kirchner',
+  '키르히너': 'kirchner',
+  'oskarkokoschka': 'kokoschka',
+  '코코슈카': 'kokoschka',
+  'pablopicasso': 'picasso',
+  '피카소': 'picasso',
+  'renemagritte': 'magritte',
+  'joanmiro': 'miro',
+  'marcchagall': 'chagall',
+  '샤갈': 'chagall',
+  'andywarhol': 'warhol',
+  '워홀': 'warhol',
+  'roylichtenstein': 'lichtenstein',
+  'keithharing': 'haring',
+  '키스해링': 'haring',
+  'gustavklimt': 'klimt',
+  '클림트': 'klimt',
+  'fridakahlo': 'frida',
+  '프리다': 'frida',
+  'antoinewatteau': 'watteau',
+  '와토': 'watteau',
+  'francoisboucher': 'boucher',
+  '부셰': 'boucher',
+  'jacqueslouisdavid': 'david',
+  '다비드': 'david',
+  'jeanaugustdominiqueingres': 'ingres',
+  '앵그르': 'ingres',
+  'jmwturner': 'turner',
+  '터너': 'turner',
+  'eugenedelacroix': 'delacroix',
+  '들라크루아': 'delacroix',
+  'gustavecourbet': 'courbet',
+  '쿠르베': 'courbet',
+  'edouardmanet': 'manet',
+  '마네': 'manet',
+  'caravaggio': 'caravaggio',
+  '카라바조': 'caravaggio',
+  'peterpaulrubens': 'rubens',
+  '루벤스': 'rubens',
+  'rembrandt': 'rembrandt',
+  '렘브란트': 'rembrandt',
+  'diegovelazquez': 'velazquez',
+  '벨라스케스': 'velazquez',
+  'sandrobotticelli': 'botticelli',
+  '보티첼리': 'botticelli',
+  'titian': 'titian',
+  '티치아노': 'titian',
+  'michelangelo': 'michelangelo',
+  '미켈란젤로': 'michelangelo',
+  'raphael': 'raphael',
+  '라파엘로': 'raphael',
+  'paulgauguin': 'gauguin',
+  '고갱': 'gauguin',
+  'classicalsculpture': 'classical-sculpture',
+  'sculpture': 'sculpture',
+  'romanmosaic': 'roman-mosaic',
+  'mosaic': 'mosaic',
+  'byzantine': 'byzantine',
+  '비잔틴': 'byzantine',
+  'gothic': 'gothic',
+  '고딕': 'gothic',
+  'manray': 'manray',
+  '만레이': 'manray',
+};
+
+// 화가명 정규화 함수
+function normalizeArtistKey(artist) {
+  if (!artist) return '';
+  const normalized = artist.toLowerCase()
+    .replace(/\s+/g, '')
+    .replace(/-/g, '')
+    .replace(/[^a-z가-힣]/g, '');
+  
+  return ARTIST_NAME_MAPPING[normalized] || normalized;
+}
+
+// control_strength 결정 함수 (우선순위: 화가 > 사조 > 카테고리 > 기본값)
+function getControlStrength(artist, styleId, category) {
+  // 1. 화가별 설정 확인
+  const artistKey = normalizeArtistKey(artist);
+  if (artistKey && ARTIST_CONTROL_STRENGTH[artistKey]) {
+    return ARTIST_CONTROL_STRENGTH[artistKey];
+  }
+  
+  // 2. 사조별 기본값 확인
+  if (styleId && MOVEMENT_DEFAULT_STRENGTH[styleId]) {
+    return MOVEMENT_DEFAULT_STRENGTH[styleId];
+  }
+  
+  // 3. 카테고리별 기본값
+  if (category === 'oriental') {
+    return 0.75;
+  } else if (category === 'modernism') {
+    return 0.50;
+  }
+  
+  // 4. 최종 기본값
+  return 0.80;
+}
+
+// ========================================
 // v67: 대표작 키 변환 함수 (간소화)
 // "The Kiss" → "klimt-kiss"
 // "The Starry Night" → "vangogh-starrynight"
@@ -2995,60 +3225,8 @@ export default async function handler(req, res) {
     let selectedWork;  // 거장 모드: 선택된 대표작
     let selectionMethod;
     let selectionDetails = {};
-    let controlStrength = 0.80; // 기본값
+    let controlStrength = 0.80; // 기본값 (getControlStrength에서 덮어씀)
     const categoryType = selectedStyle.category; // categoryType 변수 추가
-    
-    // ========================================
-    // 사조별 기본 control_strength 설정
-    // 미술사 흐름: 형태 유지 → 변형 → 해체
-    // ========================================
-    const movementStrengthMap = {
-      // 형태 충실 유지 (0.80)
-      'ancient-greek-sculpture': 0.80,
-      'roman-mosaic': 0.80,
-      'byzantine': 0.80,
-      'islamic-miniature': 0.80,
-      'gothic': 0.80,
-      'renaissance': 0.80,
-      'baroque': 0.80,
-      'rococo': 0.70,  // 로코코: 회화적 붓터치 강조
-      'neoclassicism': 0.80,
-      'neoclassicism_vs_romanticism_vs_realism': 0.80,
-      'romanticism': 0.80,
-      
-      // 빛으로 형태 흐릿 (0.70)
-      'impressionism': 0.70,
-      
-      // 붓터치/기하학 변형 시작 (0.65)
-      'post-impressionism': 0.65,
-      
-      // 점묘법 (0.60 - 점으로 형태 구성)
-      'pointillism': 0.60,
-      
-      // 색채/감정 폭발 (0.45 - v69: 낮춰서 화풍 강화)
-      'fauvism': 0.45,
-      'expressionism': 0.45,
-      
-      // 동양화 (0.75 - 형태 유지하되 화풍 적용)
-      'korean': 0.75,
-      'chinese': 0.75,
-      'japanese': 0.75,
-      
-      // 20세기 모더니즘 (화가별 개별 설정 - 여기선 기본값만)
-      'modernism': 0.50
-    };
-    
-    // 사조별 기본값 적용
-    if (selectedStyle.id && movementStrengthMap[selectedStyle.id]) {
-      controlStrength = movementStrengthMap[selectedStyle.id];
-      // console.log(`📊 Movement-based control_strength: ${selectedStyle.id} → ${controlStrength}`);
-    } else if (categoryType === 'oriental') {
-      controlStrength = 0.75;
-      // console.log(`📊 Oriental category control_strength: ${controlStrength}`);
-    } else if (categoryType === 'modernism') {
-      controlStrength = 0.50; // 모더니즘 기본값 (화가별로 개별 재설정됨)
-      // console.log(`📊 Modernism category control_strength: ${controlStrength} (will be overridden per artist)`);
-    }
     
     // 🎨 풍경/정물/동물일 때 control_strength 높여서 원본 구도 유지
     // (나중에 visionAnalysis 확인 후 조정됨)
@@ -3264,10 +3442,8 @@ export default async function handler(req, res) {
               // 풍경/정물용 프롬프트
               genderPrefix = `CRITICAL: This is a ${visionAnalysis.subject_type.toUpperCase()} photo - DO NOT add any people or human figures. Keep as pure ${visionAnalysis.subject_type}. `;
               
-              // 🎨 풍경/정물일 때 control_strength 높여서 원본 구도 유지
-              const originalStrength = controlStrength;
-              controlStrength = Math.min(controlStrength + 0.15, 0.90);  // +0.15, 최대 0.90
-              // console.log(`📊 [LANDSCAPE-BOOST] control_strength: ${originalStrength} → ${controlStrength} (원본 구도 유지 강화)`);
+              // 🎨 풍경/정물일 때 control_strength boost 플래그 설정 (마지막에 적용)
+              landscapeStrengthBoost = true;
               
               // 🎨 [방법 C] 풍경일 때 프롬프트에서 사람 관련 표현 제거
               const originalPromptLength = finalPrompt.length;
@@ -3657,8 +3833,7 @@ export default async function handler(req, res) {
           // console.log('🎯 Classical Sculpture detected');
           if (!finalPrompt.includes('CARRARA MARBLE')) {
             finalPrompt = finalPrompt + ', PURE WHITE CARRARA MARBLE ancient Greek-Roman sculpture: CRITICAL - ENTIRE IMAGE must be COMPLETELY STONE including ALL clothing transformed to carved marble drapery with realistic fabric folds in stone, ALL skin becomes smooth polished marble with subtle veining, MONOCHROMATIC white/cream/grey tones ONLY with NO other colors, heroic classical proportions like Discobolus or Augustus of Prima Porta, MUSEUM PEDESTAL DISPLAY with neutral grey background, dramatic sculptural lighting with soft shadows emphasizing carved forms, frozen dynamic moment captured in eternal marble, authentic ancient masterpiece quality, render subject ATTRACTIVELY and BEAUTIFULLY';
-            controlStrength = 0.55;
-            // console.log('✅ Enhanced Classical Sculpture marble effect (control_strength 0.55)');
+            // console.log('✅ Enhanced Classical Sculpture marble effect');
           } else {
             // console.log('ℹ️ Marble effect already in prompt');
           }
@@ -3671,7 +3846,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Roman Mosaic detected');
           if (!finalPrompt.includes('TESSERAE')) {
             finalPrompt = finalPrompt + ', Ancient Roman floor mosaic: CRITICAL - LARGE VISIBLE TESSERAE TILES (50mm each square/rectangular stone pieces), THICK DARK GROUT LINES clearly visible between EVERY tile creating grid pattern, LIMITED ANCIENT COLOR PALETTE (terracotta orange, ochre yellow, umber brown, ivory white, slate blue, olive green), Pompeii villa floor style like Alexander Mosaic or Cave Canem, each tile must be INDIVIDUALLY DISTINGUISHABLE as separate stone piece, authentic ancient Roman craftsmanship, render subject ATTRACTIVELY';
-            controlStrength = 0.60;
             // console.log('✅ Enhanced Roman Mosaic tesserae effect (control_strength 0.60)');
           } else {
             // console.log('ℹ️ Mosaic effect already in prompt');
@@ -3688,7 +3862,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Byzantine detected');
           if (!finalPrompt.includes('HALO')) {
             finalPrompt = finalPrompt + ', Byzantine sacred icon painting: CRITICAL - CIRCULAR GOLDEN HALO (nimbus) behind head as bright radiating disc of divine light, ENTIRE BACKGROUND must be SHIMMERING GOLD LEAF mosaic with visible tiny square tesserae tiles, flat hieratic frontal pose with LARGE SOLEMN EYES gazing directly at viewer, simplified iconic facial features with spiritual transcendence, rich jewel colors (deep red, royal blue, purple) for robes, gold decorative patterns on clothing, sacred ethereal atmosphere, Eastern Orthodox icon style like Christ Pantocrator or Theotokos, PRESERVE subject face identity and age, divine holy masterpiece quality';
-            controlStrength = 0.55;
             // console.log('✅ Enhanced Byzantine GOLDEN HALO + gold background (control_strength 0.55)');
           } else {
             // console.log('ℹ️ Byzantine halo already in prompt');
@@ -3701,7 +3874,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Gothic detected');
           if (!finalPrompt.includes('STAINED GLASS')) {
             finalPrompt = finalPrompt + ', Gothic cathedral STAINED GLASS window style: CRITICAL - THICK BLACK LEAD LINES (cames) must divide ENTIRE image INCLUDING FACE AND SKIN into colored glass segments, face must have BLACK LINES crossing through like real stained glass NOT smooth realistic face, JEWEL-TONE TRANSLUCENT COLORS (ruby red, sapphire blue, emerald green, amber gold) on ALL areas including face, FLAT TWO-DIMENSIONAL medieval aesthetic, stylized simplified facial features, elongated vertical figure, Gothic pointed arch frame, divine holy light streaming through, NOT realistic portrait NOT smooth skin, sacred stained glass masterpiece quality';
-            controlStrength = 0.50;
             // console.log('✅ Enhanced Gothic STAINED GLASS effect (control_strength 0.50, face lines emphasized)');
           } else {
             // console.log('ℹ️ Gothic stained glass already in prompt');
@@ -3717,8 +3889,7 @@ export default async function handler(req, res) {
           // console.log('🎯 Leonardo da Vinci detected');
           if (!finalPrompt.includes('Mona Lisa-style')) {
             finalPrompt = finalPrompt + ', painting by Leonardo da Vinci: DARK MYSTERIOUS BACKGROUND with deep shadows, EXTREME SFUMATO technique - ALL EDGES SOFT AND BLURRED like smoke dissolving into darkness, faces emerging from smoky dark atmosphere, NO SHARP EDGES anywhere, warm golden-brown palette against dark background, Mona Lisa PAINTING TECHNIQUE ONLY (sfumato haze) - PRESERVE ORIGINAL FACE STRUCTURE do NOT transform face into Mona Lisa, PRESERVE original subject identity exactly';
-            controlStrength = 0.50;
-            // console.log('✅ Enhanced Leonardo sfumato + dark background (control_strength 0.50)');
+            // console.log('✅ Enhanced Leonardo sfumato + dark background (control_strength 0.40)');
           } else {
             // console.log('ℹ️ Leonardo sfumato already in prompt');
           }
@@ -3730,7 +3901,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Caravaggio detected');
           if (!finalPrompt.includes('TENEBRISM')) {
             finalPrompt = finalPrompt + ', Apply Caravaggio style with CRITICAL TENEBRISM technique. Create 70% of canvas in PURE BLACK darkness with DRAMATIC SPOTLIGHT from single source. Show figure emerging from void with EXTREME light-dark contrast on face. Use deep rich blacks NOT grey, theatrical stage lighting against pitch black background. This must look like a real Baroque hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.';
-            controlStrength = 0.60;
             // console.log('✅ Enhanced Caravaggio TENEBRISM (control_strength 0.60)');
           } else {
             // console.log('ℹ️ Caravaggio tenebrism already in prompt');
@@ -3743,7 +3913,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Rubens detected');
           if (!finalPrompt.includes('sensual flesh')) {
             finalPrompt = finalPrompt + ', Apply Rubens style with WARM SENSUAL FLESH tones and luminous glowing skin. Create dynamic swirling composition full of movement with rich warm palette of reds golds and creams. Show voluptuous graceful forms with romantic intimate atmosphere and VISIBLE THICK BRUSHSTROKES. This must look like a real Baroque hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.';
-            controlStrength = 0.65;
             // console.log('✅ Enhanced Rubens warmth added (control_strength 0.65)');
           } else {
             // console.log('ℹ️ Rubens warmth already in prompt');
@@ -3754,7 +3923,6 @@ export default async function handler(req, res) {
         if (selectedArtist.toUpperCase().trim().includes('MATISSE') ||
             selectedArtist.includes('마티스')) {
           // console.log('🎯 Matisse detected');
-          controlStrength = 0.45;
           // console.log('✅ Enhanced Matisse Fauvism (control_strength 0.45)');
         }
         
@@ -3764,7 +3932,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Rembrandt detected');
           if (!finalPrompt.includes('golden luminous light')) {
             finalPrompt = finalPrompt + ', Apply Rembrandt style with MASTERFUL golden luminous light emerging from darkness. Create warm glowing illumination with subtle gradations and psychological depth revealing inner soul. Use rich impasto texture with VISIBLE THICK BRUSHSTROKES against dark background. This must look like a real Baroque hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.';
-            controlStrength = 0.60;
             // console.log('✅ Enhanced Rembrandt lighting added (control_strength 0.60)');
           } else {
             // console.log('ℹ️ Rembrandt lighting already in prompt');
@@ -3831,7 +3998,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Degas detected');
           if (!finalPrompt.includes('Degas')) {
             finalPrompt = finalPrompt + ', painting by Edgar Degas: SOFT PASTEL and oil paint texture with VISIBLE CHALKY STROKES, pale muted colors (soft pink peach powder blue sage green), diagonal asymmetric composition with unusual cropped viewpoints, delicate precise drawing with gentle sfumato edges, warm intimate indoor lighting, VISIBLE CANVAS TEXTURE through thin paint layers, impressionist brushwork NOT smooth NOT digital, CRITICAL IDENTITY: PRESERVE original subject face identity age and ethnicity exactly - child must remain child Asian must remain Asian, DO NOT change clothing from original photo, DO NOT add ballet dancers or people not in original photo, apply Degas artistic style to EXISTING scene only, masterpiece quality';
-            controlStrength = 0.60;
             // console.log('✅ Enhanced Degas pastel + identity preserve (control_strength 0.60)');
           } else {
             // console.log('ℹ️ Degas style already in prompt (AI included it)');
@@ -3854,7 +4020,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Gauguin detected');
           if (!finalPrompt.includes('Gauguin')) {
             finalPrompt = finalPrompt + ', painting by Paul Gauguin Tahitian period: CLOISONNISM style with BOLD BLACK OUTLINES separating FLAT COLOR AREAS, SIMPLIFIED FORMS with REDUCED FINE DETAILS, PRIMITIVISM raw primitive power, pure unmixed saturated colors in simplified shapes, exotic tropical palette (deep orange, ochre yellow, turquoise, rich purple, vibrant green), warm golden-brown skin tones, Tahitian Women on the Beach style, lush tropical background with palm trees, decorative simplified forms, NOT photorealistic NOT hyper-detailed, VISIBLE THICK BRUSHSTROKES with oil paint texture, symbolic mysterious atmosphere, NOT mosaic NOT stained glass NOT geometric tiles, PRESERVE original subject face identity age and ethnicity, Gauguin Tahitian masterpiece quality';
-            controlStrength = 0.60;
             // console.log('✅ Enhanced Gauguin cloisonnism + primitivism (control_strength 0.60)');
           } else {
             // console.log('ℹ️ Gauguin style already in prompt (AI included it)');
@@ -3867,7 +4032,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Signac detected');
           if (!finalPrompt.includes('pointillist') && !finalPrompt.includes('dots')) {
             finalPrompt = finalPrompt + ', painting by Paul Signac, POINTILLIST Neo-Impressionist style with LARGE VISIBLE DOTS 8mm each of pure unmixed color placed side by side, VISIBLE DOTS throughout entire image including sky water and all surfaces, The Port of Saint-Tropez and Portrait of Félix Fénéon style, vibrant luminous harbor and coastal scenes, brilliant Mediterranean sunlight effect, LARGE VISIBLE DOTS 8mm NOT tiles NOT mosaic, NO blended brushstrokes only separate dots, optical color mixing creates shimmering radiant atmosphere, SOFT PASTEL PALETTE pale pink light blue lavender mint green peach cream';
-            controlStrength = 0.55;
             // console.log('✅ Enhanced Signac pointillism added (control_strength 0.55)');
           } else {
             // console.log('ℹ️ Signac pointillism already in prompt (AI included it)');
@@ -3969,7 +4133,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Watteau detected');
           if (!finalPrompt.includes('fêtes galantes')) {
             finalPrompt = finalPrompt + ', painting by Jean-Antoine Watteau, fêtes galantes-style with ELEGANT OUTDOOR LEISURE in dreamy romantic garden settings, aristocratic figures in graceful refined poses and delicate gestures, soft shimmering colors with pearly iridescent quality and silvery atmospheric haze, wistful melancholic mood beneath surface gaiety, feathery delicate brushwork with gossamer lightness, poetic nostalgia and fleeting beauty, enchanted parkland with theatrical artifice, VISIBLE THICK OIL PAINT BRUSHSTROKES (20mm+ throughout, painted canvas texture NOT photographic';
-            controlStrength = 0.70;
             // console.log('✅ Enhanced Watteau elegance added (control_strength 0.70)');
           } else {
             // console.log('ℹ️ Watteau elegance already in prompt (AI included it)');
@@ -3983,7 +4146,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Boucher detected');
           if (!finalPrompt.includes('Rococo charm')) {
             finalPrompt = finalPrompt + ', painting by François Boucher, ROCOCO SENSUAL CHARM with playful frivolous eroticism and decorative prettiness, pastel colors of soft pinks delicate blues and creamy whites, voluptuous curvaceous forms with porcelain-like skin, whimsical ornamental details and elaborate accessories, frothy confectionery atmosphere with sugary sweetness, seductive coquettish mood and courtly flirtation, luxurious textures and sumptuous fabrics, VISIBLE THICK OIL PAINT BRUSHSTROKES (20mm+ throughout, painted canvas texture NOT photographic';
-            controlStrength = 0.70;
             // console.log('✅ Enhanced Boucher Rococo charm added (control_strength 0.70)');
           } else {
             // console.log('ℹ️ Boucher charm already in prompt (AI included it)');
@@ -3996,7 +4158,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Renoir detected');
           if (!finalPrompt.includes('Renoir')) {
             finalPrompt = finalPrompt + ', painting by Pierre-Auguste Renoir: MANDATORY DAPPLED SUNLIGHT ON FACE AND SUBJECT - golden light SPOTS and PATCHES filtering THROUGH LEAVES MUST appear on FACE (forehead cheeks) AND SUBJECT (skin hair clothing), this sunlight effect on face and subject is REQUIRED and NON-NEGOTIABLE for Renoir style, shimmering luminous atmosphere with dancing light, SOFT FEATHERY BRUSHSTROKES with VISIBLE oil paint texture, warm glowing skin tones with rosy pink cheeks, warm harmonious colors (peach pink golden coral), loose impressionist brushwork NOT smooth NOT digital, joyful warm intimate mood, PRESERVE original subject face identity, Renoir masterpiece quality';
-            controlStrength = 0.50;
             // console.log('✅ Enhanced Renoir MANDATORY DAPPLED SUNLIGHT FACE+SUBJECT (control_strength 0.50)');
           } else {
             // console.log('ℹ️ Renoir warmth already in prompt (AI included it)');
@@ -4022,7 +4183,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Derain detected');
           if (!finalPrompt.includes('Fauvist intensity')) {
             finalPrompt = finalPrompt + ', painting by André Derain, FAUVIST INTENSITY with vivid unmixed pure colors at maximum saturation, SIMPLIFIED FORMS with FLAT COLOR PLANES, bold arbitrary color choices liberated from reality with reds greens blues oranges, strong graphic contours outlining color zones, REDUCED FINE DETAILS, elimination of subtle modeling for pure chromatic impact, NOT photorealistic NOT smooth, vibrant energetic brushwork with spontaneous directness, landscape transformed into explosive color symphony';
-            controlStrength = 0.55;
             // console.log('✅ Enhanced Derain Fauvist intensity added (control_strength 0.55)');
           } else {
             // console.log('ℹ️ Derain intensity already in prompt (AI included it)');
@@ -4035,7 +4195,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Vlaminck detected');
           if (!finalPrompt.includes('explosive colors')) {
             finalPrompt = finalPrompt + ', painting by Maurice de Vlaminck, EXPLOSIVE VIOLENT COLORS with most intense Fauvist palette, SIMPLIFIED BOLD FORMS with REDUCED FINE DETAILS, thick aggressive brushstrokes applied with passionate fury, pure unmixed pigments squeezed directly from tube, FLAT COLOR AREAS, turbulent swirling compositions with dramatic movement, raw primitive energy and instinctive expression, NOT photorealistic NOT smooth, volcanic eruption of reds blues greens yellows, landscape convulsed with emotional intensity';
-            controlStrength = 0.55;
             // console.log('✅ Enhanced Vlaminck explosive colors added (control_strength 0.55)');
           } else {
             // console.log('ℹ️ Vlaminck colors already in prompt (AI included it)');
@@ -4052,7 +4211,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Van Gogh detected');
           if (!finalPrompt.includes('SWIRLING') && !finalPrompt.includes('IMPASTO')) {
             finalPrompt = finalPrompt + ', painting by Vincent van Gogh: MANDATORY THICK BOLD BRUSHSTROKES ON FACE AND SUBJECT - CHUNKY WIDE BRUSH MARKS (30mm+ MUST cover ENTIRE FACE (forehead cheeks nose chin) AND ENTIRE SUBJECT (skin hair clothing), this THICK BOLD brushstroke texture on face and subject is REQUIRED and NON-NEGOTIABLE for Van Gogh style, face and body must NOT be smooth or realistic, EXTREMELY THICK IMPASTO 3D PAINT TEXTURE, VISIBLE RIDGES AND GROOVES, SWIRLING TURBULENT directional strokes everywhere, NOT fine lines NOT smooth NOT blended, intense saturated colors (cobalt blue cadmium yellow chrome orange), painterly NOT illustrative NOT digital, PRESERVE original person FACE IDENTITY, render subject ATTRACTIVELY';
-            controlStrength = 0.50;
             // console.log('✅ Enhanced Van Gogh MANDATORY THICK BOLD BRUSHSTROKES FACE+SUBJECT (control_strength 0.50)');
           } else {
             // console.log('ℹ️ Van Gogh swirls already in prompt (AI included it)');
@@ -4064,7 +4222,6 @@ export default async function handler(req, res) {
             selectedArtist.toUpperCase().trim().includes('EDVARD') ||
             selectedArtist.includes('뭉크') ||
             selectedArtist.includes('에드바르')) {
-          controlStrength = 0.55;
           
           // Madonna는 부드러운 관능적 스타일
           if (selectedWork && selectedWork.toLowerCase().includes('madonna')) {
@@ -4079,7 +4236,6 @@ export default async function handler(req, res) {
             selectedArtist.toUpperCase().trim().includes('ERNST') ||
             selectedArtist.includes('키르히너') ||
             selectedArtist.includes('에른스트')) {
-          controlStrength = 0.50;
           finalPrompt = finalPrompt + ', Apply Ernst Ludwig Kirchner Die Brücke style with ANGULAR JAGGED DISTORTED forms and ELONGATED SHARP MASK-LIKE faces. Use ACID GREEN HOT PINK ELECTRIC BLUE HARSH ORANGE palette with HARSH ANGULAR BRUSHSTROKES. Create urban tension and psychological alienation. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.';
         }
         
@@ -4088,7 +4244,6 @@ export default async function handler(req, res) {
             selectedArtist.toUpperCase().trim().includes('OSKAR') ||
             selectedArtist.includes('코코슈카') ||
             selectedArtist.includes('오스카')) {
-          controlStrength = 0.55;
           finalPrompt = finalPrompt + ', Apply Oskar Kokoschka style with TURBULENT VISIBLE BRUSHSTROKES 30mm+ revealing VIOLENT psychological portrait. Create AGITATED NERVOUS energy with inner turmoil in WARM EARTH TONES and blue accents. This must look like a real Expressionist hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.';
         }
         
@@ -4098,7 +4253,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Matisse detected');
           if (!finalPrompt.includes('The Dance')) {
             finalPrompt = finalPrompt + ', painting by Henri Matisse, The Dance-style with PURE UNMIXED VIBRANT COLORS at maximum intensity and saturation, SIMPLIFIED FLAT FORMS with REDUCED FINE DETAILS, flat decorative patterns with bold arabesques and flowing curves, elimination of all modeling and shading for FLAT COLOR PLANES, NOT photorealistic NOT smooth gradients, joyful rhythmic compositions celebrating life movement and vitality, daring color combinations of brilliant reds blues greens, complete liberation of color from reality, every area a pure saturated flat hue';
-            controlStrength = 0.65;
             // console.log('✅ Enhanced Matisse pure color added (control_strength 0.65)');
           } else {
             // console.log('ℹ️ Matisse color already in prompt (AI included it)');
@@ -4113,7 +4267,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Klimt detected');
           if (!finalPrompt.includes('The Kiss')) {
             finalPrompt = finalPrompt + ', painting by Gustav Klimt, The Kiss-style with ELABORATE GOLDEN PATTERNS and Byzantine mosaic decorative elements, flat ornamental backgrounds covered with geometric spirals circles and rectangular motifs in shimmering gold leaf, sensuous organic forms emerging from abstract decorative fields, Art Nouveau flowing curves combined with geometric precision, rich textures of gold silver and precious jewel-like colors, erotic intimate mood within sacred ornamental splendor';
-            controlStrength = 0.65;
             // console.log('✅ Enhanced Klimt golden patterns added (control_strength 0.65)');
           } else {
             // console.log('ℹ️ Klimt patterns already in prompt (AI included it)');
@@ -4128,7 +4281,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Monet detected');
           if (!finalPrompt.includes('Water Lilies') && !finalPrompt.includes('Impressionist')) {
             finalPrompt = finalPrompt + ', painting by Claude Monet, IMPRESSIONIST style with VISIBLE BROKEN BRUSHSTROKES throughout entire composition, SOFT HAZY atmospheric effects like morning mist or fog, colors DISSOLVED and BLENDED into each other with NO sharp edges anywhere, capture fleeting moment of LIGHT and ATMOSPHERE, dappled sunlight filtering through air, Water Lilies and Impression Sunrise style dreamy blur, everything slightly out of focus and impressionistic, luminous color harmonies of blues purples pinks greens';
-            controlStrength = 0.50;
             // console.log('✅ Enhanced Monet Impressionist brushstrokes added (control_strength 0.50 for hazy effect)');
           } else {
             // console.log('ℹ️ Monet Impressionism already in prompt (AI included it)');
@@ -4143,7 +4295,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Chagall detected');
           if (!finalPrompt.includes('floating') && !finalPrompt.includes('FLOATING')) {
             finalPrompt = finalPrompt + ', painting by Marc Chagall, DREAMY FLOATING figures defying gravity, SOFT BLURRED EDGES with gentle transitions NO harsh outlines, MUTED PASTEL colors (dusty violet, faded rose pink, soft blue, sage green), I and the Village style OVERLAPPING DREAMLIKE images, whimsical tilted houses of Vitebsk village in background, symbolic animals and flowers floating softly, HAZY ATMOSPHERIC quality like looking through gauze, nostalgic poetic dreamscape, WATERCOLOR-LIKE transparency and softness';
-            controlStrength = 0.40;
             // console.log('✅ Enhanced Chagall with SOFT dreamy atmosphere (control_strength 0.40 for softer effect)');
           } else {
             // console.log('ℹ️ Chagall dreaminess already in prompt (AI included it)');
@@ -4173,7 +4324,6 @@ export default async function handler(req, res) {
           // 항상 강화 프롬프트로 교체 (4분할 보장 + 원본 얼굴 유지)
           const warholEnhancement = 'ABSOLUTE REQUIREMENT: CREATE EXACTLY 4 SEPARATE IMAGES arranged in 2x2 GRID with VISIBLE DIVIDING LINES between panels, TOP-LEFT panel + TOP-RIGHT panel + BOTTOM-LEFT panel + BOTTOM-RIGHT panel, CRITICAL: USE THE ORIGINAL SUBJECT FACE from the photo in ALL 4 panels - do NOT replace with Marilyn Monroe face - KEEP the original person identity and facial features exactly, EACH panel must have COMPLETELY DIFFERENT bold color scheme (panel 1: hot pink, panel 2: cyan blue, panel 3: yellow, panel 4: orange), Andy Warhol silkscreen style, FLAT graphic colors NO gradients, absolutely NOT Marilyn Monroe face, MUST be 4 SEPARATE PANELS not single image, ';
           finalPrompt = warholEnhancement + finalPrompt;
-          controlStrength = 0.45;
           // console.log('✅ Enhanced Warhol 4-panel grid (FRONT position, control_strength 0.45 for face preservation)');
         }
         
@@ -4187,7 +4337,6 @@ export default async function handler(req, res) {
             finalPrompt = finalPrompt + ', Cubist painting by Pablo Picasso: MANDATORY CUBIST FRAGMENTATION with GEOMETRIC SIMPLIFIED PLANES, face AND body MUST be broken into ANGULAR GEOMETRIC SHAPES showing MULTIPLE VIEWPOINTS simultaneously, NOSE from SIDE while BOTH EYES from FRONT in same face like fractured mirror, face divided into FLAT colored angular sections like faceted crystal, REDUCED TO ESSENTIAL GEOMETRIC FORMS, this fragmentation is REQUIRED and NON-NEGOTIABLE for Picasso style, NOT photorealistic NOT smooth NOT normal face, SINGLE UNIFIED IMAGE not panels, VISIBLE BRUSHSTROKES with thick oil paint, earth tone palette (ochre sienna brown olive grey), Analytical Cubism intersecting shapes, TRANSFORM THE SUBJECT NOT JUST BACKGROUND';
           }
           // 피카소: 스타일 극대화를 위해 control_strength 0.1
-          controlStrength = 0.10;
           // console.log('✅ Picasso: control_strength 0.10 (스타일 극대화)');
         }
         
@@ -4203,7 +4352,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Man Ray detected');
           if (!finalPrompt.includes('solarization')) {
             finalPrompt = finalPrompt + ', experimental photography by Man Ray, SOLARIZATION EFFECT with inverted tones and glowing haloed edges, rayograph shadow silhouettes, dramatic high contrast black and white, surreal darkroom manipulation, Le Violon d\'Ingres style transformation of body, dreamlike photographic distortion with reversed light and shadow, avant-garde Dada experimentation';
-            controlStrength = 0.60;
             // console.log('✅ Enhanced Man Ray solarization added (control_strength 0.60)');
           } else {
             // console.log('ℹ️ Man Ray effects already in prompt (AI included it)');
@@ -4222,7 +4370,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Miró detected');
           if (!finalPrompt.includes('biomorphic')) {
             finalPrompt = finalPrompt + ', painting by Joan Miró, BIOMORPHIC PLAYFUL SIMPLIFIED FORMS floating in space, REDUCED TO ESSENTIAL SHAPES, automatic drawing spontaneous symbols, bright primary colors (red yellow blue black) on light background, constellation of stars eyes crescents and organic shapes surrounding subject, FLAT COLOR AREAS NO gradients, childlike joyful energy, calligraphic black lines, NOT photorealistic NOT detailed, poetic surrealist abstraction with whimsical floating elements';
-            controlStrength = 0.55;
             // console.log('✅ Enhanced Miró biomorphic symbols added (control_strength 0.55)');
           } else {
             // console.log('ℹ️ Miró symbolism already in prompt (AI included it)');
@@ -4237,7 +4384,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Keith Haring detected');
           if (!finalPrompt.includes('radiant')) {
             finalPrompt = finalPrompt + ', Transform like Keith Haring street art - CRITICAL: BOLD THICK BLACK OUTLINES around all figures, figures MAXIMALLY SIMPLIFIED into iconic dancing silhouettes, REDUCED TO ESSENTIAL SHAPES ONLY, bright PRIMARY COLORS filling shapes (red, yellow, blue, green, orange, pink), RADIANT LINES emanating from bodies showing energy and movement, FLAT GRAPHIC shapes NO gradients NO shading NO fine details, flat graphic subway graffiti style, NOT photorealistic NOT detailed, figures in DYNAMIC DANCING POSES with movement lines, barking dogs and crawling babies as motifs, joyful energetic street art aesthetic';
-            controlStrength = 0.40;
             // console.log('✅ Enhanced Keith Haring with bold outlines and radiant lines (control_strength 0.40)');
           } else {
             // console.log('ℹ️ Keith Haring style already in prompt (AI included it)');
@@ -4252,7 +4398,6 @@ export default async function handler(req, res) {
           // console.log('🎯 Lichtenstein detected');
           if (!finalPrompt.includes('Ben-Day dots')) {
             finalPrompt = finalPrompt + ', Transform like Roy Lichtenstein "Drowning Girl" and "Whaam!" - CRITICAL: cover ENTIRE image with visible BEN-DAY DOTS pattern (small colored circles), THICK BOLD BLACK OUTLINES around ALL forms, SIMPLIFIED GRAPHIC SHAPES with REDUCED FINE DETAILS, LIMITED flat colors ONLY (primary red yellow blue plus black white), FLAT COLOR AREAS NO gradients NO shading, comic book dramatic emotional style, NOT photorealistic NOT detailed, halftone printing aesthetic blown up to fine art scale';
-            controlStrength = 0.55;
             // console.log('✅ Enhanced Lichtenstein with Drowning Girl reference (control_strength 0.55)');
           } else {
             // console.log('ℹ️ Lichtenstein dots already in prompt (AI included it)');
@@ -4319,7 +4464,6 @@ export default async function handler(req, res) {
         
         // Renaissance fallback도 control_strength 0.65
         if (fallbackKey === 'renaissance') {
-          controlStrength = 0.65;
           // console.log('✅ Renaissance fallback: control_strength 0.65');
         }
       }
@@ -4379,7 +4523,6 @@ export default async function handler(req, res) {
       
       // Renaissance fallback (no key)도 control_strength 0.65
       if (fallbackKey === 'renaissance') {
-        controlStrength = 0.65;
         // console.log('✅ Renaissance fallback (no key): control_strength 0.65');
       }
     }
@@ -4493,6 +4636,18 @@ export default async function handler(req, res) {
     // ========================================
     // v66: 구조화된 콘솔 로그 출력
     // ========================================
+    
+    // v70: 최종 control_strength 설정 (모든 분기 완료 후)
+    controlStrength = getControlStrength(selectedArtist, selectedStyle.id, categoryType);
+    // console.log(`📊 Final control_strength: ${controlStrength} (artist: ${selectedArtist})`);
+    
+    // 풍경/정물일 때 boost 적용 (이미 landscapeStrengthBoost가 true면)
+    if (landscapeStrengthBoost) {
+      const originalStrength = controlStrength;
+      controlStrength = Math.min(controlStrength + 0.15, 0.90);
+      // console.log(`📊 [LANDSCAPE-BOOST] control_strength: ${originalStrength} → ${controlStrength}`);
+    }
+    
     logData.prompt.wordCount = finalPrompt.split(/\s+/).length;
     logData.flux.control = controlStrength;
     
