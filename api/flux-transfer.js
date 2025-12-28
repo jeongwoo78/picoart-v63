@@ -107,7 +107,6 @@ const ARTIST_CONTROL_STRENGTH = {
   
   // === 후기인상주의 (0.50~0.65) ===
   'vangogh': 0.45,
-  'gogh': 0.50,
   'gauguin': 0.60,
   'cezanne': 0.65,
   'signac': 0.55,
