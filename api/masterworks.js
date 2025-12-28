@@ -73,18 +73,18 @@ export const masterworkNameMapping = {
   'mona lisa': 'leonardo-monalisa', '모나리자': 'leonardo-monalisa',
   'the last supper': 'leonardo-lastsupper', '최후의 만찬': 'leonardo-lastsupper',
   'virgin of the rocks': 'leonardo-virginrocks', '암굴의 성모': 'leonardo-virginrocks',
-  'venus of urbino': 'titian-venusurbino', 'bacchus and ariadne': 'titian-bacchus',
-  'assumption of the virgin': 'titian-assumption',
+  'bacchus and ariadne': 'titian-bacchus', '바쿠스와 아리아드네': 'titian-bacchus',
+  'assumption of the virgin': 'titian-assumption', '성모 승천': 'titian-assumption',
   'creation of adam': 'michelangelo-adam', '아담의 창조': 'michelangelo-adam',
-  'the last judgment': 'michelangelo-lastjudgment', 'pietà': 'michelangelo-pieta',
+  'the last judgment': 'michelangelo-lastjudgment', '최후의 심판': 'michelangelo-lastjudgment',
   'school of athens': 'raphael-athens', '아테네 학당': 'raphael-athens',
   'sistine madonna': 'raphael-sistinamadonna', 'triumph of galatea': 'raphael-galatea',
   
   // 바로크
-  'david with the head of goliath': 'caravaggio-david', 'judith beheading holofernes': 'caravaggio-judith',
-  'calling of saint matthew': 'caravaggio-matthew',
-  'the three graces': 'rubens-threegraces', 'descent from the cross': 'rubens-descent',
-  'rape of the daughters of leucippus': 'rubens-leucippus',
+  'calling of saint matthew': 'caravaggio-matthew', 'saint matthew': 'caravaggio-matthew',
+  'supper at emmaus': 'caravaggio-supper', '엠마오의 저녁식사': 'caravaggio-supper',
+  'descent from the cross': 'rubens-descent', '십자가에서 내려지심': 'rubens-descent',
+  'the garden of love': 'rubens-garden', '사랑의 정원': 'rubens-garden',
   'the night watch': 'rembrandt-nightwatch', '야경': 'rembrandt-nightwatch',
   'return of the prodigal son': 'rembrandt-prodigal',
   'las meninas': 'velazquez-meninas', '시녀들': 'velazquez-meninas',
@@ -92,22 +92,22 @@ export const masterworkNameMapping = {
   
   // 로코코
   'pilgrimage to cythera': 'watteau-cythera', 'pierrot': 'watteau-pierrot',
-  'diana leaving the bath': 'boucher-diana', 'madame de pompadour': 'boucher-pompadour',
-  'blonde odalisque': 'boucher-odalisque',
+  'madame de pompadour': 'boucher-pompadour', '퐁파두르 부인': 'boucher-pompadour',
+  'le dejeuner': 'boucher-breakfast', '아침 식사': 'boucher-breakfast',
   
   // 신고전/낭만/사실
   'death of marat': 'david-marat', '마라의 죽음': 'david-marat',
   'coronation of napoleon': 'david-coronation', 'oath of the horatii': 'david-horatii',
-  'grande odalisque': 'ingres-odalisque', 'valpinçon bather': 'ingres-bather',
-  'princesse de broglie': 'ingres-broglie',
+  'princesse de broglie': 'ingres-broglie', '드 브로이 공주': 'ingres-broglie',
+  'napoleon on his imperial throne': 'ingres-napoleon', '왕좌의 나폴레옹': 'ingres-napoleon',
   'rain, steam and speed': 'turner-rain', 'fighting temeraire': 'turner-temeraire',
   'slave ship': 'turner-slaveship',
   'liberty leading the people': 'delacroix-liberty', '민중을 이끄는 자유의 여신': 'delacroix-liberty',
   'death of sardanapalus': 'delacroix-sardanapalus', 'women of algiers': 'delacroix-algiers',
   'the stone breakers': 'courbet-stonebreakers', 'a burial at ornans': 'courbet-burial',
   'bonjour monsieur courbet': 'courbet-bonjour',
-  'olympia': 'manet-olympia', 'bar at the folies-bergère': 'manet-bar',
-  'luncheon on the grass': 'manet-dejeuner',
+  'bar at the folies-bergère': 'manet-bar', 'bar at the folies-bergere': 'manet-bar', '폴리베르제르의 바': 'manet-bar',
+  'the fifer': 'manet-fifer', '피리 부는 소년': 'manet-fifer',
   
   // 인상주의
   'luncheon of the boating party': 'renoir-boating', 'bal du moulin de la galette': 'renoir-moulin',
@@ -310,8 +310,8 @@ export const leonardoMasterworks = {
   'leonardo-monalisa': {
     name: '모나리자',
     nameEn: 'Mona Lisa',
-    prompt: 'Leonardo da Vinci "Mona Lisa" (c.1503-1519), extreme sfumato edges dissolving like smoke, enigmatic subtle smile, dark atmospheric landscape, warm golden-brown. CRITICAL: Paint ONLY the person in the original photo, apply sfumato style to THIS subject.',
-    feature: '미소, 스푸마토'
+    prompt: 'Leonardo da Vinci "Mona Lisa" (c.1503-1519), extreme sfumato edges dissolving like smoke, dark atmospheric landscape, warm golden-brown. CRITICAL: Paint ONLY the person in the original photo, apply sfumato style to THIS subject.',
+    feature: '스푸마토'
   },
   'leonardo-lastsupper': {
     name: '최후의 만찬',
@@ -328,15 +328,9 @@ export const leonardoMasterworks = {
 };
 
 // ========================================
-// 7. 티치아노 (3개)
+// 7. 티치아노 (2개) - v69: 누드 작품 제거
 // ========================================
 export const titianMasterworks = {
-  'titian-venusurbino': {
-    name: '우르비노의 비너스',
-    nameEn: 'Venus of Urbino',
-    prompt: 'Titian "Venus of Urbino" (1538), reclining figure gazing directly at viewer, warm glowing Venetian flesh tones, rich red and gold fabrics, intimate boudoir.',
-    feature: '누드, 관능'
-  },
   'titian-bacchus': {
     name: '바쿠스와 아리아드네',
     nameEn: 'Bacchus and Ariadne',
@@ -352,7 +346,7 @@ export const titianMasterworks = {
 };
 
 // ========================================
-// 8. 미켈란젤로 (3개)
+// 8. 미켈란젤로 (2개) - v69: 조각 작품 제거
 // ========================================
 export const michelangeloMasterworks = {
   'michelangelo-adam': {
@@ -366,12 +360,6 @@ export const michelangeloMasterworks = {
     nameEn: 'The Last Judgment',
     prompt: 'Michelangelo "The Last Judgment" (1536-1541), monumental apocalyptic scene, Christ central in judgment, swirling masses ascending descending, powerful muscular bodies.',
     feature: '심판, 군중'
-  },
-  'michelangelo-pieta': {
-    name: '피에타',
-    nameEn: 'Pietà',
-    prompt: 'Michelangelo "Pietà" (1498-1499), Madonna holding dead Christ, pyramidal composition, serene sorrowful beauty, smooth idealized forms, graceful drapery.',
-    feature: '비애, 조각적'
   }
 };
 
@@ -400,50 +388,38 @@ export const raphaelMasterworks = {
 };
 
 // ========================================
-// 10. 카라바조 (3개)
+// 10. 카라바조 (2개) - v69: 폭력적 작품 제거
 // ========================================
 export const caravaggioMasterworks = {
-  'caravaggio-david': {
-    name: '골리앗의 머리를 든 다윗',
-    nameEn: 'David with the Head of Goliath',
-    prompt: 'Caravaggio "David with the Head of Goliath" (c.1610), single figure emerging from pure black darkness, extreme tenebrism dramatic spotlight upper left, 70% deep shadows.',
-    feature: '단독, 극적 명암'
-  },
-  'caravaggio-judith': {
-    name: '홀로페르네스의 목을 베는 유디트',
-    nameEn: 'Judith Beheading Holofernes',
-    prompt: 'Caravaggio "Judith Beheading Holofernes" (c.1599), extreme tenebrism 70% pure black, dramatic spotlight on violent action, blood-red fabric against pitch black.',
-    feature: '드라마틱'
-  },
   'caravaggio-matthew': {
     name: '성 마태의 소명',
     nameEn: 'Calling of Saint Matthew',
     prompt: 'Caravaggio "Calling of Saint Matthew" (1599-1600), dramatic beam of light cutting through darkness pointing at figure, theatrical spotlight, Baroque diagonal composition.',
     feature: '빛줄기, 드라마'
+  },
+  'caravaggio-supper': {
+    name: '엠마오의 저녁식사',
+    nameEn: 'Supper at Emmaus',
+    prompt: 'Caravaggio "Supper at Emmaus" (1601), intimate tavern scene figures around table, extreme tenebrism dramatic spotlight, gesturing hands, warm earth tones against black.',
+    feature: '식사, 극적 명암'
   }
 };
 
 // ========================================
-// 11. 루벤스 (3개)
+// 11. 루벤스 (2개) - v69: 누드 작품 제거
 // ========================================
 export const rubensMasterworks = {
-  'rubens-threegraces': {
-    name: '삼미신',
-    nameEn: 'The Three Graces',
-    prompt: 'Peter Paul Rubens "The Three Graces" (1630-1635), three figures dancing in circle garden, warm luminous pearly flesh tones, soft sensual curves, rich pinks golds.',
-    feature: '누드, 삼미신'
-  },
   'rubens-descent': {
     name: '십자가에서 내려지심',
     nameEn: 'Descent from the Cross',
     prompt: 'Peter Paul Rubens "Descent from the Cross" (1612-1614), dramatic diagonal composition, pale body being lowered, rich red white drapery contrast, warm flesh dark background.',
     feature: '종교, 드라마'
   },
-  'rubens-leucippus': {
-    name: '레우키포스 딸들의 납치',
-    nameEn: 'Rape of the Daughters of Leucippus',
-    prompt: 'Peter Paul Rubens "Rape of the Daughters of Leucippus" (c.1618), dynamic swirling composition, muscular men on rearing horses, dramatic diagonal energy, sensual flesh tones.',
-    feature: '역동, 납치'
+  'rubens-garden': {
+    name: '사랑의 정원',
+    nameEn: 'The Garden of Love',
+    prompt: 'Peter Paul Rubens "The Garden of Love" (c.1633), aristocratic couples in lush garden, elegant silk costumes, warm golden light, romantic Baroque celebration.',
+    feature: '연인, 정원'
   }
 };
 
@@ -520,26 +496,20 @@ export const watteauMasterworks = {
 };
 
 // ========================================
-// 15. 부셰 (3개)
+// 15. 부셰 (2개) - v69: 누드 작품 제거
 // ========================================
 export const boucherMasterworks = {
-  'boucher-diana': {
-    name: '목욕하는 디아나',
-    nameEn: 'Diana Leaving the Bath',
-    prompt: 'François Boucher "Diana Leaving the Bath" (1742), rosy porcelain skin with hunting dogs quiver, soft pastel pink blue cream, fluffy clouds foliage.',
-    feature: '누드, 신화'
-  },
   'boucher-pompadour': {
     name: '퐁파두르 부인',
     nameEn: 'Madame de Pompadour',
     prompt: 'François Boucher "Madame de Pompadour" (1756), aristocratic portrait luxurious setting, elaborate silk gown with roses, powder blue pink palette.',
     feature: '초상, 귀족'
   },
-  'boucher-odalisque': {
-    name: '금발의 오달리스크',
-    nameEn: 'Blonde Odalisque',
-    prompt: 'François Boucher "Blonde Odalisque" (1752), reclining figure from behind, soft rosy peach skin blue ribbon, luxurious cushions drapery, intimate boudoir.',
-    feature: '누드, 관능'
+  'boucher-breakfast': {
+    name: '아침 식사',
+    nameEn: 'Le Déjeuner',
+    prompt: 'François Boucher "Le Déjeuner" (1739), elegant family breakfast scene Rococo interior, mother with children, soft pastel pink blue cream, intimate domestic.',
+    feature: '가족, 실내'
   }
 };
 
@@ -568,26 +538,20 @@ export const davidMasterworks = {
 };
 
 // ========================================
-// 17. 앵그르 (3개)
+// 17. 앵그르 (2개) - v69: 누드 작품 제거
 // ========================================
 export const ingresMasterworks = {
-  'ingres-odalisque': {
-    name: '그랑드 오달리스크',
-    nameEn: 'Grande Odalisque',
-    prompt: 'Jean-Auguste-Dominique Ingres "Grande Odalisque" (1814), reclining figure from behind showing elongated spine, exotic harem peacock fan, cool blue drapery.',
-    feature: '여성 누드'
-  },
-  'ingres-bather': {
-    name: '발팽송의 목욕하는 여인',
-    nameEn: 'Valpinçon Bather',
-    prompt: 'Jean-Auguste-Dominique Ingres "Valpinçon Bather" (1808), seated figure from behind turban-wrapped head, ivory skin, simple composition plain background.',
-    feature: '여성 뒷모습'
-  },
   'ingres-broglie': {
     name: '드 브로이 공주',
     nameEn: 'Princesse de Broglie',
     prompt: 'Jean-Auguste-Dominique Ingres "Princesse de Broglie" (1851-1853), aristocratic portrait luxurious blue satin gown, elaborate jewelry lace, formal three-quarter pose.',
     feature: '격식 초상'
+  },
+  'ingres-napoleon': {
+    name: '왕좌의 나폴레옹',
+    nameEn: 'Napoleon on his Imperial Throne',
+    prompt: 'Jean-Auguste-Dominique Ingres "Napoleon on his Imperial Throne" (1806), imperial majesty frontal symmetrical pose, rich crimson velvet gold embroidery, regal authority.',
+    feature: '황제, 위엄'
   }
 };
 
@@ -664,26 +628,20 @@ export const courbetMasterworks = {
 };
 
 // ========================================
-// 21. 마네 (3개)
+// 21. 마네 (2개) - v69: 누드 작품 제거
 // ========================================
 export const manetMasterworks = {
-  'manet-olympia': {
-    name: '올랭피아',
-    nameEn: 'Olympia',
-    prompt: 'Édouard Manet "Olympia" (1863), reclining figure white sheets direct confrontational gaze, stark contrast pale skin dark background, bold flat areas.',
-    feature: '도발'
-  },
   'manet-bar': {
     name: '폴리베르제르의 바',
     nameEn: 'Bar at the Folies-Bergère',
     prompt: 'Édouard Manet "Bar at the Folies-Bergère" (1882), barmaid facing viewer behind marble counter, mirror reflection crowded café, bottles oranges, bold blacks bright accents.',
     feature: '도시'
   },
-  'manet-dejeuner': {
-    name: '풀밭 위의 점심',
-    nameEn: 'Luncheon on the Grass',
-    prompt: 'Édouard Manet "Luncheon on the Grass" (1863), nude alongside clothed men forest picnic, direct gaze at viewer, bold tonal contrasts.',
-    feature: '그룹 야외'
+  'manet-fifer': {
+    name: '피리 부는 소년',
+    nameEn: 'The Fifer',
+    prompt: 'Édouard Manet "The Fifer" (1866), young boy in military uniform playing fife, flat bold color areas, minimal background, strong silhouette red trousers black jacket.',
+    feature: '인물, 단순'
   }
 };
 
@@ -1344,21 +1302,21 @@ export function getArtistMasterworkList(artistKey) {
     'islamic-miniature': ['islamic-youth', 'islamic-miraj', 'islamic-simurgh', 'islamic-lovers', 'islamic-rustam'],
     'botticelli': ['botticelli-venus', 'botticelli-primavera', 'botticelli-venusmars'],
     'leonardo': ['leonardo-monalisa', 'leonardo-lastsupper', 'leonardo-virginrocks'],
-    'titian': ['titian-venusurbino', 'titian-bacchus', 'titian-assumption'],
-    'michelangelo': ['michelangelo-adam', 'michelangelo-lastjudgment', 'michelangelo-pieta'],
+    'titian': ['titian-bacchus', 'titian-assumption'],
+    'michelangelo': ['michelangelo-adam', 'michelangelo-lastjudgment'],
     'raphael': ['raphael-athens', 'raphael-sistinamadonna', 'raphael-galatea'],
-    'caravaggio': ['caravaggio-david', 'caravaggio-judith', 'caravaggio-matthew'],
-    'rubens': ['rubens-threegraces', 'rubens-descent', 'rubens-leucippus'],
+    'caravaggio': ['caravaggio-matthew', 'caravaggio-supper'],
+    'rubens': ['rubens-descent', 'rubens-garden'],
     'rembrandt': ['rembrandt-nightwatch', 'rembrandt-selfportrait', 'rembrandt-prodigal'],
     'velazquez': ['velazquez-meninas', 'velazquez-pope', 'velazquez-breda'],
     'watteau': ['watteau-cythera', 'watteau-pierrot', 'watteau-fete'],
-    'boucher': ['boucher-diana', 'boucher-pompadour', 'boucher-odalisque'],
+    'boucher': ['boucher-pompadour', 'boucher-breakfast'],
     'david': ['david-marat', 'david-coronation', 'david-horatii'],
-    'ingres': ['ingres-odalisque', 'ingres-bather', 'ingres-broglie'],
+    'ingres': ['ingres-broglie', 'ingres-napoleon'],
     'turner': ['turner-rain', 'turner-temeraire', 'turner-slaveship'],
     'delacroix': ['delacroix-liberty', 'delacroix-sardanapalus', 'delacroix-algiers'],
     'courbet': ['courbet-stonebreakers', 'courbet-burial', 'courbet-bonjour'],
-    'manet': ['manet-olympia', 'manet-bar', 'manet-dejeuner'],
+    'manet': ['manet-bar', 'manet-fifer'],
     'renoir': ['renoir-boating', 'renoir-moulin', 'renoir-piano'],
     'degas': ['degas-danceclass', 'degas-star', 'degas-absinthe'],
     'monet': ['monet-waterlilies', 'monet-impression', 'monet-parasol'],

@@ -894,7 +894,7 @@ Available Renaissance Artists (5명):
 2. TITIAN (티치아노) ⭐⭐ STRONG for male portraits & landscapes (70%)
    - Specialty: Venetian golden color, luminous flesh tones, ARISTOCRATIC MALE PORTRAITS
    - Best for: MALE upper body portraits, landscapes with sky/sunset, noble dignified men
-   - Masterworks: "Venus of Urbino", "Bacchus and Ariadne", "Assumption of the Virgin" ← SELECT ONE ONLY!
+   - Masterworks: "Bacchus and Ariadne", "Assumption of the Virgin" ← SELECT ONE ONLY!
    - When to prioritize: Male face/upper body portrait (STRONG 70%) OR landscapes with sky
 
 3. RAPHAEL (라파엘로) - Best for mother+baby, peaceful scenes
@@ -906,7 +906,7 @@ Available Renaissance Artists (5명):
 4. MICHELANGELO (미켈란젤로) - Best for ADULT male, dynamic/heroic
    - Specialty: Sculptural powerful anatomy, heroic masculine figures
    - Best for: ADULT male (age 18+) with full body, athletic, dynamic, heroic poses
-   - Masterworks: "Creation of Adam", "Last Judgment", "Pieta" ← SELECT ONE ONLY!
+   - Masterworks: "Creation of Adam", "Last Judgment" ← SELECT ONE ONLY!
    - When to prioritize: Adult male with masculine energy, sports, action, heroic subject
    - CRITICAL: NEVER for children, teenagers, women, or elderly - ONLY adult men
 
@@ -1017,13 +1017,13 @@ Available Baroque Artists (4명):
 1. CARAVAGGIO (카라바조) ⭐⭐⭐ STRONGEST - default choice for single portraits
    - Specialty: Dramatic chiaroscuro, tenebrism, theatrical spotlight effect
    - Best for: Single person portraits, dramatic mood, strong expressions
-   - Masterworks: "David with the Head of Goliath", "Judith Beheading Holofernes", "The Calling of St Matthew" ← SELECT ONE ONLY!
+   - Masterworks: "The Calling of St Matthew", "Supper at Emmaus" ← SELECT ONE ONLY!
    - When to prioritize: Most single portraits (70%)
 
 2. RUBENS (루벤스) ⭐⭐ Best for couples & groups
    - Specialty: Warm sensual flesh, dynamic movement, voluptuous forms
    - Best for: Couples, romantic scenes, multi-person compositions, warm energy
-   - Masterworks: "The Three Graces", "Descent from the Cross", "Rape of the Daughters of Leucippus" ← SELECT ONE ONLY!
+   - Masterworks: "Descent from the Cross", "The Garden of Love" ← SELECT ONE ONLY!
    - When to prioritize: 2+ people, romantic/intimate mood, dynamic poses
 
 3. REMBRANDT (렘브란트) - Best for elderly subjects & window light
@@ -1117,7 +1117,7 @@ Available Rococo Artists (2명):
 1. BOUCHER (부셰) ⭐⭐ STRONGEST for Rococo (70%)
    - Specialty: Playful sensual charm, soft pink and blue pastels, ornate decoration
    - Best for: Most photos - quintessential Rococo style
-   - Masterworks: "Diana Leaving the Bath", "Madame de Pompadour", "Blonde Odalisque" ← SELECT ONE ONLY!
+   - Masterworks: "Madame de Pompadour", "Le Déjeuner" ← SELECT ONE ONLY!
    - When to prioritize: Most cases (DEFAULT 70%)
 
 2. WATTEAU (와토) - Best for romantic outdoor scenes (30%)
@@ -1279,7 +1279,7 @@ Available Artists (6명) - AI will choose BEST style (Neoclassicism vs Romantici
 2. INGRES (앵그르) - BEST for elegant female portraits
    - Specialty: Perfect smooth contours, classical beauty, refined elegance
    - Best for: Female portraits, graceful poses, elegant beauty
-   - Masterworks: "Grande Odalisque", "Valpinçon Bather", "Princesse de Broglie" ← SELECT ONE ONLY!
+   - Masterworks: "Princesse de Broglie", "Napoleon on his Imperial Throne" ← SELECT ONE ONLY!
    - When to prioritize: Elegant female subjects (65%)
 
 ⚡ ROMANTICISM (낭만주의) - Emotion and Passion:
@@ -1307,7 +1307,7 @@ Available Artists (6명) - AI will choose BEST style (Neoclassicism vs Romantici
 6. MANET (마네) - BEST for urban/modern scenes
    - Specialty: Modern Paris life, café scenes, urban sophistication
    - Best for: Urban settings, modern atmosphere, café/city backgrounds
-   - Masterworks: "Olympia", "Bar at the Folies-Bergère", "Luncheon on the Grass" ← SELECT ONE ONLY!
+   - Masterworks: "Bar at the Folies-Bergère", "The Fifer" ← SELECT ONE ONLY!
    - When to prioritize: Clear urban/modern/city context (75%)
 
 ⚠️ CRITICAL: You MUST select a masterwork from the exact list above! Do NOT invent new titles!
@@ -3025,9 +3025,9 @@ export default async function handler(req, res) {
       // 점묘법 (0.60 - 점으로 형태 구성)
       'pointillism': 0.60,
       
-      // 색채/감정 폭발 (0.55~0.60)
-      'fauvism': 0.60,
-      'expressionism': 0.55,
+      // 색채/감정 폭발 (0.45 - v69: 낮춰서 화풍 강화)
+      'fauvism': 0.45,
+      'expressionism': 0.45,
       
       // 동양화 (0.75 - 형태 유지하되 화풍 적용)
       'korean': 0.75,
@@ -3754,8 +3754,8 @@ export default async function handler(req, res) {
         if (selectedArtist.toUpperCase().trim().includes('MATISSE') ||
             selectedArtist.includes('마티스')) {
           // console.log('🎯 Matisse detected');
-          controlStrength = 0.65;
-          // console.log('✅ Enhanced Matisse Fauvism (control_strength 0.65)');
+          controlStrength = 0.45;
+          // console.log('✅ Enhanced Matisse Fauvism (control_strength 0.45)');
         }
         
         // 렘브란트 선택시 빛 강화
@@ -3893,8 +3893,8 @@ export default async function handler(req, res) {
         // 앵그르 선택시 완벽한 윤곽선 강화
         if (selectedArtist.toUpperCase().trim().includes('INGRES')) {
           // console.log('🎯 Ingres detected');
-          if (!finalPrompt.includes('La Grande Odalisque')) {
-            finalPrompt = finalPrompt + ', painting by Jean-Auguste-Dominique Ingres, La Grande Odalisque-style with PERFECTLY SMOOTH FLOWING CONTOURS like polished marble surface, porcelain-smooth skin with not a single visible brushstroke anywhere, elegant sinuous curves and graceful elongated forms, idealized classical beauty with refined aristocratic elegance, meticulous precise detail in every element, cool serene color palette with subtle flesh tones, flawless enamel-like finish with absolute technical perfection, linear purity and smooth transitions';
+          if (!finalPrompt.includes('Princesse de Broglie')) {
+            finalPrompt = finalPrompt + ', painting by Jean-Auguste-Dominique Ingres, Princesse de Broglie-style with PERFECTLY SMOOTH FLOWING CONTOURS like polished marble surface, porcelain-smooth skin with not a single visible brushstroke anywhere, elegant sinuous curves and graceful elongated forms, idealized classical beauty with refined aristocratic elegance, meticulous precise detail in every element, cool serene color palette with subtle flesh tones, flawless enamel-like finish with absolute technical perfection, linear purity and smooth transitions';
             // console.log('✅ Enhanced Ingres smooth perfection added');
           } else {
             // console.log('ℹ️ Ingres perfection already in prompt (AI included it)');
@@ -3918,8 +3918,8 @@ export default async function handler(req, res) {
             selectedArtist.toUpperCase().trim().includes('EDOUARD') ||
             selectedArtist.toUpperCase().trim().includes('ÉDOUARD')) {
           // console.log('🎯 Manet detected');
-          if (!finalPrompt.includes('Olympia-style')) {
-            finalPrompt = finalPrompt + ', painting by Édouard Manet, Olympia-style MODERN PARIS REALISM with bold flat composition and striking contrasts, dramatic blacks and pure whites with minimal mid-tones creating graphic impact, sophisticated urban atmosphere of café society and contemporary life, frank direct confrontational gaze meeting viewer, loose confident brushwork with visible energetic strokes, elimination of traditional modeling through strong light-dark opposition, metropolitan elegance and modern audacity';
+          if (!finalPrompt.includes('Folies-Bergère')) {
+            finalPrompt = finalPrompt + ', painting by Édouard Manet, Bar at the Folies-Bergère-style MODERN PARIS REALISM with bold flat composition and striking contrasts, dramatic blacks and pure whites with minimal mid-tones creating graphic impact, sophisticated urban atmosphere of café society and contemporary life, frank direct confrontational gaze meeting viewer, loose confident brushwork with visible energetic strokes, elimination of traditional modeling through strong light-dark opposition, metropolitan elegance and modern audacity';
             // console.log('✅ Enhanced Manet modern realism added');
           } else {
             // console.log('ℹ️ Manet realism already in prompt (AI included it)');
