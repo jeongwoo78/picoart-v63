@@ -112,7 +112,13 @@ const pollPrediction = async (predictionId, modelConfig, onProgress) => {
     }
 
     if (result.status === 'failed') {
-      throw new Error('Processing failed');
+      // 상세 에러 정보 로깅
+      console.error('❌ FLUX Processing Failed:', {
+        error: result.error,
+        logs: result.logs,
+        predictionId: predictionId
+      });
+      throw new Error(`Processing failed: ${result.error || 'Unknown error'}`);
     }
 
     if (onProgress) {

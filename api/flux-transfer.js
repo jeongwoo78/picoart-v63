@@ -888,35 +888,35 @@ Available Renaissance Artists (5명):
 1. LEONARDO DA VINCI (레오나르도 다 빈치) ⭐ STRONGEST for female portraits
    - Specialty: Sfumato technique, mysterious smile, soft transitions, psychological depth
    - Best for: Female upper body portraits, mysterious/serene expressions
-   - Signature: Sfumato soft atmosphere, gentle beauty, enigmatic quality
-   - Masterpiece: Various portraits with sfumato technique
+   - Masterworks: "Mona Lisa", "The Last Supper", "Virgin of the Rocks" ← SELECT ONE ONLY!
    - When to prioritize: Female face/upper body portrait (STRONG RECOMMENDATION 80%)
 
 2. TITIAN (티치아노) ⭐⭐ STRONG for male portraits & landscapes (70%)
    - Specialty: Venetian golden color, luminous flesh tones, ARISTOCRATIC MALE PORTRAITS
    - Best for: MALE upper body portraits, landscapes with sky/sunset, noble dignified men
-   - Signature: Rich Titian red, glowing golden atmosphere, Venetian warmth and power
-   - Masterpieces: Portrait of a Man, Venetian nobleman portraits
+   - Masterworks: "Venus of Urbino", "Bacchus and Ariadne", "Assumption of the Virgin" ← SELECT ONE ONLY!
    - When to prioritize: Male face/upper body portrait (STRONG 70%) OR landscapes with sky
 
 3. RAPHAEL (라파엘로) - Best for mother+baby, peaceful scenes
    - Specialty: Harmonious balanced composition, graceful figures, serene beauty
    - Best for: Mother with child, peaceful family scenes, gentle relationships
-   - Signature: Madonna-like grace, perfect harmony
+   - Masterworks: "School of Athens", "Sistine Madonna", "Galatea" ← SELECT ONE ONLY!
    - When to prioritize: Clear mother+baby or peaceful multi-person scene
 
 4. MICHELANGELO (미켈란젤로) - Best for ADULT male, dynamic/heroic
    - Specialty: Sculptural powerful anatomy, heroic masculine figures
    - Best for: ADULT male (age 18+) with full body, athletic, dynamic, heroic poses
-   - Signature: David-like muscular strength, monumental dignity
+   - Masterworks: "Creation of Adam", "Last Judgment", "Pieta" ← SELECT ONE ONLY!
    - When to prioritize: Adult male with masculine energy, sports, action, heroic subject
    - CRITICAL: NEVER for children, teenagers, women, or elderly - ONLY adult men
 
 5. BOTTICELLI (보티첼리) - Best for young female full body, graceful
    - Specialty: Flowing elegant lines, ethereal beauty, graceful movement
    - Best for: Young female full body, dance-like poses, gentle movement
-   - Signature: Birth of Venus-like flowing grace, lyrical beauty
+   - Masterworks: "The Birth of Venus", "Primavera", "Venus and Mars" ← SELECT ONE ONLY!
    - When to prioritize: Young female full body with graceful pose
+
+⚠️ CRITICAL: You MUST select a masterwork from the exact list above! Do NOT invent new titles!
 `;
 }
 
@@ -1017,22 +1017,28 @@ Available Baroque Artists (4명):
 1. CARAVAGGIO (카라바조) ⭐⭐⭐ STRONGEST - default choice for single portraits
    - Specialty: Dramatic chiaroscuro, tenebrism, theatrical spotlight effect
    - Best for: Single person portraits, dramatic mood, strong expressions
+   - Masterworks: "David with the Head of Goliath", "Judith Beheading Holofernes", "The Calling of St Matthew" ← SELECT ONE ONLY!
    - When to prioritize: Most single portraits (70%)
 
 2. RUBENS (루벤스) ⭐⭐ Best for couples & groups
    - Specialty: Warm sensual flesh, dynamic movement, voluptuous forms
    - Best for: Couples, romantic scenes, multi-person compositions, warm energy
+   - Masterworks: "The Three Graces", "Descent from the Cross", "Rape of the Daughters of Leucippus" ← SELECT ONE ONLY!
    - When to prioritize: 2+ people, romantic/intimate mood, dynamic poses
 
 3. REMBRANDT (렘브란트) - Best for elderly subjects & window light
    - Specialty: Warm golden light, psychological depth, soft window illumination
    - Best for: Elderly subjects (60+), contemplative mood, female with natural light
+   - Masterworks: "The Night Watch", "Self-Portrait", "Return of the Prodigal Son" ← SELECT ONE ONLY!
    - When to prioritize: Clear elderly subject or window light scenes
 
 4. VELÁZQUEZ (벨라스케스) - Best for formal portraits
    - Specialty: Courtly dignity, Spanish formality
    - Best for: Formal clothing, aristocratic mood
+   - Masterworks: "Las Meninas", "Portrait of Pope Innocent X", "The Surrender of Breda" ← SELECT ONE ONLY!
    - When to prioritize: Formal/official context
+
+⚠️ CRITICAL: You MUST select a masterwork from the exact list above! Do NOT invent new titles!
 `;
 }
 
@@ -1111,16 +1117,16 @@ Available Rococo Artists (2명):
 1. BOUCHER (부셰) ⭐⭐ STRONGEST for Rococo (70%)
    - Specialty: Playful sensual charm, soft pink and blue pastels, ornate decoration
    - Best for: Most photos - quintessential Rococo style
-   - Signature: Whimsical charm, light pastel palette, cherubs and cupids
+   - Masterworks: "Diana Leaving the Bath", "Madame de Pompadour", "Blonde Odalisque" ← SELECT ONE ONLY!
    - When to prioritize: Most cases (DEFAULT 70%)
 
 2. WATTEAU (와토) - Best for romantic outdoor scenes (30%)
    - Specialty: Fêtes galantes (elegant outdoor parties), romantic gardens
    - Best for: Outdoor scenes specifically, romantic atmosphere, leisure activities
-   - Signature: Dreamy pastoral elegance, soft romantic mood, melancholic charm
+   - Masterworks: "Pilgrimage to Cythera", "Pierrot", "Fête galante" ← SELECT ONE ONLY!
    - When to prioritize: Clear outdoor/garden/romantic settings (30%)
 
-Note: Boucher is the quintessential Rococo artist.
+⚠️ CRITICAL: You MUST select a masterwork from the exact list above! Do NOT invent new titles!
 `;
 }
 
@@ -1260,20 +1266,20 @@ YOU MUST ONLY SELECT FROM THE ARTISTS LISTED BELOW!
 DO NOT select artists from other movements (Baroque, Impressionism, Expressionism, etc.)
 ONLY these 6 artists: DAVID, INGRES, TURNER, DELACROIX, COURBET, MANET!
 
-Available Artists (7명) - AI will choose BEST style (Neoclassicism vs Romanticism vs Realism):
+Available Artists (6명) - AI will choose BEST style (Neoclassicism vs Romanticism vs Realism):
 
 ⚖️ NEOCLASSICISM (신고전주의) - Reason and Order:
 
 1. DAVID (다비드) ⭐ BEST for formal/heroic portraits
    - Specialty: Classical heroic compositions, clear lines, dignified formality
    - Best for: Formal portraits, static balanced poses, heroic subjects
-   - Signature: Napoleon's Coronation - cold perfection, clear structure
+   - Masterworks: "Death of Marat", "Coronation of Napoleon", "Oath of the Horatii" ← SELECT ONE ONLY!
    - When to prioritize: Formal/static/balanced photos (70%)
 
 2. INGRES (앵그르) - BEST for elegant female portraits
    - Specialty: Perfect smooth contours, classical beauty, refined elegance
    - Best for: Female portraits, graceful poses, elegant beauty
-   - Signature: La Grande Odalisque - idealized smooth perfection
+   - Masterworks: "Grande Odalisque", "Valpinçon Bather", "Princesse de Broglie" ← SELECT ONE ONLY!
    - When to prioritize: Elegant female subjects (65%)
 
 ⚡ ROMANTICISM (낭만주의) - Emotion and Passion:
@@ -1281,13 +1287,13 @@ Available Artists (7명) - AI will choose BEST style (Neoclassicism vs Romantici
 3. TURNER (터너) ⭐⭐ STRONGEST for landscapes
    - Specialty: Atmospheric light effects, misty dreamlike landscapes, sublime nature
    - Best for: Landscapes, fog/mist, atmospheric effects, natural scenery
-   - Signature: Golden luminous atmosphere, dissolving forms in light
+   - Masterworks: "Rain, Steam and Speed", "Fighting Temeraire", "Slave Ship" ← SELECT ONE ONLY!
    - When to prioritize: Landscape photos (STRONG 80%)
 
 4. DELACROIX (들라크루아) - BEST for dramatic action, intense emotions
    - Specialty: Vivid passionate colors, dynamic movement, revolutionary energy
    - Best for: Action scenes, dramatic expressions, multiple people in motion
-   - Signature: Liberty Leading the People - passionate drama
+   - Masterworks: "Liberty Leading the People", "Death of Sardanapalus", "Women of Algiers" ← SELECT ONE ONLY!
    - When to prioritize: Action/drama/multiple people in motion (75%)
 
 🎨 REALISM (사실주의) - Honest Truth:
@@ -1295,14 +1301,16 @@ Available Artists (7명) - AI will choose BEST style (Neoclassicism vs Romantici
 5. COURBET (쿠르베) ⭐ STRONGEST for rural/landscape realism
    - Specialty: Honest rural reality, landscapes, everyday life, anti-idealized truth
    - Best for: Rural settings, landscapes, working class subjects, realistic portrayal
-   - Signature: The Stone Breakers, Burial at Ornans - unvarnished reality
+   - Masterworks: "The Stone Breakers", "A Burial at Ornans", "Bonjour Monsieur Courbet" ← SELECT ONE ONLY!
    - When to prioritize: Rural/landscape/working class subjects (STRONG 80%)
 
 6. MANET (마네) - BEST for urban/modern scenes
    - Specialty: Modern Paris life, café scenes, urban sophistication
    - Best for: Urban settings, modern atmosphere, café/city backgrounds
-   - Signature: Olympia, A Bar at the Folies-Bergère - modern realism
+   - Masterworks: "Olympia", "Bar at the Folies-Bergère", "Luncheon on the Grass" ← SELECT ONE ONLY!
    - When to prioritize: Clear urban/modern/city context (75%)
+
+⚠️ CRITICAL: You MUST select a masterwork from the exact list above! Do NOT invent new titles!
 
 🎯 CRITICAL DECISION LOGIC:
 - Photo is STATIC, BALANCED, FORMAL → Choose Neoclassicism (David or Ingres)
@@ -1427,29 +1435,28 @@ Available Impressionism Artists (4명):
 1. RENOIR (르누아르) ⭐⭐⭐⭐ STRONGEST - Best for portraits (35%)
    - Specialty: SOFT WARM figures in dappled sunlight, joyful atmosphere, peachy skin tones
    - Best for: ALL portraits (indoor/outdoor), happy people, sunlit gatherings, festive scenes
-   - Signature: "Luncheon of the Boating Party", "Dance at Le Moulin de la Galette"
+   - Masterworks: "Luncheon of the Boating Party", "Bal du moulin de la Galette", "Girls at the Piano" ← SELECT ONE ONLY!
    - When to prioritize: Most portrait cases (35%)
-   - CRITICAL: Soft feathery brushstrokes, warm peachy skin tones work BEST in AI
 
 2. DEGAS (드가) ⭐⭐⭐ Best for movement AND composition (30%)
    - Specialty: Movement capture, unusual angles, dynamic compositions, ballet dancers
    - Best for: Action shots, dance, sports, movement, diagonal compositions, interesting angles
-   - Signature: Ballet rehearsals - movement frozen in time, asymmetric cropping
+   - Masterworks: "The Dance Class", "The Star", "L'Absinthe" ← SELECT ONE ONLY!
    - When to prioritize: Movement/action/dance OR unique compositional angles (30%)
-   - CRITICAL: Degas excels at both MOVEMENT and COMPOSITION
 
 3. MONET (모네) ⭐⭐ Good for landscapes (25%)
    - Specialty: Light effects, outdoor atmosphere, water reflections
    - Best for: Landscapes, gardens, water scenes (NOT portraits)
-   - Signature landscapes: "Water Lilies", "Impression, Sunrise"
+   - Masterworks: "Water Lilies", "Impression, Sunrise", "Woman with a Parasol" ← SELECT ONE ONLY!
    - When to prioritize: Pure landscapes without people (25%)
-   - Note: Impressionist hazy effects can be challenging for AI
 
 4. CAILLEBOTTE (칼리보트) ⭐ Urban specialist (20%)
    - Specialty: Modern urban scenes, dramatic perspective, city life
    - Best for: City backgrounds, male portraits, geometric compositions
-   - Signature works: "Paris Street, Rainy Day", "The Floor Scrapers"
+   - Masterworks: "Paris Street, Rainy Day", "The Floor Scrapers", "Man at the Window" ← SELECT ONE ONLY!
    - When to prioritize: Urban/city scenes (80%), male portraits (35%)
+
+⚠️ CRITICAL: You MUST select a masterwork from the exact list above! Do NOT invent new titles!
 
 🎯 CRITICAL DECISION LOGIC:
 - Female/child portraits → RENOIR (35%) ⭐⭐⭐⭐ PRIMARY
@@ -1625,21 +1632,22 @@ Available Fauvism Artists (3명):
 1. MATISSE (마티스) ⭐⭐⭐ STRONG for portraits and interiors (35%)
    - Specialty: Pure bold colors, decorative flat patterns, joyful harmonious compositions
    - Best for: Most photos, especially people, interiors, calm atmosphere
-   - Signature: The Dance, La Desserte - flat decorative color harmony
+   - Masterworks: "The Green Stripe", "Woman in a Purple Coat", "The Dance", "The Red Room" ← SELECT ONE ONLY!
    - When to prioritize: Most Fauvism cases (35%)
-   - Note: Also available in Masters collection
 
 2. DERAIN (드랭) ⭐⭐⭐ STRONG for landscapes (35%)
    - Specialty: Bold landscape colors, vivid natural scenery, strong contrasts
    - Best for: Landscapes, trees, outdoor nature, bright scenery
-   - Signature: Charing Cross Bridge - bold landscape colors
+   - Masterworks: "Mountains at Collioure", "Charing Cross Bridge", "Portrait of Matisse" ← SELECT ONE ONLY!
    - When to prioritize: Clear landscape/outdoor scene (35%)
 
 3. VLAMINCK (블라맹크) ⭐⭐⭐ STRONG for dramatic colors (30%)
    - Specialty: Violent expressive colors, turbulent brushwork, emotional intensity
    - Best for: Dramatic mood, intense emotions, stormy atmosphere
-   - Signature: Most violent Fauvist colors - emotional explosions
+   - Masterworks: "The River Seine at Chatou", "Red Trees", "Bougival" ← SELECT ONE ONLY!
    - When to prioritize: Dramatic/intense emotional mood (30%)
+
+⚠️ CRITICAL: You MUST select a masterwork from the exact list above! Do NOT invent new titles!
 
 🎯 CRITICAL DECISION LOGIC - BALANCED DISTRIBUTION:
 - Most photos/portraits → MATISSE (35%) - versatile, harmonious
@@ -1691,41 +1699,35 @@ function getExpressionismGuidelines() {
 🚫🚫🚫 CRITICAL RESTRICTION 🚫🚫🚫
 YOU MUST ONLY SELECT FROM THE ARTISTS LISTED BELOW!
 DO NOT select artists from other movements (Fauvism, Post-Impressionism, Impressionism, etc.)
-ONLY Expressionism artists: MUNCH, KOKOSCHKA, KIRCHNER, KANDINSKY!
+ONLY Expressionism artists: MUNCH, KOKOSCHKA, KIRCHNER!
 ⚠️ FORBIDDEN: Derain, Matisse, Vlaminck (they are FAUVISM, NOT Expressionism!)
 
-Available Expressionism Artists (4명):
+Available Expressionism Artists (3명):
 
-1. MUNCH (뭉크) ⭐⭐⭐ STRONG for emotional portraits (30%)
+1. MUNCH (뭉크) ⭐⭐⭐ STRONG for emotional portraits (35%)
    - Specialty: Existential anxiety, psychological tension, swirling distorted forms
    - Best for: Emotional portraits with depth, anxious expressions, dramatic scenes
-   - Signature: "The Scream" - iconic anxiety and modern alienation
-   - When to prioritize: Emotional/dramatic portraits (30%)
-   - Note: Also available in Masters collection
+   - Masterworks: "The Scream", "Madonna", "Jealousy" ← SELECT ONE ONLY!
+   - When to prioritize: Emotional/dramatic portraits (35%)
 
-2. KOKOSCHKA (코코슈카) ⭐⭐⭐ STRONG for psychological portraits (30%)
+2. KOKOSCHKA (코코슈카) ⭐⭐⭐ STRONG for psychological portraits (35%)
    - Specialty: Intense psychological portraits, violent brushstrokes, inner turmoil
    - Best for: Deep character portraits, emotional intensity, raw expression
-   - Signature: "The Bride of the Wind" - turbulent emotional portraits
-   - When to prioritize: Portraits needing psychological depth (30%)
-   - CRITICAL: Rough expressive brushwork (30mm+ reveals inner psyche
+   - Masterworks: "The Bride of the Wind", "Degenerate Art", "Double Portrait" ← SELECT ONE ONLY!
+   - When to prioritize: Portraits needing psychological depth (35%)
 
-3. KIRCHNER (키르히너) ⭐⭐⭐ STRONG for urban expressionism (25%)
+3. KIRCHNER (키르히너) ⭐⭐⭐ STRONG for urban expressionism (30%)
    - Specialty: JAGGED ANGULAR FORMS, urban anxiety, street energy
    - Best for: Urban settings, bold color contrasts, city scenes, angular compositions
-   - Signature: "Street Scenes" - angular urban life
-   - When to prioritize: Urban/city backgrounds or angular aesthetic (25%)
+   - Masterworks: "Berlin Street Scene", "Self-Portrait as a Soldier", "Two Women with a Sink" ← SELECT ONE ONLY!
+   - When to prioritize: Urban/city backgrounds or angular aesthetic (30%)
 
-   - Specialty: Abstract expressionism, spiritual compositions, pure color emotion
-   - Best for: Abstract interpretation, spiritual atmosphere, emotional abstraction
-   - Signature: "Compositions" - non-representational emotional color
-   - When to prioritize: Abstract/spiritual desired (15%)
+⚠️ CRITICAL: You MUST select a masterwork from the exact list above! Do NOT invent new titles!
 
-🎯 CRITICAL DECISION LOGIC - 4 ARTISTS ONLY:
-- Emotional portraits → MUNCH (30%, also in Masters)
-- Psychological depth → KOKOSCHKA (30%)
-- Urban/city/angular → KIRCHNER (25%)
-- Abstract/spiritual → KANDINSKY (15%)
+🎯 CRITICAL DECISION LOGIC - 3 ARTISTS ONLY:
+- Emotional portraits → MUNCH (35%, also in Masters)
+- Psychological depth → KOKOSCHKA (35%)
+- Urban/city/angular → KIRCHNER (30%)
 ⚠️ NEVER select Fauvism artists (Derain, Matisse, Vlaminck) for Expressionism!
 `;
 }
@@ -1795,16 +1797,25 @@ Available 20th Century Modernism Artists (7명):
 
 === CUBISM 입체주의 ===
 1. PICASSO (피카소) - Geometric fragmented forms, multiple perspectives
+   - Masterworks: "Guernica", "The Old Guitarist", "Three Musicians", "Portrait of Dora Maar" ← SELECT ONE ONLY!
 
 === SURREALISM 초현실주의 ===
 2. MAGRITTE (마그리트) - Philosophical paradox, multiplication of figures
+   - Masterworks: "Son of Man", "Golconda", "The Man in the Bowler Hat", "The Human Condition", "Empire of Light" ← SELECT ONE ONLY!
 3. MIRÓ (미로) - Playful biomorphic forms, childlike symbols, primary colors (LANDSCAPE/STILL LIFE ONLY)
+   - Masterworks: "Catalan Landscape", "Constellations", "Blue Star" ← SELECT ONE ONLY!
 4. CHAGALL (샤갈) - Soft dreamy floating figures, muted pastel colors
+   - Masterworks: "The Birthday", "Over the Town", "I and the Village" ← SELECT ONE ONLY!
 
 === POP ART 팝아트 ===
 5. WARHOL (워홀) - Silkscreen 4-panel grid, bold flat colors
+   - Masterworks: "Marilyn Monroe", "Campbell's Soup Cans" ← SELECT ONE ONLY!
 6. LICHTENSTEIN (리히텐슈타인) - Ben-Day dots, comic book style
+   - Masterworks: "Drowning Girl", "Whaam!", "Hopeless" ← SELECT ONE ONLY!
 7. KEITH HARING (키스 해링) - Bold black outlines, dancing figures
+   - Masterworks: "Radiant Baby", "Barking Dog", "Dancing Figures" ← SELECT ONE ONLY!
+
+⚠️ CRITICAL: You MUST select a masterwork from the exact list above! Do NOT invent new titles!
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📊 PHOTO TYPE WEIGHT GUIDE (사진 유형별 비중)
