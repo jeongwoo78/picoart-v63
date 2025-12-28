@@ -75,35 +75,35 @@ const ARTIST_CONTROL_STRENGTH = {
   'islamic-miniature': 0.80,
   
   // === 르네상스 (0.40~0.80) ===
-  'botticelli': 0.70,
+  'botticelli': 0.60,
   'leonardo': 0.40,
-  'titian': 0.70,
-  'michelangelo': 0.70,
-  'raphael': 0.70,
+  'titian': 0.60,
+  'michelangelo': 0.60,
+  'raphael': 0.60,
   
-  // === 바로크 (0.60~0.65) ===
-  'caravaggio': 0.50,
-  'rubens': 0.60,
-  'rembrandt': 0.60,
-  'velazquez': 0.60,
+  // === 바로크 (0.40~0.50) ===
+  'caravaggio': 0.40,
+  'rubens': 0.50,
+  'rembrandt': 0.50,
+  'velazquez': 0.50,
   
-  // === 로코코 (0.70) ===
-  'watteau': 0.60,
-  'boucher': 0.60,
+  // === 로코코 (0.45) ===
+  'watteau': 0.45,
+  'boucher': 0.45,
   
-  // === 신고전/낭만/사실 (0.80) ===
-  'david': 0.60,
-  'ingres': 0.60,
-  'turner': 0.60,
-  'delacroix': 0.60,
-  'courbet': 0.60,
-  'manet': 0.60,
+  // === 신고전/낭만/사실 (0.45~0.50) ===
+  'david': 0.50,
+  'ingres': 0.45,
+  'turner': 0.45,
+  'delacroix': 0.50,
+  'courbet': 0.50,
+  'manet': 0.50,
   
-  // === 인상주의 (0.50~0.70) ===
+  // === 인상주의 (0.30~0.50) ===
   'renoir': 0.40,
-  'monet': 0.30,
-  'degas': 0.60,
-  'caillebotte': 0.60,
+  'monet': 0.40,
+  'degas': 0.50,
+  'caillebotte': 0.50,
   
   // === 후기인상주의 (0.50~0.65) ===
   'vangogh': 0.45,
@@ -1664,7 +1664,7 @@ Available Impressionism Artists (4명):
 1. RENOIR (르누아르) ⭐⭐⭐⭐ STRONGEST - Best for portraits (35%)
    - Specialty: SOFT WARM figures in dappled sunlight, joyful atmosphere, peachy skin tones
    - Best for: ALL portraits (indoor/outdoor), happy people, sunlit gatherings, festive scenes
-   - Masterworks: "Luncheon of the Boating Party", "Bal du moulin de la Galette", "Girls at the Piano" ← SELECT ONE ONLY!
+   - Masterworks: "Luncheon of the Boating Party", "Bal du moulin de la Galette", "The Swing" ← SELECT ONE ONLY!
    - When to prioritize: Most portrait cases (35%)
 
 2. DEGAS (드가) ⭐⭐⭐ Best for movement AND composition (30%)
@@ -2440,8 +2440,7 @@ PABLO PICASSO - SELECT ONE based on weighted percentages:
 FRIDA KAHLO - SELECT ONE:
 1. "Me and My Parrots" (나와 앵무새들) → person with birds/pets, colorful, tropical mood | Style: COLORFUL PARROTS on shoulders, LUSH GREEN TROPICAL FOLIAGE background, direct confident gaze, vibrant jewel-tone colors, traditional Mexican clothing
 2. "Self-Portrait with Thorn Necklace" (가시 목걸이 자화상) → portrait with nature/animals, symbolic | Style: THORNY VINE NECKLACE with dead hummingbird pendant, black cat and monkey companions, large tropical leaves background, intense direct gaze
-3. "Self-Portrait with Monkeys" (원숭이와 자화상) → person with pets/animals, warm intimate mood | Style: MONKEYS EMBRACING from behind shoulders, dense green tropical leaves, warm protective atmosphere, tender loving expression
-4. "Diego and I" (디에고와 나) → emotional portrait, intense feelings | Style: DIEGO RIVERA face PAINTED ON FOREHEAD as third eye, loose flowing dark hair, tears streaming, raw emotional intimacy`,
+3. "Self-Portrait with Monkeys" (원숭이와 자화상) → person with pets/animals, warm intimate mood | Style: MONKEYS EMBRACING from behind shoulders, dense green tropical leaves, warm protective atmosphere, tender loving expression`,
 
           'warhol': `
 ANDY WARHOL - USE THIS STYLE FOR ALL:

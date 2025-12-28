@@ -43,7 +43,6 @@ export const masterworkNameMapping = {
   'me and my parrots': 'frida-parrots', '나와 앵무새들': 'frida-parrots',
   'self-portrait with thorn necklace': 'frida-thornnecklace', '가시 목걸이': 'frida-thornnecklace',
   'self-portrait with monkeys': 'frida-monkeys', '원숭이와 자화상': 'frida-monkeys',
-  'diego and i': 'frida-diegoandi', '디에고와 나': 'frida-diegoandi',
   
   // 앤디 워홀
   'marilyn monroe': 'warhol-marilyn', 'marilyn': 'warhol-marilyn', '마릴린': 'warhol-marilyn',
@@ -111,7 +110,7 @@ export const masterworkNameMapping = {
   
   // 인상주의
   'luncheon of the boating party': 'renoir-boating', 'bal du moulin de la galette': 'renoir-moulin',
-  'girls at the piano': 'renoir-piano',
+  'the swing': 'renoir-swing', '그네': 'renoir-swing',
   'the dance class': 'degas-danceclass', 'the star': 'degas-star', 'l\'absinthe': 'degas-absinthe',
   'water lilies': 'monet-waterlilies', '수련': 'monet-waterlilies',
   'impression, sunrise': 'monet-impression', 'woman with a parasol': 'monet-parasol',
@@ -661,11 +660,11 @@ export const renoirMasterworks = {
     prompt: 'Pierre-Auguste Renoir "Bal du moulin de la Galette" (1876), outdoor dance party, dappled sunlight through trees, couples dancing socializing, soft warm flesh tones.',
     feature: '축제'
   },
-  'renoir-piano': {
-    name: '피아노 치는 소녀들',
-    nameEn: 'Girls at the Piano',
-    prompt: 'Pierre-Auguste Renoir "Girls at the Piano" (1892), two young girls at piano bourgeois interior, warm intimate domestic scene, soft peachy skin.',
-    feature: '아동'
+  'renoir-swing': {
+    name: '그네',
+    nameEn: 'The Swing',
+    prompt: 'Pierre-Auguste Renoir "The Swing (La Balançoire)" (1876), young woman standing on swing in garden, dappled sunlight through trees, flirtatious conversation, soft warm impressionist colors.',
+    feature: '그네, 햇빛'
   }
 };
 
@@ -1072,12 +1071,6 @@ export const fridaMasterworks = {
     nameEn: 'Self-Portrait with Monkeys',
     prompt: 'Frida Kahlo "Self-Portrait with Monkeys" (1943), spider monkeys embracing from behind, lush green tropical leaves, vibrant Mexican colors, direct intense gaze.',
     feature: '원숭이, 친밀'
-  },
-  'frida-diegoandi': {
-    name: '디에고와 나',
-    nameEn: 'Diego and I',
-    prompt: 'Frida Kahlo "Diego and I" (1949), third eye forehead showing Diego face, tears streaming, loose flowing dark hair, emotional portrait.',
-    feature: '이중, 감정'
   }
 };
 
@@ -1317,7 +1310,7 @@ export function getArtistMasterworkList(artistKey) {
     'delacroix': ['delacroix-liberty', 'delacroix-sardanapalus', 'delacroix-algiers'],
     'courbet': ['courbet-stonebreakers', 'courbet-burial', 'courbet-bonjour'],
     'manet': ['manet-bar', 'manet-fifer'],
-    'renoir': ['renoir-boating', 'renoir-moulin', 'renoir-piano'],
+    'renoir': ['renoir-boating', 'renoir-moulin', 'renoir-swing'],
     'degas': ['degas-danceclass', 'degas-star', 'degas-absinthe'],
     'monet': ['monet-waterlilies', 'monet-impression', 'monet-parasol'],
     'caillebotte': ['caillebotte-paris', 'caillebotte-floor', 'caillebotte-window'],
@@ -1333,7 +1326,7 @@ export function getArtistMasterworkList(artistKey) {
     'kokoschka': ['kokoschka-bride', 'kokoschka-degenerate', 'kokoschka-double'],
     'kirchner': ['kirchner-berlin', 'kirchner-soldier', 'kirchner-oldwomen'],
     'picasso': ['picasso-guernica', 'picasso-oldguitarist', 'picasso-musicians', 'picasso-doramaar'],
-    'frida': ['frida-parrots', 'frida-thornnecklace', 'frida-monkeys', 'frida-diegoandi'],
+    'frida': ['frida-parrots', 'frida-thornnecklace', 'frida-monkeys'],
     'warhol': ['warhol-marilyn', 'warhol-soup'],
     'magritte': ['magritte-sonofman', 'magritte-golconda', 'magritte-bowlerhat', 'magritte-humancondition', 'magritte-empireoflight'],
     'miro': ['miro-catalan', 'miro-constellation', 'miro-bluestar'],
