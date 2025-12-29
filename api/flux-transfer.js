@@ -2450,7 +2450,7 @@ EDVARD MUNCH - SELECT ONE:
           'klimt': `
 GUSTAV KLIMT - SELECT ONE:
 1. "The Kiss" (키스) → COUPLE embracing, romantic, intimate (NOT for single person, NOT for parent-child) | Style: GOLD LEAF patterns throughout, geometric rectangular patterns on male robe, circular patterns on female robe, Byzantine mosaic gold background, kneeling on flower meadow
-2. "Judith I" (유디트) → FEMALE portrait, powerful, sensual, dangerous | Style: Wide GOLD CHOKER necklace, seductive half-closed eyes, bare shoulders, gold decorative elements, femme fatale atmosphere
+2. "Judith I" (유디트) → FEMALE portrait, powerful, confident, mysterious | Style: Wide GOLD CHOKER necklace, elegant confident expression, GOLD LEAF decorative patterns, rich jewel-tone colors, Art Nouveau elegance
 3. "The Tree of Life" (생명의 나무) → landscape, decorative, ANY subject | Style: SPIRAL BRANCHES swirling outward, gold and bronze decorative swirls, elaborate curving patterns, Stoclet Frieze style`,
 
           'matisse': `

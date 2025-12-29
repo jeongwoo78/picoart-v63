@@ -934,8 +934,8 @@ export const klimtMasterworks = {
   'klimt-judith': {
     name: '유디트',
     nameEn: 'Judith I',
-    prompt: 'Gustav Klimt "Judith I" (1901), wide gold choker necklace prominent, provocative seductive expression, bare shoulders, gold decorative, half-closed sensual eyes.',
-    feature: '팜므파탈'
+    prompt: 'Gustav Klimt "Judith I" (1901), wide gold choker necklace prominent, confident powerful expression, GOLD LEAF decorative patterns throughout, rich jewel-tone colors, Art Nouveau elegance.',
+    feature: '여성/힘'
   },
   'klimt-treeoflife': {
     name: '생명의 나무',
