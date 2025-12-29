@@ -93,68 +93,67 @@ const ARTIST_CONFIG = {
   'sculpture':           { control: 0.55, brush: null },
   'roman-mosaic':        { control: 0.60, brush: '50mm' },    // 모자이크 타일
   'mosaic':              { control: 0.60, brush: '50mm' },
-  'byzantine':           { control: 0.55, brush: '20mm' },
+  'byzantine':           { control: 0.60, brush: '20mm' },
   'gothic':              { control: 0.50, brush: null },      // 스테인드글라스
   'islamic-miniature':   { control: 0.80, brush: '15mm' },
   
   // === 르네상스 ===
-  'botticelli':          { control: 0.70, brush: '20mm' },
-  'leonardo':            { control: 0.40, brush: '20mm' },
-  'titian':              { control: 0.70, brush: '20mm' },
-  'michelangelo':        { control: 0.70, brush: '20mm' },
-  'raphael':             { control: 0.70, brush: '20mm' },
+  'botticelli':          { control: 0.70, brush: '30mm' },
+  'leonardo':            { control: 0.50, brush: '30mm' },
+  'titian':              { control: 0.70, brush: '30mm' },
+  'michelangelo':        { control: 0.70, brush: '30mm' },
+  'raphael':             { control: 0.70, brush: '30mm' },
   
   // === 바로크 ===
-  'caravaggio':          { control: 0.40, brush: '20mm' },
-  'rubens':              { control: 0.50, brush: '25mm' },
-  'rembrandt':           { control: 0.50, brush: '25mm' },
-  'velazquez':           { control: 0.50, brush: '20mm' },
+  'caravaggio':          { control: 0.40, brush: '30mm' },
+  'rubens':              { control: 0.50, brush: '30mm' },
+  'rembrandt':           { control: 0.50, brush: '35mm' },
+  'velazquez':           { control: 0.50, brush: '30mm' },
   
   // === 로코코 ===
-  'watteau':             { control: 0.45, brush: '20mm' },
-  'boucher':             { control: 0.45, brush: '20mm' },
+  'watteau':             { control: 0.45, brush: '30mm' },
+  'boucher':             { control: 0.45, brush: '30mm' },
   
   // === 신고전/낭만/사실 ===
-  'david':               { control: 0.50, brush: '20mm' },
-  'ingres':              { control: 0.45, brush: '20mm' },
+  'david':               { control: 0.50, brush: '30mm' },
+  'ingres':              { control: 0.45, brush: '30mm' },
   'turner':              { control: 0.45, brush: '30mm' },
   'delacroix':           { control: 0.50, brush: '30mm' },
-  'courbet':             { control: 0.50, brush: '25mm' },
-  'manet':               { control: 0.50, brush: '25mm' },
+  'courbet':             { control: 0.50, brush: '30mm' },
+  'manet':               { control: 0.50, brush: '30mm' },
   
   // === 인상주의 ===
-  'renoir':              { control: 0.30, brush: '30mm' },
-  'monet':               { control: 0.30, brush: '30mm' },
-  'degas':               { control: 0.50, brush: '25mm' },
-  'caillebotte':         { control: 0.50, brush: '25mm' },
+  'renoir':              { control: 0.30, brush: '40mm' },
+  'monet':               { control: 0.30, brush: '40mm' },
+  'degas':               { control: 0.50, brush: '40mm' },
+  'caillebotte':         { control: 0.50, brush: '40mm' },
   
   // === 후기인상주의 ===
   'vangogh':             { control: 0.45, brush: '50mm' },
-  'gauguin':             { control: 0.60, brush: '30mm' },
-  'cezanne':             { control: 0.65, brush: '30mm' },
+  'gauguin':             { control: 0.60, brush: '50mm' },
+  'cezanne':             { control: 0.65, brush: '50mm' },
   
   // === 점묘법 ===
-  'signac':              { control: 0.55, brush: '8mm' },     // 점
+  'signac':              { control: 0.55, brush: '15mm' },     // 점
   
   // === 야수파 ===
-  'matisse':             { control: 0.45, brush: '35mm' },
-  'derain':              { control: 0.45, brush: '35mm' },
-  'vlaminck':            { control: 0.45, brush: '35mm' },
+  'matisse':             { control: 0.45, brush: '40mm' },
+  'derain':              { control: 0.45, brush: '40mm' },
+  'vlaminck':            { control: 0.45, brush: '40mm' },
   
   // === 표현주의 ===
-  'munch':               { control: 0.50, brush: '35mm' },
-  'kirchner':            { control: 0.45, brush: '35mm' },
-  'kokoschka':           { control: 0.45, brush: '35mm' },
+  'munch':               { control: 0.50, brush: '40mm' },
+  'kirchner':            { control: 0.45, brush: '40mm' },
+  'kokoschka':           { control: 0.45, brush: '40mm' },
   
   // === 모더니즘/팝아트 ===
-  'picasso':             { control: 0.10, brush: '30mm' },
-  'magritte':            { control: 0.55, brush: '25mm' },
+  'picasso':             { control: 0.10, brush: '40mm' },
+  'magritte':            { control: 0.55, brush: '30mm' },
   'miro':                { control: 0.55, brush: '30mm' },
   'chagall':             { control: 0.40, brush: '30mm' },
   'warhol':              { control: 0.45, brush: null },      // 실크스크린
   'lichtenstein':        { control: 0.55, brush: null },      // 벤데이 점
   'haring':              { control: 0.40, brush: '20mm' },
-  'manray':              { control: 0.60, brush: null },      // 사진 기반
   
   // === 거장 ===
   'klimt':               { control: 0.65, brush: '25mm' },
@@ -274,8 +273,6 @@ const ARTIST_NAME_MAPPING = {
   '비잔틴': 'byzantine',
   'gothic': 'gothic',
   '고딕': 'gothic',
-  'manray': 'manray',
-  '만레이': 'manray',
 };
 
 // 화가명 정규화 함수
@@ -4379,18 +4376,6 @@ export default async function handler(req, res) {
         // ========================================
         
         // 브라크 - v59에서 제거됨 (피카소와 중복)
-        
-        // 만 레이 선택시 실험적 사진 기법 강화
-        if (selectedArtist.toUpperCase().trim().includes('MAN RAY') || 
-            selectedArtist.toUpperCase().trim().includes('MANRAY')) {
-          // console.log('🎯 Man Ray detected');
-          if (!finalPrompt.includes('solarization')) {
-            finalPrompt = finalPrompt + ', experimental photography by Man Ray, SOLARIZATION EFFECT with inverted tones and glowing haloed edges, rayograph shadow silhouettes, dramatic high contrast black and white, surreal darkroom manipulation, Le Violon d\'Ingres style transformation of body, dreamlike photographic distortion with reversed light and shadow, avant-garde Dada experimentation';
-            // console.log('✅ Enhanced Man Ray solarization added (control_strength 0.60)');
-          } else {
-            // console.log('ℹ️ Man Ray effects already in prompt (AI included it)');
-          }
-        }
         
         // v66: 마그리트는 대표작 매칭 시스템으로 통일 (masterworks.js)
         // 키워드 분기 삭제 - 다른 44명 화가와 동일 방식
