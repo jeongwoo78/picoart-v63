@@ -4733,7 +4733,7 @@ export default async function handler(req, res) {
     console.log('📍 FLUX Transfer v66');
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
     console.log('');
-  4751	    console.log('1️⃣ Vision 분석');
+    console.log('1️⃣ Vision 분석');
     console.log(`   👤 인물: ${logData.vision.count}명 (${logData.vision.gender || '?'}, ${logData.vision.age || '?'})`);
     console.log(`   📷 피사체: ${logData.vision.subjectType || 'unknown'}`);
     console.log('');
