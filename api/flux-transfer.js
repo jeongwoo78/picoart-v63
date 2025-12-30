@@ -2601,8 +2601,8 @@ Style 1: Korean Minhwa Folk Painting (민화)
 
 Style 2: Korean Pungsokdo Genre Painting (풍속도)
 - Best for: people, portraits, daily life, couples, festivals, human activities  
-- Characteristics: KOREAN INK PAINTING on ROUGH TEXTURED HANJI, BLACK INK BRUSHWORK dominates (70-80%), then EXTREMELY MINIMAL pale color washes (20-30% only), visible hanji fiber texture throughout, spontaneous confident ink strokes, Kim Hong-do's elegant restraint, earth-tone washes ONLY (pale brown, grey-green, faint ochre), NOT colorful NOT bright, distinctly different from Chinese gongbi's detailed colors
-- CLOTHING: MUST transform modern clothing to traditional Joseon hanbok (저고리/치마 for women, 도포/갓 for men), NO modern clothes allowed
+- Characteristics: KOREAN INK PAINTING on ROUGH TEXTURED HANJI, BLACK INK BRUSHWORK for outlines, visible hanji fiber texture throughout, spontaneous confident ink strokes, Kim Hong-do and Shin Yun-bok style
+- CLOTHING: MUST transform modern clothing to COLORFUL VIBRANT traditional Joseon hanbok (화려한 저고리/치마 for women with bright reds, blues, yellows, greens; 도포/갓 for men), MAKE HANBOK COLORS STAND OUT
 - When: Photo has people, faces, human subjects
 
 Style 3: Korean Jingyeong Landscape (진경산수)
@@ -2615,9 +2615,9 @@ Analyze the photo and choose the MOST suitable style.
 CRITICAL INSTRUCTIONS FOR PROMPT GENERATION:
 
 1. KOREAN VS CHINESE DISTINCTION:
-   - Korean Pungsokdo: ROUGH hanji paper, spontaneous loose brushwork, 90% ink 10% color
+   - Korean Pungsokdo: ROUGH hanji paper, spontaneous loose brushwork, ink outlines with COLORFUL hanbok
    - NOT Chinese Gongbi: Chinese is meticulous/tight, Korean is loose/spontaneous
-   - Korean uses MORE INK LESS COLOR than Chinese
+   - Korean hanbok should be VIBRANT and COLORFUL (reds, blues, yellows)
 
 2. GENDER PRESERVATION (MANDATORY IN PROMPT):
    - FIRST identify if photo has person(s) and their gender
