@@ -4734,21 +4734,36 @@ export default async function handler(req, res) {
     // - 형태: 액자 or 포스터 (AI 자율)
     // ========================================
     const isLandscapePhoto = landscapeStrengthBoost;  // 풍경/정물/동물이면 true
+    const isWarholArtist = selectedArtist && (
+      selectedArtist.toLowerCase().includes('warhol') || 
+      selectedArtist.includes('워홀')
+    );
     const isExcludedCategory = 
       categoryType === 'ancient' ||      // 그리스/로마 (조각상)
       categoryType === 'medieval' ||     // 비잔틴/이슬람/고딕 (모자이크, 스테인드글라스)
       categoryType === 'oriental' ||     // 동양화 (두루마리/병풍)
-      (categoryType === 'masters' && selectedStyle.id === 'warhol-master');  // 워홀 (실크스크린)
+      isWarholArtist;                    // 워홀 (실크스크린)
     
     const canAddFrame = !isLandscapePhoto && !isExcludedCategory && selectedWork;
     
     if (canAddFrame) {
-      // masterworks.js에서 영문명 가져오기
-      const masterworkData = allMovementMasterworks[selectedWork];
+      // selectedWork가 ID인지 영문명인지 확인 후 masterworks에서 찾기
+      let masterworkData = allMovementMasterworks[selectedWork];
+      
+      // ID로 못 찾으면 영문명으로 변환 시도
+      if (!masterworkData && masterworkNameMapping) {
+        const workId = masterworkNameMapping[selectedWork.toLowerCase()];
+        if (workId) {
+          masterworkData = allMovementMasterworks[workId];
+        }
+      }
+      
       if (masterworkData && masterworkData.nameEn) {
-        const framePrompt = `, with a small painting (about 10% of frame) of ${masterworkData.nameEn}, displayed as a framed artwork or poster, naturally placed in background`;
+        const framePrompt = `, small framed ${masterworkData.nameEn} painting naturally in background`;
         finalPrompt = finalPrompt + framePrompt;
         console.log(`🖼️ [액자] 소액자 추가: ${masterworkData.nameEn}`);
+      } else {
+        console.log(`🖼️ [액자] 대표작 데이터 없음: ${selectedWork}`);
       }
     } else {
       if (isLandscapePhoto) console.log('🖼️ [액자] 제외: 풍경/정물/동물 사진');
