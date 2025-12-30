@@ -2642,9 +2642,9 @@ Return ONLY valid JSON (no markdown):
   "physical_description": "for MALE: strong jaw, angular face, short hair, broad shoulders etc. For FEMALE: soft features, delicate face etc." or null,
   "selected_artist": "Korean Minhwa" or "Korean Pungsokdo" or "Korean Jingyeong Landscape",
   "selected_style": "minhwa" or "pungsokdo" or "landscape",
-  "calligraphy_text": "1-2 character positive text from options above",
+  "calligraphy_text": "positive text you chose",
   "reason": "why this style fits (1 sentence)",
-  "prompt": "KEEP UNDER 150 WORDS. [Gender rule] Korean [style] with key characteristics"
+  "prompt": "KEEP UNDER 150 WORDS. [Gender rule] Korean [style] with key characteristics. Include ONLY the calligraphy text '[your calligraphy_text]' in vertical brushwork style."
 }
 
 CRITICAL: Keep prompt field UNDER 150 WORDS to avoid truncation.`;
@@ -2699,9 +2699,9 @@ Return ONLY valid JSON (no markdown):
   "physical_description": "for MALE: strong jaw, angular face, short hair, broad shoulders etc. For FEMALE: soft features, delicate face etc." or null,
   "selected_artist": "Chinese Ink Wash" or "Chinese Gongbi" or "Chinese Huaniao",
   "selected_style": "ink_wash" or "gongbi" or "huaniao",
-  "calligraphy_text": "1-2 character positive text from options above",
+  "calligraphy_text": "positive text you chose",
   "reason": "why this style fits (1 sentence)",
-  "prompt": "KEEP UNDER 150 WORDS. [Gender rule] Chinese [style] with key characteristics"
+  "prompt": "KEEP UNDER 150 WORDS. [Gender rule] Chinese [style] with key characteristics. Include ONLY the calligraphy text '[your calligraphy_text]' in vertical brushwork style."
 }
 
 CRITICAL: Keep prompt field UNDER 150 WORDS to avoid truncation.`;
@@ -2723,8 +2723,8 @@ CALLIGRAPHY TEXT (POSITIVE MEANING ONLY):
 Return ONLY valid JSON (no markdown):
 {
   "analysis": "brief photo description",
-  "calligraphy_text": "1-4 character positive text from options above",
-  "prompt": "Japanese Ukiyo-e woodblock print style with flat bold colors, strong black outlines, traditional kimono clothing, decorative patterns, Mt Fuji or cherry blossom or waves background"
+  "calligraphy_text": "positive text you chose",
+  "prompt": "Japanese Ukiyo-e woodblock print style with flat bold colors, strong black outlines, traditional kimono clothing, decorative patterns, Mt Fuji or cherry blossom or waves background. Include ONLY the calligraphy text '[your calligraphy_text]' in vertical brushwork style."
 }`;
       }
       
