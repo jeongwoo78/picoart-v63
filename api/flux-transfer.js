@@ -4727,6 +4727,35 @@ export default async function handler(req, res) {
       // console.log(`📊 [LANDSCAPE-BOOST] control_strength: ${originalStrength} → ${controlStrength}`);
     }
     
+    // ========================================
+    // 🖼️ 액자 프로젝트: 소액자에 대표작 숨기기 (v64)
+    // - 크기: 10%
+    // - 위치: AI 자율 (자연스럽게)
+    // - 형태: 액자 or 포스터 (AI 자율)
+    // ========================================
+    const isLandscapePhoto = visionAnalysis && visionAnalysis.subject_type === 'landscape';
+    const isExcludedCategory = 
+      categoryType === 'ancient' ||      // 그리스/로마 (조각상)
+      categoryType === 'medieval' ||     // 비잔틴/이슬람/고딕 (모자이크, 스테인드글라스)
+      categoryType === 'oriental' ||     // 동양화 (두루마리/병풍)
+      (categoryType === 'masters' && selectedStyle.id === 'warhol-master');  // 워홀 (실크스크린)
+    
+    const canAddFrame = !isLandscapePhoto && !isExcludedCategory && selectedWork;
+    
+    if (canAddFrame) {
+      // masterworks.js에서 영문명 가져오기
+      const masterworkData = allMovementMasterworks[selectedWork];
+      if (masterworkData && masterworkData.nameEn) {
+        const framePrompt = `, with a small painting (about 10% of frame) of ${masterworkData.nameEn}, displayed as a framed artwork or poster, naturally placed in background`;
+        finalPrompt = finalPrompt + framePrompt;
+        console.log(`🖼️ [액자] 소액자 추가: ${masterworkData.nameEn}`);
+      }
+    } else {
+      if (isLandscapePhoto) console.log('🖼️ [액자] 제외: 풍경 사진');
+      else if (isExcludedCategory) console.log(`🖼️ [액자] 제외: ${categoryType} 카테고리`);
+      else if (!selectedWork) console.log('🖼️ [액자] 제외: 선택된 대표작 없음');
+    }
+    
     logData.prompt.wordCount = finalPrompt.split(/\s+/).length;
     logData.flux.control = controlStrength;
     // v70: 프론트엔드 콘솔용 추가 정보
