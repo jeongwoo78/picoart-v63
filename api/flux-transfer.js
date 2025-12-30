@@ -98,62 +98,62 @@ const ARTIST_CONFIG = {
   'islamic-miniature':   { control: 0.80, brush: '15mm' },
   
   // === 르네상스 ===
-  'botticelli':          { control: 0.70, brush: '30mm' },
-  'leonardo':            { control: 0.50, brush: '30mm' },
-  'titian':              { control: 0.70, brush: '30mm' },
-  'michelangelo':        { control: 0.70, brush: '30mm' },
-  'raphael':             { control: 0.70, brush: '30mm' },
+  'botticelli':          { control: 0.70, brush: '50mm' },
+  'leonardo':            { control: 0.50, brush: '50mm' },
+  'titian':              { control: 0.70, brush: '50mm' },
+  'michelangelo':        { control: 0.70, brush: '50mm' },
+  'raphael':             { control: 0.70, brush: '50mm' },
   
   // === 바로크 ===
-  'caravaggio':          { control: 0.40, brush: '30mm' },
-  'rubens':              { control: 0.50, brush: '30mm' },
-  'rembrandt':           { control: 0.50, brush: '35mm' },
-  'velazquez':           { control: 0.50, brush: '30mm' },
+  'caravaggio':          { control: 0.50, brush: '50mm' },
+  'rubens':              { control: 0.50, brush: '50mm' },
+  'rembrandt':           { control: 0.50, brush: '55mm' },
+  'velazquez':           { control: 0.50, brush: '50mm' },
   
   // === 로코코 ===
-  'watteau':             { control: 0.45, brush: '30mm' },
-  'boucher':             { control: 0.45, brush: '30mm' },
+  'watteau':             { control: 0.45, brush: '50mm' },
+  'boucher':             { control: 0.45, brush: '50mm' },
   
   // === 신고전/낭만/사실 ===
-  'david':               { control: 0.50, brush: '30mm' },
-  'ingres':              { control: 0.45, brush: '30mm' },
-  'turner':              { control: 0.45, brush: '30mm' },
-  'delacroix':           { control: 0.50, brush: '30mm' },
-  'courbet':             { control: 0.50, brush: '30mm' },
-  'manet':               { control: 0.50, brush: '30mm' },
+  'david':               { control: 0.50, brush: '50mm' },
+  'ingres':              { control: 0.45, brush: '50mm' },
+  'turner':              { control: 0.45, brush: '50mm' },
+  'delacroix':           { control: 0.50, brush: '50mm' },
+  'courbet':             { control: 0.50, brush: '50mm' },
+  'manet':               { control: 0.50, brush: '50mm' },
   
   // === 인상주의 ===
-  'renoir':              { control: 0.30, brush: '40mm' },
-  'monet':               { control: 0.30, brush: '40mm' },
-  'degas':               { control: 0.50, brush: '40mm' },
-  'caillebotte':         { control: 0.50, brush: '40mm' },
+  'renoir':              { control: 0.30, brush: '60mm' },
+  'monet':               { control: 0.30, brush: '60mm' },
+  'degas':               { control: 0.50, brush: '60mm' },
+  'caillebotte':         { control: 0.50, brush: '60mm' },
   
   // === 후기인상주의 ===
-  'vangogh':             { control: 0.45, brush: '50mm' },
-  'gauguin':             { control: 0.60, brush: '50mm' },
-  'cezanne':             { control: 0.65, brush: '50mm' },
+  'vangogh':             { control: 0.45, brush: '70mm' },
+  'gauguin':             { control: 0.60, brush: '70mm' },
+  'cezanne':             { control: 0.65, brush: '70mm' },
   
   // === 점묘법 ===
-  'signac':              { control: 0.55, brush: '15mm' },     // 점
+  'signac':              { control: 0.55, brush: '20mm' },     // 점
   
   // === 야수파 ===
-  'matisse':             { control: 0.45, brush: '40mm' },
-  'derain':              { control: 0.45, brush: '40mm' },
-  'vlaminck':            { control: 0.45, brush: '40mm' },
+  'matisse':             { control: 0.45, brush: '60mm' },
+  'derain':              { control: 0.45, brush: '60mm' },
+  'vlaminck':            { control: 0.45, brush: '60mm' },
   
   // === 표현주의 ===
-  'munch':               { control: 0.50, brush: '40mm' },
-  'kirchner':            { control: 0.45, brush: '40mm' },
-  'kokoschka':           { control: 0.45, brush: '40mm' },
+  'munch':               { control: 0.50, brush: '60mm' },
+  'kirchner':            { control: 0.45, brush: '60mm' },
+  'kokoschka':           { control: 0.45, brush: '60mm' },
   
   // === 모더니즘/팝아트 ===
-  'picasso':             { control: 0.10, brush: '40mm' },
-  'magritte':            { control: 0.55, brush: '30mm' },
-  'miro':                { control: 0.55, brush: '30mm' },
-  'chagall':             { control: 0.40, brush: '30mm' },
+  'picasso':             { control: 0.10, brush: '50mm' },
+  'magritte':            { control: 0.55, brush: '50mm' },
+  'miro':                { control: 0.55, brush: '50mm' },
+  'chagall':             { control: 0.40, brush: '50mm' },
   'warhol':              { control: 0.45, brush: null },      // 실크스크린
   'lichtenstein':        { control: 0.55, brush: null },      // 벤데이 점
-  'haring':              { control: 0.40, brush: '20mm' },
+  'haring':              { control: 0.40, brush: '30mm' },
   
   // === 거장 ===
   'klimt':               { control: 0.65, brush: '25mm' },
