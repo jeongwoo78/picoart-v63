@@ -4733,7 +4733,7 @@ export default async function handler(req, res) {
     // - 위치: AI 자율 (자연스럽게)
     // - 형태: 액자 or 포스터 (AI 자율)
     // ========================================
-    const isLandscapePhoto = visionAnalysis && visionAnalysis.subject_type === 'landscape';
+    const isLandscapePhoto = landscapeStrengthBoost;  // 풍경/정물/동물이면 true
     const isExcludedCategory = 
       categoryType === 'ancient' ||      // 그리스/로마 (조각상)
       categoryType === 'medieval' ||     // 비잔틴/이슬람/고딕 (모자이크, 스테인드글라스)
@@ -4751,7 +4751,7 @@ export default async function handler(req, res) {
         console.log(`🖼️ [액자] 소액자 추가: ${masterworkData.nameEn}`);
       }
     } else {
-      if (isLandscapePhoto) console.log('🖼️ [액자] 제외: 풍경 사진');
+      if (isLandscapePhoto) console.log('🖼️ [액자] 제외: 풍경/정물/동물 사진');
       else if (isExcludedCategory) console.log(`🖼️ [액자] 제외: ${categoryType} 카테고리`);
       else if (!selectedWork) console.log('🖼️ [액자] 제외: 선택된 대표작 없음');
     }
