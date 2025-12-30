@@ -2625,8 +2625,13 @@ CRITICAL INSTRUCTIONS FOR PROMPT GENERATION:
    - If FEMALE in photo → prompt MUST start with "CRITICAL GENDER RULE: This photo shows FEMALE person, PRESERVE FEMININE FEATURES - soft face, feminine features, female body structure, KEEP FEMALE GENDER."
    - This gender instruction MUST be the FIRST thing in your generated prompt
 
-3. NO TEXT IN IMAGE:
-   - FLUX renders artwork only (calligraphy added separately by frontend)
+3. CALLIGRAPHY TEXT (POSITIVE MEANING ONLY):
+   - Choose appropriate positive text (1-4 characters) that makes the viewer feel GOOD
+   - MUST be positive, auspicious, beautiful meaning - consumer will see this!
+   - Single characters: "福" (행복), "壽" (장수), "喜" (기쁨), "美" (아름다움), "和" (평화), "愛" (사랑), "樂" (즐거움), "春" (봄), "花" (꽃), "夢" (꿈)
+   - Two characters: "吉祥" (길상), "平安" (평안), "幸福" (행복), "長壽" (장수), "富貴" (부귀)
+   - Phrases: "花開富貴" (꽃피어 부귀), "萬事如意" (만사여의), "百年好合" (백년해로)
+   - For landscapes: "山水" (산수), "江山" (강산), "風流" (풍류)
 
 Return ONLY valid JSON (no markdown):
 {
@@ -2637,7 +2642,7 @@ Return ONLY valid JSON (no markdown):
   "physical_description": "for MALE: strong jaw, angular face, short hair, broad shoulders etc. For FEMALE: soft features, delicate face etc." or null,
   "selected_artist": "Korean Minhwa" or "Korean Pungsokdo" or "Korean Jingyeong Landscape",
   "selected_style": "minhwa" or "pungsokdo" or "landscape",
-  "calligraphy_text": "風流" or "山水" or "福" (for frontend overlay),
+  "calligraphy_text": "1-2 character positive text from options above",
   "reason": "why this style fits (1 sentence)",
   "prompt": "KEEP UNDER 150 WORDS. [Gender rule] Korean [style] with key characteristics"
 }
@@ -2677,8 +2682,13 @@ CRITICAL INSTRUCTIONS FOR PROMPT GENERATION:
    - If FEMALE in photo → prompt MUST start with "CRITICAL GENDER RULE: This photo shows FEMALE person, PRESERVE FEMININE FEATURES - soft face, feminine features, female body structure, KEEP FEMALE GENDER."
    - This gender instruction MUST be the FIRST thing in your generated prompt
 
-2. NO TEXT IN IMAGE:
-   - FLUX renders artwork only (calligraphy added separately by frontend)
+2. CALLIGRAPHY TEXT (POSITIVE MEANING ONLY):
+   - Choose appropriate positive text (1-4 characters) that makes the viewer feel GOOD
+   - MUST be positive, auspicious, beautiful meaning - consumer will see this!
+   - Single characters: "福" (행복), "壽" (장수), "喜" (기쁨), "美" (아름다움), "和" (평화), "愛" (사랑), "樂" (즐거움), "春" (봄), "花" (꽃), "夢" (꿈)
+   - Two characters: "吉祥" (길상), "平安" (평안), "幸福" (행복), "長壽" (장수), "富貴" (부귀)
+   - Phrases: "花開富貴" (꽃피어 부귀), "萬事如意" (만사여의), "百年好合" (백년해로)
+   - For landscapes: "山水" (산수), "江山" (강산), "風流" (풍류)
 
 Return ONLY valid JSON (no markdown):
 {
@@ -2689,7 +2699,7 @@ Return ONLY valid JSON (no markdown):
   "physical_description": "for MALE: strong jaw, angular face, short hair, broad shoulders etc. For FEMALE: soft features, delicate face etc." or null,
   "selected_artist": "Chinese Ink Wash" or "Chinese Gongbi" or "Chinese Huaniao",
   "selected_style": "ink_wash" or "gongbi" or "huaniao",
-  "calligraphy_text": "山水" or "花鳥" or "仙鶴圖" (for frontend overlay),
+  "calligraphy_text": "1-2 character positive text from options above",
   "reason": "why this style fits (1 sentence)",
   "prompt": "KEEP UNDER 150 WORDS. [Gender rule] Chinese [style] with key characteristics"
 }
@@ -2698,14 +2708,24 @@ CRITICAL: Keep prompt field UNDER 150 WORDS to avoid truncation.`;
       }
       
       if (styleId === 'japanese') {
-        // 일본 - 우키요에 고정
-        return {
-          success: true,
-          artist: '일본 우키요에',
-          reason: 'Japanese traditional ukiyo-e style',
-          prompt: fallbackPrompts.japanese.prompt,
-          analysis: 'Japanese ukiyo-e style applied'
-        };
+        // 일본 - 우키요에 (서예 텍스트 선택 추가)
+        promptText = `You are converting a photo to Japanese Ukiyo-e woodblock print style.
+
+Select an appropriate POSITIVE calligraphy text for this image.
+
+CALLIGRAPHY TEXT (POSITIVE MEANING ONLY):
+- Choose appropriate positive text (1-4 characters) that makes the viewer feel GOOD
+- MUST be positive, auspicious, beautiful meaning - consumer will see this!
+- Single characters: "福" (행복), "壽" (장수), "喜" (기쁨), "美" (아름다움), "和" (평화), "愛" (사랑), "樂" (즐거움), "春" (봄), "花" (꽃), "夢" (꿈)
+- Two characters: "吉祥" (길상), "平安" (평안), "幸福" (행복), "浮世" (우키요/덧없는 세상의 아름다움)
+- Japanese style: "粋" (이키/멋), "雅" (미야비/우아), "桜" (사쿠라/벚꽃), "波" (나미/파도), "富士" (후지)
+
+Return ONLY valid JSON (no markdown):
+{
+  "analysis": "brief photo description",
+  "calligraphy_text": "1-4 character positive text from options above",
+  "prompt": "Japanese Ukiyo-e woodblock print style with flat bold colors, strong black outlines, traditional kimono clothing, decorative patterns, Mt Fuji or cherry blossom or waves background"
+}`;
       }
       
     } else {
@@ -3356,6 +3376,11 @@ export default async function handler(req, res) {
         logData.selection.artist = selectedArtist || '';
         logData.selection.masterwork = selectedWork || '';
         logData.selection.reason = aiResult.reason || '';
+        
+        // v70: 동양화 calligraphy_text 로그 추가
+        if (selectedStyle.category === 'oriental' && aiResult.calligraphy_text) {
+          logData.selection.calligraphy = aiResult.calligraphy_text;
+        }
         
         // 반 고흐/뭉크 대표작 선택 결과 강조 로그
         const masterId = selectedStyle?.id?.replace('-master', '') || '';
@@ -4748,6 +4773,7 @@ export default async function handler(req, res) {
     if (logData.selection.movement) console.log(`   🎨 사조: ${logData.selection.movement}`);
     console.log(`   👨‍🎨 화가: ${logData.selection.artist}`);
     if (logData.selection.masterwork) console.log(`   🖼️ 대표작: ${logData.selection.masterwork}`);
+    if (logData.selection.calligraphy) console.log(`   ✍️ 서예: ${logData.selection.calligraphy}`);
     if (logData.selection.reason) console.log(`   💬 선택 이유: ${logData.selection.reason}`);
     console.log('');
     console.log('3️⃣ 프롬프트 조립');
