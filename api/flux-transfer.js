@@ -2987,6 +2987,7 @@ Return JSON only:
       reason: result.reason,
       prompt: result.prompt,
       analysis: result.analysis,
+      calligraphy_text: result.calligraphy_text || null,  // v70: 동양화 서예 텍스트
       // Vision 분석 결과 (통합됨)
       visionData: {
         subject_type: result.subject_type || null,
