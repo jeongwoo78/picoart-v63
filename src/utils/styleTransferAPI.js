@@ -173,7 +173,9 @@ export const processStyleTransfer = async (photoFile, selectedStyle, apiKey, onP
       console.log('');
       console.log('4️⃣ FLUX API 호출');
       console.log(`   🔄 모델: ${d.flux.model}`);
-      console.log(`   ⚙️ Control: ${d.flux.control}`);
+      if (d.flux.mapping) console.log(`   🎯 매핑: ${d.flux.mapping}`);
+      console.log(`   ⚙️ Control: ${d.flux.control}${d.flux.boost ? ' (풍경 +0.15 boost)' : ''}`);
+      if (d.flux.brush) console.log(`   🖌️ Brush: ${d.flux.brush}`);
       console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
       console.log(`✅ 완료 (${d.elapsed}초)`);
       console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');

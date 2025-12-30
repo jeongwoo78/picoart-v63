@@ -1183,7 +1183,7 @@ Available Renaissance Artists (5명):
 5. BOTTICELLI (보티첼리) - Best for young female full body, graceful
    - Specialty: Flowing elegant lines, ethereal beauty, graceful movement
    - Best for: Young female full body, dance-like poses, gentle movement
-   - Masterworks: "The Birth of Venus", "Primavera", "Venus and Mars" ← SELECT ONE ONLY!
+   - Masterworks: "Primavera", "Venus and Mars" ← SELECT ONE ONLY!
    - When to prioritize: Young female full body with graceful pose
 
 ⚠️ CRITICAL: You MUST select a masterwork from the exact list above! Do NOT invent new titles!
@@ -3991,8 +3991,8 @@ export default async function handler(req, res) {
         // 보티첼리 선택시 흐르는 우아함 강화
         if (selectedArtist.toUpperCase().trim().includes('BOTTICELLI')) {
           // console.log('🎯 Botticelli detected');
-          if (!finalPrompt.includes('Birth of Venus')) {
-            finalPrompt = finalPrompt + ', Apply Botticelli Birth of Venus style with flowing graceful lines and wind-blown hair. Use soft pastel colors with ethereal lyrical beauty. This must look like a real Renaissance hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.';
+          if (!finalPrompt.includes('Primavera')) {
+            finalPrompt = finalPrompt + ', Apply Botticelli Primavera style with flowing graceful lines and gentle elegance. Use soft pastel colors with ethereal lyrical beauty, delicate floral patterns. This must look like a real Renaissance hand-painted masterpiece, NOT a photograph, NOT 3D, NOT digital.';
             // console.log('✅ Enhanced Botticelli grace added');
           } else {
             // console.log('ℹ️ Botticelli grace already in prompt');
@@ -4709,6 +4709,12 @@ export default async function handler(req, res) {
     
     logData.prompt.wordCount = finalPrompt.split(/\s+/).length;
     logData.flux.control = controlStrength;
+    // v70: 프론트엔드 콘솔용 추가 정보
+    const artistKey = normalizeArtistKey(selectedArtist);
+    const configSource = ARTIST_CONFIG[artistKey] ? 'ARTIST_CONFIG' : (MOVEMENT_DEFAULTS[selectedStyle?.id] ? 'MOVEMENT_DEFAULTS' : 'DEFAULT');
+    logData.flux.mapping = `"${selectedArtist}" → "${artistKey}" (${configSource})`;
+    logData.flux.brush = brushSize || 'none';
+    logData.flux.boost = landscapeStrengthBoost;
     
     // 사조 정보 추출 (movements 카테고리인 경우)
     if (selectedStyle.category === 'movements' && selectedStyle.id) {

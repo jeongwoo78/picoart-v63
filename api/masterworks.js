@@ -66,7 +66,6 @@ export const masterworkNameMapping = {
   'rustam slaying the dragon': 'islamic-rustam',
   
   // 르네상스
-  'birth of venus': 'botticelli-venus', '비너스의 탄생': 'botticelli-venus',
   'primavera': 'botticelli-primavera', '프리마베라': 'botticelli-primavera',
   'venus and mars': 'botticelli-venusmars',
   'mona lisa': 'leonardo-monalisa', '모나리자': 'leonardo-monalisa',
@@ -282,17 +281,11 @@ export const islamicMiniatureMasterworks = {
 // 5. 보티첼리 (3개)
 // ========================================
 export const botticelliMasterworks = {
-  'botticelli-venus': {
-    name: '비너스의 탄생',
-    nameEn: 'Birth of Venus',
-    prompt: 'Sandro Botticelli "Birth of Venus" (c.1485), shell on sea, flowing golden hair blown by wind, pale porcelain skin rose tints, S-curve pose, diaphanous fabric.',
-    feature: '여성 전신, 흐르는 머리'
-  },
   'botticelli-primavera': {
     name: '프리마베라',
     nameEn: 'Primavera',
-    prompt: 'Sandro Botticelli "Primavera" (c.1482), orange grove setting, flowing diaphanous gowns, flowers scattered in meadow, sweet melancholic expressions.',
-    feature: '여성 그룹, 우아'
+    prompt: 'Sandro Botticelli "Primavera" (c.1482), orange grove setting, flowing diaphanous gowns, flowers scattered in meadow, sweet melancholic expressions, ethereal graceful beauty.',
+    feature: '여성, 우아'
   },
   'botticelli-venusmars': {
     name: '비너스와 마르스',
@@ -1293,7 +1286,7 @@ export function getArtistMasterworkList(artistKey) {
     'gothic': ['gothic-chartres', 'gothic-notredame', 'gothic-saintechapelle'],
     'byzantine': ['byzantine-justinian', 'byzantine-theodora', 'byzantine-deesis', 'byzantine-pantocrator'],
     'islamic-miniature': ['islamic-youth', 'islamic-miraj', 'islamic-simurgh', 'islamic-lovers', 'islamic-rustam'],
-    'botticelli': ['botticelli-venus', 'botticelli-primavera', 'botticelli-venusmars'],
+    'botticelli': ['botticelli-primavera', 'botticelli-venusmars'],
     'leonardo': ['leonardo-monalisa', 'leonardo-lastsupper', 'leonardo-virginrocks'],
     'titian': ['titian-bacchus', 'titian-assumption'],
     'michelangelo': ['michelangelo-adam', 'michelangelo-lastjudgment'],
