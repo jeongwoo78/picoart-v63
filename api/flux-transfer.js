@@ -246,6 +246,7 @@ const ARTIST_NAME_MAPPING = {
   'jacqueslouisdavid': 'david',
   '다비드': 'david',
   'jeanaugustdominiqueingres': 'ingres',
+  'jeanaugustedominiqueingres': 'ingres',
   '앵그르': 'ingres',
   'jmwturner': 'turner',
   '터너': 'turner',

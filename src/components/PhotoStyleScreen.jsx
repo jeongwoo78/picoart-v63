@@ -61,7 +61,7 @@ const PhotoStyleScreen = ({ mainCategory, onBack, onSelect }) => {
       icon: '🎎',
       fullTransform: {
         id: 'oriental-all',
-        name: '동양화 전체 변환',
+        name: '동아시아 천 년의 미학',
         desc: '당신의 사진 한 장이 천 년의 동양 미학을 만납니다',
         count: 3,
         isFullTransform: true,

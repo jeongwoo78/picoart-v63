@@ -249,7 +249,7 @@ const StyleSelection = ({ onSelect }) => {
                     }}
                     onClick={() => onSelect({ 
                       id: 'oriental-all', 
-                      name: '동양화 전체 변환',
+                      name: '동아시아 천 년의 미학',
                       category: 'oriental',
                       isFullTransform: true,
                       count: 6
