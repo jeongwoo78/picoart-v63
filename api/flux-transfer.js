@@ -4727,50 +4727,6 @@ export default async function handler(req, res) {
       // console.log(`📊 [LANDSCAPE-BOOST] control_strength: ${originalStrength} → ${controlStrength}`);
     }
     
-    // ========================================
-    // 🖼️ 액자 프로젝트: 소액자에 대표작 숨기기 (v64)
-    // - 크기: 10%
-    // - 위치: AI 자율 (자연스럽게)
-    // - 형태: 액자 or 포스터 (AI 자율)
-    // ========================================
-    const isLandscapePhoto = landscapeStrengthBoost;  // 풍경/정물/동물이면 true
-    const isWarholArtist = selectedArtist && (
-      selectedArtist.toLowerCase().includes('warhol') || 
-      selectedArtist.includes('워홀')
-    );
-    const isExcludedCategory = 
-      categoryType === 'ancient' ||      // 그리스/로마 (조각상)
-      categoryType === 'medieval' ||     // 비잔틴/이슬람/고딕 (모자이크, 스테인드글라스)
-      categoryType === 'oriental' ||     // 동양화 (두루마리/병풍)
-      isWarholArtist;                    // 워홀 (실크스크린)
-    
-    const canAddFrame = !isLandscapePhoto && !isExcludedCategory && selectedWork;
-    
-    if (canAddFrame) {
-      // selectedWork가 ID인지 영문명인지 확인 후 masterworks에서 찾기
-      let masterworkData = allMovementMasterworks[selectedWork];
-      
-      // ID로 못 찾으면 영문명으로 변환 시도
-      if (!masterworkData && masterworkNameMapping) {
-        const workId = masterworkNameMapping[selectedWork.toLowerCase()];
-        if (workId) {
-          masterworkData = allMovementMasterworks[workId];
-        }
-      }
-      
-      if (masterworkData && masterworkData.nameEn) {
-        const framePrompt = `, small framed ${masterworkData.nameEn} painting naturally in background`;
-        finalPrompt = finalPrompt + framePrompt;
-        console.log(`🖼️ [액자] 소액자 추가: ${masterworkData.nameEn}`);
-      } else {
-        console.log(`🖼️ [액자] 대표작 데이터 없음: ${selectedWork}`);
-      }
-    } else {
-      if (isLandscapePhoto) console.log('🖼️ [액자] 제외: 풍경/정물/동물 사진');
-      else if (isExcludedCategory) console.log(`🖼️ [액자] 제외: ${categoryType} 카테고리`);
-      else if (!selectedWork) console.log('🖼️ [액자] 제외: 선택된 대표작 없음');
-    }
-    
     logData.prompt.wordCount = finalPrompt.split(/\s+/).length;
     logData.flux.control = controlStrength;
     // v70: 프론트엔드 콘솔용 추가 정보
