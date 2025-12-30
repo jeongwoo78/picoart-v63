@@ -105,7 +105,7 @@ const ARTIST_CONFIG = {
   'raphael':             { control: 0.70, brush: '50mm' },
   
   // === 바로크 ===
-  'caravaggio':          { control: 0.45, brush: '50mm' },
+  'caravaggio':          { control: 0.50, brush: '50mm' },
   'rubens':              { control: 0.50, brush: '50mm' },
   'rembrandt':           { control: 0.50, brush: '55mm' },
   'velazquez':           { control: 0.50, brush: '50mm' },
@@ -2377,7 +2377,7 @@ const fallbackPrompts = {
   
   japanese: {
     name: '일본 우키요에',
-    prompt: 'Japanese Ukiyo-e woodblock print, Ukiyo-e art style, flat areas of bold solid colors, strong clear black outlines, completely flat two-dimensional composition, transform clothing to traditional kimono, decorative patterns, stylized simplified forms, elegant refined Japanese aesthetic, authentic Japanese ukiyo-e masterpiece quality, CRITICAL ANTI-HALLUCINATION preserve EXACT number of people from original photo, if 1 person then ONLY 1 person in result, DO NOT add crowds or extra figures in background, NO background people, NO audience, simple scenic background ONLY Mt Fuji or cherry blossom or waves or sky, VISIBLE WOODBLOCK PRINT TEXTURE 20mm+, NOT photograph, NOT 3D, NOT digital'
+    prompt: 'Japanese Ukiyo-e woodblock print, Ukiyo-e art style, flat areas of bold solid colors, strong clear black outlines, completely flat two-dimensional composition, transform clothing to traditional kimono, decorative patterns, stylized simplified forms, elegant refined Japanese aesthetic, authentic Japanese ukiyo-e masterpiece quality, CRITICAL ANTI-HALLUCINATION preserve EXACT number of people from original photo, if 1 person then ONLY 1 person in result, simple scenic background ONLY Mt Fuji or cherry blossom or waves or sky, VISIBLE WOODBLOCK PRINT TEXTURE 20mm+, NOT photograph, NOT 3D, NOT digital'
   },
   
   masters: {
@@ -2625,12 +2625,8 @@ CRITICAL INSTRUCTIONS FOR PROMPT GENERATION:
    - If FEMALE in photo → prompt MUST start with "CRITICAL GENDER RULE: This photo shows FEMALE person, PRESERVE FEMININE FEATURES - soft face, feminine features, female body structure, KEEP FEMALE GENDER."
    - This gender instruction MUST be the FIRST thing in your generated prompt
 
-3. CALLIGRAPHY TEXT - YOU GENERATE:
-   - Choose ONE appropriate Korean/Hanja text from these options:
-   - For portraits/people: "風流" (풍류) or "雅趣" (아취) or "淸雅" (청아)
-   - For landscapes: "山水" (산수) or "眞景" (진경) or "江山" (강산)
-   - For folk art: "福" (복) or "壽" (수) or "囍" (희)
-   - Include in your prompt: "include calligraphic text '[YOUR CHOSEN TEXT]' as vertical calligraphy with red seal stamp in corner"
+3. NO TEXT IN IMAGE:
+   - FLUX renders artwork only (calligraphy added separately by frontend)
 
 Return ONLY valid JSON (no markdown):
 {
@@ -2641,9 +2637,9 @@ Return ONLY valid JSON (no markdown):
   "physical_description": "for MALE: strong jaw, angular face, short hair, broad shoulders etc. For FEMALE: soft features, delicate face etc." or null,
   "selected_artist": "Korean Minhwa" or "Korean Pungsokdo" or "Korean Jingyeong Landscape",
   "selected_style": "minhwa" or "pungsokdo" or "landscape",
-  "calligraphy_text": "YOUR CHOSEN KOREAN/HANJA TEXT (e.g. 風流, 山水, 福)",
+  "calligraphy_text": "風流" or "山水" or "福" (for frontend overlay),
   "reason": "why this style fits (1 sentence)",
-  "prompt": "KEEP UNDER 150 WORDS. [Gender rule] Korean [style] with key characteristics, include calligraphic text '[calligraphy_text]' as vertical calligraphy with red seal stamp in corner"
+  "prompt": "KEEP UNDER 150 WORDS. [Gender rule] Korean [style] with key characteristics"
 }
 
 CRITICAL: Keep prompt field UNDER 150 WORDS to avoid truncation.`;
@@ -2681,13 +2677,8 @@ CRITICAL INSTRUCTIONS FOR PROMPT GENERATION:
    - If FEMALE in photo → prompt MUST start with "CRITICAL GENDER RULE: This photo shows FEMALE person, PRESERVE FEMININE FEATURES - soft face, feminine features, female body structure, KEEP FEMALE GENDER."
    - This gender instruction MUST be the FIRST thing in your generated prompt
 
-2. CALLIGRAPHY TEXT - YOU GENERATE:
-   - Choose ONE appropriate Chinese text (Hanzi) from these options:
-   - For portraits/people: "仙姿" (선자) or "雅趣" (아취) or "淸雅" (청아)
-   - For landscapes: "山水" (산수) or "水墨" (수묵) or "雲山" (운산)
-   - For flowers/birds: "花鳥" (화조) or "梅蘭竹菊" (매란국죽) or "春" (춘)
-   - For Gongbi: "仙鶴圖" (선학도) or "牡丹" (모란) or "宮廷" (궁정)
-   - Include in your prompt: "include calligraphic text '[YOUR CHOSEN TEXT]' as vertical calligraphy with red seal stamp in corner"
+2. NO TEXT IN IMAGE:
+   - FLUX renders artwork only (calligraphy added separately by frontend)
 
 Return ONLY valid JSON (no markdown):
 {
@@ -2698,9 +2689,9 @@ Return ONLY valid JSON (no markdown):
   "physical_description": "for MALE: strong jaw, angular face, short hair, broad shoulders etc. For FEMALE: soft features, delicate face etc." or null,
   "selected_artist": "Chinese Ink Wash" or "Chinese Gongbi" or "Chinese Huaniao",
   "selected_style": "ink_wash" or "gongbi" or "huaniao",
-  "calligraphy_text": "YOUR CHOSEN CHINESE TEXT (e.g. 仙鶴圖, 山水, 花鳥)",
+  "calligraphy_text": "山水" or "花鳥" or "仙鶴圖" (for frontend overlay),
   "reason": "why this style fits (1 sentence)",
-  "prompt": "KEEP UNDER 150 WORDS. [Gender rule] Chinese [style] with key characteristics, include calligraphic text '[calligraphy_text]' as vertical calligraphy with red seal stamp in corner"
+  "prompt": "KEEP UNDER 150 WORDS. [Gender rule] Chinese [style] with key characteristics"
 }
 
 CRITICAL: Keep prompt field UNDER 150 WORDS to avoid truncation.`;
