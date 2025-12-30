@@ -3381,6 +3381,8 @@ export default async function handler(req, res) {
         // v70: 동양화 calligraphy_text 로그 추가
         if (selectedStyle.category === 'oriental' && aiResult.calligraphy_text) {
           logData.selection.calligraphy = aiResult.calligraphy_text;
+          // v70: 서버에서 강제로 프롬프트 맨 뒤에 추가
+          finalPrompt += ` Include ONLY the calligraphy text '${aiResult.calligraphy_text}' in vertical brushwork style.`;
         }
         
         // 반 고흐/뭉크 대표작 선택 결과 강조 로그
