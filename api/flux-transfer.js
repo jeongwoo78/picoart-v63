@@ -199,6 +199,8 @@ const ARTIST_NAME_MAPPING = {
   '반고흐': 'vangogh',
   '고흐': 'vangogh',
   '빈센트': 'vangogh',
+  '빈센트반고흐': 'vangogh',
+  '반고흐': 'vangogh',
   'pierreaugusterenoir': 'renoir',
   'claudemonet': 'monet',
   'edgardegas': 'degas',
@@ -206,31 +208,37 @@ const ARTIST_NAME_MAPPING = {
   'paulsignac': 'signac',
   'henrimatisse': 'matisse',
   '마티스': 'matisse',
+  '앙리마티스': 'matisse',
   'andrederain': 'derain',
   '드랭': 'derain',
   'mauricedevlaminck': 'vlaminck',
   '블라맹크': 'vlaminck',
   'edvardmunch': 'munch',
   '뭉크': 'munch',
+  '에드바르뭉크': 'munch',
   'ernstludwigkirchner': 'kirchner',
   '키르히너': 'kirchner',
   'oskarkokoschka': 'kokoschka',
   '코코슈카': 'kokoschka',
   'pablopicasso': 'picasso',
   '피카소': 'picasso',
+  '파블로피카소': 'picasso',
   'renemagritte': 'magritte',
   'joanmiro': 'miro',
   'marcchagall': 'chagall',
   '샤갈': 'chagall',
   'andywarhol': 'warhol',
   '워홀': 'warhol',
+  '앤디워홀': 'warhol',
   'roylichtenstein': 'lichtenstein',
   'keithharing': 'haring',
   '키스해링': 'haring',
   'gustavklimt': 'klimt',
   '클림트': 'klimt',
+  '구스타프클림트': 'klimt',
   'fridakahlo': 'frida',
   '프리다': 'frida',
+  '프리다칼로': 'frida',
   'antoinewatteau': 'watteau',
   '와토': 'watteau',
   'francoisboucher': 'boucher',
@@ -4750,6 +4758,9 @@ export default async function handler(req, res) {
     console.log('');
     console.log('4️⃣ FLUX API 호출');
     console.log(`   🔄 모델: ${logData.flux.model}`);
+    const artistKey = normalizeArtistKey(selectedArtist);
+    const configSource = ARTIST_CONFIG[artistKey] ? 'ARTIST_CONFIG' : (MOVEMENT_DEFAULTS[selectedStyle?.id] ? 'MOVEMENT_DEFAULTS' : 'DEFAULT');
+    console.log(`   🎯 매핑: "${selectedArtist}" → "${artistKey}" (${configSource})`);
     console.log(`   ⚙️ Control: ${logData.flux.control}${landscapeStrengthBoost ? ' (풍경 +0.15 boost)' : ''}`);
     console.log(`   🖌️ Brush: ${brushSize || 'none'}`);
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
