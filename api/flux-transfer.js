@@ -105,7 +105,7 @@ const ARTIST_CONFIG = {
   'raphael':             { control: 0.70, brush: '50mm' },
   
   // === 바로크 ===
-  'caravaggio':          { control: 0.50, brush: '50mm' },
+  'caravaggio':          { control: 0.45, brush: '50mm' },
   'rubens':              { control: 0.50, brush: '50mm' },
   'rembrandt':           { control: 0.50, brush: '55mm' },
   'velazquez':           { control: 0.50, brush: '50mm' },
