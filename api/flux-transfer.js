@@ -4789,6 +4789,11 @@ export default async function handler(req, res) {
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
     console.log('');
     
+    // v70: FLUX에 전달되는 실제 프롬프트 로그
+    console.log('📜 FLUX 프롬프트 (처음 200자):');
+    console.log(`   ${finalPrompt.substring(0, 200)}...`);
+    console.log('');
+    
     // FLUX Depth Dev 변환 (v63: Pro 테스트 포기, Dev 유지)
     // console.log('📦 [v63] black-forest-labs/flux-depth-dev');
     
