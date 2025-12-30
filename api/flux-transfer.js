@@ -4764,9 +4764,7 @@ export default async function handler(req, res) {
     console.log('');
     console.log('4️⃣ FLUX API 호출');
     console.log(`   🔄 모델: ${logData.flux.model}`);
-    const artistKey = normalizeArtistKey(selectedArtist);
-    const configSource = ARTIST_CONFIG[artistKey] ? 'ARTIST_CONFIG' : (MOVEMENT_DEFAULTS[selectedStyle?.id] ? 'MOVEMENT_DEFAULTS' : 'DEFAULT');
-    console.log(`   🎯 매핑: "${selectedArtist}" → "${artistKey}" (${configSource})`);
+    console.log(`   🎯 매핑: ${logData.flux.mapping}`);
     console.log(`   ⚙️ Control: ${logData.flux.control}${landscapeStrengthBoost ? ' (풍경 +0.15 boost)' : ''}`);
     console.log(`   🖌️ Brush: ${brushSize || 'none'}`);
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
