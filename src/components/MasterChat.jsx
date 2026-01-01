@@ -46,11 +46,20 @@ const MasterChat = ({
   const theme = MASTER_THEMES[masterKey] || MASTER_THEMES['VAN GOGH'];
   const masterNameKo = MASTER_NAMES_KO[masterKey] || masterKey;
 
-  // 첫 인사 로드
+  // masterKey 변경 시 전체 초기화
   useEffect(() => {
-    if (!hasGreeted.current && masterKey) {
-      hasGreeted.current = true;
+    if (masterKey) {
+      // 상태 초기화
+      setMessages([]);
+      setInputValue('');
+      setPendingCorrection(null);
+      setMessageCount(0);
+      setIsChatEnded(false);
+      hasGreeted.current = false;
+      
+      // 첫 인사 로드
       loadGreeting();
+      hasGreeted.current = true;
     }
   }, [masterKey]);
 
