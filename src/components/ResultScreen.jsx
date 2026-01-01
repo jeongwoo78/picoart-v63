@@ -1,9 +1,11 @@
 // PicoArt v51 - ResultScreen
 // 원클릭 교육자료 매칭: educationMatcher.js로 분리 (v51 새로 작성)
 // 2025-12-18 업데이트: 교육자료 매칭 로직 전면 재작성
+// v68: 거장(AI) 대화 기능 추가
 
 import React, { useState, useEffect, useRef } from 'react';
 import BeforeAfter from './BeforeAfter';
+import MasterChat from './MasterChat';
 import { orientalEducation } from '../data/educationContent';
 import { movementsEducation, movementsOverview } from '../data/movementsEducation';
 import { mastersEducation } from '../data/mastersEducation';
@@ -72,6 +74,60 @@ const ResultScreen = ({
   const [isLoadingEducation, setIsLoadingEducation] = useState(true);
   const [savedToGallery, setSavedToGallery] = useState(false);
   const hasSavedRef = useRef(false);
+
+  // ========== 거장 AI 대화 관련 State (v68) ==========
+  const [isMasterRetransforming, setIsMasterRetransforming] = useState(false);
+  const [masterResultImage, setMasterResultImage] = useState(null);
+  
+  // 거장 키 추출 (displayArtist에서)
+  const getMasterKey = (artistName) => {
+    if (!artistName) return null;
+    const name = artistName.toUpperCase();
+    if (name.includes('VAN GOGH') || name.includes('GOGH')) return 'VAN GOGH';
+    if (name.includes('KLIMT')) return 'KLIMT';
+    if (name.includes('MUNCH')) return 'MUNCH';
+    if (name.includes('PICASSO')) return 'PICASSO';
+    if (name.includes('MATISSE')) return 'MATISSE';
+    if (name.includes('FRIDA') || name.includes('KAHLO')) return 'FRIDA';
+    if (name.includes('WARHOL')) return 'WARHOL';
+    return null;
+  };
+  
+  const currentMasterKey = displayCategory === 'masters' ? getMasterKey(displayArtist) : null;
+  
+  // 현재 표시할 결과 이미지 (재변환 결과 우선)
+  const finalDisplayImage = masterResultImage || displayImage;
+
+  // 거장 AI 재변환 핸들러
+  const handleMasterRetransform = async (correctionPrompt) => {
+    if (!correctionPrompt || isMasterRetransforming) return;
+    
+    setIsMasterRetransforming(true);
+    
+    try {
+      // 기존 FLUX API 호출 (보정 프롬프트 추가)
+      const result = await processStyleTransfer(
+        originalPhoto,
+        selectedStyle,
+        correctionPrompt  // 보정 프롬프트 전달
+      );
+      
+      if (result.success && result.resultUrl) {
+        setMasterResultImage(result.resultUrl);
+        
+        // 갤러리에 자동 저장
+        const category = selectedStyle?.category;
+        const rawName = displayArtist || selectedStyle?.name || '변환 이미지';
+        const styleName = formatGalleryName(rawName, category, displayWork) + ' (AI 수정)';
+        const categoryName = '거장';
+        await saveToGallery(result.resultUrl, styleName, categoryName);
+      }
+    } catch (error) {
+      console.error('Master retransform error:', error);
+    }
+    
+    setIsMasterRetransforming(false);
+  };
 
 
   // ========== 갤러리 자동 저장 ==========
@@ -2000,18 +2056,18 @@ const ResultScreen = ({
           </div>
         )}
 
-        {/* 단일 변환: Before/After Slider */}
-        {!isFullTransform && displayImage && (
+        {/* 단일 변환: Before/After Slider (v68: 재변환 결과 반영) */}
+        {!isFullTransform && finalDisplayImage && (
           <div className="comparison-wrapper">
             <BeforeAfter 
               beforeImage={URL.createObjectURL(originalPhoto)}
-              afterImage={displayImage}
+              afterImage={finalDisplayImage}
             />
           </div>
         )}
 
         {/* 단독변환 실패 시 다시 시도 버튼 */}
-        {!isFullTransform && (!displayImage || isRetrying) && (
+        {!isFullTransform && (!finalDisplayImage || isRetrying) && (
           <div className="retry-section">
             {isRetrying ? (
               <div className="retry-in-progress">
@@ -2192,6 +2248,16 @@ const ResultScreen = ({
               </div>
             )}
           </div>
+        )}
+
+        {/* 거장(AI) 대화 섹션 - 거장 카테고리일 때만 표시 (v68) */}
+        {displayCategory === 'masters' && currentMasterKey && (
+          <MasterChat
+            masterKey={currentMasterKey}
+            onRetransform={handleMasterRetransform}
+            isRetransforming={isMasterRetransforming}
+            retransformCost={100}
+          />
         )}
 
         {/* Action Buttons */}

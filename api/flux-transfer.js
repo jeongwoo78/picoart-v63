@@ -3222,7 +3222,7 @@ export default async function handler(req, res) {
 
   try {
     const startTime = Date.now();
-    const { image, selectedStyle } = req.body;
+    const { image, selectedStyle, correctionPrompt } = req.body;
     
     // v68.3: 변수 초기화 (스코프 문제 해결)
     let coreRulesPrefix = 'Preserve identity, gender, ethnicity exactly. Do not add people or elements not in photo. NOT photograph, NOT 3D, NOT digital. No text, no signatures, no watermarks. ';
@@ -4795,6 +4795,14 @@ export default async function handler(req, res) {
     console.log('📜 FLUX 프롬프트 (처음 500자):');
     console.log(`   ${finalPrompt.substring(0, 500)}...`);
     console.log('');
+    
+    // v68: 거장 AI 대화 보정 프롬프트 적용
+    if (correctionPrompt) {
+      finalPrompt = finalPrompt + '. MODIFICATION REQUEST: ' + correctionPrompt;
+      console.log('🎨 [AI 대화] 보정 프롬프트 적용:');
+      console.log(`   ${correctionPrompt}`);
+      console.log('');
+    }
     
     // FLUX Depth Dev 변환 (v63: Pro 테스트 포기, Dev 유지)
     // console.log('📦 [v63] black-forest-labs/flux-depth-dev');

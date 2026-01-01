@@ -70,18 +70,25 @@ const callFluxAPI = async (photoBase64, stylePrompt, onProgress) => {
   return response.json();
 };
 
-const callFluxWithAI = async (photoBase64, selectedStyle, onProgress) => {
+const callFluxWithAI = async (photoBase64, selectedStyle, onProgress, correctionPrompt = null) => {
   if (onProgress) onProgress('AI 자동 화가 선택 시작...');
+
+  const requestBody = {
+    image: photoBase64,
+    selectedStyle: selectedStyle
+  };
+  
+  // v68: 거장 AI 대화 보정 프롬프트 추가
+  if (correctionPrompt) {
+    requestBody.correctionPrompt = correctionPrompt;
+  }
 
   const response = await fetch('/api/flux-transfer', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      image: photoBase64,
-      selectedStyle: selectedStyle
-    })
+    body: JSON.stringify(requestBody)
   });
 
   if (!response.ok) {
@@ -130,7 +137,7 @@ const pollPrediction = async (predictionId, modelConfig, onProgress) => {
   throw new Error('Processing timeout');
 };
 
-export const processStyleTransfer = async (photoFile, selectedStyle, apiKey, onProgress) => {
+export const processStyleTransfer = async (photoFile, selectedStyle, correctionPrompt = null, onProgress = null) => {
   try {
     const resizedPhoto = await resizeImage(photoFile, 1024);
     const photoBase64 = await fileToBase64(resizedPhoto);
@@ -144,7 +151,8 @@ export const processStyleTransfer = async (photoFile, selectedStyle, apiKey, onP
     if (modelConfig.model.includes('flux')) {
       prediction = await callFluxAPI(photoBase64, selectedStyle.prompt, onProgress);
     } else {
-      prediction = await callFluxWithAI(photoBase64, selectedStyle, onProgress);
+      // v68: 보정 프롬프트 전달
+      prediction = await callFluxWithAI(photoBase64, selectedStyle, onProgress, correctionPrompt);
     }
 
     // ========== v30: 첫 응답에서 AI 선택 정보 저장 ==========
