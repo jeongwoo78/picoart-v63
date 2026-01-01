@@ -272,6 +272,10 @@ export default async function handler(req, res) {
     // Claude API 호출
     const response = await callClaudeHaiku(messages, systemPrompt);
     
+    // 디버그: Haiku 원본 응답
+    console.log('=== Haiku Raw Response ===');
+    console.log(response);
+    
     // 응답 파싱
     let result;
     
