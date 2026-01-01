@@ -105,10 +105,13 @@ const ResultScreen = ({
     setIsMasterRetransforming(true);
     
     try {
+      // 원클릭 모드: currentResult의 style 사용, 단독: selectedStyle 사용
+      const styleToUse = isFullTransform ? currentResult?.style : selectedStyle;
+      
       // 기존 FLUX API 호출 (보정 프롬프트 추가)
       const result = await processStyleTransfer(
         originalPhoto,
-        selectedStyle,
+        styleToUse,
         correctionPrompt  // 보정 프롬프트 전달
       );
       
@@ -116,8 +119,8 @@ const ResultScreen = ({
         setMasterResultImage(result.resultUrl);
         
         // 갤러리에 자동 저장
-        const category = selectedStyle?.category;
-        const rawName = displayArtist || selectedStyle?.name || '변환 이미지';
+        const category = styleToUse?.category;
+        const rawName = displayArtist || styleToUse?.name || '변환 이미지';
         const styleName = formatGalleryName(rawName, category, displayWork) + ' (AI 수정)';
         const categoryName = '거장';
         await saveToGallery(result.resultUrl, styleName, categoryName);
