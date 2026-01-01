@@ -151,11 +151,17 @@ const ResultScreen = ({
     }
   };
 
+  // 중복 호출 방지용 로컬 플래그
+  const isRetransformingRef = useRef(false);
+
   // 거장 AI 재변환 핸들러
   const handleMasterRetransform = async (correctionPrompt) => {
-    console.log('🔴 handleMasterRetransform 호출됨', { correctionPrompt, isMasterRetransforming });
-    if (!correctionPrompt || isMasterRetransforming) return;
+    console.log('🔴 handleMasterRetransform 호출됨', { correctionPrompt, isMasterRetransforming, isRetransformingRef: isRetransformingRef.current });
     
+    // 로컬 플래그로 즉시 차단
+    if (!correctionPrompt || isMasterRetransforming || isRetransformingRef.current) return;
+    
+    isRetransformingRef.current = true;  // 즉시 차단
     console.log('🔴 재변환 시작!');
     setIsMasterRetransforming(true);
     setRetransformingMasterKey(currentMasterKey);  // 현재 거장 저장
@@ -189,6 +195,7 @@ const ResultScreen = ({
       console.error('Master retransform error:', error);
     }
     
+    isRetransformingRef.current = false;  // 로컬 플래그 리셋
     setIsMasterRetransforming(false);
     setRetransformingMasterKey(null);
   };

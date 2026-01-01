@@ -183,12 +183,23 @@ const MasterChat = ({
   };
 
   // 재변환 실행
+  const [localRetransforming, setLocalRetransforming] = useState(false);
+  
   const handleRetransform = async () => {
-    if (!pendingCorrection || isRetransforming) return;
+    if (!pendingCorrection || isRetransforming || localRetransforming) return;
+    
+    setLocalRetransforming(true);  // 즉시 버튼 비활성화
     
     // 부모 컴포넌트에 재변환 요청
     onRetransform(pendingCorrection);
   };
+  
+  // isRetransforming이 false로 바뀌면 로컬 상태도 리셋
+  useEffect(() => {
+    if (!isRetransforming) {
+      setLocalRetransforming(false);
+    }
+  }, [isRetransforming]);
 
   // 거장별 고정 완료 메시지
   const MASTER_RESULT_MESSAGES = {
@@ -300,13 +311,13 @@ const MasterChat = ({
       <button 
         className="retransform-btn"
         onClick={handleRetransform}
-        disabled={!pendingCorrection || isRetransforming || isChatEnded}
+        disabled={!pendingCorrection || isRetransforming || localRetransforming || isChatEnded}
         style={{ 
-          background: pendingCorrection && !isRetransforming && !isChatEnded ? theme.gradient : undefined,
-          opacity: !pendingCorrection || isRetransforming || isChatEnded ? 0.5 : 1
+          background: pendingCorrection && !isRetransforming && !localRetransforming && !isChatEnded ? theme.gradient : undefined,
+          opacity: !pendingCorrection || isRetransforming || localRetransforming || isChatEnded ? 0.5 : 1
         }}
       >
-        {isRetransforming ? (
+        {(isRetransforming || localRetransforming) ? (
           <>
             <span className="spinner-small"></span>
             {masterNameKo}가 작업 중...
