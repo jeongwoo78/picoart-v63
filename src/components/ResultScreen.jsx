@@ -28,13 +28,24 @@ const ResultScreen = ({
   fullTransformResults,
   onReset,
   onGallery,
-  masterChatData: appMasterChatData,       // App.jsx에서 받은 대화 데이터
-  onMasterChatDataChange                    // App.jsx에 대화 변경 알림
+  masterChatData: appMasterChatData,
+  onMasterChatDataChange,
+  currentMasterIndex: appCurrentIndex,
+  onMasterIndexChange,
+  masterResultImages: appMasterResultImages,
+  onMasterResultImagesChange
 }) => {
   
   // ========== 원클릭 결과 처리 ==========
   const isFullTransform = fullTransformResults && fullTransformResults.length > 0;
-  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  // currentIndex를 App.jsx에서 관리 (갤러리 이동해도 유지)
+  const currentIndex = appCurrentIndex || 0;
+  const setCurrentIndex = (val) => {
+    if (onMasterIndexChange) {
+      onMasterIndexChange(typeof val === 'function' ? val(currentIndex) : val);
+    }
+  };
   
   // ========== 스와이프 ==========
   const [touchStartX, setTouchStartX] = useState(0);
@@ -80,7 +91,14 @@ const ResultScreen = ({
   // ========== 거장 AI 대화 관련 State (v68) ==========
   const [isMasterRetransforming, setIsMasterRetransforming] = useState(false);
   const [retransformingMasterKey, setRetransformingMasterKey] = useState(null);  // 어떤 거장이 작업 중인지
-  const [masterResultImages, setMasterResultImages] = useState({});  // 거장별 재변환 이미지 { 'VAN GOGH': 'url', ... }
+  
+  // 거장별 재변환 이미지 (App.jsx에서 관리, 갤러리 이동해도 유지)
+  const masterResultImages = appMasterResultImages || {};
+  const setMasterResultImages = (val) => {
+    if (onMasterResultImagesChange) {
+      onMasterResultImagesChange(typeof val === 'function' ? val(masterResultImages) : val);
+    }
+  };
   
   // 거장별 대화 데이터 (App.jsx에서 관리, 갤러리 이동해도 유지)
   const masterChatData = appMasterChatData || {};

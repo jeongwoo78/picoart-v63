@@ -186,50 +186,36 @@ const MasterChat = ({
   const handleRetransform = async () => {
     if (!pendingCorrection || isRetransforming) return;
     
-    // 시스템 메시지 추가: 현재 이미지는 갤러리에 저장됨
-    setMessages(prev => [...prev, {
-      role: 'system',
-      content: '💡 현재 이미지는 갤러리에 저장되어 있습니다.'
-    }]);
-    
     // 부모 컴포넌트에 재변환 요청
     onRetransform(pendingCorrection);
   };
 
-  // 재변환 완료 후 결과 메시지 추가
+  // 거장별 고정 완료 메시지
+  const MASTER_RESULT_MESSAGES = {
+    'VAN GOGH': '수정했네! 어떤가, 마음에 드는가? 더 바꾸고 싶은 부분이 있으면 말해주게.',
+    'KLIMT': '수정했어요. 어떠세요, 마음에 드시나요? 더 바꾸고 싶은 부분이 있으면 말씀해주세요.',
+    'MUNCH': '수정했어. 어떤가, 마음에 드는가? 더 바꾸고 싶은 부분이 있으면 말해주게.',
+    'PICASSO': '수정했어! 어떤가, 마음에 드는가? 더 바꾸고 싶은 부분이 있으면 말해주게.',
+    'MATISSE': '수정했네! 어떤가, 마음에 드는가? 더 바꾸고 싶은 부분이 있으면 말해주게.',
+    'FRIDA': '수정했어요. 어때요, 마음에 들어요? 더 바꾸고 싶은 부분이 있으면 말해줘요.',
+    'WARHOL': '수정했어. 어때, 마음에 들어? 더 바꾸고 싶은 부분 있으면 말해.'
+  };
+
+  // 재변환 완료 후 결과 메시지 추가 (고정 문장 사용)
   useEffect(() => {
     // true → false 로 바뀔 때만 (실제 재변환 완료)
     if (wasRetransforming.current && !isRetransforming) {
-      loadResultMessage();
+      // 시스템 메시지 + 거장 완료 메시지 추가
+      const resultMessage = MASTER_RESULT_MESSAGES[masterKey] || '수정했네. 어떤가, 마음에 드는가?';
+      setMessages(prev => [
+        ...prev,
+        { role: 'system', content: '💡 재변환 완료! 이전 이미지는 갤러리에 저장되어 있습니다.' },
+        { role: 'master', content: resultMessage }
+      ]);
       setPendingCorrection(null);
     }
     wasRetransforming.current = isRetransforming;
   }, [isRetransforming]);
-
-  // 결과 메시지 로드
-  const loadResultMessage = async () => {
-    try {
-      const response = await fetch('/api/master-feedback', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          masterName: masterKey,
-          conversationType: 'result'
-        })
-      });
-      
-      const data = await response.json();
-      
-      if (data.success && data.masterResponse) {
-        setMessages(prev => [...prev, {
-          role: 'master',
-          content: data.masterResponse
-        }]);
-      }
-    } catch (error) {
-      console.error('Result message error:', error);
-    }
-  };
 
   // 엔터키 전송
   const handleKeyPress = (e) => {
