@@ -61,36 +61,24 @@ const MasterChat = ({
     }
   }, [messages]);
 
-  // 첫 인사 로드
-  const loadGreeting = async () => {
-    setIsLoading(true);
-    try {
-      const response = await fetch('/api/master-feedback', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          masterName: masterKey,
-          conversationType: 'greeting'
-        })
-      });
-      
-      const data = await response.json();
-      
-      if (data.success && data.masterResponse) {
-        setMessages([{
-          role: 'master',
-          content: data.masterResponse
-        }]);
-      }
-    } catch (error) {
-      console.error('Greeting error:', error);
-      // 폴백 메시지
-      setMessages([{
-        role: 'master',
-        content: '자네의 사진을 내 화풍으로 담아보았네. 수정이 필요하면 말해주게.'
-      }]);
-    }
-    setIsLoading(false);
+  // 거장별 고정 첫 인사
+  const MASTER_GREETINGS = {
+    'VAN GOGH': '자네가 나에게 그림을 의뢰한 사람인가! 시간을 거슬러 만나다니! 자네의 모습을 내 붓터치로 담아보았네.',
+    'KLIMT': '그대가 나에게 초상화를 의뢰한 분이군요. 시간을 넘어 만나게 되다니 영광이에요. 황금빛으로 표현해보았지요.',
+    'MUNCH': '자네가 나에게 그림을 의뢰했군. 과거의 내가 자네를 만났네. 내 붓끝에 자네의 내면을 담아보았어.',
+    'PICASSO': '자네가 나에게 그림을 맡긴 사람이군! 시공을 초월해 만나다니 흥미롭군. 여러 시점에서 해체해보았어!',
+    'MATISSE': '자네가 나에게 그림을 의뢰했군! 시간을 뛰어넘어 만나다니 신이 나는군! 밝은 색채로 담아보았네!',
+    'FRIDA': '당신이 나에게 그림을 맡긴 사람이군요. 시간을 넘어 만나게 되다니. 내 영혼을 담아 표현해봤어요.',
+    'WARHOL': '네가 나한테 그림 맡긴 사람이야? 쿨한 만남이네. 팝아트로 찍어봤어.'
+  };
+
+  // 첫 인사 로드 (고정 문장 사용)
+  const loadGreeting = () => {
+    const greeting = MASTER_GREETINGS[masterKey] || '자네의 사진을 내 화풍으로 담아보았네. 수정이 필요하면 말해주게.';
+    setMessages([{
+      role: 'master',
+      content: greeting
+    }]);
   };
 
   // 메시지 전송
