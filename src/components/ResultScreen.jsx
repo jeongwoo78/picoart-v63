@@ -85,19 +85,6 @@ const ResultScreen = ({
   // 거장별 대화 데이터 (App.jsx에서 관리, 갤러리 이동해도 유지)
   const masterChatData = appMasterChatData || {};
   
-  // 현재 거장의 재변환 이미지
-  const currentMasterResultImage = currentMasterKey ? masterResultImages[currentMasterKey] : null;
-  
-  // 거장별 대화 데이터 업데이트
-  const updateMasterChatData = (masterKey, chatData) => {
-    if (onMasterChatDataChange) {
-      onMasterChatDataChange({
-        ...masterChatData,
-        [masterKey]: chatData
-      });
-    }
-  };
-  
   // 거장 키 추출 (displayArtist에서) - 영문/한글 모두 지원
   const getMasterKey = (artistName) => {
     if (!artistName) return null;
@@ -114,8 +101,21 @@ const ResultScreen = ({
   
   const currentMasterKey = displayCategory === 'masters' ? getMasterKey(displayArtist) : null;
   
+  // 현재 거장의 재변환 이미지
+  const currentMasterResultImage = currentMasterKey ? masterResultImages[currentMasterKey] : null;
+  
   // 현재 표시할 결과 이미지 (거장별 재변환 결과 우선)
   const finalDisplayImage = currentMasterResultImage || displayImage;
+  
+  // 거장별 대화 데이터 업데이트
+  const updateMasterChatData = (masterKey, chatData) => {
+    if (onMasterChatDataChange) {
+      onMasterChatDataChange({
+        ...masterChatData,
+        [masterKey]: chatData
+      });
+    }
+  };
 
   // 거장 AI 재변환 핸들러
   const handleMasterRetransform = async (correctionPrompt) => {
