@@ -35,8 +35,12 @@ const MasterChat = ({
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [pendingCorrection, setPendingCorrection] = useState(null); // 대기 중인 보정 프롬프트
+  const [messageCount, setMessageCount] = useState(0); // 사용자 메시지 횟수
+  const [isChatEnded, setIsChatEnded] = useState(false); // 대화 종료 여부
   const chatAreaRef = useRef(null);
   const hasGreeted = useRef(false);
+  
+  const MAX_MESSAGES = 20; // 최대 대화 횟수
 
   // 테마 색상
   const theme = MASTER_THEMES[masterKey] || MASTER_THEMES['VAN GOGH'];
@@ -91,13 +95,36 @@ const MasterChat = ({
 
   // 메시지 전송
   const sendMessage = async () => {
-    if (!inputValue.trim() || isLoading || isRetransforming) return;
+    if (!inputValue.trim() || isLoading || isRetransforming || isChatEnded) return;
+    
+    // 20회 제한 체크
+    if (messageCount >= MAX_MESSAGES) {
+      setIsChatEnded(true);
+      return;
+    }
 
     const userMessage = inputValue.trim();
     setInputValue('');
     
-    // 사용자 메시지 추가
+    // 사용자 메시지 추가 및 카운트 증가
     setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    const newCount = messageCount + 1;
+    setMessageCount(newCount);
+    
+    // 20회 도달 시 종료 처리
+    if (newCount >= MAX_MESSAGES) {
+      setIsChatEnded(true);
+      // 잠시 후 종료 메시지 표시
+      setTimeout(() => {
+        setMessages(prev => [...prev, { 
+          role: 'master', 
+          content: '그럼 난 이만 작업실로 돌아가 보겠네.' 
+        }, {
+          role: 'system',
+          content: '대화가 종료되었습니다.'
+        }]);
+      }, 500);
+    }
     
     setIsLoading(true);
     try {
@@ -211,15 +238,19 @@ const MasterChat = ({
             {msg.role === 'master' && (
               <div className="avatar" style={{ background: theme.gradient }}>🎨</div>
             )}
-            <div>
-              <div className="sender">{msg.role === 'master' ? `${masterNameKo}(AI)` : '나'}</div>
-              <div className="bubble" style={msg.role === 'master' ? { 
-                background: `${theme.primary}20`,
-                borderColor: `${theme.primary}40`
-              } : {}}>
-                {msg.content}
+            {msg.role === 'system' ? (
+              <div className="system-message">{msg.content}</div>
+            ) : (
+              <div>
+                <div className="sender">{msg.role === 'master' ? `${masterNameKo}(AI)` : '나'}</div>
+                <div className="bubble" style={msg.role === 'master' ? { 
+                  background: `${theme.primary}20`,
+                  borderColor: `${theme.primary}40`
+                } : {}}>
+                  {msg.content}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         ))}
         
@@ -245,14 +276,14 @@ const MasterChat = ({
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyPress={handleKeyPress}
-          placeholder={isRetransforming ? "변환 중..." : "수정 요청을 입력하세요..."}
-          disabled={isLoading || isRetransforming}
+          placeholder={isChatEnded ? "대화가 종료되었습니다" : isRetransforming ? "변환 중..." : "수정 요청을 입력하세요..."}
+          disabled={isLoading || isRetransforming || isChatEnded}
           style={{ borderColor: inputValue ? theme.primary : undefined }}
         />
         <button 
           className="send-btn"
           onClick={sendMessage}
-          disabled={!inputValue.trim() || isLoading || isRetransforming}
+          disabled={!inputValue.trim() || isLoading || isRetransforming || isChatEnded}
           style={{ background: theme.gradient }}
         >
           ➤
@@ -263,10 +294,10 @@ const MasterChat = ({
       <button 
         className="retransform-btn"
         onClick={handleRetransform}
-        disabled={!pendingCorrection || isRetransforming}
+        disabled={!pendingCorrection || isRetransforming || isChatEnded}
         style={{ 
-          background: pendingCorrection && !isRetransforming ? theme.gradient : undefined,
-          opacity: !pendingCorrection || isRetransforming ? 0.5 : 1
+          background: pendingCorrection && !isRetransforming && !isChatEnded ? theme.gradient : undefined,
+          opacity: !pendingCorrection || isRetransforming || isChatEnded ? 0.5 : 1
         }}
       >
         {isRetransforming ? (
@@ -355,6 +386,21 @@ const MasterChat = ({
 
         .chat-message.user .sender {
           text-align: right;
+        }
+
+        .chat-message.system {
+          display: flex;
+          justify-content: center;
+          margin: 16px 0;
+        }
+
+        .system-message {
+          background: rgba(0, 0, 0, 0.05);
+          color: #666;
+          font-size: 13px;
+          padding: 8px 16px;
+          border-radius: 20px;
+          text-align: center;
         }
 
         .chat-message.master .bubble {
