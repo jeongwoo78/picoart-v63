@@ -33,7 +33,11 @@ const ResultScreen = ({
   currentMasterIndex: appCurrentIndex,
   onMasterIndexChange,
   masterResultImages: appMasterResultImages,
-  onMasterResultImagesChange
+  onMasterResultImagesChange,
+  isMasterRetransforming: appIsMasterRetransforming,
+  onMasterRetransformingChange,
+  retransformingMasterKey: appRetransformingMasterKey,
+  onRetransformingMasterKeyChange
 }) => {
   
   // ========== 원클릭 결과 처리 ==========
@@ -89,8 +93,20 @@ const ResultScreen = ({
   const hasSavedRef = useRef(false);
 
   // ========== 거장 AI 대화 관련 State (v68) ==========
-  const [isMasterRetransforming, setIsMasterRetransforming] = useState(false);
-  const [retransformingMasterKey, setRetransformingMasterKey] = useState(null);  // 어떤 거장이 작업 중인지
+  // 재변환 상태 (App.jsx에서 관리, 갤러리 이동해도 유지)
+  const isMasterRetransforming = appIsMasterRetransforming || false;
+  const setIsMasterRetransforming = (val) => {
+    if (onMasterRetransformingChange) {
+      onMasterRetransformingChange(typeof val === 'function' ? val(isMasterRetransforming) : val);
+    }
+  };
+  
+  const retransformingMasterKey = appRetransformingMasterKey || null;
+  const setRetransformingMasterKey = (val) => {
+    if (onRetransformingMasterKeyChange) {
+      onRetransformingMasterKeyChange(typeof val === 'function' ? val(retransformingMasterKey) : val);
+    }
+  };
   
   // 거장별 재변환 이미지 (App.jsx에서 관리, 갤러리 이동해도 유지)
   const masterResultImages = appMasterResultImages || {};
@@ -137,8 +153,10 @@ const ResultScreen = ({
 
   // 거장 AI 재변환 핸들러
   const handleMasterRetransform = async (correctionPrompt) => {
+    console.log('🔴 handleMasterRetransform 호출됨', { correctionPrompt, isMasterRetransforming });
     if (!correctionPrompt || isMasterRetransforming) return;
     
+    console.log('🔴 재변환 시작!');
     setIsMasterRetransforming(true);
     setRetransformingMasterKey(currentMasterKey);  // 현재 거장 저장
     
