@@ -42,6 +42,7 @@ const MasterChat = ({
   const [isChatEnded, setIsChatEnded] = useState(savedChatData?.isChatEnded || false);
   const chatAreaRef = useRef(null);
   const hasGreeted = useRef(savedChatData?.messages?.length > 0);
+  const wasRetransforming = useRef(false);  // 재변환 완료 감지용
   
   const MAX_MESSAGES = 20; // 최대 대화 횟수
 
@@ -196,8 +197,6 @@ const MasterChat = ({
   };
 
   // 재변환 완료 후 결과 메시지 추가
-  const wasRetransforming = useRef(false);
-  
   useEffect(() => {
     // true → false 로 바뀔 때만 (실제 재변환 완료)
     if (wasRetransforming.current && !isRetransforming) {
