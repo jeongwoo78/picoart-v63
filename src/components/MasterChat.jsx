@@ -185,17 +185,26 @@ const MasterChat = ({
   const handleRetransform = async () => {
     if (!pendingCorrection || isRetransforming) return;
     
+    // 시스템 메시지 추가: 현재 이미지는 갤러리에 저장됨
+    setMessages(prev => [...prev, {
+      role: 'system',
+      content: '💡 현재 이미지는 갤러리에 저장되어 있습니다.'
+    }]);
+    
     // 부모 컴포넌트에 재변환 요청
     onRetransform(pendingCorrection);
   };
 
   // 재변환 완료 후 결과 메시지 추가
+  const wasRetransforming = useRef(false);
+  
   useEffect(() => {
-    if (!isRetransforming && pendingCorrection) {
-      // 재변환이 완료되면 결과 메시지 로드
+    // true → false 로 바뀔 때만 (실제 재변환 완료)
+    if (wasRetransforming.current && !isRetransforming) {
       loadResultMessage();
       setPendingCorrection(null);
     }
+    wasRetransforming.current = isRetransforming;
   }, [isRetransforming]);
 
   // 결과 메시지 로드

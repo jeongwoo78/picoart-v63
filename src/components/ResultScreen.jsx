@@ -80,10 +80,13 @@ const ResultScreen = ({
   // ========== 거장 AI 대화 관련 State (v68) ==========
   const [isMasterRetransforming, setIsMasterRetransforming] = useState(false);
   const [retransformingMasterKey, setRetransformingMasterKey] = useState(null);  // 어떤 거장이 작업 중인지
-  const [masterResultImage, setMasterResultImage] = useState(null);
+  const [masterResultImages, setMasterResultImages] = useState({});  // 거장별 재변환 이미지 { 'VAN GOGH': 'url', ... }
   
   // 거장별 대화 데이터 (App.jsx에서 관리, 갤러리 이동해도 유지)
   const masterChatData = appMasterChatData || {};
+  
+  // 현재 거장의 재변환 이미지
+  const currentMasterResultImage = currentMasterKey ? masterResultImages[currentMasterKey] : null;
   
   // 거장별 대화 데이터 업데이트
   const updateMasterChatData = (masterKey, chatData) => {
@@ -111,8 +114,8 @@ const ResultScreen = ({
   
   const currentMasterKey = displayCategory === 'masters' ? getMasterKey(displayArtist) : null;
   
-  // 현재 표시할 결과 이미지 (재변환 결과 우선)
-  const finalDisplayImage = masterResultImage || displayImage;
+  // 현재 표시할 결과 이미지 (거장별 재변환 결과 우선)
+  const finalDisplayImage = currentMasterResultImage || displayImage;
 
   // 거장 AI 재변환 핸들러
   const handleMasterRetransform = async (correctionPrompt) => {
@@ -133,7 +136,11 @@ const ResultScreen = ({
       );
       
       if (result.success && result.resultUrl) {
-        setMasterResultImage(result.resultUrl);
+        // 거장별로 재변환 이미지 저장
+        setMasterResultImages(prev => ({
+          ...prev,
+          [currentMasterKey]: result.resultUrl
+        }));
         
         // 갤러리에 자동 저장
         const category = styleToUse?.category;
@@ -2070,10 +2077,10 @@ const ResultScreen = ({
           </p>
         </div>
 
-        {/* 원클릭: 이미지만 표시 */}
+        {/* 원클릭: 이미지만 표시 (재변환 결과 반영) */}
         {isFullTransform && (
           <div className="result-image-wrapper">
-            <img src={displayImage} alt="변환 결과" className="result-image" />
+            <img src={currentMasterResultImage || displayImage} alt="변환 결과" className="result-image" />
           </div>
         )}
 
