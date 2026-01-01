@@ -79,17 +79,17 @@ const ResultScreen = ({
   const [isMasterRetransforming, setIsMasterRetransforming] = useState(false);
   const [masterResultImage, setMasterResultImage] = useState(null);
   
-  // 거장 키 추출 (displayArtist에서)
+  // 거장 키 추출 (displayArtist에서) - 영문/한글 모두 지원
   const getMasterKey = (artistName) => {
     if (!artistName) return null;
     const name = artistName.toUpperCase();
-    if (name.includes('VAN GOGH') || name.includes('GOGH')) return 'VAN GOGH';
-    if (name.includes('KLIMT')) return 'KLIMT';
-    if (name.includes('MUNCH')) return 'MUNCH';
-    if (name.includes('PICASSO')) return 'PICASSO';
-    if (name.includes('MATISSE')) return 'MATISSE';
-    if (name.includes('FRIDA') || name.includes('KAHLO')) return 'FRIDA';
-    if (name.includes('WARHOL')) return 'WARHOL';
+    if (name.includes('VAN GOGH') || name.includes('GOGH') || name.includes('고흐')) return 'VAN GOGH';
+    if (name.includes('KLIMT') || name.includes('클림트')) return 'KLIMT';
+    if (name.includes('MUNCH') || name.includes('뭉크')) return 'MUNCH';
+    if (name.includes('PICASSO') || name.includes('피카소')) return 'PICASSO';
+    if (name.includes('MATISSE') || name.includes('마티스')) return 'MATISSE';
+    if (name.includes('FRIDA') || name.includes('KAHLO') || name.includes('프리다') || name.includes('칼로')) return 'FRIDA';
+    if (name.includes('WARHOL') || name.includes('워홀')) return 'WARHOL';
     return null;
   };
   
