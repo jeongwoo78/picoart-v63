@@ -27,7 +27,9 @@ const ResultScreen = ({
   aiSelectedWork,
   fullTransformResults,
   onReset,
-  onGallery
+  onGallery,
+  masterChatData: appMasterChatData,       // App.jsx에서 받은 대화 데이터
+  onMasterChatDataChange                    // App.jsx에 대화 변경 알림
 }) => {
   
   // ========== 원클릭 결과 처리 ==========
@@ -77,7 +79,21 @@ const ResultScreen = ({
 
   // ========== 거장 AI 대화 관련 State (v68) ==========
   const [isMasterRetransforming, setIsMasterRetransforming] = useState(false);
+  const [retransformingMasterKey, setRetransformingMasterKey] = useState(null);  // 어떤 거장이 작업 중인지
   const [masterResultImage, setMasterResultImage] = useState(null);
+  
+  // 거장별 대화 데이터 (App.jsx에서 관리, 갤러리 이동해도 유지)
+  const masterChatData = appMasterChatData || {};
+  
+  // 거장별 대화 데이터 업데이트
+  const updateMasterChatData = (masterKey, chatData) => {
+    if (onMasterChatDataChange) {
+      onMasterChatDataChange({
+        ...masterChatData,
+        [masterKey]: chatData
+      });
+    }
+  };
   
   // 거장 키 추출 (displayArtist에서) - 영문/한글 모두 지원
   const getMasterKey = (artistName) => {
@@ -103,6 +119,7 @@ const ResultScreen = ({
     if (!correctionPrompt || isMasterRetransforming) return;
     
     setIsMasterRetransforming(true);
+    setRetransformingMasterKey(currentMasterKey);  // 현재 거장 저장
     
     try {
       // 원클릭 모드: currentResult의 style 사용, 단독: selectedStyle 사용
@@ -130,6 +147,7 @@ const ResultScreen = ({
     }
     
     setIsMasterRetransforming(false);
+    setRetransformingMasterKey(null);
   };
 
 
@@ -2256,10 +2274,13 @@ const ResultScreen = ({
         {/* 거장(AI) 대화 섹션 - 거장 카테고리일 때만 표시 (v68) */}
         {displayCategory === 'masters' && currentMasterKey && (
           <MasterChat
+            key={currentMasterKey}
             masterKey={currentMasterKey}
             onRetransform={handleMasterRetransform}
-            isRetransforming={isMasterRetransforming}
+            isRetransforming={isMasterRetransforming && retransformingMasterKey === currentMasterKey}
             retransformCost={100}
+            savedChatData={masterChatData[currentMasterKey]}
+            onChatDataChange={(data) => updateMasterChatData(currentMasterKey, data)}
           />
         )}
 

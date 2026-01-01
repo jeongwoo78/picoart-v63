@@ -22,6 +22,9 @@ const App = () => {
   
   // 원클릭 결과
   const [fullTransformResults, setFullTransformResults] = useState(null);
+  
+  // 거장 대화 저장 (갤러리 이동해도 유지)
+  const [masterChatData, setMasterChatData] = useState({});
 
   // 1단계: 대카테고리 선택
   const handleCategorySelect = (categoryId) => {
@@ -89,6 +92,7 @@ const App = () => {
     setAiSelectedArtist(null);
     setAiSelectedWork(null);
     setFullTransformResults(null);
+    setMasterChatData({});  // 대화도 초기화
   };
 
   // 뒤로가기 (photoStyle → category)
@@ -151,6 +155,8 @@ const App = () => {
               fullTransformResults={fullTransformResults}
               onReset={handleReset}
               onGallery={() => setShowGallery(true)}
+              masterChatData={masterChatData}
+              onMasterChatDataChange={setMasterChatData}
             />
           )}
         </>

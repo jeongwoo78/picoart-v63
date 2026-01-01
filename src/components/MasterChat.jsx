@@ -29,16 +29,19 @@ const MasterChat = ({
   masterKey,           // 거장 키 (예: "VAN GOGH")
   onRetransform,       // 재변환 콜백 (correctionPrompt를 전달)
   isRetransforming,    // 재변환 중 여부
-  retransformCost = 100  // 재변환 비용
+  retransformCost = 100,  // 재변환 비용
+  savedChatData,       // 저장된 대화 데이터 { messages, pendingCorrection, messageCount, isChatEnded }
+  onChatDataChange     // 대화 데이터 변경 콜백
 }) => {
-  const [messages, setMessages] = useState([]);
+  // 저장된 데이터가 있으면 사용, 없으면 초기값
+  const [messages, setMessages] = useState(savedChatData?.messages || []);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [pendingCorrection, setPendingCorrection] = useState(null); // 대기 중인 보정 프롬프트
-  const [messageCount, setMessageCount] = useState(0); // 사용자 메시지 횟수
-  const [isChatEnded, setIsChatEnded] = useState(false); // 대화 종료 여부
+  const [pendingCorrection, setPendingCorrection] = useState(savedChatData?.pendingCorrection || null);
+  const [messageCount, setMessageCount] = useState(savedChatData?.messageCount || 0);
+  const [isChatEnded, setIsChatEnded] = useState(savedChatData?.isChatEnded || false);
   const chatAreaRef = useRef(null);
-  const hasGreeted = useRef(false);
+  const hasGreeted = useRef(savedChatData?.messages?.length > 0);
   
   const MAX_MESSAGES = 20; // 최대 대화 횟수
 
@@ -46,22 +49,25 @@ const MasterChat = ({
   const theme = MASTER_THEMES[masterKey] || MASTER_THEMES['VAN GOGH'];
   const masterNameKo = MASTER_NAMES_KO[masterKey] || masterKey;
 
-  // masterKey 변경 시 전체 초기화
+  // 대화 데이터 변경 시 부모에게 알림
   useEffect(() => {
-    if (masterKey) {
-      // 상태 초기화
-      setMessages([]);
-      setInputValue('');
-      setPendingCorrection(null);
-      setMessageCount(0);
-      setIsChatEnded(false);
-      hasGreeted.current = false;
-      
-      // 첫 인사 로드
-      loadGreeting();
-      hasGreeted.current = true;
+    if (onChatDataChange) {
+      onChatDataChange({
+        messages,
+        pendingCorrection,
+        messageCount,
+        isChatEnded
+      });
     }
-  }, [masterKey]);
+  }, [messages, pendingCorrection, messageCount, isChatEnded]);
+
+  // 첫 마운트 시 인사 (저장된 대화 없을 때만)
+  useEffect(() => {
+    if (!hasGreeted.current && masterKey) {
+      hasGreeted.current = true;
+      loadGreeting();
+    }
+  }, []);
 
   // 스크롤 자동 이동
   useEffect(() => {
