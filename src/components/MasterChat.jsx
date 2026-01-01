@@ -144,7 +144,9 @@ const MasterChat = ({
       
       const data = await response.json();
       
-      if (data.success) {
+      console.log('Master feedback response:', data);
+      
+      if (data.success && data.masterResponse) {
         // 거장 응답 추가
         setMessages(prev => [...prev, {
           role: 'master',
@@ -155,6 +157,13 @@ const MasterChat = ({
         if (data.correctionPrompt) {
           setPendingCorrection(data.correctionPrompt);
         }
+      } else {
+        // 응답 실패 시 에러 로그
+        console.error('Invalid response:', data);
+        setMessages(prev => [...prev, {
+          role: 'master',
+          content: '...미안하네, 잠시 생각이 흐트러졌어. 다시 말해주겠나?'
+        }]);
       }
     } catch (error) {
       console.error('Feedback error:', error);
