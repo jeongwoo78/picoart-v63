@@ -2084,6 +2084,10 @@ const ResultScreen = ({
 
   const handleTouchEnd = (e) => {
     if (!isFullTransform || !touchStartX) return;
+    
+    // 재변환 중이면 스와이프 무시
+    if (isMasterRetransforming || isRetrying) return;
+    
     const diffX = touchStartX - e.changedTouches[0].clientX;
     const diffY = touchStartY - e.changedTouches[0].clientY;
     
@@ -2274,8 +2278,9 @@ const ResultScreen = ({
           <div className="fullTransform-nav">
             <button 
               onClick={() => setCurrentIndex(i => Math.max(0, i - 1))}
-              disabled={currentIndex === 0}
+              disabled={currentIndex === 0 || isMasterRetransforming || isRetrying}
               className="nav-btn"
+              style={{ opacity: (isMasterRetransforming || isRetrying) ? 0.5 : 1 }}
             >
               ◀ 이전
             </button>
@@ -2284,14 +2289,17 @@ const ResultScreen = ({
                 <button
                   key={idx}
                   className={`nav-dot ${idx === currentIndex ? 'active' : ''}`}
-                  onClick={() => setCurrentIndex(idx)}
+                  onClick={() => !isMasterRetransforming && !isRetrying && setCurrentIndex(idx)}
+                  disabled={isMasterRetransforming || isRetrying}
+                  style={{ opacity: (isMasterRetransforming || isRetrying) ? 0.5 : 1 }}
                 />
               ))}
             </div>
             <button 
               onClick={() => setCurrentIndex(i => Math.min(fullTransformResults.length - 1, i + 1))}
-              disabled={currentIndex === fullTransformResults.length - 1}
+              disabled={currentIndex === fullTransformResults.length - 1 || isMasterRetransforming || isRetrying}
               className="nav-btn"
+              style={{ opacity: (isMasterRetransforming || isRetrying) ? 0.5 : 1 }}
             >
               다음 ▶
             </button>
