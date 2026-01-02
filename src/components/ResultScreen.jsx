@@ -2332,7 +2332,11 @@ const ResultScreen = ({
             key={currentMasterKey}
             masterKey={currentMasterKey}
             onRetransform={(correctionPrompt) => handleMasterRetransform(correctionPrompt, currentMasterKey)}
-            isRetransforming={retransformingMasterKeys.includes(currentMasterKey)}
+            isRetransforming={(() => {
+              const isRetrans = retransformingMasterKeys.includes(currentMasterKey);
+              console.log('🔵 MasterChat isRetransforming:', { currentMasterKey, retransformingMasterKeys, isRetrans });
+              return isRetrans;
+            })()}
             retransformCost={100}
             savedChatData={masterChatData[currentMasterKey]}
             onChatDataChange={(data) => updateMasterChatData(currentMasterKey, data)}
