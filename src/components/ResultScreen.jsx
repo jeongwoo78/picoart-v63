@@ -2263,9 +2263,9 @@ const ResultScreen = ({
           <div className="fullTransform-nav">
             <button 
               onClick={() => setCurrentIndex(i => Math.max(0, i - 1))}
-              disabled={currentIndex === 0 || isMasterRetransforming || isRetrying}
+              disabled={currentIndex === 0 || isRetrying}
               className="nav-btn"
-              style={{ opacity: (isMasterRetransforming || isRetrying) ? 0.5 : 1 }}
+              style={{ opacity: isRetrying ? 0.5 : 1 }}
             >
               ◀ 이전
             </button>
@@ -2274,17 +2274,17 @@ const ResultScreen = ({
                 <button
                   key={idx}
                   className={`nav-dot ${idx === currentIndex ? 'active' : ''}`}
-                  onClick={() => !isMasterRetransforming && !isRetrying && setCurrentIndex(idx)}
-                  disabled={isMasterRetransforming || isRetrying}
-                  style={{ opacity: (isMasterRetransforming || isRetrying) ? 0.5 : 1 }}
+                  onClick={() => !isRetrying && setCurrentIndex(idx)}
+                  disabled={isRetrying}
+                  style={{ opacity: isRetrying ? 0.5 : 1 }}
                 />
               ))}
             </div>
             <button 
               onClick={() => setCurrentIndex(i => Math.min(fullTransformResults.length - 1, i + 1))}
-              disabled={currentIndex === fullTransformResults.length - 1 || isMasterRetransforming || isRetrying}
+              disabled={currentIndex === fullTransformResults.length - 1 || isRetrying}
               className="nav-btn"
-              style={{ opacity: (isMasterRetransforming || isRetrying) ? 0.5 : 1 }}
+              style={{ opacity: isRetrying ? 0.5 : 1 }}
             >
               다음 ▶
             </button>
