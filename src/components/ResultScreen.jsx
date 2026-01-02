@@ -34,8 +34,8 @@ const ResultScreen = ({
   onMasterIndexChange,
   masterResultImages: appMasterResultImages,
   onMasterResultImagesChange,
-  retransformingMasterKeys: appRetransformingMasterKeys,
-  onRetransformingMasterKeysChange
+  retransformingMasterKey: appRetransformingMasterKey,
+  onRetransformingMasterKeyChange
 }) => {
   
   // ========== 원클릭 결과 처리 ==========
@@ -91,22 +91,19 @@ const ResultScreen = ({
   const hasSavedRef = useRef(false);
 
   // ========== 거장 AI 대화 관련 State (v68) ==========
-  // 재변환 상태 (App.jsx에서 관리, 갤러리 이동해도 유지)
-  const retransformingMasterKeys = appRetransformingMasterKeys || [];
-  
-  // 배열에 거장 추가
-  const addRetransformingMaster = (masterKey) => {
-    if (onRetransformingMasterKeysChange && !retransformingMasterKeys.includes(masterKey)) {
-      onRetransformingMasterKeysChange([...retransformingMasterKeys, masterKey]);
+  // 재변환 상태 (App.jsx에서 관리, 단일 값)
+  const retransformingMasterKey = appRetransformingMasterKey || null;
+  const setRetransformingMasterKey = (val) => {
+    if (onRetransformingMasterKeyChange) {
+      onRetransformingMasterKeyChange(val);
     }
   };
   
-  // 배열에서 거장 제거
-  const removeRetransformingMaster = (masterKey) => {
-    if (onRetransformingMasterKeysChange) {
-      onRetransformingMasterKeysChange(retransformingMasterKeys.filter(k => k !== masterKey));
-    }
-  };
+  // 변환 중 여부 (갤러리 버튼 비활성화용)
+  const isAnyMasterRetransforming = retransformingMasterKey !== null;
+  
+  // 현재 거장이 변환 중인지 (스피너 표시용)
+  const isCurrentMasterWorking = currentMasterKey && retransformingMasterKey === currentMasterKey;
   
   // 거장별 재변환 이미지 (App.jsx에서 관리, 갤러리 이동해도 유지)
   const masterResultImages = appMasterResultImages || {};
@@ -135,12 +132,6 @@ const ResultScreen = ({
   
   const currentMasterKey = displayCategory === 'masters' ? getMasterKey(displayArtist) : null;
   
-  // 현재 거장이 변환 중인지 확인
-  const isCurrentMasterRetransforming = currentMasterKey && retransformingMasterKeys.includes(currentMasterKey);
-  
-  // 아무 거장이라도 변환 중인지 (갤러리 버튼 비활성화용)
-  const isAnyMasterRetransforming = retransformingMasterKeys.length > 0;
-  
   // 현재 거장의 재변환 이미지
   const currentMasterResultImage = currentMasterKey ? masterResultImages[currentMasterKey] : null;
   
@@ -157,15 +148,15 @@ const ResultScreen = ({
     }
   };
 
-  // 거장 AI 재변환 핸들러 (masterKey를 파라미터로 받아서 클로저 문제 방지)
-  const handleMasterRetransform = async (correctionPrompt, masterKey) => {
-    console.log('🔴 handleMasterRetransform 호출됨', { correctionPrompt, masterKey, isRetransforming: retransformingMasterKeys.includes(masterKey) });
+  // 거장 AI 재변환 핸들러
+  const handleMasterRetransform = async (correctionPrompt) => {
+    console.log('🔴 handleMasterRetransform 호출됨', { correctionPrompt, currentMasterKey, isAnyMasterRetransforming });
     
-    // 이미 이 거장이 변환 중이면 차단
-    if (!correctionPrompt || !masterKey || retransformingMasterKeys.includes(masterKey)) return;
+    // 이미 변환 중이면 차단 (동시 변환 불가)
+    if (!correctionPrompt || !currentMasterKey || isAnyMasterRetransforming) return;
     
-    console.log('🔴 재변환 시작!', masterKey);
-    addRetransformingMaster(masterKey);  // 배열에 추가
+    console.log('🔴 재변환 시작!', currentMasterKey);
+    setRetransformingMasterKey(currentMasterKey);  // 현재 거장 저장
     
     try {
       // 원클릭 모드: currentResult의 style 사용, 단독: selectedStyle 사용
@@ -182,7 +173,7 @@ const ResultScreen = ({
         // 거장별로 재변환 이미지 저장
         setMasterResultImages(prev => ({
           ...prev,
-          [masterKey]: result.resultUrl
+          [currentMasterKey]: result.resultUrl
         }));
         
         // 갤러리에 자동 저장
@@ -191,18 +182,12 @@ const ResultScreen = ({
         const styleName = formatGalleryName(rawName, category, displayWork) + ' (AI 수정)';
         const categoryName = '거장';
         await saveToGallery(result.resultUrl, styleName, categoryName);
-        
-        // 완료 플래그 설정 (다른 거장 보다가 돌아와도 완료 메시지 표시)
-        updateMasterChatData(masterKey, {
-          ...masterChatData[masterKey],
-          hasNewResult: true
-        });
       }
     } catch (error) {
       console.error('Master retransform error:', error);
     }
     
-    removeRetransformingMaster(masterKey);  // 배열에서 제거
+    setRetransformingMasterKey(null);  // 완료 시 리셋
   };
 
 
@@ -2278,8 +2263,9 @@ const ResultScreen = ({
           <div className="fullTransform-nav">
             <button 
               onClick={() => setCurrentIndex(i => Math.max(0, i - 1))}
-              disabled={currentIndex === 0}
+              disabled={currentIndex === 0 || isMasterRetransforming || isRetrying}
               className="nav-btn"
+              style={{ opacity: (isMasterRetransforming || isRetrying) ? 0.5 : 1 }}
             >
               ◀ 이전
             </button>
@@ -2288,14 +2274,17 @@ const ResultScreen = ({
                 <button
                   key={idx}
                   className={`nav-dot ${idx === currentIndex ? 'active' : ''}`}
-                  onClick={() => setCurrentIndex(idx)}
+                  onClick={() => !isMasterRetransforming && !isRetrying && setCurrentIndex(idx)}
+                  disabled={isMasterRetransforming || isRetrying}
+                  style={{ opacity: (isMasterRetransforming || isRetrying) ? 0.5 : 1 }}
                 />
               ))}
             </div>
             <button 
               onClick={() => setCurrentIndex(i => Math.min(fullTransformResults.length - 1, i + 1))}
-              disabled={currentIndex === fullTransformResults.length - 1}
+              disabled={currentIndex === fullTransformResults.length - 1 || isMasterRetransforming || isRetrying}
               className="nav-btn"
+              style={{ opacity: (isMasterRetransforming || isRetrying) ? 0.5 : 1 }}
             >
               다음 ▶
             </button>
@@ -2331,12 +2320,9 @@ const ResultScreen = ({
           <MasterChat
             key={currentMasterKey}
             masterKey={currentMasterKey}
-            onRetransform={(correctionPrompt) => handleMasterRetransform(correctionPrompt, currentMasterKey)}
-            isRetransforming={(() => {
-              const isRetrans = retransformingMasterKeys.includes(currentMasterKey);
-              console.log('🔵 MasterChat isRetransforming:', { currentMasterKey, retransformingMasterKeys, isRetrans });
-              return isRetrans;
-            })()}
+            onRetransform={handleMasterRetransform}
+            isRetransforming={isAnyMasterRetransforming}
+            isCurrentMasterWorking={isCurrentMasterWorking}
             retransformCost={100}
             savedChatData={masterChatData[currentMasterKey]}
             onChatDataChange={(data) => updateMasterChatData(currentMasterKey, data)}

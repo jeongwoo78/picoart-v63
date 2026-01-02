@@ -28,7 +28,8 @@ const MASTER_NAMES_KO = {
 const MasterChat = ({ 
   masterKey,           // 거장 키 (예: "VAN GOGH")
   onRetransform,       // 재변환 콜백 (correctionPrompt를 전달)
-  isRetransforming,    // 재변환 중 여부
+  isRetransforming,    // 재변환 버튼 비활성화 여부 (아무 거장이라도 변환 중이면 true)
+  isCurrentMasterWorking = false, // 현재 거장이 작업 중인지 (스피너 표시용)
   retransformCost = 100,  // 재변환 비용
   savedChatData,       // 저장된 대화 데이터 { messages, pendingCorrection, messageCount, isChatEnded }
   onChatDataChange     // 대화 데이터 변경 콜백
@@ -204,25 +205,11 @@ const MasterChat = ({
   // 재변환 완료 후 결과 메시지 추가 (고정 문장 사용)
   useEffect(() => {
     // true → false 로 바뀔 때만 (실제 재변환 완료)
-    if (wasRetransforming.current && !isRetransforming) {
+    if (wasRetransforming.current && !isCurrentMasterWorking) {
       showCompletionMessage();
     }
-    wasRetransforming.current = isRetransforming;
-  }, [isRetransforming]);
-  
-  // hasNewResult 플래그 처리 (다른 거장 보다가 돌아왔을 때)
-  useEffect(() => {
-    if (savedChatData?.hasNewResult) {
-      showCompletionMessage();
-      // 플래그 리셋
-      if (onChatDataChange) {
-        onChatDataChange({
-          ...savedChatData,
-          hasNewResult: false
-        });
-      }
-    }
-  }, [savedChatData?.hasNewResult]);
+    wasRetransforming.current = isCurrentMasterWorking;
+  }, [isCurrentMasterWorking]);
   
   // 완료 메시지 표시 함수
   const showCompletionMessage = () => {
@@ -324,7 +311,7 @@ const MasterChat = ({
           opacity: !pendingCorrection || isRetransforming || isChatEnded ? 0.5 : 1
         }}
       >
-        {isRetransforming ? (
+        {isCurrentMasterWorking ? (
           <>
             <span className="spinner-small"></span>
             {masterNameKo}가 작업 중...
