@@ -27,8 +27,7 @@ const App = () => {
   const [masterChatData, setMasterChatData] = useState({});
   const [currentMasterIndex, setCurrentMasterIndex] = useState(0);  // 현재 보고 있는 거장 인덱스
   const [masterResultImages, setMasterResultImages] = useState({}); // 거장별 재변환 이미지
-  const [isMasterRetransforming, setIsMasterRetransforming] = useState(false);  // 재변환 중 여부
-  const [retransformingMasterKey, setRetransformingMasterKey] = useState(null); // 어떤 거장이 작업 중인지
+  const [retransformingMasterKeys, setRetransformingMasterKeys] = useState([]); // 변환 중인 거장들 (배열)
 
   // 1단계: 대카테고리 선택
   const handleCategorySelect = (categoryId) => {
@@ -99,8 +98,7 @@ const App = () => {
     setMasterChatData({});
     setCurrentMasterIndex(0);
     setMasterResultImages({});
-    setIsMasterRetransforming(false);
-    setRetransformingMasterKey(null);
+    setRetransformingMasterKeys([]);
   };
 
   // 뒤로가기 (photoStyle → category)
@@ -169,10 +167,8 @@ const App = () => {
               onMasterIndexChange={setCurrentMasterIndex}
               masterResultImages={masterResultImages}
               onMasterResultImagesChange={setMasterResultImages}
-              isMasterRetransforming={isMasterRetransforming}
-              onMasterRetransformingChange={setIsMasterRetransforming}
-              retransformingMasterKey={retransformingMasterKey}
-              onRetransformingMasterKeyChange={setRetransformingMasterKey}
+              retransformingMasterKeys={retransformingMasterKeys}
+              onRetransformingMasterKeysChange={setRetransformingMasterKeys}
             />
           )}
         </>

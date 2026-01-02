@@ -183,23 +183,12 @@ const MasterChat = ({
   };
 
   // 재변환 실행
-  const [localRetransforming, setLocalRetransforming] = useState(false);
-  
   const handleRetransform = async () => {
-    if (!pendingCorrection || isRetransforming || localRetransforming) return;
-    
-    setLocalRetransforming(true);  // 즉시 버튼 비활성화
+    if (!pendingCorrection || isRetransforming) return;
     
     // 부모 컴포넌트에 재변환 요청
     onRetransform(pendingCorrection);
   };
-  
-  // isRetransforming이 false로 바뀌면 로컬 상태도 리셋
-  useEffect(() => {
-    if (!isRetransforming) {
-      setLocalRetransforming(false);
-    }
-  }, [isRetransforming]);
 
   // 거장별 고정 완료 메시지
   const MASTER_RESULT_MESSAGES = {
@@ -216,17 +205,35 @@ const MasterChat = ({
   useEffect(() => {
     // true → false 로 바뀔 때만 (실제 재변환 완료)
     if (wasRetransforming.current && !isRetransforming) {
-      // 시스템 메시지 + 거장 완료 메시지 추가
-      const resultMessage = MASTER_RESULT_MESSAGES[masterKey] || '수정했네. 어떤가, 마음에 드는가?';
-      setMessages(prev => [
-        ...prev,
-        { role: 'system', content: '💡 재변환 완료! 이전 이미지는 갤러리에 저장되어 있습니다.' },
-        { role: 'master', content: resultMessage }
-      ]);
-      setPendingCorrection(null);
+      showCompletionMessage();
     }
     wasRetransforming.current = isRetransforming;
   }, [isRetransforming]);
+  
+  // hasNewResult 플래그 처리 (다른 거장 보다가 돌아왔을 때)
+  useEffect(() => {
+    if (savedChatData?.hasNewResult) {
+      showCompletionMessage();
+      // 플래그 리셋
+      if (onChatDataChange) {
+        onChatDataChange({
+          ...savedChatData,
+          hasNewResult: false
+        });
+      }
+    }
+  }, [savedChatData?.hasNewResult]);
+  
+  // 완료 메시지 표시 함수
+  const showCompletionMessage = () => {
+    const resultMessage = MASTER_RESULT_MESSAGES[masterKey] || '수정했네. 어떤가, 마음에 드는가?';
+    setMessages(prev => [
+      ...prev,
+      { role: 'system', content: '💡 재변환 완료! 이전 이미지는 갤러리에 저장되어 있습니다.' },
+      { role: 'master', content: resultMessage }
+    ]);
+    setPendingCorrection(null);
+  };
 
   // 엔터키 전송
   const handleKeyPress = (e) => {
@@ -311,13 +318,13 @@ const MasterChat = ({
       <button 
         className="retransform-btn"
         onClick={handleRetransform}
-        disabled={!pendingCorrection || isRetransforming || localRetransforming || isChatEnded}
+        disabled={!pendingCorrection || isRetransforming || isChatEnded}
         style={{ 
-          background: pendingCorrection && !isRetransforming && !localRetransforming && !isChatEnded ? theme.gradient : undefined,
-          opacity: !pendingCorrection || isRetransforming || localRetransforming || isChatEnded ? 0.5 : 1
+          background: pendingCorrection && !isRetransforming && !isChatEnded ? theme.gradient : undefined,
+          opacity: !pendingCorrection || isRetransforming || isChatEnded ? 0.5 : 1
         }}
       >
-        {(isRetransforming || localRetransforming) ? (
+        {isRetransforming ? (
           <>
             <span className="spinner-small"></span>
             {masterNameKo}가 작업 중...

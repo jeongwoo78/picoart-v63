@@ -129,7 +129,7 @@ const ARTIST_CONFIG = {
   'caillebotte':         { control: 0.50, brush: '60mm' },
   
   // === 후기인상주의 ===
-  'vangogh':             { control: 0.45, brush: '70mm' },
+  'vangogh':             { control: 0.45, brush: '75mm' },
   'gauguin':             { control: 0.60, brush: '70mm' },
   'cezanne':             { control: 0.65, brush: '70mm' },
   
@@ -142,7 +142,7 @@ const ARTIST_CONFIG = {
   'vlaminck':            { control: 0.45, brush: '60mm' },
   
   // === 표현주의 ===
-  'munch':               { control: 0.50, brush: '60mm' },
+  'munch':               { control: 0.60, brush: '60mm' },
   'kirchner':            { control: 0.45, brush: '60mm' },
   'kokoschka':           { control: 0.45, brush: '60mm' },
   
