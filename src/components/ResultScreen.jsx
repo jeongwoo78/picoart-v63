@@ -2339,6 +2339,11 @@ const ResultScreen = ({
           <button 
             className="btn btn-gallery" 
             onClick={onGallery}
+            disabled={isMasterRetransforming || isRetrying}
+            style={{ 
+              opacity: (isMasterRetransforming || isRetrying) ? 0.5 : 1,
+              cursor: (isMasterRetransforming || isRetrying) ? 'not-allowed' : 'pointer'
+            }}
           >
             <span className="btn-icon">🖼️</span>
             갤러리
