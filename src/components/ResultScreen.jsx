@@ -96,6 +96,7 @@ const ResultScreen = ({
   // 재변환 상태 (App.jsx에서 관리, 갤러리 이동해도 유지)
   const isMasterRetransforming = appIsMasterRetransforming || false;
   const setIsMasterRetransforming = (val) => {
+    console.log('🟡 setIsMasterRetransforming 호출:', val, 'onMasterRetransformingChange:', !!onMasterRetransformingChange);
     if (onMasterRetransformingChange) {
       onMasterRetransformingChange(typeof val === 'function' ? val(isMasterRetransforming) : val);
     }
