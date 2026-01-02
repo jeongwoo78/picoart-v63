@@ -42,7 +42,6 @@ const MasterChat = ({
   const [isChatEnded, setIsChatEnded] = useState(savedChatData?.isChatEnded || false);
   const chatAreaRef = useRef(null);
   const hasGreeted = useRef(savedChatData?.messages?.length > 0);
-  const wasRetransforming = useRef(false);  // 재변환 완료 감지용
   
   const MAX_MESSAGES = 20; // 최대 대화 횟수
 
@@ -201,14 +200,19 @@ const MasterChat = ({
     'WARHOL': '수정했어. 어때, 마음에 들어? 더 바꾸고 싶은 부분 있으면 말해.'
   };
 
-  // 재변환 완료 후 결과 메시지 추가 (고정 문장 사용)
+  // 재변환 완료 플래그 체크 (동기적으로 메시지 추가)
   useEffect(() => {
-    // true → false 로 바뀔 때만 (실제 재변환 완료)
-    if (wasRetransforming.current && !isRetransforming) {
+    if (savedChatData?.retransformCompleted) {
       showCompletionMessage();
+      // 플래그 리셋
+      if (onChatDataChange) {
+        onChatDataChange({
+          ...savedChatData,
+          retransformCompleted: false
+        });
+      }
     }
-    wasRetransforming.current = isRetransforming;
-  }, [isRetransforming]);
+  }, [savedChatData?.retransformCompleted]);
   
   // 완료 메시지 표시 함수
   const showCompletionMessage = () => {

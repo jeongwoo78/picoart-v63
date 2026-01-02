@@ -171,6 +171,8 @@ const ResultScreen = ({
     console.log('🔴 재변환 시작!', masterKey);
     startRetransforming(masterKey);  // 이 거장 변환 시작
     
+    let success = false;
+    
     try {
       // 원클릭 모드: currentResult의 style 사용, 단독: selectedStyle 사용
       const styleToUse = isFullTransform ? currentResult?.style : selectedStyle;
@@ -183,6 +185,8 @@ const ResultScreen = ({
       );
       
       if (result.success && result.resultUrl) {
+        success = true;
+        
         // 거장별로 재변환 이미지 저장
         setMasterResultImages(prev => ({
           ...prev,
@@ -200,7 +204,16 @@ const ResultScreen = ({
       console.error('Master retransform error:', error);
     }
     
-    stopRetransforming(masterKey);  // 완료 시 이 거장만 제거
+    // 완료 플래그 먼저 설정 (MasterChat이 메시지 추가하도록)
+    if (success) {
+      updateMasterChatData(masterKey, {
+        ...masterChatData[masterKey],
+        retransformCompleted: true  // 완료 플래그
+      });
+    }
+    
+    // 그 다음 버튼 활성화
+    stopRetransforming(masterKey);
   };
 
 
