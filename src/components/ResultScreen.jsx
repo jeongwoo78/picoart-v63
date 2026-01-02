@@ -108,12 +108,6 @@ const ResultScreen = ({
     }
   };
   
-  // 현재 거장이 변환 중인지 확인
-  const isCurrentMasterRetransforming = currentMasterKey && retransformingMasterKeys.includes(currentMasterKey);
-  
-  // 아무 거장이라도 변환 중인지 (갤러리 버튼 비활성화용)
-  const isAnyMasterRetransforming = retransformingMasterKeys.length > 0;
-  
   // 거장별 재변환 이미지 (App.jsx에서 관리, 갤러리 이동해도 유지)
   const masterResultImages = appMasterResultImages || {};
   const setMasterResultImages = (val) => {
@@ -140,6 +134,12 @@ const ResultScreen = ({
   };
   
   const currentMasterKey = displayCategory === 'masters' ? getMasterKey(displayArtist) : null;
+  
+  // 현재 거장이 변환 중인지 확인
+  const isCurrentMasterRetransforming = currentMasterKey && retransformingMasterKeys.includes(currentMasterKey);
+  
+  // 아무 거장이라도 변환 중인지 (갤러리 버튼 비활성화용)
+  const isAnyMasterRetransforming = retransformingMasterKeys.length > 0;
   
   // 현재 거장의 재변환 이미지
   const currentMasterResultImage = currentMasterKey ? masterResultImages[currentMasterKey] : null;
